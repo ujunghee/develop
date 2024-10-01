@@ -1,4 +1,53 @@
-$white:#fff;
-$brown:#9E8E81;
-$fontSize16 : 1.6rem;
-$border10:1.0rem;
+@import "SUIT/SUIT.css";
+
+
+$blur20: 2.0;
+$blue15:1.5;
+
+$font: (
+	font-suit: 'SUIT',
+    font-Nanummyeongjo: 'NanumMyeongjo',
+    font-NanumSquare: 'NanumSquare'
+);
+
+$color: (
+    brown:#9E8E81,
+    pink:#D89B9B,
+    blue:#98B8D8,
+    orange:#F2B05B,
+    snowblue:#9DC0C4,
+
+    txt-main:#544D47,
+    txt-sub:#9E8E81,
+    
+    bg:#EDEDED,
+    icon-bg:#E0D9D4,
+    blur-bg:rgba(217, 217, 217, 0.4),
+    black-bg50:rgba(0, 0, 0, 0.5),
+    black-bg40:rgba(0, 0, 0, 0.4),
+
+    liner-pink: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFE3E3 100%),
+    liner-blue:linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #E3F4FF 100%),
+    liner-snowblue: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #D8E6E8 100%),
+    liner-orange:linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFEEDC 100%),
+
+    footer-nav:#151515,
+
+);
+
+$font-size: (
+    f-13:1.3rem,
+    f-14:1.4rem,
+    f-16:1.6rem,
+    f-18:1.8rem,
+    f-20:2.0rem,
+    f-22:2.2rem,
+    f-24:2.4rem,
+);
+
+$boder-radius: (
+    b-5:.5rem,
+    b-10:1.0rem,
+    b-14:1.4rem, 
+    b-100:10.0rem,
+)

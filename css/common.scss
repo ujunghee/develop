@@ -1,6 +1,30 @@
-$contnet : red;
-$secondary : blue;
+@import "variable";
+
+* {
+    font-size: 62.5%;
+}
+body {
+    width: 1250px;
+    margin: 0 auto;
+}
+
+button {
+    font-size: $fontSize16;
+}
 
 #content {
-    color:$contnet;
+    .button {
+        color:$white;
+        background: $brown;
+        border: none;
+        width: calc(100% - 3.2rem);
+        height: 5.0rem;
+        cursor: pointer;   
+        border-radius: $border10;
+        transition: .3s;
+        position: relative;
+        &:hover {
+            background: darken($brown, 10%);
+        }
+    } 
 }

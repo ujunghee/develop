@@ -1,0 +1,29 @@
+* {
+  font-size: 62.5%;
+}
+
+body {
+  width: 1250px;
+  margin: 0 auto;
+}
+
+button {
+  font-size: 1.6rem;
+}
+
+#content .button {
+  color: #fff;
+  cursor: pointer;
+  background: #9e8e81;
+  border: none;
+  border-radius: 1rem;
+  width: calc(100% - 3.2rem);
+  height: 5rem;
+  transition: all .3s;
+  position: relative;
+}
+
+#content .button:hover {
+  background: #857467;
+}
+/*# sourceMappingURL=index.35d35fa9.css.map */

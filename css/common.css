@@ -1,3 +1,27 @@
-#content {
-  color: red;
+* {
+  font-size: 62.5%;
+}
+
+body {
+  width: 1250px;
+  margin: 0 auto;
+}
+
+button {
+  font-size: 1.6rem;
+}
+
+#content .button {
+  color: #fff;
+  background: #9E8E81;
+  border: none;
+  width: calc(100% - 3.2rem);
+  height: 5rem;
+  cursor: pointer;
+  border-radius: 1rem;
+  transition: 0.3s;
+  position: relative;
+}
+#content .button:hover {
+  background: #857467;
 }/*# sourceMappingURL=common.css.map */

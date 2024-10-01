@@ -67,6 +67,9 @@ button {
     @include Nanummyeongjo;
     @include m-sub;
 }
+.txt-box {
+    @include txt-box;
+}
 
 // bar button
 %sumitButton {

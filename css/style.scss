@@ -24,9 +24,6 @@
         
         .txt-box {
             margin-top: 2.6rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
         }
     }
 }
@@ -34,6 +31,9 @@
 
 
 // select html s
-
+.select {
+    background-color: map-get($color, default-bg);
+    @include common;
+}
 // select html e
 

@@ -21,7 +21,9 @@
 }
 .content_one .visual .txt-box {
   margin-top: 2.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+}
+
+.select {
+  background-color: #EDEDED;
+  height: 100vh;
 }/*# sourceMappingURL=style.css.map */

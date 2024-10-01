@@ -89,6 +89,12 @@ $ease: (
     font-family: map-get($font, font-NanumSquare);
     font-size: map-get($font-size, f-24);
 }
+@mixin txt-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    align-items: center;
+}
 @mixin m-sub {
     font-size: map-get($font-size, f-14);
     color:map-get($color, txt-main);

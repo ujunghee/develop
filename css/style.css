@@ -1,1 +1,27 @@
-@import "SUIT/SUIT.css";/*# sourceMappingURL=style.css.map */
+@import "SUIT/SUIT.css";
+.content_one {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+}
+.content_one .visual {
+  height: calc(100% - 10rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+.content_one .visual .visaul_img {
+  background: url("../image/main/main.png") 50% 50%/contain no-repeat;
+  height: 38.6rem;
+  width: 100%;
+  flex: 0.75;
+}
+.content_one .visual .txt-box {
+  margin-top: 2.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}/*# sourceMappingURL=style.css.map */

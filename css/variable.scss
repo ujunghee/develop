@@ -1,26 +1,31 @@
 @import "SUIT/SUIT.css";
 
-
 $blur20: 2.0;
 $blue15:1.5;
+$main-bg-img:"../image/main/";
+$icon-img:"../image/icon/";
+$object-img:"../image/object/";
+
 
 $font: (
 	font-suit: 'SUIT',
     font-Nanummyeongjo: 'NanumMyeongjo',
-    font-NanumSquare: 'NanumSquare'
+    font-NanumSquare: 'NanumSquare',
+    font-NotoSerif: 'Noto Serif KR'
 );
 
 $color: (
-    brown:#9E8E81,
-    pink:#D89B9B,
-    blue:#98B8D8,
-    orange:#F2B05B,
-    snowblue:#9DC0C4,
+    c-brown:#9E8E81,
+    c-pink:#D89B9B,
+    c-blue:#98B8D8,
+    c-orange:#F2B05B,
+    c-snowblue:#9DC0C4,
+    c-white:#fff,
 
     txt-main:#544D47,
     txt-sub:#9E8E81,
     
-    bg:#EDEDED,
+    default-bg:#EDEDED,
     icon-bg:#E0D9D4,
     blur-bg:rgba(217, 217, 217, 0.4),
     black-bg50:rgba(0, 0, 0, 0.5),
@@ -45,9 +50,21 @@ $font-size: (
     f-24:2.4rem,
 );
 
+$font-weight: (
+    f-300:300,
+    f-500:500,
+    f-700:700,
+    f-800:800,
+);
+
 $boder-radius: (
     b-5:.5rem,
     b-10:1.0rem,
     b-14:1.4rem, 
     b-100:10.0rem,
-)
+);
+
+$ease: (
+    ease-in-out-4: all .4s cubic-bezier(0.56, 0, 0.07, 1.01),
+    ease-in-out-6: all .4s cubic-bezier(0.56, 0, 0.07, 1.01),
+);

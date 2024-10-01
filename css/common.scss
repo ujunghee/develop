@@ -4,7 +4,138 @@
     font-size:62.5%;
 }
 
-button {
-    font-family: map-get($font, font-NanumSquare);
-    font-size: map-get($font-size, f-16);
+// default s
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, menu, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
 }
+*[hidden] {
+    display: none;
+}
+body {
+	line-height: 1;
+    max-width: 98.0rem;
+    min-height: 60.0rem;
+    margin: 0 auto;
+}
+menu, ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+.blind {
+    overflow: hidden !important;
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    margin: -1px !important;
+    color: transparent !important;
+    clip: rect(0px, 0px, 0px, 0px) !important;
+}
+// default e
+
+
+// scss s
+//text & font face s
+@mixin Nanummyeongjo {
+    font-family: map-get($font, font-Nanummyeongjo);
+}
+@mixin NanumSquare {
+    font-family: map-get($font, font-NanumSquare);
+}
+@mixin suit {
+    font-family: map-get($font, font-suit);
+}
+@mixin font-title {
+    font-size: map-get($font-size, f-24);
+    color:map-get($color, txt-main);
+    line-height: 3.5rem;
+}
+@mixin s-title {
+    font-family: map-get($font, font-NanumSquare);
+    font-size: map-get($font-size, f-24);
+}
+@mixin m-sub {
+    font-size: map-get($font-size, f-14);
+    color:map-get($color, txt-main);
+    font-weight: map-get($font-weight, f-500);
+}
+@mixin m-sub-13 {
+    font-size: map-get($font-size, f-13);
+    color:map-get($color, txt-main);
+    font-weight: map-get($font-weight, f-500);
+}
+//text & font face e
+
+
+.title {
+    @include Nanummyeongjo;
+    @include font-title;
+}
+.m-sub {
+    @include Nanummyeongjo;
+    @include m-sub;
+}
+
+
+
+//button s
+@mixin bar-button {
+    font-size: map-get($font-size, f-16);
+    width: calc(100% - 3.2rem);
+    position: absolute;
+    bottom: 5.0rem;
+    border: none;
+    height: 5.0rem;
+    left: 1.6rem;
+    border-radius: map-get($boder-radius, b-10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: map-get($ease, ease-in-out-4);
+}
+//button e
+
+
+// bar button
+%sumitButton {
+    @include bar-button;
+    @include NanumSquare;
+    &:hover {
+        transform: scale(.98)
+    }
+}
+.button {
+    @extend %sumitButton;
+    &.brown {
+        background-color: map-get($color, c-brown);
+        color:map-get($color, c-white);
+    }
+}
+// nav button
+
+

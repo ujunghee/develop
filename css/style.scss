@@ -1,1 +1,32 @@
 @import "variable";
+
+
+.content_one {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
+    
+    .visual {
+        height: calc(100% - 10.0rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2.0rem;
+        
+        .visaul_img {
+            background: url($main-bg-img + "main.png") 50% 50% / contain no-repeat;
+            height: 38.6rem;
+            width: 100%;
+            flex: .75;
+        }
+        
+        .txt-box {
+            margin-top: 2.6rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.8rem;
+        }
+    }
+}

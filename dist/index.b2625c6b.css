@@ -1,2 +1,30 @@
+.content_one {
+  text-align: center;
+  background: url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
 
+.content_one .visual {
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  height: calc(100% - 10rem);
+  display: flex;
+}
+
+.content_one .visual .visaul_img {
+  background: url("main.c764f071.png") 50% / contain no-repeat;
+  flex: .75;
+  width: 100%;
+  height: 38.6rem;
+}
+
+.content_one .visual .txt-box {
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 2.6rem;
+  display: flex;
+}
 /*# sourceMappingURL=index.b2625c6b.css.map */

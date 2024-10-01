@@ -58,40 +58,7 @@ button {
 }
 // default e
 
-
-// scss s
-//text & font face s
-@mixin Nanummyeongjo {
-    font-family: map-get($font, font-Nanummyeongjo);
-}
-@mixin NanumSquare {
-    font-family: map-get($font, font-NanumSquare);
-}
-@mixin suit {
-    font-family: map-get($font, font-suit);
-}
-@mixin font-title {
-    font-size: map-get($font-size, f-24);
-    color:map-get($color, txt-main);
-    line-height: 3.5rem;
-}
-@mixin s-title {
-    font-family: map-get($font, font-NanumSquare);
-    font-size: map-get($font-size, f-24);
-}
-@mixin m-sub {
-    font-size: map-get($font-size, f-14);
-    color:map-get($color, txt-main);
-    font-weight: map-get($font-weight, f-500);
-}
-@mixin m-sub-13 {
-    font-size: map-get($font-size, f-13);
-    color:map-get($color, txt-main);
-    font-weight: map-get($font-weight, f-500);
-}
-//text & font face e
-
-
+// text
 .title {
     @include Nanummyeongjo;
     @include font-title;
@@ -100,26 +67,6 @@ button {
     @include Nanummyeongjo;
     @include m-sub;
 }
-
-
-
-//button s
-@mixin bar-button {
-    font-size: map-get($font-size, f-16);
-    width: calc(100% - 3.2rem);
-    position: absolute;
-    bottom: 5.0rem;
-    border: none;
-    height: 5.0rem;
-    left: 1.6rem;
-    border-radius: map-get($boder-radius, b-10);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: map-get($ease, ease-in-out-4);
-}
-//button e
-
 
 // bar button
 %sumitButton {
@@ -133,9 +80,10 @@ button {
     @extend %sumitButton;
     &.brown {
         background-color: map-get($color, c-brown);
-        color:map-get($color, c-white);
+    }
+    &.pink {
+        background-color: map-get($color, c-pink);
     }
 }
 // nav button
-
 

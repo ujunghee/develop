@@ -1,15 +1,15 @@
 @import "variable";
 
-
+// first html s
 .content_one {
+    @include common;
     position: relative;
-    height: 100vh;
     width: 100%;
     text-align: center;
     background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
     
     .visual {
-        height: calc(100% - 10.0rem);
+        @include height;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -26,7 +26,14 @@
             margin-top: 2.6rem;
             display: flex;
             flex-direction: column;
-            gap: 1.8rem;
+            gap: 1.2rem;
         }
     }
 }
+// first html e
+
+
+// select html s
+
+// select html e
+

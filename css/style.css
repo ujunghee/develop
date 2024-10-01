@@ -1,7 +1,7 @@
 @import "SUIT/SUIT.css";
 .content_one {
-  position: relative;
   height: 100vh;
+  position: relative;
   width: 100%;
   text-align: center;
   background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
@@ -23,5 +23,5 @@
   margin-top: 2.6rem;
   display: flex;
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.2rem;
 }/*# sourceMappingURL=style.css.map */

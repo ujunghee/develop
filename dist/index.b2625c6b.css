@@ -23,7 +23,7 @@
 
 .content_one .visual .txt-box {
   flex-direction: column;
-  gap: 1.8rem;
+  gap: 1.2rem;
   margin-top: 2.6rem;
   display: flex;
 }

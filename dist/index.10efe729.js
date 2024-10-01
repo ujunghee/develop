@@ -599,7 +599,7 @@ function loadPage(page, callback) {
     xhr.send();
 }
 document.addEventListener("DOMContentLoaded", function() {
-    loadPage("first.html", function() {});
+    loadPage("select.html", function() {});
 });
 window.loadPage = loadPage;
 

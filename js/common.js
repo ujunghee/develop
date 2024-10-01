@@ -19,7 +19,7 @@ function loadPage(page, callback) {
 
 }
 document.addEventListener('DOMContentLoaded', function() {
-    loadPage('first.html', function() {
+    loadPage('select.html', function() {
     });
 
 });

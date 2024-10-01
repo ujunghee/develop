@@ -72,10 +72,12 @@ button {
   font-size: 1.4rem;
   color: #544D47;
   font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
 
 .button {
   font-size: 1.6rem;
+  font-weight: 500;
   width: calc(100% - 3.2rem);
   position: absolute;
   bottom: 5rem;
@@ -86,6 +88,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #fff;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
   font-family: "NanumSquare";
 }
@@ -95,5 +98,7 @@ button {
 
 .button.brown {
   background-color: #9E8E81;
-  color: #fff;
+}
+.button.pink {
+  background-color: #D89B9B;
 }/*# sourceMappingURL=common.css.map */

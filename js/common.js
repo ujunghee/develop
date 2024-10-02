@@ -44,7 +44,7 @@ function Swieprobx() {
                 spaceBetween: 20,
             },
             420: {
-                spaceBetween: 50,
+                spaceBetween: 30,
             },
             768: {
                 spaceBetween: 50,

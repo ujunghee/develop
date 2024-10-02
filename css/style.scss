@@ -3,29 +3,31 @@
 // first html s
 .content_one {
     @include common;
+
     width: 100%;
     text-align: center;
     background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-    
+
     .visual {
         @include height;
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 2.0rem;
-        
+
         .visaul_img {
             background: url($main-bg-img + "main.png") 50% 50% / contain no-repeat;
             height: 38.6rem;
             width: 100%;
             flex: .75;
         }
-        
+
         .txt-box {
             margin-top: 2.6rem;
         }
     }
 }
+
 // first html e
 
 
@@ -33,52 +35,80 @@
 .select {
     background-color: map-get($color, default-bg);
     @include common;
+
     .selectbox {
         @include height;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap:5vh;
+        gap: 5vh;
     }
+
     .swiper {
         width: 100%;
         height: 50.0vh;
         min-height: 30.0rem;
-        padding-bottom:6.0rem;
+        padding-bottom: 6.0rem;
+
         &-slide {
             width: 30.0rem;
             height: 50.0vh;
             min-height: 30.0rem;
+            padding: 2.5rem;
+            position: relative;
+            box-sizing: border-box;
             transform: translateY(30px) !important;
             border-radius: map-get($boder-radius, b-10);
             background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
+
+            .img-list {
+                height: 30.0rem;
+                flex: 1;
             }
+            button {
+                width: 100%;
+                height: 100%;
+                background: initial;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
         &-slide-active {
             transform: translateY(0) !important;
             width: 30.0rem;
             height: 50.0vh;
             min-height: 30.0rem;
             transition: map-get($ease, ease-in-out-6);
+
             // margin-top: 0rem;
             &.spring {
                 box-shadow: 0 6px 20px rgba(226, 207, 207, 0.6);
             }
+
             &.summer {
                 box-shadow: 0 6px 20px rgba(210, 220, 233, 0.6);
             }
+
             &.autumn {
                 box-shadow: 0 6px 20px rgba(203, 172, 137, 0.25);
             }
+
             &.winter {
                 box-shadow: 0 6px 20px rgba(216, 233, 236, 0.6);
             }
         }
-    }
-}
-// select html e
 
+        &-pagination-bullet-active {
+            transition: map-get($ease, ease-in-out-4);
+            background: map-get($color, nav-slider-btn);
+        }
+        
+
+    }
+
+}
+
+// select html e

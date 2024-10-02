@@ -41,9 +41,49 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+/* 포커스 s */
+
+:focus {
+    outline: 3px solid map-get($color, c-brown);
+}
+ 
+:focus:not(:focus-visible) {
+    outline: 0;
+}
+
+select:focus {
+	border: 1px solid var(--color-b-04);
+}
+
+input[type="checkbox"]:focus {
+    outline: 3px solid map-get($color, c-brown);
+}
+ 
+input[type="checkbox"]:focus:not(:focus-visible) {
+    outline: 0;
+}
+
+input[type="radio"]:focus {
+    outline: 3px solid map-get($color, c-brown);
+}
+ 
+input[type="radio"]:focus:not(:focus-visible) {
+    outline: 0;
+}
+
+textarea:focus {
+    outline: 3px solid map-get($color, c-brown);
+}
+ 
+textarea:focus:not(:focus-visible) {
+    outline: 0;
+}
+
+/* 포커스 e */
 
 button {
     cursor: pointer;
+    border: none;
 }
 
 .blind {
@@ -65,6 +105,14 @@ button {
 .m-sub {
     @include Nanummyeongjo;
     @include m-sub;
+}
+.m-sub-13 {
+    @include Nanummyeongjo;
+    @include m-sub-13;
+}
+.s-title {
+    @include s-title;
+    @include NotoSans;
 }
 .txt-box {
     @include txt-box;

@@ -24,6 +24,8 @@ $color: (
 
     txt-main:#544D47,
     txt-sub:#9E8E81,
+
+    nav-slider-btn: #5D4743,
     
     default-bg:#EDEDED,
     icon-bg:#E0D9D4,
@@ -80,14 +82,19 @@ $ease: (
 @mixin suit {
     font-family: map-get($font, font-suit);
 }
+@mixin NotoSans {
+    font-family: map-get($font, font-NotoSerif);
+}
 @mixin font-title {
     font-size: map-get($font-size, f-24);
     color:map-get($color, txt-main);
     line-height: 3.5rem;
 }
 @mixin s-title {
-    font-family: map-get($font, font-NanumSquare);
     font-size: map-get($font-size, f-24);
+    font-weight: map-get($font-weight, f-500);
+    color:map-get($color, txt-main);
+    text-align: center;
 }
 @mixin txt-box {
     display: flex;
@@ -132,10 +139,10 @@ $ease: (
 // height s
 @mixin common {
     height: 100vh;
-    // min-height: 58.0rem;
     position: relative;
+    min-height: 50.0rem;
 }
 @mixin height {
-    height: calc(100% - 10.0rem);
+    height: calc(100% - 7.0rem);
 }
 // height e

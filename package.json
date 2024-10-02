@@ -9,7 +9,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "reset": "^0.1.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.12.0",

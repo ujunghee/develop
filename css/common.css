@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "SUIT/SUIT.css";
 * {
   font-size: 62.5%;
@@ -45,8 +46,47 @@ table {
   border-spacing: 0;
 }
 
+/* 포커스 s */
+:focus {
+  outline: 3px solid #9E8E81;
+}
+
+:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+select:focus {
+  border: 1px solid var(--color-b-04);
+}
+
+input[type=checkbox]:focus {
+  outline: 3px solid #9E8E81;
+}
+
+input[type=checkbox]:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+input[type=radio]:focus {
+  outline: 3px solid #9E8E81;
+}
+
+input[type=radio]:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+textarea:focus {
+  outline: 3px solid #9E8E81;
+}
+
+textarea:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+/* 포커스 e */
 button {
   cursor: pointer;
+  border: none;
 }
 
 .blind {
@@ -72,6 +112,21 @@ button {
   color: #544D47;
   font-weight: 500;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+}
+
+.m-sub-13 {
+  font-family: "NanumMyeongjo";
+  font-size: 1.3rem;
+  color: #544D47;
+  font-weight: 500;
+}
+
+.s-title {
+  font-size: 2.4rem;
+  font-weight: 500;
+  color: #544D47;
+  text-align: center;
+  font-family: "Noto Serif KR";
 }
 
 .txt-box {

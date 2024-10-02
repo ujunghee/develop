@@ -86,8 +86,45 @@ table {
   border-spacing: 0;
 }
 
+:focus {
+  outline: 3px solid #9e8e81;
+}
+
+:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+select:focus {
+  border: 1px solid var(--color-b-04);
+}
+
+input[type="checkbox"]:focus {
+  outline: 3px solid #9e8e81;
+}
+
+input[type="checkbox"]:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+input[type="radio"]:focus {
+  outline: 3px solid #9e8e81;
+}
+
+input[type="radio"]:focus:not(:focus-visible) {
+  outline: 0;
+}
+
+textarea:focus {
+  outline: 3px solid #9e8e81;
+}
+
+textarea:focus:not(:focus-visible) {
+  outline: 0;
+}
+
 button {
   cursor: pointer;
+  border: none;
 }
 
 .blind {
@@ -113,6 +150,21 @@ button {
   font-size: 1.4rem;
   font-weight: 500;
   transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+}
+
+.m-sub-13 {
+  color: #544d47;
+  font-family: NanumMyeongjo;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.s-title {
+  color: #544d47;
+  text-align: center;
+  font-family: Noto Serif KR;
+  font-size: 2.4rem;
+  font-weight: 500;
 }
 
 .txt-box {

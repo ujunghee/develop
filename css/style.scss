@@ -3,7 +3,6 @@
 // first html s
 .content_one {
     @include common;
-
     width: 100%;
     text-align: center;
     background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;

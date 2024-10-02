@@ -134,6 +134,12 @@ button {
     &.pink {
         background-color: map-get($color, c-pink);
     }
+    &.orange {
+        background-color: map-get($color, c-orange);
+    }
+    &.snowblue {
+        background-color: map-get($color, c-snowblue);
+    }
 }
 // nav button
 

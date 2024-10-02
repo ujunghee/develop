@@ -32,7 +32,7 @@
 
 // select html s
 .select {
-    background-color: map-get($color, default-bg);
+    @include bg;
     @include common;
 
     .selectbox {
@@ -112,5 +112,9 @@
     }
 
 }
-
 // select html e
+
+
+// deco html s
+
+// deco html e

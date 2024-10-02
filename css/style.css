@@ -25,7 +25,7 @@
 }
 
 .select {
-  background-color: #EDEDED;
+  background: #EDEDED;
   height: 100vh;
   position: relative;
   min-height: 50rem;

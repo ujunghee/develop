@@ -119,7 +119,7 @@ button {
 }
 
 // bar button
-%sumitButton {
+%barButton {
     @include bar-button;
     @include NanumSquare;
     &:hover {
@@ -127,7 +127,7 @@ button {
     }
 }
 .button {
-    @extend %sumitButton;
+    @extend %barButton;
     &.brown {
         background-color: map-get($color, c-brown);
     }
@@ -141,5 +141,35 @@ button {
         background-color: map-get($color, c-snowblue);
     }
 }
+// submit button
+%submitButton {
+    @include submit-button;
+    @include NanumSquare;
+    &:hover {
+        transform: scale(.98)
+    }
+}
+.submit {
+    @extend %submitButton;
+}
+
+// reset button
+%resetButton {
+    @include reset-button;
+    &:hover {
+        transform: scale(.98)
+    }
+}
+.reset {
+    @extend %resetButton;
+}
+
+// back button
+.back {
+    background: url($icon-img + "arrow.png") 50% 50% / contain no-repeat;
+    height: 2.0rem;
+    width: 2.0rem;
+}
+
 // nav button
 

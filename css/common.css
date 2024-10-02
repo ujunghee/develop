@@ -168,4 +168,38 @@ button {
 }
 .button.snowblue {
   background-color: #9DC0C4;
+}
+
+.submit {
+  font-size: 1.6rem;
+  font-weight: 500;
+  background: #D89B9B;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+  color: #fff;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9rem;
+  height: 4rem;
+  font-family: "NanumSquare";
+}
+.submit:hover {
+  transform: scale(0.98);
+}
+
+.reset {
+  width: 3rem;
+  border-radius: 10rem;
+  height: 3rem;
+  background: #E0D9D4 url("../image/icon/reset.png") 50% 50%/50% no-repeat;
+}
+.reset:hover {
+  transform: scale(0.98);
+}
+
+.back {
+  background: url("../image/icon/arrow.png") 50% 50%/contain no-repeat;
+  height: 2rem;
+  width: 2rem;
 }/*# sourceMappingURL=common.css.map */

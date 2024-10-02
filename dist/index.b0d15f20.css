@@ -136,7 +136,7 @@ button {
   transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
   display: flex;
   position: absolute;
-  bottom: 5rem;
+  bottom: 2rem;
   left: 1.6rem;
 }
 

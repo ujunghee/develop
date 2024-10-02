@@ -115,7 +115,7 @@ $ease: (
     font-weight: map-get($font-weight, f-500);
     width: calc(100% - 3.2rem);
     position: absolute;
-    bottom: 5.0rem;
+    bottom: 2.0rem;
     border: none;
     height: 5.0rem;
     left: 1.6rem;
@@ -132,7 +132,7 @@ $ease: (
 // height s
 @mixin common {
     height: 100vh;
-    min-height: 58.0rem;
+    // min-height: 58.0rem;
     position: relative;
 }
 @mixin height {

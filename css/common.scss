@@ -28,7 +28,7 @@ time, mark, audio, video {
 }
 body {
 	line-height: 1;
-    max-width: 98.0rem;
+    max-width: 102.4rem;
     margin: 0 auto;
 }
 menu, ol, ul {
@@ -166,10 +166,41 @@ button {
 
 // back button
 .back {
-    background: url($icon-img + "arrow.png") 50% 50% / contain no-repeat;
+    background: url($icon-img + "arrow.png") 50% 50% / 2.0rem no-repeat;
     height: 2.0rem;
     width: 2.0rem;
+    padding: 1.0rem;
+    box-sizing: initial;
 }
 
 // nav button
-
+.navigation {
+    background: map-get($color, footer-nav);
+    width: 100%;
+    height: 9.9rem;
+    ul {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: min(5vw - 1rem, 8rem);
+        li {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+    button {
+        @include navbutton;
+        svg {
+            width: 3.0rem;
+            height: 3.0rem;
+        }
+        .fill {
+            fill: map-get($color, footer-icon);
+        }
+        .stroke {
+            stroke: map-get($color, footer-icon);
+        }
+    }
+}

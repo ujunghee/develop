@@ -39,6 +39,8 @@ $color: (
     liner-orange:linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFEEDC 100%),
 
     footer-nav:#151515,
+    footer-hover:#292929,
+    footer-icon:#949494,
 
 );
 
@@ -174,3 +176,14 @@ $ease: (
    background: map-get($color, default-bg);
 }
 // bg e
+
+@mixin navbutton {
+    height: 5.0rem;
+    width: 5.0rem;
+    border-radius: map-get($boder-radius, b-10);
+    background: inherit;
+    transition: map-get($ease, ease-in-out-4);
+    &:hover {
+        background: map-get($color, footer-hover);
+    }
+}

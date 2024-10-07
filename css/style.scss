@@ -116,5 +116,16 @@
 
 
 // deco html s
-
+.deco {
+    @include bg;
+    @include common;
+    .deco-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1.6rem;
+        .back {
+        }
+    }
+}
 // deco html e

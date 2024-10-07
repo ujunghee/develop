@@ -105,4 +105,18 @@
   background: #5d4743;
   transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
 }
+
+.deco {
+  background: #ededed;
+  height: 100vh;
+  min-height: 50rem;
+  position: relative;
+}
+
+.deco .deco-header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.6rem;
+  display: flex;
+}
 /*# sourceMappingURL=index.b2625c6b.css.map */

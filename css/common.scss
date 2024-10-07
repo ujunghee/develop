@@ -249,7 +249,7 @@ button {
         flex-wrap: wrap;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 1.6rem;
-        max-width: 70.0rem;
+        overflow-y: auto;
         li {
             height: 100%;
             .p-btn {
@@ -257,6 +257,11 @@ button {
                 flex:1;
                 height: 100%;
                 border-radius: map-get($boder-radius, b-10 );
+            }
+            img {
+                height: 80%;
+                width: 80%;
+                object-fit: cover;
             }
         }
     }

@@ -295,7 +295,7 @@ button {
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1.6rem;
-  max-width: 70rem;
+  overflow-y: auto;
 }
 .popup ul li {
   height: 100%;
@@ -305,4 +305,10 @@ button {
   flex: 1;
   height: 100%;
   border-radius: 1rem;
+}
+.popup ul li img {
+  height: 80%;
+  width: 80%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=common.css.map */

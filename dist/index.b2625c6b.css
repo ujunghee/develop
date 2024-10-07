@@ -2,7 +2,7 @@
   text-align: center;
   background: url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   min-height: 50rem;
   position: relative;
 }
@@ -28,7 +28,7 @@
 
 .select {
   background: #ededed;
-  height: 100vh;
+  height: 100dvh;
   min-height: 50rem;
   position: relative;
 }
@@ -110,7 +110,7 @@
   background: #ededed;
   flex-direction: column;
   gap: 1.6rem;
-  height: 100vh;
+  height: 100dvh;
   min-height: 50rem;
   display: flex;
   position: relative;
@@ -125,7 +125,7 @@
 
 .deco .deco-box {
   box-sizing: border-box;
-  background: url("visaul_bg.228ed9e7.jpg");
+  background: url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
   border-radius: 1.4rem;
   flex: 1;
   margin: 0 1.6rem;

@@ -161,7 +161,7 @@ $ease: (
 
 // height s
 @mixin common {
-    height: 100vh;
+    height: 100dvh;
     position: relative;
     min-height: 50.0rem;
 }

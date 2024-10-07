@@ -1,6 +1,6 @@
 @import "SUIT/SUIT.css";
 .content_one {
-  height: 100vh;
+  height: 100dvh;
   position: relative;
   min-height: 50rem;
   width: 100%;
@@ -26,7 +26,7 @@
 
 .select {
   background: #EDEDED;
-  height: 100vh;
+  height: 100dvh;
   position: relative;
   min-height: 50rem;
 }
@@ -94,7 +94,7 @@
 
 .deco {
   background: #EDEDED;
-  height: 100vh;
+  height: 100dvh;
   position: relative;
   min-height: 50rem;
   display: flex;
@@ -113,5 +113,5 @@
   border-radius: 1.4rem;
   flex: 1;
   padding: 1rem;
-  background: url("../image/main/visaul_bg.jpg");
+  background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
 }/*# sourceMappingURL=style.css.map */

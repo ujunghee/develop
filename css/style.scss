@@ -133,9 +133,8 @@
         box-sizing: border-box;
         border-radius: map-get($boder-radius, b-14);
         flex: 1;
-        padding: 1.0rem
-        ;
-        background: url($main-bg-img + "visaul_bg.jpg");
+        padding: 1.0rem;
+        background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
     }
 }
 // deco html e

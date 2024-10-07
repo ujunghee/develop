@@ -380,10 +380,10 @@ button {
 }
 
 .popup .scroll .scroll-bar {
-  background: #fff;
+  background: #d9d9d9;
   border: none;
   border-radius: 10rem;
   width: 6rem;
-  height: .3rem;
+  height: .5rem;
 }
 /*# sourceMappingURL=index.b0d15f20.css.map */

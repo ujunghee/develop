@@ -71,6 +71,7 @@ body {
   max-width: 102.4rem;
   margin: 0 auto;
   line-height: 1;
+  overflow: hidden;
 }
 
 menu, ol, ul {
@@ -335,12 +336,17 @@ button {
   align-items: center;
   gap: 1rem;
   width: 100%;
-  height: 50%;
-  padding: 0 1.6rem 1.6rem;
+  height: 60%;
+  padding: 1.6rem;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
   display: flex;
   position: absolute;
-  bottom: 9rem;
+  bottom: -60rem;
   left: 0;
+}
+
+.popup.on {
+  bottom: 9rem;
 }
 
 .popup ul {
@@ -375,7 +381,7 @@ button {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 4.2rem;
+  height: 3.2rem;
   display: flex;
 }
 

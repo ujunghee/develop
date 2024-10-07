@@ -200,22 +200,28 @@ $ease: (
 
 // popup
 @mixin popup {
-    height: 50%;
+    height: 60%;
+    
     width: 100%;
     background: map-get($color, black-bg50);
     backdrop-filter: $blur20;
     border-top-right-radius: map-get($boder-radius ,b-10);
     border-top-left-radius: map-get($boder-radius ,b-10);
     position: absolute;
-    display: flex;
+    // display: none;
     flex-direction: column;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 1.6rem;
     gap: 1rem;
     box-sizing: border-box;
-    bottom:9.0rem;
+    transition: map-get($ease, ease-in-out-4);
+    bottom:-60rem;
     left: 0;
+    &.on {
+        bottom:9.0rem;
+    }
     ul {
         display: grid;
         flex-wrap: wrap;
@@ -239,7 +245,7 @@ $ease: (
     }
     .scroll {
         width: 100%;
-        height: 4.2rem;
+        height: 3.2rem;
         display: flex;
         align-items: center;
         justify-content: center;

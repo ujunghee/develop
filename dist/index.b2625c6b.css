@@ -125,10 +125,40 @@
 
 .deco .deco-box {
   box-sizing: border-box;
-  background: url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
   border-radius: 1.4rem;
   flex: 1;
   margin: 0 1.6rem;
   padding: 1rem;
+  position: relative;
+}
+
+.deco .deco-box.spring {
+  background: linear-gradient(#fff0 50%, #ffe3e3ae 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
+}
+
+.deco .deco-box.summer {
+  background: linear-gradient(#fff0 50%, #e3f4ffae 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
+}
+
+.deco .deco-box.autumn {
+  background: linear-gradient(#fff0 50%, #ffeedcae 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
+}
+
+.deco .deco-box.winter {
+  background: linear-gradient(#fff0 50%, #d8e6e8ae 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
+}
+
+.deco .deco-box .deco-txt {
+  color: #9e8e81;
+  text-align: center;
+  font-family: NanumMyeongjo;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 /*# sourceMappingURL=index.b2625c6b.css.map */

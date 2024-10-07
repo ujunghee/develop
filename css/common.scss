@@ -151,6 +151,18 @@ button {
 }
 .submit {
     @extend %submitButton;
+    &.spring {
+        background-color: map-get($color, c-pink);
+    }
+    &.summer {
+        background-color: map-get($color , c-blue);
+    }
+    &.autumn {
+        background-color: map-get($color , c-orange);
+    }
+    &.winter {
+        background-color: map-get($color , c-snowblue);
+    }
 }
 
 // reset button
@@ -193,8 +205,8 @@ button {
     button {
         @include navbutton;
         svg {
-            width: 3.0rem;
-            height: 3.0rem;
+            width: 2.6rem;
+            height: 2.6rem;
         }
         .fill {
             fill: map-get($color, footer-icon);

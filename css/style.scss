@@ -134,7 +134,32 @@
         border-radius: map-get($boder-radius, b-14);
         flex: 1;
         padding: 1.0rem;
-        background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
+        position: relative;
+        &.spring {
+            background: map-get($color, liner-pink), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
+            
+        }
+        &.summer {
+            background: map-get($color, liner-blue), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
+            
+        }
+        &.autumn {
+            background: map-get($color, liner-orange), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
+            
+        }
+        &.winter {
+            background: map-get($color, liner-snowblue), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
+            
+        }
+        .deco-txt {
+            @include Nanummyeongjo;
+            @include txt-deco;
+            color: map-get($color, txt-sub);
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            position: absolute;
+        }   
     }
 }
 // deco html e

@@ -113,5 +113,31 @@
   border-radius: 1.4rem;
   flex: 1;
   padding: 1rem;
-  background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+  position: relative;
+}
+.deco .deco-box.spring {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(255, 227, 227, 0.6823529412) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+}
+.deco .deco-box.summer {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(227, 244, 255, 0.6823529412) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+}
+.deco .deco-box.autumn {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(255, 238, 220, 0.6823529412) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+}
+.deco .deco-box.winter {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(216, 230, 232, 0.6823529412) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+}
+.deco .deco-box .deco-txt {
+  font-family: "NanumMyeongjo";
+  font-size: 1.4rem;
+  color: #544D47;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+  line-height: 1.8;
+  text-align: center;
+  color: #9E8E81;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  position: absolute;
 }/*# sourceMappingURL=style.css.map */

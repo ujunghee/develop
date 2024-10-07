@@ -214,7 +214,6 @@ button {
 
 .submit {
   color: #fff;
-  background: #d89b9b;
   border-radius: 1rem;
   justify-content: center;
   align-items: center;
@@ -231,11 +230,27 @@ button {
   transform: scale(.98);
 }
 
+.submit.spring {
+  background-color: #d89b9b;
+}
+
+.submit.summer {
+  background-color: #98b8d8;
+}
+
+.submit.autumn {
+  background-color: #f2b05b;
+}
+
+.submit.winter {
+  background-color: #9dc0c4;
+}
+
 .reset {
   background: #e0d9d4 url("reset.b3c2b59a.png") 50% / 50% no-repeat;
   border-radius: 10rem;
-  width: 3rem;
-  height: 3rem;
+  width: 3.6rem;
+  height: 3.6rem;
 }
 
 .reset:hover {
@@ -283,8 +298,8 @@ button {
 }
 
 .navigation button svg {
-  width: 3rem;
-  height: 3rem;
+  width: 2.6rem;
+  height: 2.6rem;
 }
 
 .navigation button .fill {

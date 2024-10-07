@@ -227,42 +227,10 @@ button {
     padding: 1.0rem 0;
 }
 
+// scroll bar
+
 
 // popup
 .popup {
     @include popup;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2.0rem 1.6rem 1.6rem;
-    gap: 1rem;
-    box-sizing: border-box;
-    bottom:9.0rem;
-    left: 0;
-    // .f-box {
-
-    // }
-    ul {
-        display: grid;
-        flex-wrap: wrap;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 1.6rem;
-        overflow-y: auto;
-        li {
-            height: 100%;
-            .p-btn {
-                background: map-get($color, popup-bg);
-                flex:1;
-                height: 100%;
-                border-radius: map-get($boder-radius, b-10 );
-            }
-            img {
-                height: 80%;
-                width: 80%;
-                object-fit: cover;
-            }
-        }
-    }
 }

@@ -592,7 +592,16 @@ function loadPage(page, callback) {
     xhr.open("GET", page, true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === 4) {
-            if (xhr.status === 200) document.getElementById("content").innerHTML = xhr.responseText;
+            if (xhr.status === 200) {
+                document.getElementById("content").innerHTML = xhr.responseText;
+                const decopage = [
+                    "deco_spring.html",
+                    "deco_summer.html",
+                    "deco_autumn.html",
+                    "deco_winter.html"
+                ];
+                if (decopage.includes(page)) decoEvent();
+            }
             if (callback) callback();
         }
     };

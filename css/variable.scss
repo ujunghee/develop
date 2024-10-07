@@ -1,7 +1,7 @@
 @import "SUIT/SUIT.css";
 
-$blur20: 2.0;
-$blue15:1.5;
+$blur20: blur(2.0rem);
+$blue15:blur(1.5rem);
 $main-bg-img:"../image/main/";
 $icon-img:"../image/icon/";
 $object-img:"../image/object/";
@@ -26,6 +26,8 @@ $color: (
     txt-sub:#9E8E81,
 
     nav-slider-btn: #5D4743,
+
+    popup-bg:rgba(255, 255, 255, 0.3),
     
     default-bg:#EDEDED,
     icon-bg:#E0D9D4,
@@ -193,4 +195,14 @@ $ease: (
     &:hover {
         background: map-get($color, footer-hover);
     }
+}
+
+// popup
+@mixin popup {
+    height: 50%;
+    width: 100%;
+    background: map-get($color, black-bg50);
+    backdrop-filter: $blur20;
+    border-top-right-radius: map-get($boder-radius ,b-10);
+    border-top-left-radius: map-get($boder-radius ,b-10);
 }

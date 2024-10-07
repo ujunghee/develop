@@ -235,23 +235,70 @@ button {
   display: flex;
   flex-wrap: wrap;
 }
-.navigation button {
+.navigation button.nav {
   height: 5rem;
   width: 5rem;
   border-radius: 1rem;
   background: inherit;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
-.navigation button:hover {
+.navigation button.nav:hover {
   background: #292929;
 }
-.navigation button svg {
+.navigation button.nav svg {
   width: 2.6rem;
   height: 2.6rem;
 }
-.navigation button .fill {
+.navigation button.nav .fill {
   fill: #949494;
 }
-.navigation button .stroke {
+.navigation button.nav .stroke {
   stroke: #949494;
+}
+
+.more {
+  font-family: "NanumSquare";
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #544D47;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+  background: initial;
+  color: #fff;
+}
+
+.popup {
+  height: 50%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(2rem);
+          backdrop-filter: blur(2rem);
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 3.6rem 1.6rem 2rem;
+  gap: 1.6rem;
+  box-sizing: border-box;
+  bottom: 9rem;
+  left: 0;
+}
+.popup ul {
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.6rem;
+}
+.popup ul li {
+  height: 100%;
+}
+.popup ul li .p-btn {
+  background: rgba(255, 255, 255, 0.3);
+  flex: 1;
+  height: 100%;
+  border-radius: 1rem;
 }/*# sourceMappingURL=common.css.map */

@@ -224,6 +224,7 @@ button {
     @include m-sub;
     background: initial;
     color: #fff;
+    padding: 1.0rem 0;
 }
 
 
@@ -233,8 +234,10 @@ button {
     position: absolute;
     display: flex;
     flex-direction: column;
-    padding: 3.6rem 1.6rem 2.0rem;
-    gap: 1.6rem;
+    justify-content: center;
+    align-items: center;
+    padding: 2.0rem 1.6rem 1.6rem;
+    gap: 1rem;
     box-sizing: border-box;
     bottom:9.0rem;
     left: 0;
@@ -246,6 +249,7 @@ button {
         flex-wrap: wrap;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 1.6rem;
+        max-width: 70.0rem;
         li {
             height: 100%;
             .p-btn {

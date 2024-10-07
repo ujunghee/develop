@@ -108,15 +108,27 @@
 
 .deco {
   background: #ededed;
+  flex-direction: column;
+  gap: 1.6rem;
   height: 100vh;
   min-height: 50rem;
+  display: flex;
   position: relative;
 }
 
 .deco .deco-header {
   justify-content: space-between;
   align-items: center;
-  padding: 0 1.6rem;
+  padding: 1.6rem 1.6rem 0;
   display: flex;
+}
+
+.deco .deco-box {
+  box-sizing: border-box;
+  background: url("visaul_bg.228ed9e7.jpg");
+  border-radius: 1.4rem;
+  flex: 1;
+  margin: 0 1.6rem;
+  padding: 1rem;
 }
 /*# sourceMappingURL=index.b2625c6b.css.map */

@@ -97,10 +97,21 @@
   height: 100vh;
   position: relative;
   min-height: 50rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
 }
 .deco .deco-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1.6rem;
+  padding: 1.6rem 1.6rem 0;
+}
+.deco .deco-box {
+  margin: 0 1.6rem;
+  box-sizing: border-box;
+  border-radius: 1.4rem;
+  flex: 1;
+  padding: 1rem;
+  background: url("../image/main/visaul_bg.jpg");
 }/*# sourceMappingURL=style.css.map */

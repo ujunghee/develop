@@ -119,13 +119,23 @@
 .deco {
     @include bg;
     @include common;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
     .deco-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 1.6rem;
-        .back {
-        }
+        padding: 1.6rem 1.6rem 0;
+    }
+    .deco-box {
+        margin: 0 1.6rem;
+        box-sizing: border-box;
+        border-radius: map-get($boder-radius, b-14);
+        flex: 1;
+        padding: 1.0rem
+        ;
+        background: url($main-bg-img + "visaul_bg.jpg");
     }
 }
 // deco html e

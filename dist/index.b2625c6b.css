@@ -63,13 +63,29 @@
 
 .select .swiper-slide .img-list {
   flex: 1;
-  height: calc(100% - 5rem);
+  height: calc(100% - 7rem);
 }
 
 .select .swiper-slide button {
   background: initial;
   width: 100%;
   height: 100%;
+}
+
+.select .swiper-slide.spring .img-list {
+  background: url("spring_banner.4b31d4ba.png") 50% / contain no-repeat;
+}
+
+.select .swiper-slide.summer .img-list {
+  background: url("summer_banner.ffae8e1f.png") 50% / contain no-repeat;
+}
+
+.select .swiper-slide.autumn .img-list {
+  background: url("autumn_banner.0e521b9e.png") 50% / contain no-repeat;
+}
+
+.select .swiper-slide.winter .img-list {
+  background: url("winter_banner.38f44ef0.png") 50% / contain no-repeat;
 }
 
 .select .swiper-slide-active {

@@ -62,9 +62,10 @@
             background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
 
             .img-list {
-                height: calc(100% - 5.0rem);
+                height: calc(100% - 7.0rem);
                 flex: 1;
             }
+
             button {
                 width: 100%;
                 height: 100%;
@@ -72,6 +73,27 @@
                 // display: flex;
                 // flex-direction: column;
                 // align-items: center;
+            }
+
+            &.spring {
+                .img-list {
+                    background: url($main-bg-img + "spring_banner.png") 50% 50% / contain no-repeat;
+                }
+            }
+            &.summer {
+                .img-list {
+                    background: url($main-bg-img + "summer_banner.png") 50% 50% / contain no-repeat;
+                }
+            }
+            &.autumn {
+                .img-list {
+                    background: url($main-bg-img + "autumn_banner.png") 50% 50% / contain no-repeat;
+                }
+            }
+            &.winter {
+                .img-list {
+                    background: url($main-bg-img + "winter_banner.png") 50% 50% / contain no-repeat;
+                }
             }
         }
 
@@ -99,19 +121,22 @@
                 box-shadow: 0 6px 20px rgba(216, 233, 236, 0.6);
             }
         }
+
         &-pagination-bullet {
             width: 1.0rem;
             height: 1.0rem;
         }
+
         &-pagination-bullet-active {
             transition: map-get($ease, ease-in-out-4);
             background: map-get($color, nav-slider-btn);
         }
-        
+
 
     }
 
 }
+
 // select html e
 
 
@@ -123,12 +148,14 @@
     flex-direction: column;
     gap: 1.6rem;
     position: relative;
+
     .deco-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 1.6rem 1.6rem 0;
     }
+
     .deco-box {
         margin: 0 1.6rem;
         box-sizing: border-box;
@@ -136,22 +163,27 @@
         flex: 1;
         padding: 1.0rem;
         position: relative;
+
         &.spring {
             background: map-get($color, liner-pink), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-            
+
         }
+
         &.summer {
             background: map-get($color, liner-blue), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-            
+
         }
+
         &.autumn {
             background: map-get($color, liner-orange), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-            
+
         }
+
         &.winter {
             background: map-get($color, liner-snowblue), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-            
+
         }
+
         .deco-txt {
             @include Nanummyeongjo;
             @include txt-deco;
@@ -160,11 +192,8 @@
             top: 50%;
             left: 50%;
             position: absolute;
-        }   
-    }
-
-    .scroll {
-        
+        }
     }
 }
+
 // deco html e

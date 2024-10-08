@@ -23,7 +23,7 @@ function loadPage(page, callback) {
 
 }
 document.addEventListener('DOMContentLoaded', function () {
-    loadPage('deco_spring.html', function () {
+    loadPage('select.html', function () {
         Swieprobx();
     });
 

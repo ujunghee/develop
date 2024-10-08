@@ -56,13 +56,25 @@
   background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
 }
 .select .swiper-slide .img-list {
-  height: calc(100% - 5rem);
+  height: calc(100% - 7rem);
   flex: 1;
 }
 .select .swiper-slide button {
   width: 100%;
   height: 100%;
   background: initial;
+}
+.select .swiper-slide.spring .img-list {
+  background: url("../image/main/spring_banner.png") 50% 50%/contain no-repeat;
+}
+.select .swiper-slide.summer .img-list {
+  background: url("../image/main/summer_banner.png") 50% 50%/contain no-repeat;
+}
+.select .swiper-slide.autumn .img-list {
+  background: url("../image/main/autumn_banner.png") 50% 50%/contain no-repeat;
+}
+.select .swiper-slide.winter .img-list {
+  background: url("../image/main/winter_banner.png") 50% 50%/contain no-repeat;
 }
 .select .swiper-slide-active {
   transform: translateY(0) !important;

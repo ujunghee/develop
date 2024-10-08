@@ -201,7 +201,6 @@ $ease: (
 // popup
 @mixin popup {
     height: 60%;
-    
     width: 100%;
     background: map-get($color, black-bg50);
     backdrop-filter: $blur20;
@@ -213,7 +212,7 @@ $ease: (
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1.6rem;
+    padding: 1.6rem 0rem 1.6rem 1.6rem;
     gap: 1rem;
     box-sizing: border-box;
     transition: map-get($ease, ease-in-out-4);
@@ -228,6 +227,8 @@ $ease: (
         grid-template-columns: 1fr 1fr 1fr;
         gap: .8rem;
         overflow-y: auto;
+        padding-right: 1.6rem;
+        box-sizing: border-box;
         li {
             height: 100%;
             .p-btn {

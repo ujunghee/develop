@@ -670,7 +670,6 @@ function sildeSwiper() {
     });
     new Swiper(".slider", {
         loop: true,
-        spaceBetween: 9,
         thumbs: {
             swiper: swiper
         }

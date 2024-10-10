@@ -243,6 +243,11 @@ button {
     @include Nanummyeongjo;
 }
 
+.f-s-13 {
+    @include f-s-13;
+    @include Nanummyeongjo;
+}
+
 // bar button
 %barButton {
     @include NanumSquare;
@@ -358,7 +363,7 @@ button {
 }
 
 //more button
-.more {
+.f-button {
     @include NanumSquare;
     @include txt-box;
     @include m-sub;

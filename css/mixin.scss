@@ -115,6 +115,29 @@
 }
 
 @mixin closebutton {
+    width: 2.0rem;
+    height: 2.0rem;
+    padding: 0;
+    position: relative;
+    &::before {
+        position: absolute;
+        content: "";
+        width: 1.8rem;
+        height: .1rem;  
+        left: 50%;
+        transform: translateX(-50%) rotate(-45deg);
+        background: map-get($color, nav-slider-btn);
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        left: 0;
+        width: 1.8rem;
+        height: .1rem;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        background: map-get($color, nav-slider-btn);
+    }
 }
 
 @mixin gobutton {

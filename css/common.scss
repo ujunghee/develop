@@ -370,24 +370,6 @@ button {
 // close button
 .close {
     @include closebutton;
-    width: 1.8rem;
-    height: 1.8rem;
-    position: relative;
-    &::before {
-        position: absolute;
-        content: "";
-        width: 1.2rem;
-        height: .1rem;
-
-        background: map-get($color, c-black);
-    }
-    &::after {
-        position: absolute;
-        content: "";
-        width: 1.2rem;
-        height: .1rem;
-        background: map-get($color, c-black);
-    }
 }
 
 // gobutton 
@@ -402,6 +384,7 @@ button {
 .popup {
     @include popup;
 }
+
 // 자세히보기 popup
 .infor {
     @include infor;

@@ -13,6 +13,7 @@ function loadPage(page, callback) {
                 const decopage = ['deco_spring.html', 'deco_summer.html', 'deco_autumn.html', 'deco_winter.html']
                 if (decopage.includes(page)) {
                     decoEvent();
+                    sildeSwiper();
                 }
             }
 
@@ -78,3 +79,20 @@ function Swieprobx() {
         }
     });
 };
+
+function sildeSwiper() {
+    var swiper = new Swiper(".slider-list", {
+        loop: true,
+        spaceBetween: 9,
+        slidesPerView: 5,
+        freeMode: true,
+        watchSlidesProgress: true,
+      });
+      new Swiper(".slider", {
+        loop: true,
+        spaceBetween: 9,
+        thumbs: {
+          swiper: swiper,
+        },
+      });
+}

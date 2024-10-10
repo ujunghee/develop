@@ -1,4 +1,5 @@
 @import "variable";
+@import "mixin";
 
 * {
     font-size: 62.5%;
@@ -182,10 +183,12 @@ textarea:focus:not(:focus-visible) {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #555;
 }
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
+
 // 스크롤 커스텀 e
 
 button {
@@ -230,9 +233,18 @@ button {
     @include txt-box;
 }
 
+.s-13 {
+    @include s-13;
+    @include NanumSquare;
+}
+
+.s-15 {
+    @include s-15;
+    @include Nanummyeongjo;
+}
+
 // bar button
 %barButton {
-    @include bar-button;
     @include NanumSquare;
 
     &:hover {
@@ -242,6 +254,7 @@ button {
 
 .button {
     @extend %barButton;
+    @include bar-button;
 
     &.brown {
         background-color: map-get($color, c-brown);
@@ -263,11 +276,7 @@ button {
 // submit button
 %submitButton {
     @include submit-button;
-    @include NanumSquare;
-
-    &:hover {
-        transform: scale(.98)
-    }
+    @extend %barButton;
 }
 
 .submit {
@@ -293,10 +302,7 @@ button {
 // reset button
 %resetButton {
     @include reset-button;
-
-    &:hover {
-        transform: scale(.98)
-    }
+    @extend %barButton;
 }
 
 .reset {
@@ -334,6 +340,7 @@ button {
 
     button.nav {
         @include navbutton;
+        @extend %barButton;
 
         svg {
             width: 2.6rem;
@@ -360,10 +367,42 @@ button {
     padding: 1.0rem 0;
 }
 
-// scroll bar
+// close button
+.close {
+    @include closebutton;
+    width: 1.8rem;
+    height: 1.8rem;
+    position: relative;
+    &::before {
+        position: absolute;
+        content: "";
+        width: 1.2rem;
+        height: .1rem;
 
+        background: map-get($color, c-black);
+    }
+    &::after {
+        position: absolute;
+        content: "";
+        width: 1.2rem;
+        height: .1rem;
+        background: map-get($color, c-black);
+    }
+}
 
-// popup
+// gobutton 
+.gobutton {
+    @include gobutton;
+    &:hover {
+        transform: scale(.98)
+    }
+}
+
+// 상세 popup
 .popup {
     @include popup;
+}
+// 자세히보기 popup
+.infor {
+    @include infor;
 }

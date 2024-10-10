@@ -3,14 +3,16 @@
         <button type="button" class="back"></button>
         <button type="submit" class="submit spring">완성</button>
     </div>
-    <div class="deco-box spring" data-bg="";>
+    <div class="deco-box spring" data-bg="" ;>
         <button type="button" class="reset"></button>
         <p class="deco-txt">아래 옵션을 활용하여<br>민화를 다채롭게 꾸며보세요.</p>
     </div>
     <div class="navigation">
         <ul>
-            <li><button type="button" class="nav furniture">
-                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 27" fill="none">
+            <!-- 테이블 선택 -->
+            <li>
+                <button type="button" class="nav furniture">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 27" fill="none">
                         <rect class="stroke" x="0.666748" y="0.660156" width="28" height="3" rx="0.5"
                             stroke-linecap="round" />
                         <rect class="stroke" x="2.66673" y="3.66101" width="24" height="20" stroke-linecap="round" />
@@ -22,24 +24,122 @@
                     </svg>
                 </button>
             </li>
-            <div class="popup">
+            <!-- 상세팝업 s -->
+            <div class="popup on">
                 <button class="scroll">
                     <span type="button" class="scroll-bar"></span>
                 </button>
                 <ul>
-                    <li><button type="button" class="p-btn"><img src="./image/object/object_01.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/object_02.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/object_03.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/object_04.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/object_05.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/object_06.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/object_07.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/object_08.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/object_09.png" alt="소반"></button></li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/object_01.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/object_02.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/object_03.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/object_04.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/object_05.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/object_06.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/object_07.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/object_08.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/object_09.png" alt="소반"></button>
+                    </li>
                 </ul>
                 <button type="button" class="more">가구 자세히보기 ></button>
             </div>
-            <li><button type="button" class="nav jar">
+            <!-- 상세팝업 e -->
+
+            <!-- 자세히보기 s -->
+            <div class="infor">
+                <div class="infor-wrap">
+                    <button type="button" class="close"></button>
+                    <div class="swiper slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_01.png" alt="소반">
+                                <p class="s-15">소반</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_02.png" alt="뒤주">
+                                <p class="s-15">뒤주</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_03.png" alt="화탁">
+                                <p class="s-15">화탁</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_04.png" alt="탁자">
+                                <p class="s-15">탁자</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_05.png" alt="다기장">
+                                <p class="s-15">다기장</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_06.png" alt="머릿장">
+                                <p class="s-15">머릿 장</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_07.png" alt="나주 호족반">
+                                <p class="s-15">나주 호족반</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_08.png" alt="수납장">
+                                <p class="s-15">수납장</p>
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_09.png" alt="꽃병 상">
+                                <p class="s-15">꽃병 상</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div thumbsSlider="" class="swiper slider-list">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_01.png" alt="소반 크게보기">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_02.png" alt="뒤주 크게보기">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_03.png" alt="화탁 크게보기">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_04.png" alt="탁자 크게보기">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_05.png" alt="다기장 크게보기">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_06.png" alt="머릿장 크게보기">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_07.png" alt="니주 호족반 크게보기">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_08.png" alt="수납장 크게보기">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="./image/object/object_09.png" alt="꽃병 상 크게보기">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="digital">
+                    <p class="s-13">민화의 다양한 오브제들은 ‘국가유산디지털서비스’에서<br>
+                        제공하는 자료를 기반으로 제작되었습니다.</p>
+                    <button type="button" class="gobutton">국가유산디지털서비스 바로가기</button>
+                </div>
+            </div>
+            <!-- 자세히보기 e -->
+
+            <!-- 항아리 선택 -->
+            <li>
+                <button type="button" class="nav jar">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 28" fill="none">
                         <mask id="path-1-inside-1_375_191" fill="white">
                             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -51,58 +151,67 @@
                     </svg>
                 </button>
             </li>
-            
-            <div class="popup on">
+
+            <div class="popup">
                 <button class="scroll">
                     <span type="button" class="scroll-bar"></span>
                 </button>
                 <ul>
-                    <li><button type="button" class="p-btn"><img src="./image/object/vase_01.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/vase_02.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/vase_03.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/vase_04.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/vase_05.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/vase_06.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/vase_07.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/vase_08.png" alt="소반"></button></li>
-                    <li><button type="button" class="p-btn"><img src="./image/object/vase_09.png" alt="소반"></button></li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/vase_01.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/vase_02.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/vase_03.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/vase_04.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/vase_05.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/vase_06.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/vase_07.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/vase_08.png" alt="소반"></button>
+                    </li>
+                    <li><button type="button" class="p-btn"><img src="./image/object/vase_09.png" alt="소반"></button>
+                    </li>
                 </ul>
                 <button type="button" class="more">가구 자세히보기 ></button>
             </div>
+
+            <!-- 책 선택 -->
             <li><button type="button" class="nav book">
-                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 28" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 28" fill="none">
                         <path class="stroke"
-                            d="M1.96677 1.16064H19.3303C19.4579 1.16064 19.5807 1.20942 19.6735 1.29698L23.3099 4.72826C23.41 4.82272 23.4668 4.95428 23.4668 5.09192V26.6606C23.4668 26.9367 23.2429 27.1606 22.9668 27.1606H5.60769C5.47876 27.1606 5.35482 27.1108 5.26174 27.0216L1.62081 23.5324C1.52241 23.4381 1.46677 23.3077 1.46677 23.1714V1.66064C1.46677 1.3845 1.69062 1.16064 1.96677 1.16064Z"
-                            />
-                        <path class="stroke" d="M1.96677 23.1189H19.4668M19.4668 23.1189V1.41064M19.4668 23.1189L22.9876 26.7023"
-                            />
+                            d="M1.96677 1.16064H19.3303C19.4579 1.16064 19.5807 1.20942 19.6735 1.29698L23.3099 4.72826C23.41 4.82272 23.4668 4.95428 23.4668 5.09192V26.6606C23.4668 26.9367 23.2429 27.1606 22.9668 27.1606H5.60769C5.47876 27.1606 5.35482 27.1108 5.26174 27.0216L1.62081 23.5324C1.52241 23.4381 1.46677 23.3077 1.46677 23.1714V1.66064C1.46677 1.3845 1.69062 1.16064 1.96677 1.16064Z" />
+                        <path class="stroke"
+                            d="M1.96677 23.1189H19.4668M19.4668 23.1189V1.41064M19.4668 23.1189L22.9876 26.7023" />
                         <rect class="stroke" x="3.57089" y="3.20227" width="2.95837" height="9" rx="0.5" />
                     </svg>
                 </button>
             </li>
+
+            <!-- 계절 선택 -->
             <li><button type="button" class="nav season">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
                         <path class="stroke"
-                            d="M10.5472 7.61507C9.03959 5.08464 11.1412 1.93722 14.0562 2.35991L15.2153 2.52799C15.6431 2.59001 16.0775 2.59009 16.5053 2.52822L17.6935 2.35636C20.6081 1.93481 22.7086 5.08177 21.2014 7.61169L16.6787 15.2029C16.5096 15.4868 16.2036 15.6606 15.8733 15.6606C15.5429 15.6606 15.2369 15.4868 15.0678 15.2029L10.5472 7.61507Z"
-                            />
+                            d="M10.5472 7.61507C9.03959 5.08464 11.1412 1.93722 14.0562 2.35991L15.2153 2.52799C15.6431 2.59001 16.0775 2.59009 16.5053 2.52822L17.6935 2.35636C20.6081 1.93481 22.7086 5.08177 21.2014 7.61169L16.6787 15.2029C16.5096 15.4868 16.2036 15.6606 15.8733 15.6606C15.5429 15.6606 15.2369 15.4868 15.0678 15.2029L10.5472 7.61507Z" />
                         <path class="stroke"
-                            d="M21.1994 24.7062C22.7069 27.2367 20.6053 30.3841 17.6903 29.9614L16.5312 29.7933C16.1035 29.7313 15.669 29.7312 15.2413 29.7931L14.053 29.9649C11.1384 30.3865 9.03789 27.2395 10.5452 24.7096L15.0678 17.1184C15.2369 16.8345 15.5429 16.6607 15.8733 16.6607C16.2036 16.6607 16.5096 16.8345 16.6787 17.1184L21.1994 24.7062Z"
-                            />
+                            d="M21.1994 24.7062C22.7069 27.2367 20.6053 30.3841 17.6903 29.9614L16.5312 29.7933C16.1035 29.7313 15.669 29.7312 15.2413 29.7931L14.053 29.9649C11.1384 30.3865 9.03789 27.2395 10.5452 24.7096L15.0678 17.1184C15.2369 16.8345 15.5429 16.6607 15.8733 16.6607C16.2036 16.6607 16.5096 16.8345 16.6787 17.1184L21.1994 24.7062Z" />
                         <path class="stroke"
-                            d="M24.4129 10.8348C26.9436 9.32834 30.0899 11.4304 29.6669 14.3449L29.499 15.5022C29.4369 15.9302 29.4368 16.365 29.4988 16.7932L29.6705 17.9796C30.0923 20.8937 26.9464 22.9946 24.4163 21.4885L16.8178 16.9652C16.5341 16.7964 16.3604 16.4907 16.3604 16.1606C16.3604 15.8305 16.5341 15.5249 16.8178 15.356L24.4129 10.8348Z"
-                            />
+                            d="M24.4129 10.8348C26.9436 9.32834 30.0899 11.4304 29.6669 14.3449L29.499 15.5022C29.4369 15.9302 29.4368 16.365 29.4988 16.7932L29.6705 17.9796C30.0923 20.8937 26.9464 22.9946 24.4163 21.4885L16.8178 16.9652C16.5341 16.7964 16.3604 16.4907 16.3604 16.1606C16.3604 15.8305 16.5341 15.5249 16.8178 15.356L24.4129 10.8348Z" />
                         <path class="stroke"
-                            d="M7.32064 21.4865C4.79001 22.9929 1.64367 20.8909 2.06665 17.9764L2.23459 16.8191C2.29672 16.391 2.2968 15.9562 2.23483 15.5281L2.06309 14.3417C1.64125 11.4276 4.78714 9.32671 7.31727 10.8328L14.9158 15.3561C15.1994 15.5249 15.3732 15.8306 15.3732 16.1607C15.3732 16.4907 15.1994 16.7964 14.9158 16.9653L7.32064 21.4865Z"
-                            />
+                            d="M7.32064 21.4865C4.79001 22.9929 1.64367 20.8909 2.06665 17.9764L2.23459 16.8191C2.29672 16.391 2.2968 15.9562 2.23483 15.5281L2.06309 14.3417C1.64125 11.4276 4.78714 9.32671 7.31727 10.8328L14.9158 15.3561C15.1994 15.5249 15.3732 15.8306 15.3732 16.1607C15.3732 16.4907 15.1994 16.7964 14.9158 16.9653L7.32064 21.4865Z" />
                     </svg>
                 </button>
             </li>
+
+            <!-- 페인트 선택 -->
             <li><button type="button" class="nav painting">
-                    <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 32" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 32" fill="none">
                         <rect class="stroke" x="1.26682" y="11.1606" width="22" height="20" rx="0.5" />
                         <path class="stroke"
-                            d="M1.27851 11.1606C1.53949 5.59383 6.13544 1.16064 11.7668 1.16064H12.7668C18.3982 1.16064 22.9941 5.59383 23.2551 11.1606H1.27851Z"
-                            />
+                            d="M1.27851 11.1606C1.53949 5.59383 6.13544 1.16064 11.7668 1.16064H12.7668C18.3982 1.16064 22.9941 5.59383 23.2551 11.1606H1.27851Z" />
                         <mask id="path-3-inside-1_345_595" fill="white">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M7.37534 10.6606H12.4076H15.7101H15.7234H20.7424V20.5195C20.7424 21.9091 19.6159 23.0356 18.2262 23.0356C16.9245 23.0356 15.8537 22.0471 15.7234 20.7799V21.6818L15.7234 21.6937V20.7794C15.7146 20.694 15.7101 20.6073 15.7101 20.5195V19.6337C15.6066 18.8176 14.9097 18.1866 14.0655 18.1866C13.1538 18.1866 12.414 18.9224 12.4076 19.8326V22.3941C12.4076 23.7837 11.2811 24.9102 9.89149 24.9102C8.50186 24.9102 7.37534 23.7837 7.37534 22.3941V10.6606Z" />
@@ -114,15 +223,19 @@
 
                 </button>
             </li>
+
+            <!-- 컴퍼니 선택 -->
             <li><button type="button" class="nav company">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 29" fill="none">
-                        <mask id="path-1-inside-1_345_605" fill="white">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="31" height="30" viewBox="0 0 31 30" fill="none">
+                        <mask id="path-1-inside-1_416_991" fill="white">
                             <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M10.1668 0.660645C4.64396 0.660645 0.166809 5.1378 0.166809 10.6607V13.7647C0.166809 19.2875 4.64396 23.7647 10.1668 23.7647H12.5268V28.4312C12.5268 28.8797 13.0718 29.1014 13.3849 28.7801L18.2725 23.7647H21.1668C26.6897 23.7647 31.1668 19.2875 31.1668 13.7647V10.6606C31.1668 5.1378 26.6897 0.660645 21.1668 0.660645H10.1668Z" />
+                                d="M10 0.770142C4.47715 0.770142 0 5.2473 0 10.7701V13.8742C0 19.397 4.47715 23.8742 10 23.8742H12.36V28.5406C12.36 28.9892 12.905 29.2109 13.2181 28.8896L18.1057 23.8742H21C26.5228 23.8742 31 19.397 31 13.8742V10.7701C31 5.24729 26.5228 0.770142 21 0.770142H10Z" />
                         </mask>
                         <path class="fill"
-                            d="M12.5268 23.7647H13.5268C13.5268 23.2124 13.0791 22.7647 12.5268 22.7647V23.7647ZM13.3849 28.7801L12.6687 28.0822L12.6687 28.0822L13.3849 28.7801ZM18.2725 23.7647V22.7647C18.0028 22.7647 17.7445 22.8736 17.5563 23.0667L18.2725 23.7647ZM1.16681 10.6607C1.16681 5.69009 5.19625 1.66064 10.1668 1.66064V-0.339355C4.09168 -0.339355 -0.833191 4.58552 -0.833191 10.6607H1.16681ZM1.16681 13.7647V10.6607H-0.833191V13.7647H1.16681ZM10.1668 22.7647C5.19625 22.7647 1.16681 18.7352 1.16681 13.7647H-0.833191C-0.833191 19.8398 4.09168 24.7647 10.1668 24.7647V22.7647ZM12.5268 22.7647H10.1668V24.7647H12.5268V22.7647ZM13.5268 28.4312V23.7647H11.5268V28.4312H13.5268ZM12.6687 28.0822C12.9818 27.7609 13.5268 27.9826 13.5268 28.4312H11.5268C11.5268 29.7769 13.1619 30.4418 14.1011 29.478L12.6687 28.0822ZM17.5563 23.0667L12.6687 28.0822L14.1011 29.478L18.9887 24.4626L17.5563 23.0667ZM21.1668 22.7647H18.2725V24.7647H21.1668V22.7647ZM30.1668 13.7647C30.1668 18.7352 26.1374 22.7647 21.1668 22.7647V24.7647C27.2419 24.7647 32.1668 19.8398 32.1668 13.7647H30.1668ZM30.1668 10.6606V13.7647H32.1668V10.6606H30.1668ZM21.1668 1.66064C26.1374 1.66064 30.1668 5.69008 30.1668 10.6606H32.1668C32.1668 4.58551 27.2419 -0.339355 21.1668 -0.339355V1.66064ZM10.1668 1.66064H21.1668V-0.339355H10.1668V1.66064Z"
-                            mask="url(#path-1-inside-1_345_605)" />
+                            d="M12.36 23.8742H13.36C13.36 23.3219 12.9123 22.8742 12.36 22.8742V23.8742ZM13.2181 28.8896L12.5019 28.1917L12.5019 28.1917L13.2181 28.8896ZM18.1057 23.8742V22.8742C17.836 22.8742 17.5777 22.9831 17.3895 23.1762L18.1057 23.8742ZM1 10.7701C1 5.79958 5.02944 1.77014 10 1.77014V-0.229858C3.92487 -0.229858 -1 4.69502 -1 10.7701H1ZM1 13.8742V10.7701H-1V13.8742H1ZM10 22.8742C5.02944 22.8742 1 18.8447 1 13.8742H-1C-1 19.9493 3.92487 24.8742 10 24.8742V22.8742ZM12.36 22.8742H10V24.8742H12.36V22.8742ZM13.36 28.5406V23.8742H11.36V28.5406H13.36ZM12.5019 28.1917C12.815 27.8704 13.36 28.0921 13.36 28.5406H11.36C11.36 29.8864 12.995 30.5513 13.9342 29.5875L12.5019 28.1917ZM17.3895 23.1762L12.5019 28.1917L13.9342 29.5875L18.8218 24.5721L17.3895 23.1762ZM21 22.8742H18.1057V24.8742H21V22.8742ZM30 13.8742C30 18.8447 25.9706 22.8742 21 22.8742V24.8742C27.0751 24.8742 32 19.9493 32 13.8742H30ZM30 10.7701V13.8742H32V10.7701H30ZM21 1.77014C25.9706 1.77014 30 5.79958 30 10.7701H32C32 4.69501 27.0751 -0.229858 21 -0.229858V1.77014ZM10 1.77014H21V-0.229858H10V1.77014Z"
+                            mask="url(#path-1-inside-1_416_991)" />
+                        <path class="stroke" d="M6.59375 11.2389H24.4062" stroke-linecap="round" />
+                        <path class="stroke" d="M6.59375 14.3014H15.5" stroke-linecap="round" />
                     </svg>
                 </button>
             </li>

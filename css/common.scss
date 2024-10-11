@@ -406,12 +406,19 @@ button {
     top: 10%;
     left: 50%;
     transform: translate(-50%, 0);
+    display: none;
+    &.on {
+        display: block;
+    }
     textarea {
         @include Nanummyeongjo;
-        @include f-s-13;
+        @include m-sub;
         border: initial;
         background: initial;
         text-align: center;
+        color:map-get($color, nav-slider-btn);
+        resize: none;
+        line-height: 1.8;
     }
 }
 // 문구 작성 e

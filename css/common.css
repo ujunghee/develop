@@ -582,14 +582,50 @@ button {
   align-items: center;
   justify-content: center;
 }
-.palette.spring button {
+.palette button {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 10rem;
-  transition: all 0.3s cubic-bezier(0.56, 0, 0.07, 1.01);
+  transition: all 0.2s cubic-bezier(0.56, 0, 0.07, 1.01);
+  border: 1px solid #fff;
 }
-.palette.spring button:hover {
-  border: 2px solid #000;
+.palette button:hover {
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+.palette .b-4 {
+  background: #D9D9D9;
+  position: relative;
+  border: 1px solid #fff;
+}
+.palette .b-4::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 3.4rem;
+  height: 0.1rem;
+  background: #fff;
+  left: 0;
+  transform: rotate(-45deg);
+  transition: all 0.2s cubic-bezier(0.56, 0, 0.07, 1.01);
+}
+.palette .b-4::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 3.4rem;
+  height: 0.1rem;
+  background: #fff;
+  left: -0.1rem;
+  transform: rotate(45deg);
+  transition: all 0.2s cubic-bezier(0.56, 0, 0.07, 1.01);
+}
+.palette .b-4:hover::after {
+  width: 3rem;
+  left: 0rem;
+}
+.palette .b-4:hover::before {
+  width: 3rem;
+  left: 0.1rem;
 }
 .palette.spring .b-1 {
   background: #FFD7DE;
@@ -600,40 +636,32 @@ button {
 .palette.spring .b-3 {
   background: #FCFFC8;
 }
-.palette.spring .b-4 {
-  background: #D9D9D9;
-  position: relative;
-  border: 1px solid #fff;
+.palette.summer .b-1 {
+  background: #E4FFFF;
 }
-.palette.spring .b-4::before {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 3.4rem;
-  height: 0.1rem;
-  background: #fff;
-  left: 0;
-  transform: rotate(-45deg);
-  transition: all 0.3s cubic-bezier(0.56, 0, 0.07, 1.01);
+.palette.summer .b-2 {
+  background: #DAE7FF;
 }
-.palette.spring .b-4::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 3.4rem;
-  height: 0.1rem;
-  background: #fff;
-  left: -0.1rem;
-  transform: rotate(45deg);
-  transition: all 0.3s cubic-bezier(0.56, 0, 0.07, 1.01);
+.palette.summer .b-3 {
+  background: #E6F5FF;
 }
-.palette.spring .b-4:hover::after {
-  width: 3rem;
-  left: 0rem;
+.palette.autumn .b-1 {
+  background: #FFD5B2;
 }
-.palette.spring .b-4:hover::before {
-  width: 3rem;
-  left: 0.1rem;
+.palette.autumn .b-2 {
+  background: #FFF1CC;
+}
+.palette.autumn .b-3 {
+  background: #FFFFFF;
+}
+.palette.winter .b-1 {
+  background: #E7FDF7;
+}
+.palette.winter .b-2 {
+  background: #EEF9FF;
+}
+.palette.winter .b-3 {
+  background: #DCE2F6;
 }
 
 .textfield {
@@ -641,14 +669,21 @@ button {
   top: 10%;
   left: 50%;
   transform: translate(-50%, 0);
+  display: none;
+}
+.textfield.on {
+  display: block;
 }
 .textfield textarea {
   font-family: "NanumMyeongjo";
-  font-size: 1.3rem;
-  color: #000;
-  font-weight: 300;
-  align-items: center;
+  font-size: 1.4rem;
+  color: #544D47;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
   border: initial;
   background: initial;
   text-align: center;
+  color: #5D4743;
+  resize: none;
+  line-height: 1.8;
 }/*# sourceMappingURL=common.css.map */

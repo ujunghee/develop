@@ -611,7 +611,7 @@ function loadPage(page, callback) {
     xhr.send();
 }
 document.addEventListener("DOMContentLoaded", function() {
-    loadPage("deco_spring.html", function() {
+    loadPage("deco_winter.html", function() {
         Swieprobx();
     });
 });

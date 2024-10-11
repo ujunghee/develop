@@ -581,15 +581,56 @@ button {
   display: flex;
 }
 
-.palette.spring button {
+.palette button {
+  border: 1px solid #fff;
   border-radius: 10rem;
   width: 3.5rem;
   height: 3.5rem;
-  transition: all .3s cubic-bezier(.56, 0, .07, 1.01);
+  transition: all .2s cubic-bezier(.56, 0, .07, 1.01);
 }
 
-.palette.spring button:hover {
-  border: 2px solid #000;
+.palette button:hover {
+  border: 2px solid #00000080;
+}
+
+.palette .b-4 {
+  background: #d9d9d9;
+  border: 1px solid #fff;
+  position: relative;
+}
+
+.palette .b-4:before {
+  content: "";
+  background: #fff;
+  width: 3.4rem;
+  height: .1rem;
+  transition: all .2s cubic-bezier(.56, 0, .07, 1.01);
+  display: block;
+  position: absolute;
+  left: 0;
+  transform: rotate(-45deg);
+}
+
+.palette .b-4:after {
+  content: "";
+  background: #fff;
+  width: 3.4rem;
+  height: .1rem;
+  transition: all .2s cubic-bezier(.56, 0, .07, 1.01);
+  display: block;
+  position: absolute;
+  left: -.1rem;
+  transform: rotate(45deg);
+}
+
+.palette .b-4:hover:after {
+  width: 3rem;
+  left: 0;
+}
+
+.palette .b-4:hover:before {
+  width: 3rem;
+  left: .1rem;
 }
 
 .palette.spring .b-1 {
@@ -604,61 +645,64 @@ button {
   background: #fcffc8;
 }
 
-.palette.spring .b-4 {
-  background: #d9d9d9;
-  border: 1px solid #fff;
-  position: relative;
+.palette.summer .b-1 {
+  background: #e4ffff;
 }
 
-.palette.spring .b-4:before {
-  content: "";
+.palette.summer .b-2 {
+  background: #dae7ff;
+}
+
+.palette.summer .b-3 {
+  background: #e6f5ff;
+}
+
+.palette.autumn .b-1 {
+  background: #ffd5b2;
+}
+
+.palette.autumn .b-2 {
+  background: #fff1cc;
+}
+
+.palette.autumn .b-3 {
   background: #fff;
-  width: 3.4rem;
-  height: .1rem;
-  transition: all .3s cubic-bezier(.56, 0, .07, 1.01);
-  display: block;
-  position: absolute;
-  left: 0;
-  transform: rotate(-45deg);
 }
 
-.palette.spring .b-4:after {
-  content: "";
-  background: #fff;
-  width: 3.4rem;
-  height: .1rem;
-  transition: all .3s cubic-bezier(.56, 0, .07, 1.01);
-  display: block;
-  position: absolute;
-  left: -.1rem;
-  transform: rotate(45deg);
+.palette.winter .b-1 {
+  background: #e7fdf7;
 }
 
-.palette.spring .b-4:hover:after {
-  width: 3rem;
-  left: 0;
+.palette.winter .b-2 {
+  background: #eef9ff;
 }
 
-.palette.spring .b-4:hover:before {
-  width: 3rem;
-  left: .1rem;
+.palette.winter .b-3 {
+  background: #dce2f6;
 }
 
 .textfield {
+  display: none;
   position: absolute;
   top: 10%;
   left: 50%;
   transform: translate(-50%);
 }
 
+.textfield.on {
+  display: block;
+}
+
 .textfield textarea {
-  color: #000;
+  color: #5d4743;
   border: initial;
   background: initial;
   text-align: center;
-  align-items: center;
+  resize: none;
   font-family: NanumMyeongjo;
-  font-size: 1.3rem;
-  font-weight: 300;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
 }
 /*# sourceMappingURL=index.b0d15f20.css.map */

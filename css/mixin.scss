@@ -206,9 +206,9 @@
     display: none;
     flex-direction: column;
     // display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    padding: 1.6rem 0rem 1.6rem 1.6rem;
+    padding: 1.6rem ;
     gap: 1rem;
     box-sizing: border-box;
     transition: map-get($ease, ease-in-out-4);
@@ -229,7 +229,6 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: .8rem;
         overflow-y: auto;
-        padding-right: 1.6rem;
         box-sizing: border-box;
 
         li {
@@ -239,6 +238,7 @@
                 background: map-get($color, popup-bg);
                 flex: 1;
                 height: 100%;
+                width: 100%;
                 border-radius: map-get($boder-radius, b-10);
             }
 
@@ -254,7 +254,7 @@
         width: 100%;
         height: 3.2rem;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         background: initial;
         border: none;
@@ -346,5 +346,75 @@
         display: flex;
         flex-direction: column;
         gap: 2.0rem;
+    }
+}
+
+// color palette 
+@mixin colorpalette {
+    ul {
+        display: flex;
+        gap:2.4rem;
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    &.spring {
+        button {
+            width: 3.5rem;
+            height: 3.5rem;
+            border-radius: map-get($boder-radius , b-100);
+            transition: map-get($ease, ease-in-out-2);
+            &:hover {
+                border: 2px solid map-get($color, c-black);
+            }
+        }
+        .b-1 {
+            background: map-get($color, sp-btn01);
+        }
+        .b-2 {
+            background: map-get($color, sp-btn02);
+        }
+        .b-3 {
+            background: map-get($color, sp-btn03);
+        }
+        .b-4 {
+            background: map-get($color, c-gray);
+            position: relative;
+            border: 1px solid map-get($color, c-white);
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 3.4rem;
+                height: .1rem;
+                background: map-get($color , c-white);
+                left: 0;
+                transform: rotate(-45deg);
+                transition: map-get($ease, ease-in-out-2);
+            }
+            &::after {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 3.4rem;
+                height: .1rem;
+                background: map-get($color , c-white);
+                left: -0.1rem;
+                transform: rotate(45deg);
+                transition: map-get($ease, ease-in-out-2);
+            }
+            &:hover {
+                &::after {
+                    width: 3.0rem;
+                    left: 0rem;
+                }
+                &::before {
+                    width: 3.0rem;
+                    left: 0.1rem;
+                }
+            }
+        }
     }
 }

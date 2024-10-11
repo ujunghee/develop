@@ -394,3 +394,24 @@ button {
 .infor {
     @include infor;
 }
+
+// palette button
+.palette {
+    @include colorpalette;
+}
+
+// 문구 작성 s
+.textfield {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    textarea {
+        @include Nanummyeongjo;
+        @include f-s-13;
+        border: initial;
+        background: initial;
+        text-align: center;
+    }
+}
+// 문구 작성 e

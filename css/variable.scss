@@ -47,6 +47,23 @@ $color: (
     footer-hover:#292929,
     footer-icon:#949494,
 
+    sp-btn01:#FFD7DE,
+    sp-btn02:#FFE4C4,
+    sp-btn03:#FCFFC8,
+
+    su-btn01:#E4FFFF,
+    su-btn02:#DAE7FF,
+    su-btn03:#E6F5FF,
+    
+    au-btn01:#FFD5B2,
+    au-btn02:#FFF1CC,
+    au-btn03:#FFFFFF,
+
+    wi-btn01:#E7FDF7,
+    wi-btn02:#EEF9FF,
+    wi-btn03:#DCE2F6,
+
+
 );
 
 $font-size: (
@@ -75,6 +92,7 @@ $boder-radius: (
 );
 
 $ease: (
+    ease-in-out-2: all .3s cubic-bezier(0.56, 0, 0.07, 1.01),
     ease-in-out-4: all .4s cubic-bezier(0.56, 0, 0.07, 1.01),
     ease-in-out-6: all .4s cubic-bezier(0.56, 0, 0.07, 1.01),
 );

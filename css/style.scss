@@ -149,13 +149,6 @@
     gap: 1.6rem;
     position: relative;
 
-    .deco-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1.6rem 1.6rem 0;
-    }
-
     .deco-box {
         margin: 0 1.6rem;
         box-sizing: border-box;
@@ -197,3 +190,25 @@
     
 }
 // deco html e
+
+
+// last html s
+.last {
+    background: map-get($color , default-bg);
+    @include bg;
+    @include common;
+    .f-16 {
+        line-height: 1.8;
+    }
+    .last-content {
+        display: flex;
+        flex-direction: column;
+        gap: 3.4rem;
+    }
+    .card {
+        width: calc(100% - 13.0rem);
+        background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
+        margin: 0 auto;
+    }   
+}
+// last html e

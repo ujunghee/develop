@@ -1,15 +1,17 @@
 <div class="deco">
-    <div class="deco-header">
+    <div class="header">
         <button type="button" class="back"></button>
         <button type="submit" class="submit spring">완성</button>
     </div>
     <div class="deco-box spring" data-bg="" ;>
-        <button type="button" class="reset"></button>
+        <button type="button" class="reset">
+            <span class="blind">삭제하기</span>
+        </button>
         <p class="deco-txt">아래 옵션을 활용하여<br>민화를 다채롭게 꾸며보세요.</p>
         
         <!-- 문구 작성 s -->
         <div class="textfield">
-            <textarea name="" id="" placeholder="문구를 입력해주세요" rows="2"></textarea>
+            <textarea class="txt-box" name="" id="" placeholder="문구를 입력해주세요" rows="2"></textarea>
          </div>
         <!-- 문구 작성 e -->
 
@@ -168,7 +170,9 @@
         <!-- 자세히보기 s -->
         <div class="infor">
             <div class="infor-wrap">
-                <button type="button" class="close"></button>
+                <button type="button" class="close">
+                    <span class="blind">닫기</span>
+                </button>
                 <div class="swiper slider">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">

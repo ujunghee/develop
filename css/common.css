@@ -251,6 +251,16 @@ button {
   font-family: "NanumMyeongjo";
 }
 
+.s-14 {
+  font-size: 1.4rem;
+  color: #544D47;
+  font-weight: 300;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+  line-height: 1.8;
+  text-align: center;
+  font-family: "NanumMyeongjo";
+}
+
 .f-s-13 {
   font-size: 1.3rem;
   color: #000;
@@ -259,10 +269,18 @@ button {
   font-family: "NanumMyeongjo";
 }
 
-.navigation button.nav, .reset, .submit, .button {
+.f-16 {
+  font-size: 1.6rem;
+  color: #544D47;
+  font-weight: 500;
+  text-align: center;
+  font-family: "NanumMyeongjo";
+}
+
+.first, .last-btn button, .gobutton, .navigation button.nav, .reset, .submit, .button {
   font-family: "NanumSquare";
 }
-.navigation button.nav:hover, .reset:hover, .submit:hover, .button:hover {
+.first:hover, .last-btn button:hover, .gobutton:hover, .navigation button.nav:hover, .reset:hover, .submit:hover, .button:hover {
   transform: scale(0.98);
 }
 
@@ -426,8 +444,20 @@ button {
   width: 100%;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
-.gobutton:hover {
-  transform: scale(0.98);
+
+.last-btn button {
+  color: #fff;
+  font-size: 1.6rem;
+  border-radius: 1rem;
+  height: 5rem;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+}
+
+.first {
+  font-size: 1.6rem;
+  color: #544D47;
+  font-weight: 700;
+  background: initial;
 }
 
 .popup {
@@ -686,4 +716,11 @@ button {
   color: #5D4743;
   resize: none;
   line-height: 1.8;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem 1.6rem 0;
 }/*# sourceMappingURL=common.css.map */

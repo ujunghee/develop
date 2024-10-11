@@ -114,12 +114,6 @@
   gap: 1.6rem;
   position: relative;
 }
-.deco .deco-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.6rem 1.6rem 0;
-}
 .deco .deco-box {
   margin: 0 1.6rem;
   box-sizing: border-box;
@@ -153,4 +147,25 @@
   top: 50%;
   left: 50%;
   position: absolute;
+}
+
+.last {
+  background: #EDEDED;
+  background: #EDEDED;
+  height: 100dvh;
+  position: relative;
+  min-height: 50rem;
+}
+.last .f-16 {
+  line-height: 1.8;
+}
+.last .last-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3.4rem;
+}
+.last .card {
+  width: calc(100% - 13rem);
+  background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+  margin: 0 auto;
 }/*# sourceMappingURL=style.css.map */

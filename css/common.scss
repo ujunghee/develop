@@ -243,8 +243,17 @@ button {
     @include Nanummyeongjo;
 }
 
+.s-14 {
+    @include txt-deco;
+    @include Nanummyeongjo;
+}
+
 .f-s-13 {
     @include f-s-13;
+    @include Nanummyeongjo;
+}
+.f-16 {
+    @include f-16;
     @include Nanummyeongjo;
 }
 
@@ -380,9 +389,24 @@ button {
 // gobutton 
 .gobutton {
     @include gobutton;
-    &:hover {
-        transform: scale(.98)
+    @extend %barButton;
+}
+
+// last button
+.last-btn {
+    button {
+        @include last-btn;
+        @extend %barButton;
     }
+}
+
+//fisrt button
+.first {
+    @extend %barButton;
+    font-size: map-get($font-size, f-16);
+    color:map-get($color, txt-main);
+    font-weight: map-get($font-weight , f-700);
+    background: initial
 }
 
 // 상세 popup
@@ -422,3 +446,8 @@ button {
     }
 }
 // 문구 작성 e
+
+//header
+.header {
+    @include header;
+}

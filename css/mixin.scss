@@ -80,6 +80,13 @@
     font-weight: map-get($font-weight, f-300);
     align-items: center;
 }
+@mixin f-16 {
+    font-size: map-get($font-size, f-16);
+    color: map-get($color, txt-main);
+    font-weight: map-get($font-weight, f-500);
+    text-align: center;
+}
+
 //text & font face e
 
 
@@ -159,6 +166,30 @@
     width: 100%;
     transition: map-get($ease, ease-in-out-4);
 }
+
+
+@mixin last-btn {
+    color: map-get($color, c-white);
+    font-weight: map-get($font-weight, b-500);
+    font-size: map-get($font-size, f-16);
+    border-radius: map-get($boder-radius, b-10);
+    height: 5.0rem;
+    transition: map-get($ease, ease-in-out-4);
+}
+
+@mixin navbutton {
+    height: 5.0rem;
+    width: 5.0rem;
+    border-radius: map-get($boder-radius, b-10);
+    background: inherit;
+    transition: map-get($ease, ease-in-out-4);
+
+    &:hover {
+        background: map-get($color, footer-hover);
+    }
+}
+
+
 //button e
 
 
@@ -180,19 +211,15 @@
 @mixin bg {
     background: map-get($color, default-bg);
 }
-
 // bg e
 
-@mixin navbutton {
-    height: 5.0rem;
-    width: 5.0rem;
-    border-radius: map-get($boder-radius, b-10);
-    background: inherit;
-    transition: map-get($ease, ease-in-out-4);
 
-    &:hover {
-        background: map-get($color, footer-hover);
-    }
+// header
+@mixin header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem 1.6rem 0;
 }
 
 // popup

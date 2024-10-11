@@ -203,12 +203,35 @@
     .last-content {
         display: flex;
         flex-direction: column;
-        gap: 3.4rem;
+        gap: 1.4rem;
+        align-items: center;
+        justify-content: center;
+        height: calc(100% - 12.6rem);
     }
     .card {
         width: calc(100% - 13.0rem);
         background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
         margin: 0 auto;
+        border-radius: map-get($boder-radius , b-14);
+        box-shadow: map-get($shadow, shadow-15 );
+        height: calc(100% - 14.0rem);
+        position: relative;
+        p {
+            position: absolute;
+            left: 50%;
+            top:min(8vh, 10vh);
+            transform: translate(-50%, 0);
+        }
     }   
+    .last-btn {
+        .share {
+            flex:.5rem;
+            background: map-get($color, c-brown);
+        }
+        .solvek {
+            flex:.5rem;
+            background: map-get($color, txt-main);
+        }
+    }
 }
 // last html e

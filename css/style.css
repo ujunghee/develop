@@ -162,10 +162,31 @@
 .last .last-content {
   display: flex;
   flex-direction: column;
-  gap: 3.4rem;
+  gap: 1.4rem;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 12.6rem);
 }
 .last .card {
   width: calc(100% - 13rem);
   background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
   margin: 0 auto;
+  border-radius: 1.4rem;
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
+  height: calc(100% - 14rem);
+  position: relative;
+}
+.last .card p {
+  position: absolute;
+  left: 50%;
+  top: 8vh;
+  transform: translate(-50%, 0);
+}
+.last .last-btn .share {
+  flex: 0.5rem;
+  background: #9E8E81;
+}
+.last .last-btn .solvek {
+  flex: 0.5rem;
+  background: #544D47;
 }/*# sourceMappingURL=style.css.map */

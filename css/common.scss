@@ -394,8 +394,10 @@ button {
 
 // last button
 .last-btn {
+    @include last-button;
+    gap: .8rem;
     button {
-        @include last-btn;
+        @include last-btn;;
         @extend %barButton;
     }
 }
@@ -405,7 +407,7 @@ button {
     @extend %barButton;
     font-size: map-get($font-size, f-16);
     color:map-get($color, txt-main);
-    font-weight: map-get($font-weight , f-700);
+    font-weight: map-get($font-weight , f-500);
     background: initial
 }
 

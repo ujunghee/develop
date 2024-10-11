@@ -445,6 +445,23 @@ button {
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
 
+.last-btn {
+  font-size: 1.6rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 2rem;
+  width: calc(100% - 3.2rem);
+  border: none;
+  height: 5rem;
+  left: 1.6rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+  gap: 0.8rem;
+}
 .last-btn button {
   color: #fff;
   font-size: 1.6rem;
@@ -456,7 +473,7 @@ button {
 .first {
   font-size: 1.6rem;
   color: #544D47;
-  font-weight: 700;
+  font-weight: 500;
   background: initial;
 }
 

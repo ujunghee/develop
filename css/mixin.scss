@@ -108,6 +108,8 @@
     transition: map-get($ease, ease-in-out-4);
 }
 
+
+
 @mixin submit-button {
     font-size: map-get($font-size, f-16);
     font-weight: map-get($font-weight, f-500);
@@ -168,6 +170,22 @@
 }
 
 
+@mixin last-button {
+    font-size: map-get($font-size, f-16);
+    font-weight: map-get($font-weight, f-500);
+    position: absolute;
+    bottom: 2.0rem;
+    width: calc(100% - 3.2rem);
+    border: none;
+    height: 5.0rem;
+    left: 1.6rem;
+    border-radius: map-get($boder-radius, b-10);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: map-get($color, c-white);
+    transition: map-get($ease, ease-in-out-4);
+}
 @mixin last-btn {
     color: map-get($color, c-white);
     font-weight: map-get($font-weight, b-500);

@@ -24,7 +24,7 @@ function loadPage(page, callback) {
 
 }
 document.addEventListener('DOMContentLoaded', function () {
-    loadPage('last.html', function () {
+    loadPage('deco_spring.html', function () {
         Swieprobx();
     });
 

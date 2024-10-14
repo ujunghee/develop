@@ -120,9 +120,7 @@ function select() {
             }
         }
     });
-    return swiper;
 }
-const swiper = select();
 
 
 window.loadPage = loadPage;

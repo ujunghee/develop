@@ -35,9 +35,25 @@ document.addEventListener('DOMContentLoaded', function () {
     loadPage('first.html', function () {
 
         document.addEventListener('click', function (event) {
+
+            
+            // 시작하기
             if (event.target.classList.contains('start')) {
                 loadPage('select.html', select);
-                
+            }
+            
+            // 계절선택
+            if(event.target.classList.contains('pink')) {
+                loadPage('deco_spring.html');
+            }
+            if(event.target.classList.contains('blue')) {
+                loadPage('deco_summer.html');
+            }
+            if(event.target.classList.contains('orange')) {
+                loadPage('deco_autumn.html');
+            }
+            if(event.target.classList.contains('snowblue')) {
+                loadPage('deco_winter.html');
             }
         })
     });

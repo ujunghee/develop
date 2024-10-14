@@ -408,7 +408,11 @@ button {
     font-size: map-get($font-size, f-16);
     color:map-get($color, txt-main);
     font-weight: map-get($font-weight , f-500);
-    background: initial
+    background: initial;
+    display: none;
+    &.on {
+        display: block
+    }
 }
 
 // 상세 popup

@@ -81,16 +81,19 @@
                     background: url($main-bg-img + "spring_banner.png") 50% 50% / contain no-repeat;
                 }
             }
+
             &.summer {
                 .img-list {
                     background: url($main-bg-img + "summer_banner.png") 50% 50% / contain no-repeat;
                 }
             }
+
             &.autumn {
                 .img-list {
                     background: url($main-bg-img + "autumn_banner.png") 50% 50% / contain no-repeat;
                 }
             }
+
             &.winter {
                 .img-list {
                     background: url($main-bg-img + "winter_banner.png") 50% 50% / contain no-repeat;
@@ -137,6 +140,7 @@
     }
 
 }
+
 // select html e
 
 
@@ -187,51 +191,141 @@
             position: absolute;
         }
     }
-    
+
 }
+
 // deco html e
 
 
 // last html s
 .last {
-    background: map-get($color , default-bg);
-    @include bg;
     @include common;
+
+    // end page s
+    &.white {
+        @include bg;
+
+        .company-page {
+            display: none;
+        }
+
+        .ending {
+            height: 100%;
+            display: block;
+
+            .last-content {
+                display: flex;
+                flex-direction: column;
+                gap: 1.4rem;
+                align-items: center;
+                justify-content: center;
+                height: calc(100% - 12.6rem);
+            }
+
+            .card {
+                width: calc(100% - 13.0rem);
+                background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
+                margin: 0 auto;
+                border-radius: map-get($boder-radius , b-14);
+                box-shadow: map-get($shadow, shadow-15);
+                height: calc(100% - 14.0rem);
+                position: relative;
+
+                p {
+                    position: absolute;
+                    left: 50%;
+                    top: 3rem;
+                    transform: translate(-50%, 0);
+                }
+            }
+
+            .last-btn {
+                .share {
+                    flex: .5rem;
+                    background: map-get($color, c-brown);
+                }
+
+                .solvek {
+                    flex: .5rem;
+                    background: map-get($color, txt-main);
+                }
+            }
+        }
+    }
+
+    // end page e
+
+    // company page s
+    &.black {
+        background: map-get($color, ending-bg);
+
+        .ending {
+            display: none;
+        }
+
+        .first {
+            color: map-get($color , c-white);
+        }
+        .header {
+            background: map-get($color, c-black);
+        }
+        .back {
+            background: url($icon-img + "arrow_w.png") 50% 50% / 2.0rem no-repeat;
+        }
+
+        .company-page {
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 12.6rem);
+            padding-top: 1.6rem;
+            box-sizing: border-box;
+            background: map-get($color, c-black);
+            .video {
+                min-height: 30.0rem;
+                height: 50vh;
+                video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+
+            .hompage {
+                flex:1;
+                padding: 0 1.6rem;
+                box-sizing: border-box;
+                .txt-box {
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 1.6rem;
+                }
+            }
+
+            .infortxt {
+                p {
+                    color:map-get($color , c-white);
+                    font-size: map-get($font-size, f-14);
+                    font-family: map-get($font, font-NanumSquare);
+                    line-height: 1.6;
+                    text-align: center;
+                    text-transform: uppercase;
+                }
+            }
+            .button {
+                background-color: map-get($color, c-brown);
+            }
+        }
+
+    }
+
+    // company page s
+
     .f-16 {
         line-height: 1.8;
     }
-    .last-content {
-        display: flex;
-        flex-direction: column;
-        gap: 1.4rem;
-        align-items: center;
-        justify-content: center;
-        height: calc(100% - 12.6rem);
-    }
-    .card {
-        width: calc(100% - 13.0rem);
-        background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-        margin: 0 auto;
-        border-radius: map-get($boder-radius , b-14);
-        box-shadow: map-get($shadow, shadow-15 );
-        height: calc(100% - 14.0rem);
-        position: relative;
-        p {
-            position: absolute;
-            left: 50%;
-            top:min(8vh, 10vh);
-            transform: translate(-50%, 0);
-        }
-    }   
-    .last-btn {
-        .share {
-            flex:.5rem;
-            background: map-get($color, c-brown);
-        }
-        .solvek {
-            flex:.5rem;
-            background: map-get($color, txt-main);
-        }
-    }
+
 }
-// last html e
+
+// last html 

@@ -265,7 +265,7 @@ button {
         transform: scale(.98)
     }
 }
-
+  
 .button {
     @extend %barButton;
     @include bar-button;
@@ -276,6 +276,10 @@ button {
 
     &.pink {
         background-color: map-get($color, c-pink);
+    }
+
+    &.blue {
+        background-color: map-get($color, c-blue);
     }
 
     &.orange {

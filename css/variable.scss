@@ -38,6 +38,7 @@ $color: (
     blur-bg:rgba(217, 217, 217, 0.4),
     black-bg50:rgba(0, 0, 0, 0.5),
     black-bg40:rgba(0, 0, 0, 0.4),
+    black-bg10:rgba(0, 0, 0, 0.1),
 
     liner-pink: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 50%, #ffe3e3ae 100%),
     liner-blue:linear-gradient(180deg, rgba(255, 255, 255, 0.00) 50%, #e3f4ffae 100%),
@@ -95,7 +96,9 @@ $boder-radius: (
 $ease: (
     ease-in-out-2: all .2s cubic-bezier(0.56, 0, 0.07, 1.01),
     ease-in-out-4: all .4s cubic-bezier(0.56, 0, 0.07, 1.01),
-    ease-in-out-6: all .4s cubic-bezier(0.56, 0, 0.07, 1.01),
+    ease-in-out-6: all .6s cubic-bezier(0.56, 0, 0.07, 1.01),
+
+    ease-in-out-8: all .8s cubic-bezier(0.79, 0.01, 0.07, 1.01),
 );
 
 

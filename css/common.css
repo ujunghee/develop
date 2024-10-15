@@ -277,10 +277,10 @@ button {
   font-family: "NanumMyeongjo";
 }
 
-.first, .last-btn button, .gobutton, .navigation button.nav, .reset, .submit, .button {
+.first, .last-btn button, .gobutton, .f-button, .reset, .submit, .button {
   font-family: "NanumSquare";
 }
-.first:hover, .last-btn button:hover, .gobutton:hover, .navigation button.nav:hover, .reset:hover, .submit:hover, .button:hover {
+.first:hover, .last-btn button:hover, .gobutton:hover, .f-button:hover, .reset:hover, .submit:hover, .button:hover {
   transform: scale(0.98);
 }
 
@@ -360,6 +360,7 @@ button {
 .navigation {
   background: #151515;
   width: 100%;
+  z-index: 10;
   height: 9rem;
 }
 .navigation ul {
@@ -384,15 +385,41 @@ button {
 .navigation button.nav:hover {
   background: #292929;
 }
+.navigation button.nav:hover {
+  transform: scale(0.92);
+}
 .navigation button.nav svg {
   width: 2.6rem;
   height: 2.6rem;
 }
 .navigation button.nav .fill {
   fill: #949494;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
 .navigation button.nav .stroke {
   stroke: #949494;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+}
+.navigation button.nav.on {
+  background: #292929;
+}
+.navigation button.nav.on .fill {
+  fill: #fff;
+}
+.navigation button.nav.on .stroke {
+  stroke: #fff;
+}
+.navigation button.nav.on.sp .stroke {
+  stroke: #D89B9B;
+}
+.navigation button.nav.on.su .stroke {
+  stroke: #98B8D8;
+}
+.navigation button.nav.on.au .stroke {
+  stroke: #F2B05B;
+}
+.navigation button.nav.on.wi .stroke {
+  stroke: #9DC0C4;
 }
 
 .f-button {
@@ -408,6 +435,11 @@ button {
   background: initial;
   color: #fff;
   padding: 1rem 0;
+  width: 100%;
+}
+.f-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
 }
 
 .close {
@@ -492,23 +524,29 @@ button {
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
   position: absolute;
-  display: none;
+  pointer-events: none;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 1.6rem;
+  z-index: 5;
+  visibility: hidden;
   gap: 1rem;
   box-sizing: border-box;
-  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+  transition: 0.6s ease;
   bottom: -60rem;
   left: 0;
 }
 .popup.on {
   bottom: 9rem;
+  pointer-events: all;
   display: flex;
+  visibility: visible;
+  transition: all 0.8s cubic-bezier(0.79, 0.01, 0.07, 1.01);
 }
 .popup.object {
-  height: 60%;
+  max-height: 60%;
+  min-height: 40%;
 }
 .popup ul {
   display: grid;
@@ -517,9 +555,14 @@ button {
   gap: 0.8rem;
   overflow-y: auto;
   box-sizing: border-box;
+  width: 100%;
 }
 .popup ul li {
   height: 100%;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+}
+.popup ul li:hover {
+  transform: scale(0.98);
 }
 .popup ul li .p-btn {
   background: rgba(255, 255, 255, 0.3);
@@ -627,14 +670,20 @@ button {
   gap: 2rem;
 }
 
+.palette {
+  width: 100%;
+}
 .palette ul {
+  width: 100%;
   display: flex;
+  justify-content: center;
   gap: 2.4rem;
 }
 .palette ul li {
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 .palette button {
   width: 3.5rem;

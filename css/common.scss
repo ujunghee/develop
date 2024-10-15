@@ -340,6 +340,7 @@ button {
 .navigation {
     background: map-get($color, footer-nav);
     width: 100%;
+    z-index: 10;
     height: 9rem;
 
     ul {
@@ -349,7 +350,6 @@ button {
         align-items: center;
         justify-content: center;
         gap: min(5vw - 1rem, 8rem);
-
         li {
             display: flex;
             flex-wrap: wrap;
@@ -358,7 +358,9 @@ button {
 
     button.nav {
         @include navbutton;
-        @extend %barButton;
+        &:hover {
+            transform: scale(.92)
+        }
 
         svg {
             width: 2.6rem;
@@ -367,22 +369,65 @@ button {
 
         .fill {
             fill: map-get($color, footer-icon);
+            transition: map-get($ease, ease-in-out-4);
         }
 
         .stroke {
             stroke: map-get($color, footer-icon);
+            transition: map-get($ease, ease-in-out-4);
+        }
+        &.on {
+            background: map-get($color, footer-hover);
+    
+            .fill {
+                fill: map-get($color, c-white);
+            }
+    
+            .stroke {
+                stroke: map-get($color, c-white);
+            }
+
+            &.sp {
+                .stroke {
+                    stroke: map-get($color, c-pink);
+                }
+            }
+            
+            &.su {
+                .stroke {
+                    stroke: map-get($color, c-blue);
+                }
+            }
+            
+            &.au {
+                .stroke {
+                    stroke: map-get($color, c-orange);
+                }
+            }
+            
+            &.wi {
+                .stroke {
+                    stroke: map-get($color, c-snowblue);
+                }
+            }
         }
     }
 }
 
 //more button
 .f-button {
+    @extend %barButton;
     @include NanumSquare;
     @include txt-box;
     @include m-sub;
     background: initial;
     color: #fff;
     padding: 1.0rem 0;
+    width: 100%;
+    &:hover {
+        background-color: map-get($color, black-bg10);
+        border-radius:map-get($boder-radius, b-10);
+    }
 }
 
 // close button

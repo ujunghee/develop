@@ -550,6 +550,7 @@ button {
 }
 
 .popup ul li {
+  aspect-ratio: 1;
   height: 100%;
   transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
 }
@@ -569,8 +570,8 @@ button {
 .popup ul li img {
   -o-object-fit: contain;
   object-fit: contain;
-  width: 80%;
-  height: 13rem;
+  width: 100%;
+  height: 70%;
 }
 
 .popup .scroll {

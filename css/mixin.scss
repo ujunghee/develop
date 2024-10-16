@@ -289,6 +289,7 @@
         li {
             height: 100%;
             transition: map-get($ease, ease-in-out-4);
+            aspect-ratio: 1 /1;
 
             &:hover {
                 transform: scale(.98)
@@ -303,8 +304,8 @@
             }
 
             img {
-                height: 13.0rem;
-                width: 80%;
+                height: 70%;
+                width: 100%;
                 object-fit: contain;
             }
         }

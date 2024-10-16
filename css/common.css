@@ -560,6 +560,7 @@ button {
 .popup ul li {
   height: 100%;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+  aspect-ratio: 1/1;
 }
 .popup ul li:hover {
   transform: scale(0.98);
@@ -572,8 +573,8 @@ button {
   border-radius: 1rem;
 }
 .popup ul li img {
-  height: 13rem;
-  width: 80%;
+  height: 70%;
+  width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }

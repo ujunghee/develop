@@ -170,7 +170,7 @@
   gap: 1.4rem;
   align-items: center;
   justify-content: center;
-  height: calc(100% - 12.6rem);
+  height: calc(100% - 12.6r em);
 }
 .last.white .ending .card {
   width: calc(100% - 13rem);

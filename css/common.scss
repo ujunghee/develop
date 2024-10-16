@@ -415,18 +415,34 @@ button {
 }
 
 //more button
-.f-button {
-    @extend %barButton;
-    @include NanumSquare;
-    @include txt-box;
-    @include m-sub;
-    background: initial;
-    color: #fff;
-    padding: 1.0rem 0;
-    width: 100%;
-    &:hover {
-        background-color: map-get($color, black-bg10);
-        border-radius:map-get($boder-radius, b-10);
+.f {
+    &-button {
+        @extend %barButton;
+        @include NanumSquare;
+        @include txt-box;
+        @include m-sub;
+        background: initial;
+        color: #fff;
+        padding: 1.0rem 0;
+        width: 100%;
+        &:hover {
+            background-color: map-get($color, black-bg10);
+            border-radius:map-get($boder-radius, b-10);
+        }
+    }
+    &-twist {
+        @extend %barButton;
+        @include NanumSquare;
+        @include txt-box;
+        @include m-sub;
+        background: initial;
+        color: #fff;
+        padding: 1.0rem 0;
+        width: 100%;
+        &:hover {
+            background-color: map-get($color, black-bg10);
+            border-radius:map-get($boder-radius, b-10);
+        }
     }
 }
 

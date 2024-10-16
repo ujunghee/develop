@@ -190,11 +190,11 @@
 }
 
 .last.white .ending .last-content {
+  height: calc(100% - 12.6r em);
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1.4rem;
-  height: calc(100% - 12.6rem);
   display: flex;
 }
 

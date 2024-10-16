@@ -216,6 +216,16 @@ button {
   font-weight: 700;
 }
 
+.s-14 {
+  color: #544d47;
+  text-align: center;
+  font-family: NanumMyeongjo;
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.8;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+}
+
 .f-s-13 {
   color: #000;
   align-items: center;
@@ -224,11 +234,19 @@ button {
   font-weight: 300;
 }
 
-.navigation button.nav, .reset, .submit, .button {
+.f-16 {
+  color: #544d47;
+  text-align: center;
+  font-family: NanumMyeongjo;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.first, .last-btn button, .gobutton, .f-button, .reset, .submit, .button {
   font-family: NanumSquare;
 }
 
-.navigation button.nav:hover, .reset:hover, .submit:hover, .button:hover {
+.first:hover, .last-btn button:hover, .gobutton:hover, .f-button:hover, .reset:hover, .submit:hover, .button:hover {
   transform: scale(.98);
 }
 
@@ -255,6 +273,10 @@ button {
 
 .button.pink {
   background-color: #d89b9b;
+}
+
+.button.blue {
+  background-color: #98b8d8;
 }
 
 .button.orange {
@@ -310,6 +332,7 @@ button {
 }
 
 .navigation {
+  z-index: 10;
   background: #151515;
   width: 100%;
   height: 9rem;
@@ -339,6 +362,7 @@ button {
 
 .navigation button.nav:hover {
   background: #292929;
+  transform: scale(.92);
 }
 
 .navigation button.nav svg {
@@ -348,10 +372,40 @@ button {
 
 .navigation button.nav .fill {
   fill: #949494;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
 }
 
 .navigation button.nav .stroke {
   stroke: #949494;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+}
+
+.navigation button.nav.on {
+  background: #292929;
+}
+
+.navigation button.nav.on .fill {
+  fill: #fff;
+}
+
+.navigation button.nav.on .stroke {
+  stroke: #fff;
+}
+
+.navigation button.nav.on.sp .stroke {
+  stroke: #d89b9b;
+}
+
+.navigation button.nav.on.su .stroke {
+  stroke: #98b8d8;
+}
+
+.navigation button.nav.on.au .stroke {
+  stroke: #f2b05b;
+}
+
+.navigation button.nav.on.wi .stroke {
+  stroke: #9dc0c4;
 }
 
 .f-button {
@@ -360,12 +414,18 @@ button {
   flex-direction: column;
   align-items: center;
   gap: 1.2rem;
+  width: 100%;
   padding: 1rem 0;
   font-family: NanumSquare;
   font-size: 1.4rem;
   font-weight: 500;
   transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
   display: flex;
+}
+
+.f-button:hover {
+  background-color: #0000001a;
+  border-radius: 1rem;
 }
 
 .close {
@@ -407,12 +467,49 @@ button {
   transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
 }
 
-.gobutton:hover {
-  transform: scale(.98);
+.last-btn {
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+  width: calc(100% - 3.2rem);
+  height: 5rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+  display: flex;
+  position: absolute;
+  bottom: 2rem;
+  left: 1.6rem;
+}
+
+.last-btn button {
+  color: #fff;
+  border-radius: 1rem;
+  height: 5rem;
+  font-size: 1.6rem;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+}
+
+.first {
+  color: #544d47;
+  background: initial;
+  font-size: 1.6rem;
+  font-weight: 500;
+  display: none;
+}
+
+.first.on {
+  display: block;
 }
 
 .popup {
   backdrop-filter: blur(2rem);
+  pointer-events: none;
+  z-index: 5;
+  visibility: hidden;
   box-sizing: border-box;
   background: #00000080;
   border-top-left-radius: 1rem;
@@ -423,20 +520,23 @@ button {
   gap: 1rem;
   width: 100%;
   padding: 1.6rem;
-  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
-  display: none;
+  transition: all .8s cubic-bezier(.43, 0, 0, 1.02);
   position: absolute;
   bottom: -60rem;
   left: 0;
 }
 
 .popup.on {
+  pointer-events: all;
+  visibility: visible;
+  transition: all .8s cubic-bezier(.43, 0, 0, 1.02);
   display: flex;
   bottom: 9rem;
 }
 
 .popup.object {
-  height: 60%;
+  min-height: 40%;
+  max-height: 50%;
 }
 
 .popup ul {
@@ -444,12 +544,18 @@ button {
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr;
   gap: .8rem;
+  width: 100%;
   display: grid;
   overflow-y: auto;
 }
 
 .popup ul li {
   height: 100%;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+}
+
+.popup ul li:hover {
+  transform: scale(.98);
 }
 
 .popup ul li .p-btn {
@@ -570,12 +676,19 @@ button {
   display: flex;
 }
 
+.palette {
+  width: 100%;
+}
+
 .palette ul {
+  justify-content: center;
   gap: 2.4rem;
+  width: 100%;
   display: flex;
 }
 
 .palette ul li {
+  box-sizing: border-box;
   justify-content: center;
   align-items: center;
   display: flex;
@@ -704,5 +817,12 @@ button {
   font-weight: 500;
   line-height: 1.8;
   transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+}
+
+.header {
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.6rem 1.6rem 0;
+  display: flex;
 }
 /*# sourceMappingURL=index.b0d15f20.css.map */

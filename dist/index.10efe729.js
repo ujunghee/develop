@@ -594,6 +594,9 @@ function loadPage(page, callback) {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 document.getElementById("content").innerHTML = xhr.responseText;
+                const selecpage = [
+                    "select.html"
+                ];
                 const decopage = [
                     "deco_spring.html",
                     "deco_summer.html",
@@ -601,75 +604,42 @@ function loadPage(page, callback) {
                     "deco_winter.html"
                 ];
                 if (decopage.includes(page)) {
-                    decoEvent();
+                    navigation();
                     sildeSwiper();
                 }
+                if (selecpage.includes(page)) select();
             }
             if (callback) callback();
         }
     };
     xhr.send();
 }
+window.loadPage = loadPage;
+// load 
 document.addEventListener("DOMContentLoaded", function() {
-    loadPage("deco_winter.html", function() {
-        Swieprobx();
+    loadPage("first.html", function() {
+        document.addEventListener("click", function(event) {
+            // 시작하기
+            if (event.target.classList.contains("start")) loadPage("select.html", select);
+            // 계절선택
+            if (event.target.classList.contains("pink")) loadPage("deco_spring.html");
+            if (event.target.classList.contains("blue")) loadPage("deco_summer.html");
+            if (event.target.classList.contains("orange")) loadPage("deco_autumn.html");
+            if (event.target.classList.contains("snowblue")) loadPage("deco_winter.html");
+        });
     });
 });
-window.loadPage = loadPage;
-//swiper 
-function Swieprobx() {
-    new Swiper(".mySwiper", {
-        effect: "coverflow",
-        grabCursor: true,
-        loop: true,
-        centeredSlides: true,
-        spaceBetween: 20,
-        slidesPerView: "1.5",
-        coverflowEffect: {
-            rotate: 0,
-            slideShadows: false
-        },
-        breakpoints: {
-            320: {
-                spaceBetween: 20
-            },
-            420: {
-                spaceBetween: 30
-            },
-            768: {
-                spaceBetween: 50
-            },
-            960: {
-                spaceBetween: 50
-            }
-        },
-        pagination: {
-            el: ".swiper-pagination"
-        },
-        on: {
-            slideChange: function() {
-                let slides = document.querySelectorAll(".swiper-slide");
-                slides.forEach((slide)=>{
-                    if (slide.classList.contains("swiper-slide-active")) slide.style.transform = "translateY(0)";
-                    if (slide.classList.contains("swiper-slide")) {
-                        slide.style.transform = "translateY(30px)";
-                        slide.style.transition = ".6s";
-                    }
-                });
-            }
-        }
-    });
-}
+// swiper
 function sildeSwiper() {
     var swiper = new Swiper(".slider-list", {
-        loop: true,
+        // loop: true,
         spaceBetween: 9,
         slidesPerView: 5,
         freeMode: true,
         watchSlidesProgress: true
     });
     new Swiper(".slider", {
-        loop: true,
+        // loop: true,
         thumbs: {
             swiper: swiper
         }

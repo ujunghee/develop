@@ -98,7 +98,8 @@ $ease: (
     ease-in-out-4: all .4s cubic-bezier(0.56, 0, 0.07, 1.01),
     ease-in-out-6: all .6s cubic-bezier(0.56, 0, 0.07, 1.01),
 
-    ease-in-out-8: all .8s cubic-bezier(0.79, 0.01, 0.07, 1.01),
+    ease-popup-op: all .8s cubic-bezier(0.43, 0, 0, 1.02),
+    ease-popup-of: all .8s cubic-bezier(0.43, 0, 0, 1.02)
 );
 
 

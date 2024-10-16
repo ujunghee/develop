@@ -261,7 +261,7 @@
     visibility: hidden;
     gap: 1rem;
     box-sizing: border-box;
-    transition: .6s ease;
+    transition: all .8s cubic-bezier(.43, 0, 0, 1.02);
     bottom: -60rem;
     left: 0;
 
@@ -270,7 +270,7 @@
         pointer-events: all;
         display: flex;
         visibility: visible;
-        transition: map-get($ease, ease-in-out-8);
+        transition: map-get($ease, ease-popup-op);
     }
 
     &.object {

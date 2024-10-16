@@ -533,7 +533,7 @@ button {
   visibility: hidden;
   gap: 1rem;
   box-sizing: border-box;
-  transition: 0.6s ease;
+  transition: all 0.8s cubic-bezier(0.43, 0, 0, 1.02);
   bottom: -60rem;
   left: 0;
 }
@@ -542,10 +542,10 @@ button {
   pointer-events: all;
   display: flex;
   visibility: visible;
-  transition: all 0.8s cubic-bezier(0.79, 0.01, 0.07, 1.01);
+  transition: all 0.8s cubic-bezier(0.43, 0, 0, 1.02);
 }
 .popup.object {
-  max-height: 60%;
+  max-height: 50%;
   min-height: 40%;
 }
 .popup ul {

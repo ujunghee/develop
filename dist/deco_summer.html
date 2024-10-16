@@ -1,10 +1,12 @@
 <div class="deco">
-    <div class="deco-header">
+    <div class="header">
         <button type="button" class="back"></button>
         <button type="submit" class="submit summer">완성</button>
     </div>
     <div class="deco-box summer" data-bg="" ;="">
-        <button type="button" class="reset"></button>
+        <button type="button" class="reset">
+            <span class="blind">삭제하기</span>
+        </button>
         <p class="deco-txt">아래 옵션을 활용하여<br>민화를 다채롭게 꾸며보세요.</p>
         
         <!-- 문구 작성 s -->
@@ -18,7 +20,7 @@
         <ul>
             <!-- 테이블 선택 -->
             <li>
-                <button type="button" class="nav furniture">
+                <button type="button" class="p-b nav furniture">
                     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 30 27" fill="none">
                         <rect class="stroke" x="0.666748" y="0.660156" width="28" height="3" rx="0.5" stroke-linecap="round"></rect>
                         <rect class="stroke" x="2.66673" y="3.66101" width="24" height="20" stroke-linecap="round"></rect>
@@ -32,7 +34,7 @@
             </li>
             <!-- 항아리 선택 -->
             <li>
-                <button type="button" class="nav jar">
+                <button type="button" class="p-b nav jar">
                     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 28" fill="none">
                         <mask id="path-1-inside-1_375_191" fill="white">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5667 1.66016C16.5667 1.10787 16.119 0.660156 15.5667 0.660156H8.56674C8.01446 0.660156 7.56674 1.10787 7.56674 1.66016V8.03477C7.56674 8.51885 7.21654 8.9273 6.75097 9.05988C1.06944 10.6778 -1.47192 17.9543 2.78653 22.7854C3.85615 23.9988 5.2388 24.8671 6.76058 25.3116C7.22222 25.4464 7.56674 25.8531 7.56674 26.334V26.6611C7.56674 27.2134 8.01446 27.6611 8.56674 27.6611H15.5667C16.119 27.6611 16.5667 27.2134 16.5667 26.6611V26.334C16.5667 25.8531 16.9113 25.4464 17.3729 25.3116C18.8946 24.8671 20.2772 23.9989 21.3468 22.7856C25.6055 17.9545 23.0642 10.6778 17.3825 9.05997C16.917 8.9274 16.5667 8.51894 16.5667 8.03487V1.66016Z"></path>
@@ -42,35 +44,8 @@
                 </button>
             </li>
 
-            <div class="popup">
-                <button class="scroll">
-                    <span type="button" class="scroll-bar"></span>
-                </button>
-                <ul>
-                    <li><button type="button" class="p-btn"><img src="/display-11.b2ebb111.png" alt="소반"></button>
-                    </li>
-                    <li><button type="button" class="p-btn"><img src="/display-12.6ab40f14.png" alt="소반"></button>
-                    </li>
-                    <li><button type="button" class="p-btn"><img src="/display-13.ff60653d.png" alt="소반"></button>
-                    </li>
-                    <li><button type="button" class="p-btn"><img src="/display-14.63a2cc66.png" alt="소반"></button>
-                    </li>
-                    <li><button type="button" class="p-btn"><img src="/display-15.7c6567e9.png" alt="소반"></button>
-                    </li>
-                    <li><button type="button" class="p-btn"><img src="/display-16.b62c4503.png" alt="소반"></button>
-                    </li>
-                    <li><button type="button" class="p-btn"><img src="/display-17.370598f3.png" alt="소반"></button>
-                    </li>
-                    <li><button type="button" class="p-btn"><img src="/display-18.7194ecf3.png" alt="소반"></button>
-                    </li>
-                    <li><button type="button" class="p-btn"><img src="/display-19.a140c114.png" alt="소반"></button>
-                    </li>
-                </ul>
-                <button type="button" class="more">가구 자세히보기 ></button>
-            </div>
-
             <!-- 책 선택 -->
-            <li><button type="button" class="nav book">
+            <li><button type="button" class="p-b nav book">
                     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 28" fill="none">
                         <path class="stroke" d="M1.96677 1.16064H19.3303C19.4579 1.16064 19.5807 1.20942 19.6735 1.29698L23.3099 4.72826C23.41 4.82272 23.4668 4.95428 23.4668 5.09192V26.6606C23.4668 26.9367 23.2429 27.1606 22.9668 27.1606H5.60769C5.47876 27.1606 5.35482 27.1108 5.26174 27.0216L1.62081 23.5324C1.52241 23.4381 1.46677 23.3077 1.46677 23.1714V1.66064C1.46677 1.3845 1.69062 1.16064 1.96677 1.16064Z"></path>
                         <path class="stroke" d="M1.96677 23.1189H19.4668M19.4668 23.1189V1.41064M19.4668 23.1189L22.9876 26.7023"></path>
@@ -80,7 +55,7 @@
             </li>
 
             <!-- 계절 선택 -->
-            <li><button type="button" class="nav season">
+            <li><button type="button" class="p-b nav season su">
                     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32" fill="none">
                         <path class="stroke" d="M10.5472 7.61507C9.03959 5.08464 11.1412 1.93722 14.0562 2.35991L15.2153 2.52799C15.6431 2.59001 16.0775 2.59009 16.5053 2.52822L17.6935 2.35636C20.6081 1.93481 22.7086 5.08177 21.2014 7.61169L16.6787 15.2029C16.5096 15.4868 16.2036 15.6606 15.8733 15.6606C15.5429 15.6606 15.2369 15.4868 15.0678 15.2029L10.5472 7.61507Z"></path>
                         <path class="stroke" d="M21.1994 24.7062C22.7069 27.2367 20.6053 30.3841 17.6903 29.9614L16.5312 29.7933C16.1035 29.7313 15.669 29.7312 15.2413 29.7931L14.053 29.9649C11.1384 30.3865 9.03789 27.2395 10.5452 24.7096L15.0678 17.1184C15.2369 16.8345 15.5429 16.6607 15.8733 16.6607C16.2036 16.6607 16.5096 16.8345 16.6787 17.1184L21.1994 24.7062Z"></path>
@@ -151,7 +126,9 @@
         <!-- 자세히보기 s -->
         <div class="infor">
             <div class="infor-wrap">
-                <button type="button" class="close"></button>
+                <button type="button" class="close">
+                    <span class="blind">닫기</span>
+                </button>
                 <div class="swiper slider">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -242,7 +219,7 @@
         <!-- 자세히보기 e -->
 
         <!-- 팔레트 s -->
-        <div class="popup colorpalette on">
+        <div class="popup colorpalette">
             <button class="scroll">
                 <span type="button" class="scroll-bar"></span>
             </button>

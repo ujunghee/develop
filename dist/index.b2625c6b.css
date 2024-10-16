@@ -53,23 +53,21 @@
   box-sizing: border-box;
   background: url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
   border-radius: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 30rem;
   height: 50vh;
   min-height: 38rem;
   padding: 2.5rem;
+  display: flex;
   position: relative;
   transform: translateY(30px) !important;
 }
 
 .select .swiper-slide .img-list {
-  flex: 1;
-  height: calc(100% - 7rem);
-}
-
-.select .swiper-slide button {
-  background: initial;
+  flex: .9;
   width: 100%;
-  height: 100%;
 }
 
 .select .swiper-slide.spring .img-list {
@@ -92,7 +90,7 @@
   width: 30rem;
   height: 50vh;
   min-height: 38rem;
-  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+  transition: all .6s cubic-bezier(.56, 0, .07, 1.01);
   transform: translateY(0) !important;
 }
 
@@ -132,14 +130,7 @@
   position: relative;
 }
 
-.deco .deco-header {
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.6rem 1.6rem 0;
-  display: flex;
-}
-
-.deco .deco-box {
+.deco-box {
   box-sizing: border-box;
   border-radius: 1.4rem;
   flex: 1;
@@ -148,25 +139,26 @@
   position: relative;
 }
 
-.deco .deco-box.spring {
+.deco-box.spring {
   background: linear-gradient(#fff0 50%, #ffe3e3ae 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
 }
 
-.deco .deco-box.summer {
+.deco-box.summer {
   background: linear-gradient(#fff0 50%, #e3f4ffae 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
 }
 
-.deco .deco-box.autumn {
+.deco-box.autumn {
   background: linear-gradient(#fff0 50%, #ffeedcae 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
 }
 
-.deco .deco-box.winter {
+.deco-box.winter {
   background: linear-gradient(#fff0 50%, #d8e6e8ae 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
 }
 
-.deco .deco-box .deco-txt {
+.deco-box .deco-txt {
   color: #9e8e81;
   text-align: center;
+  width: 100%;
   font-family: NanumMyeongjo;
   font-size: 1.4rem;
   font-weight: 300;
@@ -176,5 +168,132 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.last {
+  height: 100dvh;
+  min-height: 50rem;
+  position: relative;
+}
+
+.last.white {
+  background: #ededed;
+}
+
+.last.white .company-page {
+  display: none;
+}
+
+.last.white .ending {
+  height: 100%;
+  display: block;
+}
+
+.last.white .ending .last-content {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.4rem;
+  height: calc(100% - 12.6rem);
+  display: flex;
+}
+
+.last.white .ending .card {
+  background: url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
+  border-radius: 1.4rem;
+  width: calc(100% - 13rem);
+  height: calc(100% - 14rem);
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 1rem 1.5rem #00000026;
+}
+
+.last.white .ending .card p {
+  position: absolute;
+  top: 3rem;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.last.white .ending .last-btn .share {
+  background: #9e8e81;
+  flex: .5rem;
+}
+
+.last.white .ending .last-btn .solvek {
+  background: #544d47;
+  flex: .5rem;
+}
+
+.last.black {
+  background: #141414;
+}
+
+.last.black .ending {
+  display: none;
+}
+
+.last.black .first {
+  color: #fff;
+}
+
+.last.black .header {
+  background: #000;
+}
+
+.last.black .back {
+  background: url("arrow_w.bde12644.png") 50% / 2rem no-repeat;
+}
+
+.last.black .company-page {
+  box-sizing: border-box;
+  background: #000;
+  flex-direction: column;
+  height: calc(100% - 12.6rem);
+  padding-top: 1.6rem;
+  display: flex;
+}
+
+.last.black .company-page .video {
+  height: 50vh;
+  min-height: 30rem;
+}
+
+.last.black .company-page .video video {
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.last.black .company-page .hompage {
+  box-sizing: border-box;
+  flex: 1;
+  padding: 0 1.6rem;
+}
+
+.last.black .company-page .hompage .txt-box {
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.6rem;
+  height: 100%;
+  display: flex;
+}
+
+.last.black .company-page .infortxt p {
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: NanumSquare;
+  font-size: 1.4rem;
+  line-height: 3rem;
+}
+
+.last.black .company-page .button {
+  background-color: #9e8e81;
+}
+
+.last .f-16 {
+  line-height: 1.8;
 }
 /*# sourceMappingURL=index.b2625c6b.css.map */

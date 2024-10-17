@@ -144,25 +144,38 @@ function objectItem() {
             "청화철화’시’명나비문 팔각연적",
             "분청사기 박지연화문 편병",
         ],
+        book: [
+            "분홍색 서책",
+            "파란색 서책",
+            "노란색 서책",
+            "초록색 서책",
+            "꽃무늬 서책",
+            "보라색 서책",
+            "봄무늬 서책",
+            "여름무늬 서책",
+            "펼처진 서책",
+        ]
     }
     document.addEventListener('click', function(e) {
-        const el = e.target.closest('.nav');
+        const el = e.target.closest('.nav')
+        const img = document.querySelector('img')
         
         if (el) {
             let category;
             if (el.classList.contains('furniture')) {
-                category = 'furniture';
+                category = 'furniture'
             } else if (el.classList.contains('jar')) {
-                category = 'jar';
+                category = 'jar'
             } else if (el.classList.contains('book')) {
-                category = 'book';
+                category = 'book'
             }
             if (category && imgPaths[category]) {
                 popupImages.forEach((img, index) => {
                     if (index < imgPaths[category].length) {
                         img.src = imgPaths[category][index];
+                        img.setAttribute('alt', altPaths[category][index])
                     }else {
-                        console.warn('No matching category found.');
+                        console.warn('No matching category found.')
                     }
                 })
             }

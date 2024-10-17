@@ -192,6 +192,7 @@ textarea:focus:not(:focus-visible) {
 // 스크롤 커스텀 e
 
 button {
+    @include NanumSquare;
     cursor: pointer;
     border: none;
 }
@@ -259,8 +260,6 @@ button {
 
 // bar button
 %barButton {
-    @include NanumSquare;
-
     &:hover {
         transform: scale(.98)
     }
@@ -329,11 +328,7 @@ button {
 
 // back button
 .back {
-    background: url($icon-img + "arrow.png") 50% 50% / 2.0rem no-repeat;
-    height: 2.0rem;
-    width: 2.0rem;
-    padding: 1.0rem;
-    box-sizing: initial;
+    @include backbutton;
 }
 
 // nav button
@@ -414,7 +409,7 @@ button {
     }
 }
 
-//more button
+//footer button
 .f {
     &-button {
         @extend %barButton;

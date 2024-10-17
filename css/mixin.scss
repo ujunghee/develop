@@ -130,11 +130,11 @@
 }
 
 @mixin closebutton {
-    width: 2.0rem;
-    height: 2.0rem;
-    padding: 0;
+    width: 2.6rem;
+    height: 2.6rem;
     position: relative;
     float: right;
+    transition: map-get($ease , ease-in-out-2);
 
     &::before {
         position: absolute;
@@ -155,6 +155,12 @@
         left: 50%;
         transform: translateX(-50%) rotate(45deg);
         background: map-get($color, nav-slider-btn);
+    }
+
+    &:hover {
+        background: map-get($color, blur-bg);
+        transform: scale(.98);
+        border-radius: map-get($boder-radius, b-5);
     }
 }
 
@@ -209,6 +215,19 @@
     }
 }
 
+@mixin backbutton {
+    background: url($icon-img + "arrow.png") 50% 50% / 2.0rem no-repeat;
+    height: 2.0rem;
+    width: 2.0rem;
+    padding: 1.0rem;
+    box-sizing: initial;
+    transition: map-get($ease , ease-in-out-2);
+    &:hover {
+        background: map-get($color, blur-bg) url($icon-img + "arrow.png") 50% 50% / 1.8rem no-repeat;
+        transform: scale(.98);
+        border-radius: map-get($boder-radius, b-5);
+    }
+}
 
 //button e
 
@@ -366,12 +385,13 @@
         visibility:visible;
         opacity: 1;
         .infor-wrap {
-            transform: scale(1);
+            transform: translateY(0) scale(1);
             opacity: 1;
         }
         .digital {
             // transform: scale(1);
             opacity: 1;
+            transform: translateY(0);
         }
     }
 
@@ -379,7 +399,7 @@
         background-color: map-get($color, default-bg);
         border-radius: map-get($boder-radius, b-10);
         padding: 1.6rem;
-        transform: scale(.5);
+        transform: translateY(30px) scale(.8);
         opacity: 0;
         transition: map-get($ease, ease-in-out-6);
         .slider-list {
@@ -446,8 +466,8 @@
         gap: 2.0rem;
         transition: map-get($ease, ease-in-out-6);
         // transform: scale(.5);
-        opacity: 0
-        ;
+        opacity: 0;
+        transform: translateY(30px);
     }
 }
 

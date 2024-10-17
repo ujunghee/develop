@@ -1,10 +1,10 @@
-// const _ = window._;
-// const {gsap} = window;
+// const _ = window._
+// const {gsap} = window
 
 //ajax
 function loadPage(page, callback) {
-    const xhr = new XMLHttpRequest();
-    xhr.open('GET', page, true);
+    const xhr = new XMLHttpRequest()
+    xhr.open('GET', page, true)
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
@@ -15,23 +15,24 @@ function loadPage(page, callback) {
 
                 
                 if (decopage.includes(page)) {
-                    navigation();
-                    sildeSwiper();
+                    navigation()
+                    sildeSwiper()
+                    objectItem()
                 }
 
                 if (selecpage.includes(page)) {
-                    select();
+                    select()
                 }
             }
 
-            if (callback) callback();
+            if (callback) callback()
         }
-    };
-    xhr.send();
+    }
+    xhr.send()
 
 }
 
-window.loadPage = loadPage;
+window.loadPage = loadPage
 
 
 // load 
@@ -43,24 +44,29 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // 시작하기
             if (event.target.classList.contains('start')) {
-                loadPage('select.html', select);
+                loadPage('select.html', select)
             }
             
             // 계절선택
             if(event.target.classList.contains('pink')) {
-                loadPage('deco_spring.html');
+                loadPage('deco_spring.html')
             }
             if(event.target.classList.contains('blue')) {
-                loadPage('deco_summer.html');
+                loadPage('deco_summer.html')
             }
             if(event.target.classList.contains('orange')) {
-                loadPage('deco_autumn.html');
+                loadPage('deco_autumn.html')
             }
             if(event.target.classList.contains('snowblue')) {
-                loadPage('deco_winter.html');
+                loadPage('deco_winter.html')
+            }
+
+            // 뒤로가기
+            if (event.target.classList.contains('back')) {
+                loadPage('select.html')
             }
         })
-    });
+    })
 })
 
 
@@ -72,11 +78,11 @@ function sildeSwiper() {
         slidesPerView: 5,
         freeMode: true,
         watchSlidesProgress: true,
-    });
+    })
     new Swiper(".slider", {
         // loop: true,
         thumbs: {
             swiper: swiper,
         },
-    });
+    })
 }

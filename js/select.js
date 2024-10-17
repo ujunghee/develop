@@ -1,24 +1,24 @@
 
 //select page
 function select() {
-    const seasons = ['spring', 'summer', 'autumn', 'winter'];
+    const seasons = ['spring', 'summer', 'autumn', 'winter']
     const colors = {
         spring: 'pink',
         summer: 'blue',
         autumn: 'orange',
         winter: 'snowblue'
-    };
+    }
 
     function checkActiveSeason(swiper) {
-        const button = document.querySelector('.button');
-        if (!button) return;
+        const button = document.querySelector('.button')
+        if (!button) return
 
-        const realIndex = swiper.realIndex;
-        const activeSeason = seasons[realIndex];
+        const realIndex = swiper.realIndex
+        const activeSeason = seasons[realIndex]
 
         if (activeSeason) {
-            Object.values(colors).forEach(color => button.classList.remove(color));
-            button.classList.add(colors[activeSeason]);
+            Object.values(colors).forEach(color => button.classList.remove(color))
+            button.classList.add(colors[activeSeason])
         }
     }
 
@@ -55,25 +55,25 @@ function select() {
         },
         on: {
             init: function(swiper) {
-                checkActiveSeason(swiper);
+                checkActiveSeason(swiper)
             },
             slideChange: function (swiper) {
-                let slides = document.querySelectorAll(".swiper-slide");
+                let slides = document.querySelectorAll(".swiper-slide")
                 slides.forEach((slide) => {
                     if (slide.classList.contains("swiper-slide-active")) {
-                        slide.style.transform = "translateY(0)";
+                        slide.style.transform = "translateY(0)"
                     } else if (slide.classList.contains("swiper-slide")) {
-                        slide.style.transform = "translateY(30px)";
-                        slide.style.transition = ".6s";
+                        slide.style.transform = "translateY(30px)"
+                        slide.style.transition = ".6s"
                     }
-                });
+                })
                 
-                checkActiveSeason(swiper);
+                checkActiveSeason(swiper)
 
                 // pagination 수동 업데이트
-                swiper.pagination.render();
-                swiper.pagination.update();
+                swiper.pagination.render()
+                swiper.pagination.update()
             }
         }
-    });
+    })
 }

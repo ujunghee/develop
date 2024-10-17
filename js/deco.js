@@ -82,17 +82,7 @@ function navigation() {
 
 // 오브젝트 리스트 변환
 function objectItem() {
-    const popupImages = document.querySelectorAll('.piclist li img')
-    const nav = document.querySelector('.nav')
-
-    const objectList = {
-        nav: [
-            '.furniture',
-            '.jar',
-            '.book',
-            '.season',
-        ]
-    }
+    const popupImages = document.querySelectorAll('.piclist li img');
 
     const imgPaths = {
         furniture: [
@@ -131,38 +121,51 @@ function objectItem() {
         ]
     }
 
-
-    // 오브제 공통 영역 바꾸기
-    objectList.nav.forEach((selector, navIndex) => {
-        const el = nav.querySelector(selector);
-
+    const altPaths = {
+        furniture: [
+            "소반",
+            "뒤주",
+            "화탁",
+            "탁자",
+            "다기장",
+            "머릿 장",
+            "나주 호족반",
+            "수납장",
+            "꽃병 상",
+        ],
+        jar: [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        ],
+    }
+    document.addEventListener('click', function(e) {
+        const el = e.target.closest('.nav');
+        
         if (el) {
-            el.addEventListener('click', function () {
-                console.log(el + '클릭')
-                const category = selector.substring(1);
-
-                if (imgPaths[category]) {
-                    popupImages.forEach((image, imgIndex) => {
-                        // 각 이미지에 대해, 해당 카테고리의 같은 인덱스 이미지로 변경
-                        if (imgPaths[category][imgIndex]) {
-                            image.src = imgPaths[category][imgIndex];
-                            console.log(imgPaths[category][imgIndex])
-                        }
-                    });
-                }
-
-                // 현재 클릭된 버튼에 'on' 클래스 추가, 다른 버튼에서는 제거
-                objectList.nav.forEach((otherSelector, otherIndex) => {
-                    const otherEl = nav.querySelector(otherSelector);
-                    if (otherEl) {
-                        if (otherIndex === navIndex) {
-                            otherEl.classList.add('on');
-                        } else {
-                            otherEl.classList.remove('on');
-                        }
+            let category;
+            if (el.classList.contains('furniture')) {
+                category = 'furniture';
+            } else if (el.classList.contains('jar')) {
+                category = 'jar';
+            } else if (el.classList.contains('book')) {
+                category = 'book';
+            }
+            if (category && imgPaths[category]) {
+                popupImages.forEach((img, index) => {
+                    if (index < imgPaths[category].length) {
+                        img.src = imgPaths[category][index];
+                    }else {
+                        console.warn('No matching category found.');
                     }
-                });
-            });
+                })
+            }
         }
     });
 }

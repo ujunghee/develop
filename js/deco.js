@@ -138,6 +138,7 @@ function objectItem() {
 
         if (el) {
             el.addEventListener('click', function () {
+                console.log(el + '클릭')
                 const category = selector.substring(1);
 
                 if (imgPaths[category]) {
@@ -145,6 +146,7 @@ function objectItem() {
                         // 각 이미지에 대해, 해당 카테고리의 같은 인덱스 이미지로 변경
                         if (imgPaths[category][imgIndex]) {
                             image.src = imgPaths[category][imgIndex];
+                            console.log(imgPaths[category][imgIndex])
                         }
                     });
                 }

@@ -296,24 +296,6 @@
         min-height: 40%;
         .buttonbox {
             width: 100%;
-            .f-twist {
-                display: none;
-                &.on {
-                    display: block;
-                }
-            }
-            .f-button {
-                display: none;
-                &.on {
-                    display: block;
-                }
-            }
-            .f-season {
-                display: none;
-                &.on {
-                    display: block;
-                }
-            }
         }
     }
 

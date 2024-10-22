@@ -298,27 +298,36 @@ function objectItem() {
         ],
     }
 
-    // 카테고리 설정을 객체로 분리
+    // 카테고리 설정
     const categoryConfig = {
         furniture: {
             buttonStates: { fButton: true, fTwist: false },
-            name: 'furniture'
+            name: 'furniture',
+            text: '가구 자세히보기 >'
         },
         jar: {
             buttonStates: { fButton: true, fTwist: false },
-            name: 'jar'
+            name: 'jar',
+            text: '도자기 자세히보기 >'
         },
         book: {
             buttonStates: { fButton: false, fTwist: true },
-            name: 'book'
+            name: 'book',
         },
         season: {
             buttonStates: { fButton: true, fTwist: false },
-            name: 'furniture'
+            name: 'furniture',
+            text: {
+                spring: "봄의 만물 자세히보기 >",
+                summer: "여름의 만물 자세히보기 >",
+                autumn: "가을의 만물 자세히보기 >",
+                winter: "겨울의 만물 자세히보기 >",
+            }
         },
     };
 
-    // 이벤트 리스너 함수를 분리하여 관리
+
+    // navigation 클릭 이벤트
     document.addEventListener('click', handleNavClick);
     let seasonValue = 'spring';
 
@@ -334,31 +343,40 @@ function objectItem() {
             navElement.classList.contains(key)
         );
 
+        // 버튼 상태 업데이트
+
         if (!category) {
             console.warn('유효하지 않은 카테고리입니다.');
             return;
         }
 
-        // 계절 버튼 클릭시 seasonValue 업데이트
+        // buttonStates에 따라 버튼 표시/숨김 처리
+        if (fButton) {
+            fButton.style.display = categoryConfig[category].buttonStates.fButton ? 'block' : 'none';
+        }
+        if (fTwist) {
+            fTwist.style.display = categoryConfig[category].buttonStates.fTwist ? 'block' : 'none';
+        }
+
+        // 텍스트 업데이트
         if (category === 'season') {
             const clickedSeason = navElement.dataset.season || navElement.value;
-            if (clickedSeason) {
-                seasonValue = clickedSeason;
+            if (clickedSeason && fButton) {
+                fButton.textContent = categoryConfig.season.text[clickedSeason];
+            }
+            seasonValue = clickedSeason;
+        } else {
+            if (fButton) {
+                fButton.textContent = categoryConfig[category].text;
             }
         }
         
-        // 버튼 상태 업데이트
-        const { buttonStates } = categoryConfig[category];
-        fButton.classList.toggle('on', buttonStates.fButton);
-        fTwist.classList.toggle('on', buttonStates.fTwist);
-
-
         // 이미지 업데이트
         updateImages(category);
     }
 
 
-    // 버튼 클릭 이벤트
+    // 이미지 이벤트
     function updateImages(category) {
 
         if (!imgPaths[category]) {

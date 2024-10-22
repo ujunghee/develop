@@ -156,29 +156,68 @@ function objectItem() {
             "펼처진 서책",
         ]
     }
-    document.addEventListener('click', function(e) {
-        const el = e.target.closest('.nav')
-        const img = document.querySelector('img')
-        
-        if (el) {
-            let category;
-            if (el.classList.contains('furniture')) {
-                category = 'furniture'
-            } else if (el.classList.contains('jar')) {
-                category = 'jar'
-            } else if (el.classList.contains('book')) {
-                category = 'book'
-            }
-            if (category && imgPaths[category]) {
-                popupImages.forEach((img, index) => {
-                    if (index < imgPaths[category].length) {
-                        img.src = imgPaths[category][index];
-                        img.setAttribute('alt', altPaths[category][index])
-                    }else {
-                        console.warn('No matching category found.')
-                    }
-                })
-            }
+
+        // 카테고리 설정을 객체로 분리
+    const categoryConfig = {
+        furniture: {
+            buttonStates: { fButton: true, fTwist: false },
+            name: 'furniture'
+        },
+        jar: {
+            buttonStates: { fButton: true, fTwist: false },
+            name: 'jar'
+        },
+        book: {
+            buttonStates: { fButton: false, fTwist: true },
+            name: 'book'
         }
-    });
+    };
+
+    // 이벤트 리스너 함수를 분리하여 관리
+    document.addEventListener('click', handleNavClick);
+
+    function handleNavClick(e) {
+        const navElement = e.target.closest('.nav');
+        if (!navElement) return;
+
+        const fButton = document.querySelector('.f-button');
+        const fTwist = document.querySelector('.f-twist');
+        
+        // 현재 클릭된 요소의 카테고리 찾기
+        const category = Object.keys(categoryConfig).find(key => 
+            navElement.classList.contains(key)
+        );
+
+        if (!category) {
+            console.warn('유효하지 않은 카테고리입니다.');
+            return;
+        }
+
+        // 버튼 상태 업데이트
+        const { buttonStates } = categoryConfig[category];
+        fButton.classList.toggle('on', buttonStates.fButton);
+        fTwist.classList.toggle('on', buttonStates.fTwist);
+
+        // 이미지 업데이트
+        updateImages(category);
+
+        // 좌우반전
+
+
+    }
+
+    function updateImages(category) {
+        if (!imgPaths[category]) {
+            console.warn(`${category}에 대한 이미지 경로가 없습니다.`);
+            return;
+        }
+
+        popupImages.forEach((img, index) => {
+            if (index < imgPaths[category].length) {
+                img.src = imgPaths[category][index];
+                img.alt = altPaths[category][index];
+            } 
+            // else if()
+        });
+    }
 }

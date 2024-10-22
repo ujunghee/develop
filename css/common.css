@@ -591,6 +591,12 @@ button {
 .popup.object .buttonbox .f-button.on {
   display: block;
 }
+.popup.object .buttonbox .f-season {
+  display: none;
+}
+.popup.object .buttonbox .f-season.on {
+  display: block;
+}
 .popup ul {
   display: grid;
   flex-wrap: wrap;

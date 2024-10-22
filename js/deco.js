@@ -157,7 +157,102 @@ function objectItem() {
         ]
     }
 
-        // 카테고리 설정을 객체로 분리
+    // 시즌
+    const seasonConfig = {
+        spring: [
+            "./image/object/season/spring/display-38.png",
+            "./image/object/season/spring/display-39.png",
+            "./image/object/season/spring/display-40.png",
+            "./image/object/season/spring/display-41.png",
+            "./image/object/season/spring/display-42.png",
+            "./image/object/season/spring/display-43.png",
+            "./image/object/season/spring/display-44.png",
+            "./image/object/season/spring/display-45.png",
+            "./image/object/season/spring/display-46.png",
+        ],
+        summer: [
+            "./image/object/season/summer/display-47.png",
+            "./image/object/season/summer/display-48.png",
+            "./image/object/season/summer/display-49.png",
+            "./image/object/season/summer/display-50.png",
+            "./image/object/season/summer/display-51.png",
+            "./image/object/season/summer/display-52.png",
+            "./image/object/season/summer/display-53.png",
+            "./image/object/season/summer/display-54.png",
+            "./image/object/season/summer/display-55.png",
+        ],
+        autumn: [
+            "./image/object/season/autumn/display-65.png",
+            "./image/object/season/autumn/display-66.png",
+            "./image/object/season/autumn/display-67.png",
+            "./image/object/season/autumn/display-68.png",
+            "./image/object/season/autumn/display-69.png",
+            "./image/object/season/autumn/display-70.png",
+            "./image/object/season/autumn/display-71.png",
+            "./image/object/season/autumn/display-72.png",
+            "./image/object/season/autumn/display-73.png",
+        ],
+        winter: [
+            "./image/object/season/winter/display-56.png",
+            "./image/object/season/winter/display-57.png",
+            "./image/object/season/winter/display-58.png",
+            "./image/object/season/winter/display-59.png",
+            "./image/object/season/winter/display-60.png",
+            "./image/object/season/winter/display-61.png",
+            "./image/object/season/winter/display-62.png",
+            "./image/object/season/winter/display-63.png",
+            "./image/object/season/winter/display-64.png",
+        ]
+    };
+
+    const seasonAlt = {
+        spring: [
+            "젊음과 청춘, 아름다움",
+            "봄, 번영",
+            "봄, 4월의 꽃",
+            "불운을 내쫓는, 좋은 소식",
+            "봄, 번영, 지적성취",
+            "행복",
+            "변화와 불멸, 기쁨",
+            "변화와 불멸, 기쁨",
+            "변화와 불멸, 기쁨",
+        ],
+        summer: [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        ],
+        autumn: [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        ],
+        winter: [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        ],
+    }
+
+    // 카테고리 설정을 객체로 분리
     const categoryConfig = {
         furniture: {
             buttonStates: { fButton: true, fTwist: false },
@@ -170,14 +265,18 @@ function objectItem() {
         book: {
             buttonStates: { fButton: false, fTwist: true },
             name: 'book'
-        }
+        },
+        season: {
+            buttonStates: { fButton: true, fTwist: false },
+            name: 'furniture'
+        },
     };
 
     // 이벤트 리스너 함수를 분리하여 관리
     document.addEventListener('click', handleNavClick);
 
     function handleNavClick(e) {
-        const navElement = e.target.closest('.nav');
+        const navElement = e.target.closest('.p-b');
         if (!navElement) return;
 
         const fButton = document.querySelector('.f-button');
@@ -198,11 +297,11 @@ function objectItem() {
         fButton.classList.toggle('on', buttonStates.fButton);
         fTwist.classList.toggle('on', buttonStates.fTwist);
 
+
         // 이미지 업데이트
         updateImages(category);
 
         // 좌우반전
-
 
     }
 

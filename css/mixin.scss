@@ -308,6 +308,12 @@
                     display: block;
                 }
             }
+            .f-season {
+                display: none;
+                &.on {
+                    display: block;
+                }
+            }
         }
     }
 

@@ -122,16 +122,16 @@
   position: relative;
 }
 .deco-box.spring {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(255, 227, 227, 0.6823529412) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 227, 227, 0.8078431373) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
 }
 .deco-box.summer {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(227, 244, 255, 0.6823529412) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(227, 244, 255, 0.8078431373) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
 }
 .deco-box.autumn {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(255, 238, 220, 0.6823529412) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 238, 220, 0.8078431373) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
 }
 .deco-box.winter {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, rgba(216, 230, 232, 0.6823529412) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(216, 230, 232, 0.8078431373) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
 }
 .deco-box .deco-txt {
   font-family: "NanumMyeongjo";

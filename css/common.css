@@ -579,24 +579,6 @@ button {
 .popup.object .buttonbox {
   width: 100%;
 }
-.popup.object .buttonbox .f-twist {
-  display: none;
-}
-.popup.object .buttonbox .f-twist.on {
-  display: block;
-}
-.popup.object .buttonbox .f-button {
-  display: none;
-}
-.popup.object .buttonbox .f-button.on {
-  display: block;
-}
-.popup.object .buttonbox .f-season {
-  display: none;
-}
-.popup.object .buttonbox .f-season.on {
-  display: block;
-}
 .popup ul {
   display: grid;
   flex-wrap: wrap;
@@ -626,6 +608,10 @@ button {
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+}
+.popup ul li img.rotated {
+  transform: scaleX(-1);
 }
 .popup .scroll {
   width: 100%;

@@ -82,7 +82,7 @@ function navigation() {
 
 // 오브젝트 리스트 변환
 function objectItem() {
-    const popupImages = document.querySelectorAll('.piclist li img');
+    const popupImages = document.querySelectorAll('.piclist li img')
 
 
     // 가구, 도자기, 책 이미지
@@ -324,55 +324,55 @@ function objectItem() {
                 winter: "겨울의 만물 자세히보기 >",
             }
         },
-    };
+    }
 
 
     // navigation 클릭 이벤트
-    document.addEventListener('click', handleNavClick);
-    let seasonValue = 'spring';
+    document.addEventListener('click', handleNavClick)
+    let seasonValue = 'spring'
 
     function handleNavClick(e) {
-        const navElement = e.target.closest('.p-b');
-        if (!navElement) return;
+        const navElement = e.target.closest('.p-b')
+        if (!navElement) return
 
-        const fButton = document.querySelector('.f-button');
-        const fTwist = document.querySelector('.f-twist');
+        const fButton = document.querySelector('.f-button')
+        const fTwist = document.querySelector('.f-twist')
 
         // 현재 클릭된 요소의 카테고리 찾기
         const category = Object.keys(categoryConfig).find(key =>
             navElement.classList.contains(key)
-        );
+        )
 
         // 버튼 상태 업데이트
-
         if (!category) {
-            console.warn('유효하지 않은 카테고리입니다.');
-            return;
+            console.warn('유효하지 않은 카테고리입니다.')
+            return
         }
 
         // buttonStates에 따라 버튼 표시/숨김 처리
         if (fButton) {
-            fButton.style.display = categoryConfig[category].buttonStates.fButton ? 'block' : 'none';
+            fButton.style.display = categoryConfig[category].buttonStates.fButton ? 'block' : 'none'
         }
         if (fTwist) {
-            fTwist.style.display = categoryConfig[category].buttonStates.fTwist ? 'block' : 'none';
+            fTwist.style.display = categoryConfig[category].buttonStates.fTwist ? 'block' : 'none'
         }
+
 
         // 텍스트 업데이트
         if (category === 'season') {
-            const clickedSeason = navElement.dataset.season || navElement.value;
+            const clickedSeason = navElement.dataset.season || navElement.value
             if (clickedSeason && fButton) {
-                fButton.textContent = categoryConfig.season.text[clickedSeason];
+                fButton.textContent = categoryConfig.season.text[clickedSeason]
             }
-            seasonValue = clickedSeason;
+            seasonValue = clickedSeason
         } else {
             if (fButton) {
-                fButton.textContent = categoryConfig[category].text;
+                fButton.textContent = categoryConfig[category].text
             }
         }
-        
+
         // 이미지 업데이트
-        updateImages(category);
+        updateImages(category)
     }
 
 
@@ -380,28 +380,58 @@ function objectItem() {
     function updateImages(category) {
 
         if (!imgPaths[category]) {
-            console.warn(`${category}에 대한 이미지 경로가 없습니다.`);
-            return;
+            console.warn(`${category}에 대한 이미지 경로가 없습니다.`)
+            return
         }
 
+        // 좌우반전 이벤트 s
+        const fTwist = document.querySelector('.f-twist')
+        let isRotate = false;
+
+        fTwist.removeEventListener('click', handleRotation);
+
+        function handleRotation() {
+            if (fTwist.style.display === 'block') {
+                isRotate = !isRotate;
+                popupImages.forEach(img => {
+                    if (isRotate) {
+                        img.classList.add('rotated');
+                    } else {
+                        img.classList.remove('rotated');
+                    }
+                });
+            }
+        }
+        fTwist.addEventListener('click', handleRotation);
+        // 좌우반전 이벤트 e
+
+
         popupImages.forEach((img, index) => {
+
+            // 좌우반전
+            img.classList.remove('rotated');
+
+            // 카테고리별 이미지 교체
             if (category === 'season') {
                 if (index < imgPaths.season[seasonValue].length) {
-                    img.src = imgPaths.season[seasonValue][index];
-                    img.alt = altPaths.season[seasonValue][index];
+                    img.src = imgPaths.season[seasonValue][index]
+                    img.alt = altPaths.season[seasonValue][index]
+
                 } else {
-                    img.src = '';
-                    img.alt = '';
+                    img.src = ''
+                    img.alt = ''
                 }
             } else {
                 if (index < imgPaths[category].length) {
-                    img.src = imgPaths[category][index];
-                    img.alt = altPaths[category][index];
+                    img.src = imgPaths[category][index]
+                    img.alt = altPaths[category][index]
+
                 } else {
-                    img.src = '';
-                    img.alt = '';
+                    img.src = ''
+                    img.alt = ''
                 }
             }
-        });
+
+        })
     }
 }

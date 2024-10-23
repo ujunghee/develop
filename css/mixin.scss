@@ -265,7 +265,7 @@
 // popup
 @mixin popup {
     width: 100%;
-    background: map-get($color, black-bg50);
+    background: map-get($color, black-bg00);
     backdrop-filter: $blur20;
     border-top-right-radius: map-get($boder-radius , b-10);
     border-top-left-radius: map-get($boder-radius , b-10);

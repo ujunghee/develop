@@ -83,6 +83,8 @@ function navigation() {
 // 오브젝트 리스트 변환
 function objectItem() {
     const popupImages = document.querySelectorAll('.piclist li img')
+    const slideImagesMain = document.querySelectorAll('.infor-wrap .slider img')
+    const dlideImagesList = document.querySelectorAll('.infor-wrap .slider-list img')
 
 
     // 가구, 도자기, 책 이미지
@@ -297,6 +299,7 @@ function objectItem() {
             "학자의 표상",
         ],
     }
+    
 
     // 카테고리 설정
     const categoryConfig = {
@@ -328,61 +331,77 @@ function objectItem() {
 
 
     // navigation 클릭 이벤트
-    document.addEventListener('click', handleNavClick)
-    let seasonValue = 'spring'
+    const BUTTON_SELECTORS = {
+        fButton: '.f-button',
+        fTwist: '.f-twist'
+    };
 
+    // 상태 관리
+    let seasonValue = 'spring';
+
+    // 네비게이션 클릭 이벤트 핸들러
     function handleNavClick(e) {
-        const navElement = e.target.closest('.p-b')
-        if (!navElement) return
+        const navElement = e.target.closest('.p-b');
+        if (!navElement) return;
 
-        const fButton = document.querySelector('.f-button')
-        const fTwist = document.querySelector('.f-twist')
+        const category = findCategory(navElement);
+        if (!isValidCategory(category)) return;
 
-        // 현재 클릭된 요소의 카테고리 찾기
-        const category = Object.keys(categoryConfig).find(key =>
-            navElement.classList.contains(key)
-        )
-
-        // 버튼 상태 업데이트
-        if (!category) {
-            console.warn('유효하지 않은 카테고리입니다.')
-            return
-        }
-
-        // buttonStates에 따라 버튼 표시/숨김 처리
-        if (fButton) {
-            fButton.style.display = categoryConfig[category].buttonStates.fButton ? 'block' : 'none'
-        }
-        if (fTwist) {
-            fTwist.style.display = categoryConfig[category].buttonStates.fTwist ? 'block' : 'none'
-        }
-
-
-        // 텍스트 업데이트
-        if (category === 'season') {
-            const clickedSeason = navElement.dataset.season || navElement.value
-            if (clickedSeason && fButton) {
-                fButton.textContent = categoryConfig.season.text[clickedSeason]
-            }
-            seasonValue = clickedSeason
-        } else {
-            if (fButton) {
-                fButton.textContent = categoryConfig[category].text
-            }
-        }
-
-        // 이미지 업데이트
-        updateImages(category)
+        updateButtonVisibility(category);
+        updateButtonText(category, navElement);
+        updateImages(category);
     }
+
+    // 클릭된 요소의 카테고리 찾기
+    function findCategory(element) {
+        return Object.keys(categoryConfig).find(key =>
+            element.classList.contains(key)
+        );
+    }
+
+    // 카테고리 유효성 검사
+    function isValidCategory(category) {
+        if (!category) {
+            console.warn('유효하지 않은 카테고리입니다.');
+            return false;
+        }
+        return true;
+    }
+
+    // 버튼 표시/숨김 상태 업데이트
+    function updateButtonVisibility(category) {
+        const buttonStates = categoryConfig[category].buttonStates;
+
+        Object.entries(BUTTON_SELECTORS).forEach(([key, selector]) => {
+            const element = document.querySelector(selector);
+            if (element) {
+                element.style.display = buttonStates[key] ? 'block' : 'none';
+            }
+        });
+    }
+
+    // 버튼 텍스트 업데이트
+    function updateButtonText(category, navElement) {
+        const fButton = document.querySelector(BUTTON_SELECTORS.fButton);
+        if (!fButton) return;
+
+        if (category === 'season') {
+            const clickedSeason = navElement.dataset.season || navElement.value;
+            if (clickedSeason) {
+                fButton.textContent = categoryConfig.season.text[clickedSeason];
+                seasonValue = clickedSeason;
+            }
+        } else {
+            fButton.textContent = categoryConfig[category].text;
+        }
+    }
+
+    // 이벤트 리스너 등록
+    document.addEventListener('click', handleNavClick);
 
 
     // 이미지 이벤트
     function updateImages(category) {
-
-        if (!imgPaths[category]) {
-            console.warn(`${category}에 대한 이미지 경로가 없습니다.`)
-            return
-        }
 
         // 좌우반전 이벤트 s
         const fTwist = document.querySelector('.f-twist')
@@ -403,35 +422,38 @@ function objectItem() {
             }
         }
         fTwist.addEventListener('click', handleRotation);
-        // 좌우반전 이벤트 e
 
 
-        popupImages.forEach((img, index) => {
-
-            // 좌우반전
-            img.classList.remove('rotated');
-
-            // 카테고리별 이미지 교체
-            if (category === 'season') {
-                if (index < imgPaths.season[seasonValue].length) {
-                    img.src = imgPaths.season[seasonValue][index]
-                    img.alt = altPaths.season[seasonValue][index]
-
+        // 메뉴 카테고리별 이미지 교체
+        function updateImagesByCategory(imageElements, category) {
+            imageElements.forEach((img, index) => {
+                img.classList.remove('rotated');
+        
+                const paths = category === 'season' ? 
+                    {
+                        images: imgPaths.season[seasonValue],
+                        alts: altPaths.season[seasonValue]
+                    } :
+                    {
+                        images: imgPaths[category],
+                        alts: altPaths[category]
+                    };
+        
+                if (index < paths.images.length) {
+                    img.src = paths.images[index];
+                    img.alt = paths.alts[index];
                 } else {
-                    img.src = ''
-                    img.alt = ''
+                    img.src = '';
+                    img.alt = '';
                 }
-            } else {
-                if (index < imgPaths[category].length) {
-                    img.src = imgPaths[category][index]
-                    img.alt = altPaths[category][index]
-
-                } else {
-                    img.src = ''
-                    img.alt = ''
-                }
-            }
-
-        })
+            });
+        }
+        
+        // 사용
+        updateImagesByCategory(popupImages, category);
+        updateImagesByCategory(slideImagesMain, category);
+        updateImagesByCategory(dlideImagesList, category);
     }
+
+    return { imgPaths, altPaths, seasonAlt };
 }

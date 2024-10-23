@@ -1,6 +1,6 @@
 @import "SUIT/SUIT.css";
 
-$blur20: blur(2.0rem);
+$blur20: blur(1.7rem) brightness(0.5);
 $blur15: blur(1.5rem);
 $main-bg-img: "../image/main/";
 $icon-img: "../image/icon/";
@@ -39,6 +39,7 @@ $color: (
     black-bg50:rgba(0, 0, 0, 0.5),
     black-bg40:rgba(0, 0, 0, 0.4),
     black-bg10:rgba(0, 0, 0, 0.1),
+    black-bg00:rgba(0, 0, 0, 0.0),
 
     liner-pink: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, #ffe3e3ce 100%),
     liner-blue:linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, #e3f4ffce 100%),

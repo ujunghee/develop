@@ -442,9 +442,25 @@ function objectItem() {
                 if (index < paths.images.length) {
                     img.src = paths.images[index];
                     img.alt = paths.alts[index];
+                    // 이미지의 부모 요소(.swiper-slide)에서 .s-15 클래스를 찾아 텍스트 업데이트
+                    const slideElement = img.closest('.swiper-slide');
+                    if (slideElement) {
+                        const nameElement = slideElement.querySelector('.s-15');
+                        if (nameElement) {
+                            nameElement.textContent = paths.alts[index];
+                        }
+                    }
                 } else {
                     img.src = '';
                     img.alt = '';
+                    // 빈 이미지일 경우 텍스트도 비움
+                    const slideElement = img.closest('.swiper-slide');
+                    if (slideElement) {
+                        const nameElement = slideElement.querySelector('.s-15');
+                        if (nameElement) {
+                            nameElement.textContent = '';
+                        }
+                    }
                 }
             });
         }

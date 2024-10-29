@@ -148,6 +148,11 @@
   left: 50%;
   position: absolute;
   width: 100%;
+  visibility: hidden;
+}
+.deco .composition {
+  width: 100%;
+  height: calc(100% - 36px);
 }
 
 .last {

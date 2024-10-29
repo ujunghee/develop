@@ -35,7 +35,6 @@ function loadPage(page, callback) {
 
 window.loadPage = loadPage
 
-
 // load 
 document.addEventListener('DOMContentLoaded', function () {
     loadPage('first.html', function () {
@@ -49,19 +48,19 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // 계절선택
             if(event.target.classList.contains('pink')) {
-                selectedSeason = 'deco_spring.html'
+                sessionStorage.setItem('selectedSeason', 'deco_spring.html');
                 loadPage('deco_spring.html')
             }
             if(event.target.classList.contains('blue')) {
-                selectedSeason = 'deco_summer.html'
+                sessionStorage.setItem('selectedSeason', 'deco_summer.html');
                 loadPage('deco_summer.html')
             }
             if(event.target.classList.contains('orange')) {
-                selectedSeason = 'deco_autumn.html'
+                sessionStorage.setItem('selectedSeason', 'deco_autumn.html');
                 loadPage('deco_autumn.html')
             }
             if(event.target.classList.contains('snowblue')) {
-                selectedSeason = 'deco_winter.html'
+                sessionStorage.setItem('selectedSeason', 'deco_winter.html');
                 loadPage('deco_winter.html')
             }
 
@@ -70,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 loadPage('select.html')
             }
             if (event.target.classList.contains('season-prev')) {
-                loadPage(selectedSeason)
+                loadPage(sessionStorage.getItem('selectedSeason'));
             }
 
             // 완성하기

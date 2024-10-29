@@ -184,7 +184,13 @@
             left: 50%;
             position: absolute;
             width: 100%;
+            // 잠시 오프
+            visibility: hidden;
         }
+    }
+    .composition {
+        width: 100%;
+        height: calc(100% - 36px);
     }
 
 }

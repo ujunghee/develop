@@ -19,6 +19,7 @@ function loadPage(page, callback) {
                     sildeSwiper()
                     objectItem()
                     palettebg()
+                    initDraggableComposition()
                 }
 
                 if (selecpage.includes(page)) {

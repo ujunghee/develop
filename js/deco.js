@@ -299,7 +299,7 @@ function objectItem() {
             "학자의 표상",
         ],
     }
-    
+
 
     // 카테고리 설정
     const categoryConfig = {
@@ -334,70 +334,86 @@ function objectItem() {
     const BUTTON_SELECTORS = {
         fButton: '.f-button',
         fTwist: '.f-twist'
-    };
+    }
 
     // 상태 관리
-    let seasonValue = 'spring';
+    let seasonValue = 'spring'
 
     // 네비게이션 클릭 이벤트 핸들러
     function handleNavClick(e) {
-        const navElement = e.target.closest('.p-b');
-        if (!navElement) return;
+        const navElement = e.target.closest('.p-b')
+        if (!navElement) return
 
-        const category = findCategory(navElement);
-        if (!isValidCategory(category)) return;
+        const category = findCategory(navElement)
+        if (!isValidCategory(category)) return
 
-        updateButtonVisibility(category);
-        updateButtonText(category, navElement);
-        updateImages(category);
+        updateButtonVisibility(category)
+        updateButtonText(category, navElement)
+        updateImages(category)
     }
 
     // 클릭된 요소의 카테고리 찾기
     function findCategory(element) {
         return Object.keys(categoryConfig).find(key =>
             element.classList.contains(key)
-        );
+        )
     }
 
     // 카테고리 유효성 검사
     function isValidCategory(category) {
         if (!category) {
-            console.warn('유효하지 않은 카테고리입니다.');
-            return false;
+            console.warn('유효하지 않은 카테고리입니다.')
+            return false
         }
-        return true;
+        return true
     }
 
     // 버튼 표시/숨김 상태 업데이트
     function updateButtonVisibility(category) {
-        const buttonStates = categoryConfig[category].buttonStates;
+        const buttonStates = categoryConfig[category].buttonStates
 
         Object.entries(BUTTON_SELECTORS).forEach(([key, selector]) => {
-            const element = document.querySelector(selector);
+            const element = document.querySelector(selector)
             if (element) {
-                element.style.display = buttonStates[key] ? 'block' : 'none';
+                element.style.display = buttonStates[key] ? 'block' : 'none'
             }
-        });
+        })
     }
 
+
+    seasonValue = Object.keys(categoryConfig.season.text)[0] 
+    
     // 버튼 텍스트 업데이트
     function updateButtonText(category, navElement) {
-        const fButton = document.querySelector(BUTTON_SELECTORS.fButton);
-        if (!fButton) return;
+        const fButton = document.querySelector(BUTTON_SELECTORS.fButton)
+        const textElements = document.querySelectorAll('.f-s-13')
+        if (!fButton) return
 
         if (category === 'season') {
-            const clickedSeason = navElement.dataset.season || navElement.value;
+            const clickedSeason = navElement.dataset.season || navElement.value
             if (clickedSeason) {
-                fButton.textContent = categoryConfig.season.text[clickedSeason];
-                seasonValue = clickedSeason;
+                fButton.textContent = categoryConfig.season.text[clickedSeason]
+                seasonValue = clickedSeason
+
+                fButton.setAttribute('data-season', 'season')
+                textElements.forEach((textEl, index) => {
+                    textEl.textContent = seasonAlt[seasonValue][index]
+                    textEl.classList.add('on')
+                })
             }
         } else {
-            fButton.textContent = categoryConfig[category].text;
+            fButton.textContent = categoryConfig[category].text
+            
+            fButton.setAttribute('data-season', '')
+            textElements.forEach(textEl => {
+                textEl.textContent = ''
+                textEl.classList.remove('on')
+            })
         }
     }
 
     // 이벤트 리스너 등록
-    document.addEventListener('click', handleNavClick);
+    document.addEventListener('click', handleNavClick)
 
 
     // 이미지 이벤트
@@ -405,31 +421,31 @@ function objectItem() {
 
         // 좌우반전 이벤트 s
         const fTwist = document.querySelector('.f-twist')
-        let isRotate = false;
+        let isRotate = false
 
-        fTwist.removeEventListener('click', handleRotation);
+        fTwist.removeEventListener('click', handleRotation)
 
         function handleRotation() {
             if (fTwist.style.display === 'block') {
-                isRotate = !isRotate;
+                isRotate = !isRotate
                 popupImages.forEach(img => {
                     if (isRotate) {
-                        img.classList.add('rotated');
+                        img.classList.add('rotated')
                     } else {
-                        img.classList.remove('rotated');
+                        img.classList.remove('rotated')
                     }
-                });
+                })
             }
         }
-        fTwist.addEventListener('click', handleRotation);
+        fTwist.addEventListener('click', handleRotation)
 
 
         // 메뉴 카테고리별 이미지 교체
         function updateImagesByCategory(imageElements, category) {
             imageElements.forEach((img, index) => {
-                img.classList.remove('rotated');
-        
-                const paths = category === 'season' ? 
+                img.classList.remove('rotated')
+
+                const paths = category === 'season' ?
                     {
                         images: imgPaths.season[seasonValue],
                         alts: altPaths.season[seasonValue]
@@ -437,39 +453,39 @@ function objectItem() {
                     {
                         images: imgPaths[category],
                         alts: altPaths[category]
-                    };
-        
+                    }
+
                 if (index < paths.images.length) {
-                    img.src = paths.images[index];
-                    img.alt = paths.alts[index];
-                    // 이미지의 부모 요소(.swiper-slide)에서 .s-15 클래스를 찾아 텍스트 업데이트
-                    const slideElement = img.closest('.swiper-slide');
+                    img.src = paths.images[index]
+                    img.alt = paths.alts[index]
+
+                    const slideElement = img.closest('.swiper-slide')
+
                     if (slideElement) {
-                        const nameElement = slideElement.querySelector('.s-15');
+                        const nameElement = slideElement.querySelector('.s-15')
                         if (nameElement) {
-                            nameElement.textContent = paths.alts[index];
+                            nameElement.textContent = paths.alts[index]
                         }
                     }
                 } else {
-                    img.src = '';
-                    img.alt = '';
-                    // 빈 이미지일 경우 텍스트도 비움
-                    const slideElement = img.closest('.swiper-slide');
+                    img.src = ''
+                    img.alt = ''
+
                     if (slideElement) {
-                        const nameElement = slideElement.querySelector('.s-15');
+                        const nameElement = slideElement.querySelector('.s-15')
                         if (nameElement) {
-                            nameElement.textContent = '';
+                            nameElement.textContent = ''
                         }
                     }
                 }
-            });
+            })
         }
-        
+
         // 사용
-        updateImagesByCategory(popupImages, category);
-        updateImagesByCategory(slideImagesMain, category);
-        updateImagesByCategory(dlideImagesList, category);
+        updateImagesByCategory(popupImages, category)
+        updateImagesByCategory(slideImagesMain, category)
+        updateImagesByCategory(dlideImagesList, category)
     }
 
-    return { imgPaths, altPaths, seasonAlt };
+    return { imgPaths, altPaths, seasonAlt, categoryConfig }
 }

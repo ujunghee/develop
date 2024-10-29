@@ -42,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.addEventListener('click', function (event) {
 
-            
             // 시작하기
             if (event.target.classList.contains('start')) {
                 loadPage('select.html', select)
@@ -50,22 +49,58 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // 계절선택
             if(event.target.classList.contains('pink')) {
+                selectedSeason = 'deco_spring.html'
                 loadPage('deco_spring.html')
             }
             if(event.target.classList.contains('blue')) {
+                selectedSeason = 'deco_summer.html'
                 loadPage('deco_summer.html')
             }
             if(event.target.classList.contains('orange')) {
+                selectedSeason = 'deco_autumn.html'
                 loadPage('deco_autumn.html')
             }
             if(event.target.classList.contains('snowblue')) {
+                selectedSeason = 'deco_winter.html'
                 loadPage('deco_winter.html')
             }
 
             // 뒤로가기
-            if (event.target.classList.contains('back')) {
+            if (event.target.classList.contains('select-prev')) {
                 loadPage('select.html')
             }
+            if (event.target.classList.contains('season-prev')) {
+                loadPage(selectedSeason)
+            }
+
+            // 완성하기
+            if(event.target.classList.contains('submit')) {
+                loadPage('last.html')
+            }
+
+            // 다시하기
+            if(event.target.classList.contains('first')) {
+                loadPage('first.html')
+            }
+            
+            // 솔브케이 클릭
+            if(event.target.classList.contains('solvek')) {
+                const solvek = document.querySelector('.last')
+                const headerarrow = document.querySelector('.back')
+
+                if(solvek.classList.contains('white')) {
+                    solvek.classList.remove('white')
+                    solvek.classList.add('black')
+                    headerarrow.classList.add('deco-prev')
+                    headerarrow.classList.remove('season-prev')
+                }
+            }
+            
+            // 뒤로가기
+            if(event.target.classList.contains('deco-prev')) {
+                loadPage('last.html')
+            }
+            
         })
     })
 })

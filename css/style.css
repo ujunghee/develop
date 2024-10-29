@@ -120,6 +120,7 @@
   flex: 1;
   padding: 1rem;
   position: relative;
+  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
 .deco-box.spring {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 40%, rgba(255, 227, 227, 0.8078431373) 100%), url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;

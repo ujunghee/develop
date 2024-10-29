@@ -154,7 +154,7 @@
         flex: 1;
         padding: 1.0rem;
         position: relative;
-
+        transition: map-get($ease, ease-in-out-4);
         &.spring {
             background: map-get($color, liner-pink), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
 

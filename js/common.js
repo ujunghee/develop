@@ -18,6 +18,7 @@ function loadPage(page, callback) {
                     navigation()
                     sildeSwiper()
                     objectItem()
+                    palettebg()
                 }
 
                 if (selecpage.includes(page)) {

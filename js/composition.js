@@ -61,10 +61,10 @@ function initDraggableComposition() {
         
         // 초기 위치 설정 (composition 영역 중앙)
         const compositionRect = composition.getBoundingClientRect();
-        const containerWidth = originalWidth / 2;
-        const containerHeight = originalHeight / 2;
-        draggableContainer.style.left = (compositionRect.width / 2 - containerWidth / 2) + 'px';
-        draggableContainer.style.top = (compositionRect.height / 2 - containerHeight / 2) + 'px';
+        const containerWidth = originalWidth / 2.5;
+        const containerHeight = originalHeight / 2.5;
+        draggableContainer.style.left = (compositionRect.width / 2.5 - containerWidth / 2.5) + 'px';
+        draggableContainer.style.top = (compositionRect.height / 2.5 - containerHeight / 2.5) + 'px';
         
         composition.appendChild(draggableContainer);
         

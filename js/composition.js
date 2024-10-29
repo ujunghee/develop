@@ -45,8 +45,8 @@ function initDraggableComposition() {
         // 이미지 복제 및 스타일 적용
         const clonedImg = img.cloneNode(true);
         // 원본 크기의 1/2로 설정
-        clonedImg.style.width = `${originalWidth / 2}px`;
-        clonedImg.style.height = `${originalHeight / 2}px`;
+        clonedImg.style.width = `${originalWidth / 2.5}px`;
+        clonedImg.style.height = `${originalHeight / 2.5}px`;
         clonedImg.style.userSelect = 'none';
         clonedImg.style.webkitUserSelect = 'none'; // iOS Safari 지원
         

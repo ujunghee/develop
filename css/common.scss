@@ -112,20 +112,17 @@ body {
     justify-content: center;
 
     @include respond-to(tablet) {
-        height: 100dvh;
+        height: 100%;
     }
 
     @include respond-to(mobile) {
-        height: 100dvh;
+        height: 100%;
     }
 }
 #content {
     width: 48.0rem;
     overflow: hidden;
     @include common;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: map-get($ease , ease-in-out-6);
     
     @include respond-to(tablet) {

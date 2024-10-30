@@ -111,12 +111,12 @@ body {
 }
 @media (min-width: 361px) and (max-width: 768px) {
   body {
-    height: 100dvh;
+    height: 100%;
   }
 }
 @media (max-width: 360px) {
   body {
-    height: 100dvh;
+    height: 100%;
   }
 }
 
@@ -126,9 +126,6 @@ body {
   height: 80dvh;
   position: relative;
   min-height: 80rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   transition: all 0.6s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
 @media (min-width: 361px) and (max-width: 768px) {

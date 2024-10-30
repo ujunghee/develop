@@ -152,10 +152,10 @@
 }
 .deco .composition {
   position: relative;
-  padding: 16px;
   width: 100%;
   box-sizing: border-box;
-  height: calc(100% - 36px);
+  top: 0;
+  height: calc(100% - 18px);
 }
 .deco .draggable-container {
   position: absolute;

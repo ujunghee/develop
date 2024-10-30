@@ -12,7 +12,6 @@ function initDraggableComposition() {
     let xOffset = 0;
     let yOffset = 0;
     let selectedElement = null;
-    let maxZIndex = 1;
 
     // 드래그 핸들 아이콘 SVG
     const dragHandleIcon = `
@@ -51,7 +50,6 @@ function initDraggableComposition() {
         draggableContainer.className = 'draggable-container';
         draggableContainer.style.position = 'absolute';
         draggableContainer.style.cursor = 'move';
-        draggableContainer.style.zIndex = maxZIndex++; // 생성될 때 가장 위로
 
         const clonedImg = img.cloneNode(true);
         clonedImg.style.width = `${originalWidth / 3}px`;
@@ -75,12 +73,6 @@ function initDraggableComposition() {
         xOffset = 0;
         yOffset = 0;
 
-        // 클릭 이벤트 추가
-        draggableContainer.addEventListener('mousedown', function(e) {
-            // 현재 요소를 최상위로 가져오기
-            this.style.zIndex = maxZIndex++;
-        });
-
         composition.appendChild(draggableContainer);
         setDraggable(draggableContainer);
     }
@@ -102,7 +94,7 @@ function initDraggableComposition() {
                 isDragging = true;
                 initialX = e.clientX - xOffset;
                 initialY = e.clientY - yOffset;
-                selectedElement.style.zIndex = maxZIndex++;
+                composition.appendChild(selectedElement);
             }
         } else if (e.type === 'touchstart') {
             selectedElement = e.target.closest('.draggable-container');
@@ -110,12 +102,8 @@ function initDraggableComposition() {
                 isDragging = true;
                 initialX = e.touches[0].clientX - xOffset;
                 initialY = e.touches[0].clientY - yOffset;
-                selectedElement.style.zIndex = maxZIndex++;
+                composition.appendChild(selectedElement);
             }
-        }
-
-        if (selectedElement) {
-            selectedElement.style.zIndex = '1000';
         }
     }
 

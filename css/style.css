@@ -173,6 +173,9 @@
   right: -12px;
   cursor: move;
   z-index: 1;
+  background: #DCD0C6;
+  padding: 0.5rem;
+  border-radius: 10rem;
 }
 
 .last {

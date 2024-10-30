@@ -190,13 +190,14 @@
     }
     .composition {
         position: relative;
-        padding: 16px;
         width: 100%;
         box-sizing: border-box;
-        height: calc(100% - 36px);
+        top:0;
+        height: calc(100% - 18px);
     }
     .draggable-container {
         position: absolute;
+        // padding:1.0rem;
         cursor: move;
         user-select: none;
         img {
@@ -211,6 +212,9 @@
         right: -12px;
         cursor: move;
         z-index: 1;
+        background: #DCD0C6;
+        padding: .5rem;
+        border-radius: map-get($boder-radius, b-100);
     }
 }
 

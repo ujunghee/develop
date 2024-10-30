@@ -65,7 +65,7 @@ function navigation() {
     function deactivateToggle(toggle) {
         toggle.classList.remove('on')
         popup.classList.remove('on')
-        textField.classList.remove('on')
+        // textField.classList.remove('on')
         colorPalette.classList.remove('on')
         activeToggle = null
     }
@@ -74,7 +74,7 @@ function navigation() {
     function closeAllPopups() {
         popup.classList.remove('on')
         colorPalette.classList.remove('on')
-        textField.classList.remove('on')
+        // textField.classList.remove('on')
         document.querySelectorAll('.p-b, .painting, .textfielding').forEach(toggle => toggle.classList.remove('on'))
         activeToggle = null
     }

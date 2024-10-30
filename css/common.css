@@ -347,6 +347,7 @@ button {
   position: absolute;
   top: 1.6rem;
   left: 1.6rem;
+  z-index: 10;
   background: #E0D9D4 url("../image/icon/reset.png") 50% 50%/50% no-repeat;
 }
 

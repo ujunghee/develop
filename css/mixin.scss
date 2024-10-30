@@ -129,6 +129,7 @@
     position: absolute;
     top:1.6rem;
     left: 1.6rem;
+    z-index:10;
     background: map-get($color, icon-bg) url($icon-img + "reset.png") 50% 50% / 50% no-repeat;
 }
 

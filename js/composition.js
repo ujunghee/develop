@@ -45,8 +45,8 @@ function initDraggableComposition() {
         // 이미지 복제 및 스타일 적용
         const clonedImg = img.cloneNode(true);
         // 원본 크기의 1/2로 설정
-        clonedImg.style.width = `${originalWidth / 2.5}px`;
-        clonedImg.style.height = `${originalHeight / 2.5}px`;
+        clonedImg.style.width = `${originalWidth / 3}px`;
+        clonedImg.style.height = `${originalHeight / 3}px`;
         clonedImg.style.userSelect = 'none';
         clonedImg.style.webkitUserSelect = 'none'; // iOS Safari 지원
         
@@ -61,10 +61,10 @@ function initDraggableComposition() {
         
         // 초기 위치 설정 (composition 영역 중앙)
         const compositionRect = composition.getBoundingClientRect();
-        const containerWidth = originalWidth / 2.5;
-        const containerHeight = originalHeight / 2.5;
-        draggableContainer.style.left = (compositionRect.width / 2.5 - containerWidth / 2.5) + 'px';
-        draggableContainer.style.top = (compositionRect.height / 2.5 - containerHeight / 2.5) + 'px';
+        const containerWidth = originalWidth / 3;
+        const containerHeight = originalHeight / 3;
+        draggableContainer.style.left = (compositionRect.width / 3 - containerWidth / 3) + 'px';
+        draggableContainer.style.top = (compositionRect.height / 3 - containerHeight / 3) + 'px';
         
         composition.appendChild(draggableContainer);
         

@@ -69,7 +69,7 @@ function initDraggableComposition() {
         const imageHeight = originalHeight / 3;
         
         const centerX = (compRect.width - imageWidth) / 2;
-        const centerY = (compRect.height - imageHeight) / 2;
+        const centerY = (compRect.height - imageHeight) / 3;
 
         // 초기 위치를 중앙으로 설정 (left/top 사용)
         draggableContainer.style.left = `${centerX}px`;

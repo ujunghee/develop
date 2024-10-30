@@ -497,6 +497,7 @@ button {
     left: 50%;
     transform: translate(-50%, 0);
     display: none;
+    z-index: 10;
     &.on {
         display: block;
     }

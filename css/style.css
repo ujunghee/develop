@@ -160,6 +160,7 @@
 .deco .draggable-container {
   position: absolute;
   cursor: move;
+  padding: 1rem;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;

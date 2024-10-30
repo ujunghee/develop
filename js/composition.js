@@ -1,7 +1,7 @@
 function initDraggableComposition() {
     const composition = document.querySelector('.composition');
     const popupImages = document.querySelectorAll('.popup ul li img');
-    const resetButton = document.querySelector('.reset');
+    const resetButton = document.querySelector('.reset'); 
     const textField = document.querySelector('.textfield');
 
     // 드래그 상태 관리 변수
@@ -24,8 +24,7 @@ function initDraggableComposition() {
 
 
     // Reset 버튼 클릭 이벤트 핸들러
-    resetButton.addEventListener('click', function () {
-
+    resetButton.addEventListener('click', function() {
         textField.classList.remove('on')
         const draggableContainers = composition.querySelectorAll('.draggable-container');
         draggableContainers.forEach(container => {
@@ -59,20 +58,23 @@ function initDraggableComposition() {
         const dragHandle = document.createElement('div');
         dragHandle.className = 'drag-handle';
         dragHandle.innerHTML = dragHandleIcon;
-        // 초기에는 dragHandle을 숨김
         dragHandle.style.display = 'none';
 
         draggableContainer.appendChild(clonedImg);
         draggableContainer.appendChild(dragHandle);
 
-        // 초기 위치를 패딩(16px)을 고려하여 설정
-        draggableContainer.style.left = '16px';
-        draggableContainer.style.top = '16px';
+        // 중앙 위치 계산
+        const compRect = composition.getBoundingClientRect();
+        const imageWidth = originalWidth / 3;
+        const imageHeight = originalHeight / 3;
+        
+        const centerX = (compRect.width - imageWidth) / 2;
+        const centerY = (compRect.height - imageHeight) / 3;
 
-        // 초기 transform 초기화
-        draggableContainer.style.transform = 'translate(0, 0)';
-        xOffset = 0;
-        yOffset = 0;
+        // 초기 위치를 중앙으로 설정
+        draggableContainer.style.transform = `translate(${centerX}px, ${centerY}px)`;
+        xOffset = centerX;
+        yOffset = centerY;
 
         composition.appendChild(draggableContainer);
         setDraggable(draggableContainer);
@@ -125,10 +127,10 @@ function initDraggableComposition() {
 
             // border
             selectedElement.style.border = '1px solid #D89B9B'
-
+            
             const dragHandle = selectedElement.querySelector('.drag-handle');
             dragHandle.style.display = 'block';
-
+            
             // 현재 마우스/터치 위치 계산
             let clientX, clientY;
             if (e.type === 'mousemove') {
@@ -143,14 +145,13 @@ function initDraggableComposition() {
             let newX = clientX - initialX;
             let newY = clientY - initialY;
 
-            // composition 영역 제한 (패딩 16px 고려)
-            const padding = 16;
-            const maxX = compRect.width - elemRect.width - padding;
-            const maxY = compRect.height - elemRect.height - padding;
+            // composition 영역 제한 (패딩 제거)
+            const maxX = compRect.width - elemRect.width;
+            const maxY = compRect.height - elemRect.height;
 
-            // 위치 제한 적용
-            newX = Math.max(padding, Math.min(newX, maxX));
-            newY = Math.max(padding, Math.min(newY, maxY));
+            // 위치 제한 적용 (0부터 최대값까지)
+            newX = Math.max(0, Math.min(newX, maxX));
+            newY = Math.max(0, Math.min(newY, maxY));
 
             currentX = newX;
             currentY = newY;
@@ -169,7 +170,7 @@ function initDraggableComposition() {
         if (selectedElement) {
             selectedElement.style.border = 'inherit'
             selectedElement = null;
-
+            
             const dragHandles = document.querySelectorAll('.drag-handle');
             dragHandles.forEach(handle => {
                 handle.style.display = 'none';

@@ -1,9 +1,7 @@
 @import "SUIT/SUIT.css";
 .content_one {
-  height: 100dvh;
-  position: relative;
-  min-height: 50rem;
   width: 100%;
+  height: 100%;
   text-align: center;
   background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
 }
@@ -26,9 +24,7 @@
 
 .select {
   background: #EDEDED;
-  height: 100dvh;
-  position: relative;
-  min-height: 50rem;
+  height: 100%;
 }
 .select .selectbox {
   height: calc(100% - 7rem);
@@ -105,9 +101,7 @@
 
 .deco {
   background: #EDEDED;
-  height: 100dvh;
-  position: relative;
-  min-height: 50rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.6rem;
@@ -180,9 +174,7 @@
 }
 
 .last {
-  height: 100dvh;
-  position: relative;
-  min-height: 50rem;
+  height: 100%;
 }
 .last.white {
   background: #EDEDED;

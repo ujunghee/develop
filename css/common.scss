@@ -105,7 +105,9 @@ body {
     min-height: 50.0rem;
     margin: 0 auto;
     overflow: hidden;
-
+}
+#content {
+    @include common;
 }
 
 menu,
@@ -520,3 +522,5 @@ button {
 }
 
 // rotate
+
+

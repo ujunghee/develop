@@ -1,0 +1,31 @@
+@import "variable";
+@import "mixin";
+
+$responsive-mobile: 36.0rem;
+$responsive-tablet: 76.8rem;
+$responsive-desktop: 10.24rem;
+
+@mixin mobile {
+  @media (min-width: #{$responsive-mobile}) and (max-width: #{$responsive-tablet - 1px}) {
+    #content {
+      @include common;
+    }
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$responsive-tablet}) and (max-width: #{$responsive-desktop - 1px}) {
+    #content {
+      height: calc(100dvh - 5.0rem);
+    }
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$responsive-desktop}) {
+    #content {
+      height: calc(100dvh - 5.0rem);
+    }
+  }
+}
+

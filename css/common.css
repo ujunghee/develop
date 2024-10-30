@@ -105,6 +105,12 @@ body {
   overflow: hidden;
 }
 
+#content {
+  height: 100dvh;
+  position: relative;
+  min-height: 50rem;
+}
+
 menu,
 ol,
 ul {

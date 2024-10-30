@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import "SUIT/SUIT.css";
 .content_one {
   height: 100dvh;
@@ -151,8 +152,21 @@
   visibility: hidden;
 }
 .deco .composition {
+  position: relative;
+  padding: 16px;
   width: 100%;
+  box-sizing: border-box;
   height: calc(100% - 36px);
+}
+.deco .draggable {
+  position: absolute;
+  cursor: move;
+  touch-action: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  left: 16px; /* 초기 위치 */
+  top: 16px; /* 초기 위치 */
 }
 
 .last {

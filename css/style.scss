@@ -189,10 +189,24 @@
         }
     }
     .composition {
+        position: relative;
+        padding: 16px;
         width: 100%;
+        box-sizing: border-box;
         height: calc(100% - 36px);
     }
-
+    .draggable-container {
+        position: absolute;
+        cursor: move;
+        user-select: none;
+    }
+    .drag-handle {
+        position: absolute;
+        top: -12px;
+        right: -12px;
+        cursor: move;
+        z-index: 1;
+    }
 }
 
 // deco html e

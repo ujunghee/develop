@@ -111,14 +111,29 @@ function sildeSwiper() {
     var swiper = new Swiper(".slider-list", {
         // loop: true,
         spaceBetween: 9,
-        slidesPerView: 5,
+        slidesPerView: 2,
         freeMode: true,
         watchSlidesProgress: true,
+        breakpoints: {
+            320: {
+                slidesPerView: 5,
+            },
+            420: {
+                slidesPerView: 4,
+            },
+            768: {
+                slidesPerView: 3,
+            },
+            960: {
+                slidesPerView: 2,
+            }
+        },
     })
     new Swiper(".slider", {
         // loop: true,
         thumbs: {
             swiper: swiper,
         },
+       
     })
 }

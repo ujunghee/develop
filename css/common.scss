@@ -1,5 +1,6 @@
 @import "variable";
 @import "mixin";
+@import "media";
 
 * {
     font-size: 62.5%;
@@ -101,13 +102,40 @@ video {
 
 body {
     line-height: 1;
-    max-width: 102.4rem;
+    width: 100%;
     min-height: 50.0rem;
+    height: 100vh;
     margin: 0 auto;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include respond-to(tablet) {
+        height: 100%;
+    }
+
+    @include respond-to(mobile) {
+        height: 100%;
+    }
 }
 #content {
+    width: 48.0rem;
+    overflow: hidden;
     @include common;
+    transition: map-get($ease , ease-in-out-6 );
+    
+    @include respond-to(tablet) {
+        height: 100dvh;
+        width: 100%;
+        min-height: 55.0rem;
+    }
+
+    @include respond-to(mobile) {
+        height: 100dvh;
+        width: 100%;
+        min-height: 55.0rem;
+    }
 }
 
 menu,
@@ -346,7 +374,7 @@ button {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: min(5vw - 1rem, 8rem);
+        gap: min(5vw - 1rem, 3rem);
         li {
             display: flex;
             flex-wrap: wrap;

@@ -238,9 +238,10 @@
 
 // height s
 @mixin common {
-    height: 100dvh;
+    height: calc(80dvh);
+    // max-height:98.0rem;
     position: relative;
-    min-height: 50.0rem;
+    min-height: 80.0rem;
 }
 
 @mixin height {
@@ -376,7 +377,7 @@
     box-sizing: border-box;
     gap: .8rem;
     transition: map-get($ease, ease-in-out-6);
-    z-index: 11;
+    z-index: 100;
     opacity: 0;
     &.on {
         visibility:visible;
@@ -410,6 +411,7 @@
                 box-sizing: border-box;
                 border-radius: map-get($boder-radius, b-10);
                 border: 1px solid map-get($color , c-white);
+                aspect-ratio: 1 / 1; 
             }
 
             img {
@@ -440,7 +442,7 @@
         .slider {
             .swiper-slide {
                 padding-bottom: 2.6rem;
-                height: min(50vw, 50rem);
+                height: min(50vw, 30rem);
             }
 
             img {
@@ -594,3 +596,5 @@
         }
     }
 }
+
+

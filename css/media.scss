@@ -1,31 +1,18 @@
 @import "variable";
 @import "mixin";
 
-$responsive-mobile: 36.0rem;
-$responsive-tablet: 76.8rem;
-$responsive-desktop: 10.24rem;
-
-@mixin mobile {
-  @media (min-width: #{$responsive-mobile}) and (max-width: #{$responsive-tablet - 1px}) {
-    #content {
-      @include common;
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == mobile {
+      @media (max-width: 360px) {
+        @content;
+      }
+    } @else if $breakpoint == tablet {
+      @media (min-width: 361px) and (max-width: 768px) {
+        @content;
+      }
+    } @else if $breakpoint == desktop {
+      @media (min-width: 768px) {
+        @content;
+      }
     }
   }
-}
-
-@mixin tablet {
-  @media (min-width: #{$responsive-tablet}) and (max-width: #{$responsive-desktop - 1px}) {
-    #content {
-      height: calc(100dvh - 5.0rem);
-    }
-  }
-}
-
-@mixin desktop {
-  @media (min-width: #{$responsive-desktop}) {
-    #content {
-      height: calc(100dvh - 5.0rem);
-    }
-  }
-}
-

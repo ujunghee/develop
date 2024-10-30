@@ -164,6 +164,9 @@
      -moz-user-select: none;
           user-select: none;
 }
+.deco .draggable-container img.rotated {
+  transform: scaleX(-1);
+}
 .deco .drag-handle {
   position: absolute;
   top: -12px;

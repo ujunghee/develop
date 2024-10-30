@@ -199,6 +199,11 @@
         position: absolute;
         cursor: move;
         user-select: none;
+        img {
+            &.rotated {
+                transform: scaleX(-1);
+            }
+        }
     }
     .drag-handle {
         position: absolute;

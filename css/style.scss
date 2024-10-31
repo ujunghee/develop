@@ -254,12 +254,17 @@
                 box-shadow: map-get($shadow, shadow-15);
                 height: calc(100% - 14.0rem);
                 position: relative;
+                padding: 1rem;
 
                 p {
                     position: absolute;
                     left: 50%;
                     top: 3rem;
                     transform: translate(-50%, 0);
+                }
+                .card-visual {
+                    width: 100%;
+                    height: 100%;
                 }
             }
 

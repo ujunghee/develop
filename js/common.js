@@ -12,6 +12,7 @@ function loadPage(page, callback) {
 
                 const selecpage = ['select.html']
                 const decopage = ['deco_spring.html', 'deco_summer.html', 'deco_autumn.html', 'deco_winter.html']
+                const lastpage = ['last.html']
 
                 
                 if (decopage.includes(page)) {
@@ -24,6 +25,10 @@ function loadPage(page, callback) {
 
                 if (selecpage.includes(page)) {
                     select()
+                }
+                
+                if (page === 'last.html') {
+                    initCardGenerator()
                 }
             }
 

@@ -11,6 +11,31 @@ function navigation() {
     // 해당 클릭할 요소 선택 및 공통 이벤트 실행
     document.addEventListener('click', function (event) {
 
+        // 완성 버튼 클릭 시
+        if (event.target.closest('.header')) {
+            const currentState = {
+                composition: Array.from(document.querySelectorAll('.composition .draggable-container')).map(container => ({
+                    position: {
+                        left: container.style.left,
+                        top: container.style.top
+                    },
+                    image: {
+                        src: container.querySelector('img').src,
+                        alt: container.querySelector('img').alt,
+                        width: container.querySelector('img').style.width,
+                        height: container.querySelector('img').style.height
+                    },
+                    style: {
+                        border: container.style.border
+                    }
+                })),
+                text: document.querySelector('.textfield textarea')?.value || '',
+                background: document.querySelector('.deco-box')?.style.background || ''
+            };
+
+            localStorage.setItem('cardState', JSON.stringify(currentState));
+        }
+        
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출
         let clickedToggle = event.target.closest('.p-b, .painting, .textfielding')
         if (clickedToggle) {
@@ -31,6 +56,7 @@ function navigation() {
             infortMore.classList.remove('on')
 
         }
+
     })
 
     //  토글 활성 비활성화

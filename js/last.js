@@ -19,71 +19,129 @@ function initCardGenerator() {
             txtBox.textContent = savedState.text;
         }
 
-        // 이미지로 변환된 내용 복원
-        if (savedState.cardImage && cardVisual) {
-            // 기존 내용 제거
-            cardVisual.innerHTML = '';
-            
-            // 이미지 생성 및 설정
-            const img = new Image();
-            img.src = savedState.cardImage;
-            img.style.width = '100%';
-            img.style.height = '100%';
-            img.style.pointerEvents = 'none'; // 이미지 클릭 방지
-            
-            cardVisual.appendChild(img);
+        // composition 내용 복원
+        if (savedState.composition && cardVisual) {
+            savedState.composition.forEach(container => {
+                const draggableContainer = document.createElement('div');
+                draggableContainer.className = 'draggable-container';
+                draggableContainer.style.position = 'absolute';
+                draggableContainer.style.left = container.position.left;
+                draggableContainer.style.top = container.position.top;
+                draggableContainer.style.border = container.style.border;
+
+                const img = document.createElement('img');
+                img.src = container.image.src;
+                img.alt = container.image.alt;
+                img.style.width = container.image.width;
+                img.style.height = container.image.height;
+
+                // 개별 이미지 클릭 이벤트 추가
+                draggableContainer.addEventListener('click', (e) => {
+                    // 이벤트 전파 중지
+                    e.stopPropagation();
+                    const link = document.createElement('a');
+                    link.href = img.src;
+                    link.download = `image-${Date.now()}.png`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                });
+
+                draggableContainer.appendChild(img);
+                cardVisual.appendChild(draggableContainer);
+            });
         }
 
-        // 저장 상태 제거
+        // 상태 정리
         localStorage.removeItem('cardState');
 
-        // 카드 전체에 대한 이벤트 리스너 설정
-        setupCardDownload(card);
+        // 모든 이미지가 로드된 후에 이벤트 리스너 추가
+        waitForImages(card).then(() => {
+            card.addEventListener('touchstart', handleLongPress);
+            card.addEventListener('mousedown', handleLongPress);
+        });
 
     } catch (error) {
-        console.error('카드 초기화 중 오류:', error);
+        console.error('카드 상태 복원 중 오류:', error);
     }
 }
 
-function setupCardDownload(card) {
-    let pressTimer;
-
-    const startPress = (e) => {
-        pressTimer = setTimeout(() => {
-            downloadCard(card);
-        }, 1000);
-        e.preventDefault();
-    };
-
-    const endPress = () => {
-        clearTimeout(pressTimer);
-    };
-
-    card.addEventListener('touchstart', startPress);
-    card.addEventListener('touchend', endPress);
-    card.addEventListener('mousedown', startPress);
-    card.addEventListener('mouseup', endPress);
+// 모든 이미지 로드 대기
+function waitForImages(element) {
+    const images = element.getElementsByTagName('img');
+    const promises = Array.from(images).map(img => {
+        return new Promise((resolve) => {
+            if (img.complete) {
+                resolve();
+            } else {
+                img.onload = () => resolve();
+                img.onerror = () => resolve();
+            }
+        });
+    });
+    return Promise.all(promises);
 }
 
-async function downloadCard(card) {
+// 길게 누르기 이벤트 핸들러
+function handleLongPress(event) {
+    // draggableContainer를 클릭한 경우는 무시
+    if (event.target.closest('.draggable-container')) {
+        return;
+    }
+
+    let timer;
+    const card = event.currentTarget;
+
+    const start = () => {
+        timer = setTimeout(() => {
+            convertToImage(card);
+        }, 1000);
+    };
+
+    const end = () => {
+        clearTimeout(timer);
+    };
+
+    // 터치 이벤트
+    if (event.type === 'touchstart') {
+        start();
+        card.addEventListener('touchend', end, { once: true });
+        card.addEventListener('touchmove', end, { once: true });
+    }
+    // 마우스 이벤트
+    else if (event.type === 'mousedown') {
+        start();
+        card.addEventListener('mouseup', end, { once: true });
+        card.addEventListener('mousemove', end, { once: true });
+    }
+}
+
+// 카드를 이미지로 변환하고 다운로드
+async function convertToImage(card) {
     try {
-        // 현재 카드를 다시 이미지로 변환
         const canvas = await html2canvas(card, {
             backgroundColor: null,
             scale: 2,
             useCORS: true,
-            allowTaint: true
+            allowTaint: true,
+            logging: true,
+            width: card.offsetWidth,
+            height: card.offsetHeight
         });
 
+        // canvas를 이미지로 변환
+        const imageDataUrl = canvas.toDataURL('image/png');
+
+        // 다운로드
         const link = document.createElement('a');
+        link.href = imageDataUrl;
         link.download = `card-${Date.now()}.png`;
-        link.href = canvas.toDataURL('image/png', 1.0);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
 
     } catch (error) {
-        console.error('카드 다운로드 중 오류:', error);
+        console.error('이미지 변환 중 오류:', error);
     }
 }
 

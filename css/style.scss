@@ -203,6 +203,7 @@
         img {
             &.rotated {
                 transform: scaleX(-1);
+                pointer-events: none;
             }
         }
     }

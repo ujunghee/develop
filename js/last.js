@@ -1,5 +1,3 @@
-// import html2canvas from 'html2canvas';
-
 function initCardGenerator() {
     try {
         const savedState = JSON.parse(localStorage.getItem('cardState'));
@@ -10,11 +8,11 @@ function initCardGenerator() {
         const txtBox = document.querySelector('.txt-box');
 
         // background 복원
-        if (savedState.background) {
-            card.style.background = savedState.background;
-        }
+        // if (savedState.background) {
+        //     card.style.background = savedState.background;
+        // }
 
-        // 텍스트 내용 복원
+        // // 텍스트 내용 복원
         if (savedState.text && txtBox) {
             txtBox.textContent = savedState.text;
         }
@@ -32,23 +30,16 @@ function initCardGenerator() {
                 const img = document.createElement('img');
                 img.src = container.image.src;
                 img.alt = container.image.alt;
-                img.style.width = container.image.width;
-                img.style.height = container.image.height;
 
-                // 개별 이미지 클릭 이벤트 추가
-                draggableContainer.addEventListener('click', (e) => {
-                    // 이벤트 전파 중지
-                    e.stopPropagation();
-                    const link = document.createElement('a');
-                    link.href = img.src;
-                    link.download = `image-${Date.now()}.png`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                });
+                // 이미지 크기를 가져오고, 숫자로 변환 후 픽셀 단위 적용
+                img.style.width = parseInt(container.image.width) + 'px';
+                img.style.height = parseInt(container.image.height) + 'px';
 
                 draggableContainer.appendChild(img);
                 cardVisual.appendChild(draggableContainer);
+
+                // 디버깅용 로그 추가
+                console.log(`Image loaded with width: ${img.style.width} and height: ${img.style.height}`);
             });
         }
 
@@ -84,11 +75,6 @@ function waitForImages(element) {
 
 // 길게 누르기 이벤트 핸들러
 function handleLongPress(event) {
-    // draggableContainer를 클릭한 경우는 무시
-    if (event.target.closest('.draggable-container')) {
-        return;
-    }
-
     let timer;
     const card = event.currentTarget;
 
@@ -124,9 +110,9 @@ async function convertToImage(card) {
             scale: 2,
             useCORS: true,
             allowTaint: true,
-            logging: true,
             width: card.offsetWidth,
-            height: card.offsetHeight
+            height: card.offsetHeight,
+            removeContainer: true
         });
 
         // canvas를 이미지로 변환

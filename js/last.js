@@ -16,7 +16,6 @@ function initCardGenerator() {
         if (savedState.text && txtBox) {
             txtBox.textContent = savedState.text;
         }
-
         // composition 내용 복원
         if (savedState.composition && cardVisual) {
             savedState.composition.forEach(container => {

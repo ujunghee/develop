@@ -8,6 +8,7 @@ function navigation() {
     let textField = document.querySelector('.textfield')
     let infortMore = document.querySelector('.infor')
 
+
     // 해당 클릭할 요소 선택 및 공통 이벤트 실행
     document.addEventListener('click', function (event) {
 
@@ -31,11 +32,11 @@ function navigation() {
                 })),
                 text: document.querySelector('.textfield textarea')?.value || '',
                 background: document.querySelector('.deco-box')?.style.background || ''
-            };
+            }
 
-            localStorage.setItem('cardState', JSON.stringify(currentState));
+            localStorage.setItem('cardState', JSON.stringify(currentState))
         }
-        
+
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출
         let clickedToggle = event.target.closest('.p-b, .painting, .textfielding')
         if (clickedToggle) {
@@ -43,9 +44,17 @@ function navigation() {
         }
 
         // scroll 요소 클릭할 때 closeAllPopups 호출
-        let scrollElement = event.target.closest('.scroll')
-        if (scrollElement) {
-            closeAllPopups()
+        let isClickInsideScroll = event.target.closest('.scroll');
+
+        let isClickInsidePopup = event.target.closest('.popup');
+        let isClickInsideColorPalette = event.target.closest('.color-palette');
+        let isClickInsidePaintingElements = event.target.closest('.p-b, .painting, .textfielding');
+
+        if (isClickInsideScroll ||
+            (!isClickInsidePopup &&
+                !isClickInsideColorPalette &&
+                !isClickInsidePaintingElements)) {
+            closeAllPopups();
         }
 
         // 가구 자세히보기
@@ -104,7 +113,6 @@ function navigation() {
         document.querySelectorAll('.p-b, .painting, .textfielding').forEach(toggle => toggle.classList.remove('on'))
         activeToggle = null
     }
-
 
 }
 
@@ -545,78 +553,78 @@ function palettebg() {
                             switch (className) {
                                 case 'b-1':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFECF4 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
 
                                 case 'b-2':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFE6E1 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
 
                                 case 'b-3':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FAFFC7 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
 
                                 case 'b-4':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #fff 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
                             }
-                            break;
+                            break
                         case 'summer':
                             switch (className) {
                                 case 'b-1':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #E0F2FF 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
 
                                 case 'b-2':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #DBE7FF 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
 
                                 case 'b-3':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #E6F2FF 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
 
                                 case 'b-4':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #fff 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
                             }
-                            break;
+                            break
                         case 'autumn':
                             switch (className) {
                                 case 'b-1':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #F6F3E1 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
 
                                 case 'b-2':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF1CC 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
 
                                 case 'b-3':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FBFFE3 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
 
                                 case 'b-4':
                                     decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #fff 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                    break;
+                                    break
                             }
-                            break;
-                            case 'winter':
-                                switch (className) {
-                                    case 'b-1':
-                                        decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #D8E6E8 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                        break;
-    
-                                    case 'b-2':
-                                        decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #EEF9FF 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                        break;
-    
-                                    case 'b-3':
-                                        decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #DCE2F6 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                        break;
-    
-                                    case 'b-4':
-                                        decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #fff 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
-                                        break;
-                                }
-                                break;
+                            break
+                        case 'winter':
+                            switch (className) {
+                                case 'b-1':
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #D8E6E8 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
+                                    break
+
+                                case 'b-2':
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #EEF9FF 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
+                                    break
+
+                                case 'b-3':
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #DCE2F6 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
+                                    break
+
+                                case 'b-4':
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #fff 100%), url("./image/main/visaul_bg.jpg") 50% / cover no-repeat'
+                                    break
+                            }
+                            break
                     }
                 })
             }

@@ -149,7 +149,7 @@
   width: 100%;
   box-sizing: border-box;
   top: 0;
-  height: calc(100% - 18px);
+  height: 100%;
 }
 .deco .draggable-container {
   position: absolute;

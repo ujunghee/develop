@@ -7,53 +7,129 @@ function initCardGenerator() {
         const cardVisual = document.querySelector('.card-visual');
         const txtBox = document.querySelector('.txt-box');
 
-        // background 복원
-        // if (savedState.background) {
-        //     card.style.background = savedState.background;
-        // }
+        // Calculate card boundaries
+        const cardRect = card.getBoundingClientRect();
+        const cardPadding = 20; // Add some padding from edges
+        const maxWidth = cardRect.width - (cardPadding * 2);
+        const maxHeight = cardRect.height - (cardPadding * 2);
 
-        // // 텍스트 내용 복원
+        // Text content restoration
         if (savedState.text && txtBox) {
             txtBox.textContent = savedState.text;
         }
-        // composition 내용 복원
+
+        // Composition content restoration with size constraints
         if (savedState.composition && cardVisual) {
             savedState.composition.forEach(container => {
                 const draggableContainer = document.createElement('div');
                 draggableContainer.className = 'draggable-container';
                 draggableContainer.style.position = 'absolute';
-                draggableContainer.style.left = container.position.left;
-                draggableContainer.style.top = container.position.top;
+                
+                // Convert percentage positions to pixels if needed
+                const left = container.position.left.includes('%') ? 
+                    (parseFloat(container.position.left) / 100) * maxWidth + cardPadding :
+                    Math.min(parseFloat(container.position.left), maxWidth);
+                    
+                const top = container.position.top.includes('%') ?
+                    (parseFloat(container.position.top) / 100) * maxHeight + cardPadding :
+                    Math.min(parseFloat(container.position.top), maxHeight);
+
+                draggableContainer.style.left = `${left}px`;
+                draggableContainer.style.top = `${top}px`;
                 draggableContainer.style.border = container.style.border;
 
                 const img = document.createElement('img');
                 img.src = container.image.src;
                 img.alt = container.image.alt;
 
-                // 이미지 크기를 가져오고, 숫자로 변환 후 픽셀 단위 적용
-                img.style.width = parseInt(container.image.width) + 'px';
-                img.style.height = parseInt(container.image.height) + 'px';
+                // Calculate scaled dimensions to fit within card
+                const originalWidth = parseInt(container.image.width);
+                const originalHeight = parseInt(container.image.height);
+                
+                let newWidth = originalWidth;
+                let newHeight = originalHeight;
+
+                // Scale down if image is too large
+                if (originalWidth > maxWidth) {
+                    const scale = maxWidth / originalWidth;
+                    newWidth = maxWidth;
+                    newHeight = originalHeight * scale;
+                }
+
+                if (newHeight > maxHeight) {
+                    const scale = maxHeight / newHeight;
+                    newHeight = maxHeight;
+                    newWidth = newWidth * scale;
+                }
+
+                // Ensure image stays within bounds
+                const right = left + newWidth;
+                const bottom = top + newHeight;
+
+                if (right > cardRect.width - cardPadding) {
+                    draggableContainer.style.left = `${cardRect.width - cardPadding - newWidth}px`;
+                }
+
+                if (bottom > cardRect.height - cardPadding) {
+                    draggableContainer.style.top = `${cardRect.height - cardPadding - newHeight}px`;
+                }
+
+                img.style.width = `${newWidth}px`;
+                img.style.height = `${newHeight}px`;
 
                 draggableContainer.appendChild(img);
                 cardVisual.appendChild(draggableContainer);
-
-                // 디버깅용 로그 추가
-                console.log(`Image loaded with width: ${img.style.width} and height: ${img.style.height}`);
+                
+                // Add resize observer to handle responsive changes
+                const resizeObserver = new ResizeObserver(entries => {
+                    for (let entry of entries) {
+                        const newCardRect = entry.target.getBoundingClientRect();
+                        const scale = newCardRect.width / cardRect.width;
+                        
+                        // Update container position and image size
+                        const scaledLeft = parseFloat(draggableContainer.style.left) * scale;
+                        const scaledTop = parseFloat(draggableContainer.style.top) * scale;
+                        const scaledWidth = parseFloat(img.style.width) * scale;
+                        const scaledHeight = parseFloat(img.style.height) * scale;
+                        
+                        draggableContainer.style.left = `${scaledLeft}px`;
+                        draggableContainer.style.top = `${scaledTop}px`;
+                        img.style.width = `${scaledWidth}px`;
+                        img.style.height = `${scaledHeight}px`;
+                    }
+                });
+                
+                resizeObserver.observe(card);
             });
         }
 
-        // 상태 정리
+        // Clear saved state
         localStorage.removeItem('cardState');
 
-        // 모든 이미지가 로드된 후에 이벤트 리스너 추가
+        // Add event listeners after all images are loaded
         waitForImages(card).then(() => {
             card.addEventListener('touchstart', handleLongPress);
             card.addEventListener('mousedown', handleLongPress);
         });
 
     } catch (error) {
-        console.error('카드 상태 복원 중 오류:', error);
+        console.error('Error restoring card state:', error);
     }
+}
+
+function waitForImages(element) {
+    const images = element.getElementsByTagName('img');
+    const promises = Array.from(images).map(img => {
+        return new Promise((resolve) => {
+            if (img.complete) {
+                resolve();
+            } else {
+                img.onload = () => resolve();
+                img.onerror = () => resolve();
+            }
+        });
+    });
+    return Promise.all(promises);
 }
 
 // 모든 이미지 로드 대기

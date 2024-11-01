@@ -35,18 +35,6 @@ function initCardGenerator() {
                 img.style.width = container.image.width;
                 img.style.height = container.image.height;
 
-                // 개별 이미지 클릭 이벤트 추가
-                draggableContainer.addEventListener('click', (e) => {
-                    // 이벤트 전파 중지
-                    e.stopPropagation();
-                    const link = document.createElement('a');
-                    link.href = img.src;
-                    link.download = `image-${Date.now()}.png`;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
-                });
-
                 draggableContainer.appendChild(img);
                 cardVisual.appendChild(draggableContainer);
             });
@@ -84,11 +72,6 @@ function waitForImages(element) {
 
 // 길게 누르기 이벤트 핸들러
 function handleLongPress(event) {
-    // draggableContainer를 클릭한 경우는 무시
-    if (event.target.closest('.draggable-container')) {
-        return;
-    }
-
     let timer;
     const card = event.currentTarget;
 

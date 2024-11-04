@@ -93,8 +93,8 @@ function initCardGenerator() {
 
                         draggableContainer.style.left = `${scaledLeft}px`;
                         draggableContainer.style.top = `${scaledTop}px`;
-                        img.style.width = `${scaledWidth}px` / 3;
-                        img.style.height = `${scaledHeight}px` / 3;
+                        img.style.width = `${scaledWidth}px`;
+                        img.style.height = `${scaledHeight}px`;
                     }
                 });
 

@@ -72,11 +72,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 뒤로가기
             if (event.target.classList.contains('select-prev')) {
-                localStorage.removeItem('cardState');
                 loadPage('select.html')
             }
             if (event.target.classList.contains('season-prev')) {
-                localStorage.removeItem('cardState');
                 loadPage(sessionStorage.getItem('selectedSeason'));
             }
 
@@ -87,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 다시하기
             if(event.target.classList.contains('first')) {
-                localStorage.removeItem('cardState');
                 loadPage('first.html')
             }
             

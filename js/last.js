@@ -80,7 +80,6 @@ function initCardGenerator() {
                 draggableContainer.appendChild(img);
                 cardVisual.appendChild(draggableContainer);
                 
-                // Add resize observer to handle responsive changes
                 const resizeObserver = new ResizeObserver(entries => {
                     for (let entry of entries) {
                         const newCardRect = entry.target.getBoundingClientRect();
@@ -94,8 +93,8 @@ function initCardGenerator() {
                         
                         draggableContainer.style.left = `${scaledLeft}px`;
                         draggableContainer.style.top = `${scaledTop}px`;
-                        img.style.width = `${scaledWidth}px`;
-                        img.style.height = `${scaledHeight}px`;
+                        img.style.width = `${scaledWidth}px` / 2;
+                        img.style.height = `${scaledHeight}px` / 2;
                     }
                 });
                 

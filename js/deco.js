@@ -14,27 +14,28 @@ function navigation() {
 
         // 완성 버튼 클릭 시
         if (event.target.closest('.header')) {
-            const currentState = {
-                composition: Array.from(document.querySelectorAll('.composition .draggable-container')).map(container => ({
-                    position: {
-                        left: container.style.left,
-                        top: container.style.top
-                    },
-                    image: {
-                        src: container.querySelector('img').src,
-                        alt: container.querySelector('img').alt,
-                        width: container.querySelector('img').style.width,
-                        height: container.querySelector('img').style.height
-                    },
-                    style: {
-                        border: container.style.border
-                    }
-                })),
-                text: document.querySelector('.textfield textarea')?.value || '',
-                background: document.querySelector('.deco-box')?.style.background || ''
-            }
-
-            localStorage.setItem('cardState', JSON.stringify(currentState))
+            const decoBox = document.querySelector('.deco-box');
+            
+            // html2canvas를 사용하여 deco-box를 이미지로 변환
+            html2canvas(decoBox, {
+                backgroundColor: null,
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                width: decoBox.offsetWidth,
+                height: decoBox.offsetHeight
+            }).then(canvas => {
+                // canvas를 이미지 데이터 URL로 변환
+                const imageDataUrl = canvas.toDataURL('image/png');
+                
+                // 이미지 URL을 localStorage에 저장
+                const currentState = {
+                    decoBoxImage: imageDataUrl,
+                    background: decoBox.style.background || ''
+                };
+                
+                localStorage.setItem('cardState', JSON.stringify(currentState));
+            });
         }
 
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출

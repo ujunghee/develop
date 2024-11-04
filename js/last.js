@@ -7,25 +7,26 @@ function initCardGenerator() {
         const cardVisual = document.querySelector('.card-visual');
         const txtBox = document.querySelector('.txt-box');
 
-        // Calculate card boundaries
         const cardRect = card.getBoundingClientRect();
-        const cardPadding = 20; // Add some padding from edges
+        const cardPadding = 20;
         const maxWidth = cardRect.width - (cardPadding * 2);
         const maxHeight = cardRect.height - (cardPadding * 2);
 
-        // Text content restoration
+        // background 복원
+        if (savedState.background) {
+            card.style.background = savedState.background;
+        }
+
         if (savedState.text && txtBox) {
             txtBox.textContent = savedState.text;
         }
 
-        // Composition content restoration with size constraints
         if (savedState.composition && cardVisual) {
             savedState.composition.forEach(container => {
                 const draggableContainer = document.createElement('div');
                 draggableContainer.className = 'draggable-container';
                 draggableContainer.style.position = 'absolute';
                 
-                // Convert percentage positions to pixels if needed
                 const left = container.position.left.includes('%') ? 
                     (parseFloat(container.position.left) / 100) * maxWidth + cardPadding :
                     Math.min(parseFloat(container.position.left), maxWidth);
@@ -42,14 +43,12 @@ function initCardGenerator() {
                 img.src = container.image.src;
                 img.alt = container.image.alt;
 
-                // Calculate scaled dimensions to fit within card
                 const originalWidth = parseInt(container.image.width);
                 const originalHeight = parseInt(container.image.height);
                 
                 let newWidth = originalWidth;
                 let newHeight = originalHeight;
 
-                // Scale down if image is too large
                 if (originalWidth > maxWidth) {
                     const scale = maxWidth / originalWidth;
                     newWidth = maxWidth;
@@ -62,7 +61,6 @@ function initCardGenerator() {
                     newWidth = newWidth * scale;
                 }
 
-                // Ensure image stays within bounds
                 const right = left + newWidth;
                 const bottom = top + newHeight;
 
@@ -85,7 +83,6 @@ function initCardGenerator() {
                         const newCardRect = entry.target.getBoundingClientRect();
                         const scale = newCardRect.width / cardRect.width;
                         
-                        // Update container position and image size
                         const scaledLeft = parseFloat(draggableContainer.style.left) * scale;
                         const scaledTop = parseFloat(draggableContainer.style.top) * scale;
                         const scaledWidth = parseFloat(img.style.width) * scale;
@@ -93,8 +90,8 @@ function initCardGenerator() {
                         
                         draggableContainer.style.left = `${scaledLeft}px`;
                         draggableContainer.style.top = `${scaledTop}px`;
-                        img.style.width = `${scaledWidth}px` / 2;
-                        img.style.height = `${scaledHeight}px` / 2;
+                        img.style.width = `${scaledWidth}px` / 3;
+                        img.style.height = `${scaledHeight}px` / 3;
                     }
                 });
                 
@@ -102,10 +99,8 @@ function initCardGenerator() {
             });
         }
 
-        // Clear saved state
         localStorage.removeItem('cardState');
 
-        // Add event listeners after all images are loaded
         waitForImages(card).then(() => {
             card.addEventListener('touchstart', handleLongPress);
             card.addEventListener('mousedown', handleLongPress);

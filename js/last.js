@@ -8,10 +8,6 @@ function initCardGenerator() {
         const txtBox = document.querySelector('.txt-box');
 
         const cardRect = card.getBoundingClientRect();
-        const decoBox = document.querySelector('.deco-box');
-        const decoBoxRect = decoBox ? decoBox.getBoundingClientRect() : null;
-        const scaleRatio = decoBoxRect ? cardRect.height / decoBoxRect.height : 1;
-        const heightRatio = cardRect.height / decoBoxRect.height;
         const cardPadding = 20;
         const maxWidth = cardRect.width - (cardPadding * 2);
         const maxHeight = cardRect.height - (cardPadding * 2);

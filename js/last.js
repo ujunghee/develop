@@ -8,6 +8,9 @@ function initCardGenerator() {
         const txtBox = document.querySelector('.txt-box');
 
         const cardRect = card.getBoundingClientRect();
+        const decoBox = document.querySelector('.deco-box');
+        const decoBoxRect = decoBox ? decoBox.getBoundingClientRect() : { height: cardRect.height };
+        const heightRatio = cardRect.height / decoBoxRect.height;
         const cardPadding = 20;
         const maxWidth = cardRect.width - (cardPadding * 2);
         const maxHeight = cardRect.height - (cardPadding * 2);
@@ -26,14 +29,14 @@ function initCardGenerator() {
                 const draggableContainer = document.createElement('div');
                 draggableContainer.className = 'draggable-container';
                 draggableContainer.style.position = 'absolute';
-                
-                const left = container.position.left.includes('%') ? 
+
+                const left = container.position.left.includes('%') ?
                     (parseFloat(container.position.left) / 100) * maxWidth + cardPadding :
                     Math.min(parseFloat(container.position.left), maxWidth);
-                    
+
                 const top = container.position.top.includes('%') ?
                     (parseFloat(container.position.top) / 100) * maxHeight + cardPadding :
-                    Math.min(parseFloat(container.position.top), maxHeight);
+                    Math.min(parseFloat(container.position.top) * heightRatio, maxHeight);
 
                 draggableContainer.style.left = `${left}px`;
                 draggableContainer.style.top = `${top}px`;
@@ -45,7 +48,7 @@ function initCardGenerator() {
 
                 const originalWidth = parseInt(container.image.width);
                 const originalHeight = parseInt(container.image.height);
-                
+
                 let newWidth = originalWidth;
                 let newHeight = originalHeight;
 
@@ -77,24 +80,24 @@ function initCardGenerator() {
 
                 draggableContainer.appendChild(img);
                 cardVisual.appendChild(draggableContainer);
-                
+
                 const resizeObserver = new ResizeObserver(entries => {
                     for (let entry of entries) {
                         const newCardRect = entry.target.getBoundingClientRect();
                         const scale = newCardRect.width / cardRect.width;
-                        
+
                         const scaledLeft = parseFloat(draggableContainer.style.left) * scale;
                         const scaledTop = parseFloat(draggableContainer.style.top) * scale;
                         const scaledWidth = parseFloat(img.style.width) * scale;
                         const scaledHeight = parseFloat(img.style.height) * scale;
-                        
+
                         draggableContainer.style.left = `${scaledLeft}px`;
                         draggableContainer.style.top = `${scaledTop}px`;
                         img.style.width = `${scaledWidth}px` / 3;
                         img.style.height = `${scaledHeight}px` / 3;
                     }
                 });
-                
+
                 resizeObserver.observe(card);
             });
         }

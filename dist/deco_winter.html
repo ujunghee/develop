@@ -1,6 +1,6 @@
 <div class="deco">
     <div class="header">
-        <button type="button" class="back"></button>
+        <button type="button" class="back select-prev"></button>
         <button type="submit" class="submit winter">완성</button>
     </div>
     <div class="deco-box winter" data-bg="" ;="">
@@ -8,13 +8,18 @@
             <span class="blind">삭제하기</span>
         </button>
         <p class="deco-txt">아래 옵션을 활용하여<br>민화를 다채롭게 꾸며보세요.</p>
-        
+
         <!-- 문구 작성 s -->
         <div class="textfield">
-            <textarea name="" id="" placeholder="문구를 입력해주세요" rows="2"></textarea>
-         </div>
+            <textarea name="" id="" placeholder="간단한 문구 작성해보세요." rows="1" maxlength="12"></textarea>
+        </div>
         <!-- 문구 작성 e -->
 
+        <!-- 배치 화면 s -->
+        <div class="composition">
+            
+        </div>
+       <!-- 배치 화면 e -->
     </div>
     <div class="navigation">
         <ul>
@@ -55,7 +60,7 @@
             </li>
 
             <!-- 계절 선택 -->
-            <li><button type="button" class="p-b nav season wi">
+            <li><button type="button" class="p-b nav season wi" data-season="winter">
                     <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 32 32" fill="none">
                         <path class="stroke" d="M10.5472 7.61507C9.03959 5.08464 11.1412 1.93722 14.0562 2.35991L15.2153 2.52799C15.6431 2.59001 16.0775 2.59009 16.5053 2.52822L17.6935 2.35636C20.6081 1.93481 22.7086 5.08177 21.2014 7.61169L16.6787 15.2029C16.5096 15.4868 16.2036 15.6606 15.8733 15.6606C15.5429 15.6606 15.2369 15.4868 15.0678 15.2029L10.5472 7.61507Z"></path>
                         <path class="stroke" d="M21.1994 24.7062C22.7069 27.2367 20.6053 30.3841 17.6903 29.9614L16.5312 29.7933C16.1035 29.7313 15.669 29.7312 15.2413 29.7931L14.053 29.9649C11.1384 30.3865 9.03789 27.2395 10.5452 24.7096L15.0678 17.1184C15.2369 16.8345 15.5429 16.6607 15.8733 16.6607C16.2036 16.6607 16.5096 16.8345 16.6787 17.1184L21.1994 24.7062Z"></path>
@@ -80,7 +85,7 @@
             </li>
 
             <!-- 컴퍼니 선택 -->
-            <li><button type="button" class="nav company">
+            <li><button type="button" class="nav textfielding">
                     <svg xmlns="http://www.w3.org/2000/svg" width="31" height="30" viewbox="0 0 31 30" fill="none">
                         <mask id="path-1-inside-1_416_991" fill="white">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M10 0.770142C4.47715 0.770142 0 5.2473 0 10.7701V13.8742C0 19.397 4.47715 23.8742 10 23.8742H12.36V28.5406C12.36 28.9892 12.905 29.2109 13.2181 28.8896L18.1057 23.8742H21C26.5228 23.8742 31 19.397 31 13.8742V10.7701C31 5.24729 26.5228 0.770142 21 0.770142H10Z"></path>
@@ -93,144 +98,147 @@
             </li>
         </ul>
     </div>
-    
-        <!-- 상세팝업 s -->
-        <div class="popup object">
-            <button class="scroll">
-                <span type="button" class="scroll-bar"></span>
-            </button>
-            <ul>
-                <li><button type="button" class="p-btn"><img src="/display-01.39c8d821.png" alt="소반"></button>
-                </li>
-                <li><button type="button" class="p-btn"><img src="/display-02.e44980ef.png" alt="소반"></button>
-                </li>
-                <li><button type="button" class="p-btn"><img src="/display-03.b7e33c07.png" alt="소반"></button>
-                </li>
-                <li><button type="button" class="p-btn"><img src="/display-04.62718604.png" alt="소반"></button>
-                </li>
-                <li><button type="button" class="p-btn"><img src="/display-05.54c76105.png" alt="소반"></button>
-                </li>
-                <li><button type="button" class="p-btn"><img src="/display-06.1d8f9049.png" alt="소반"></button>
-                </li>
-                <li><button type="button" class="p-btn"><img src="/display-07.8b265e46.png" alt="소반"></button>
-                </li>
-                <li><button type="button" class="p-btn"><img src="/display-08.d0fdea30.png" alt="소반"></button>
-                </li>
-                <li><button type="button" class="p-btn"><img src="/display-09.ac3287c9.png" alt="소반"></button>
-                </li>
-            </ul>
+
+    <!-- 상세팝업 s -->
+    <div class="popup object">
+        <button class="scroll">
+            <span type="button" class="scroll-bar"></span>
+        </button>
+        <ul class="piclist">
+            <li><button type="button" class="p-btn"><img src="/display-01.39c8d821.png" alt="소반"></button>
+            </li>
+            <li><button type="button" class="p-btn"><img src="/display-02.e44980ef.png" alt="소반"></button>
+            </li>
+            <li><button type="button" class="p-btn"><img src="/display-03.b7e33c07.png" alt="소반"></button>
+            </li>
+            <li><button type="button" class="p-btn"><img src="/display-04.62718604.png" alt="소반"></button>
+            </li>
+            <li><button type="button" class="p-btn"><img src="/display-05.54c76105.png" alt="소반"></button>
+            </li>
+            <li><button type="button" class="p-btn"><img src="/display-06.1d8f9049.png" alt="소반"></button>
+            </li>
+            <li><button type="button" class="p-btn"><img src="/display-07.8b265e46.png" alt="소반"></button>
+            </li>
+            <li><button type="button" class="p-btn"><img src="/display-08.d0fdea30.png" alt="소반"></button>
+            </li>
+            <li><button type="button" class="p-btn"><img src="/display-09.ac3287c9.png" alt="소반"></button>
+            </li>
+        </ul>
+        <div class="buttonbox">
             <button type="button" class="f-button">가구 자세히보기 ></button>
+            <button type="button" class="f-twist">서책 좌우반전하기</button>
         </div>
-        <!-- 상세팝업 e -->
+    </div>
+    <!-- 상세팝업 e -->
 
-        <!-- 자세히보기 s -->
-        <div class="infor">
-            <div class="infor-wrap">
-                <button type="button" class="close">
-                    <span class="blind">닫기</span>
-                </button>
-                <div class="swiper slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="/display-01.39c8d821.png" alt="소반">
-                            <p class="s-15">소반</p>
-                            <p class="f-s-13"></p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-02.e44980ef.png" alt="뒤주">
-                            <p class="s-15">뒤주</p>
-                            <p class="f-s-13"></p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-03.b7e33c07.png" alt="화탁">
-                            <p class="s-15">화탁</p>
-                            <p class="f-s-13"></p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-04.62718604.png" alt="탁자">
-                            <p class="s-15">탁자</p>
-                            <p class="f-s-13"></p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-05.54c76105.png" alt="다기장">
-                            <p class="s-15">다기장</p>
-                            <p class="f-s-13"></p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-06.1d8f9049.png" alt="머릿장">
-                            <p class="s-15">머릿 장</p>
-                            <p class="f-s-13"></p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-07.8b265e46.png" alt="나주 호족반">
-                            <p class="s-15">나주 호족반</p>
-                            <p class="f-s-13"></p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-08.d0fdea30.png" alt="수납장">
-                            <p class="s-15">수납장</p>
-                            <p class="f-s-13"></p>
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-09.ac3287c9.png" alt="꽃병 상">
-                            <p class="s-15">꽃병 상</p>
-                            <p class="f-s-13"></p>
-                        </div>
-                    </div>
-                </div>
-                <div thumbsslider="" class="swiper slider-list">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="/display-01.39c8d821.png" alt="소반 크게보기">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-02.e44980ef.png" alt="뒤주 크게보기">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-03.b7e33c07.png" alt="화탁 크게보기">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-04.62718604.png" alt="탁자 크게보기">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-05.54c76105.png" alt="다기장 크게보기">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-06.1d8f9049.png" alt="머릿장 크게보기">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-07.8b265e46.png" alt="니주 호족반 크게보기">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-08.d0fdea30.png" alt="수납장 크게보기">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="/display-09.ac3287c9.png" alt="꽃병 상 크게보기">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="digital">
-                <p class="s-13">민화의 다양한 오브제들은 ‘국가유산디지털서비스’에서<br>
-                    제공하는 자료를 기반으로 제작되었습니다.</p>
-                <button type="button" class="gobutton">국가유산디지털서비스 바로가기</button>
-            </div>
-        </div> 
-        <!-- 자세히보기 e -->
-
-        <!-- 팔레트 s -->
-        <div class="popup colorpalette">
-            <button class="scroll">
-                <span type="button" class="scroll-bar"></span>
+    <!-- 자세히보기 s -->
+    <div class="infor">
+        <div class="infor-wrap">
+            <button type="button" class="close">
+                <span class="blind">닫기</span>
             </button>
-            <div class="palette winter">
-                <ul>
-                    <li><button type="button" class="b-1"></button></li>
-                    <li><button type="button" class="b-2"></button></li>
-                    <li><button type="button" class="b-3"></button></li>
-                    <li><button type="button" class="b-4"></button></li>
-                </ul>
+            <div class="swiper slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/display-01.39c8d821.png" alt="소반">
+                        <p class="s-15">소반</p>
+                        <p class="f-s-13"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-02.e44980ef.png" alt="뒤주">
+                        <p class="s-15">뒤주</p>
+                        <p class="f-s-13"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-03.b7e33c07.png" alt="화탁">
+                        <p class="s-15">화탁</p>
+                        <p class="f-s-13"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-04.62718604.png" alt="탁자">
+                        <p class="s-15">탁자</p>
+                        <p class="f-s-13"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-05.54c76105.png" alt="다기장">
+                        <p class="s-15">다기장</p>
+                        <p class="f-s-13"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-06.1d8f9049.png" alt="머릿장">
+                        <p class="s-15">머릿 장</p>
+                        <p class="f-s-13"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-07.8b265e46.png" alt="나주 호족반">
+                        <p class="s-15">나주 호족반</p>
+                        <p class="f-s-13"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-08.d0fdea30.png" alt="수납장">
+                        <p class="s-15">수납장</p>
+                        <p class="f-s-13"></p>
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-09.ac3287c9.png" alt="꽃병 상">
+                        <p class="s-15">꽃병 상</p>
+                        <p class="f-s-13"></p>
+                    </div>
+                </div>
+            </div>
+            <div thumbsslider="" class="swiper slider-list">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/display-01.39c8d821.png" alt="소반 크게보기">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-02.e44980ef.png" alt="뒤주 크게보기">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-03.b7e33c07.png" alt="화탁 크게보기">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-04.62718604.png" alt="탁자 크게보기">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-05.54c76105.png" alt="다기장 크게보기">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-06.1d8f9049.png" alt="머릿장 크게보기">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-07.8b265e46.png" alt="니주 호족반 크게보기">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-08.d0fdea30.png" alt="수납장 크게보기">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/display-09.ac3287c9.png" alt="꽃병 상 크게보기">
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- 팔레트 e -->
+        <div class="digital">
+            <p class="s-13">민화의 다양한 오브제들은 ‘국가유산디지털서비스’에서<br>
+                제공하는 자료를 기반으로 제작되었습니다.</p>
+            <button type="button" class="gobutton">국가유산디지털서비스 바로가기</button>
+        </div>
+    </div>
+    <!-- 자세히보기 e -->
+
+    <!-- 팔레트 s -->
+    <div class="popup colorpalette">
+        <button class="scroll">
+            <span type="button" class="scroll-bar"></span>
+        </button>
+        <div class="palette winter">
+            <ul>
+                <li><button type="button" class="b-1"></button></li>
+                <li><button type="button" class="b-2"></button></li>
+                <li><button type="button" class="b-3"></button></li>
+                <li><button type="button" class="b-4"></button></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 팔레트 e -->
 </div><script src="/deco_winter.12a4a124.js"></script>

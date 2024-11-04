@@ -68,11 +68,52 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 
 body {
-  max-width: 102.4rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
   min-height: 50rem;
   margin: 0 auto;
   line-height: 1;
+  display: flex;
   overflow: hidden;
+}
+
+@media (width >= 361px) and (width <= 768px) {
+  body {
+    height: 100%;
+  }
+}
+
+@media (width <= 360px) {
+  body {
+    height: 100%;
+  }
+}
+
+#content {
+  width: 48rem;
+  height: 80dvh;
+  min-height: 80rem;
+  transition: all .6s cubic-bezier(.56, 0, .07, 1.01);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (width >= 361px) and (width <= 768px) {
+  #content {
+    width: 100%;
+    height: 100dvh;
+    min-height: 55rem;
+  }
+}
+
+@media (width <= 360px) {
+  #content {
+    width: 100%;
+    height: 100dvh;
+    min-height: 55rem;
+  }
 }
 
 menu, ol, ul {
@@ -150,6 +191,7 @@ textarea:focus:not(:focus-visible) {
 button {
   cursor: pointer;
   border: none;
+  font-family: NanumSquare;
 }
 
 .blind {
@@ -242,10 +284,6 @@ button {
   font-weight: 500;
 }
 
-.first, .last-btn button, .gobutton, .f-twist, .f-button, .reset, .submit, .button {
-  font-family: NanumSquare;
-}
-
 .first:hover, .last-btn button:hover, .gobutton:hover, .f-twist:hover, .f-button:hover, .reset:hover, .submit:hover, .button:hover {
   transform: scale(.98);
 }
@@ -317,10 +355,14 @@ button {
 }
 
 .reset {
+  z-index: 10;
   background: #e0d9d4 url("reset.b3c2b59a.png") 50% / 50% no-repeat;
   border-radius: 10rem;
   width: 3.6rem;
   height: 3.6rem;
+  position: absolute;
+  top: 1.6rem;
+  left: 1.6rem;
 }
 
 .back {
@@ -329,6 +371,13 @@ button {
   width: 2rem;
   height: 2rem;
   padding: 1rem;
+  transition: all .2s cubic-bezier(.56, 0, .07, 1.01);
+}
+
+.back:hover {
+  background: #d9d9d966 url("arrow.5ba5176c.png") 50% / 1.8rem no-repeat;
+  border-radius: .5rem;
+  transform: scale(.98);
 }
 
 .navigation {
@@ -341,7 +390,7 @@ button {
 .navigation ul {
   justify-content: center;
   align-items: center;
-  gap: min(5vw - 1rem, 8rem);
+  gap: min(5vw - 1rem, 3rem);
   width: 100%;
   height: 100%;
   display: flex;
@@ -450,9 +499,9 @@ button {
 
 .close {
   float: right;
-  width: 2rem;
-  height: 2rem;
-  padding: 0;
+  width: 2.6rem;
+  height: 2.6rem;
+  transition: all .2s cubic-bezier(.56, 0, .07, 1.01);
   position: relative;
 }
 
@@ -474,6 +523,12 @@ button {
   position: absolute;
   left: 50%;
   transform: translateX(-50%)rotate(45deg);
+}
+
+.close:hover {
+  background: #d9d9d966;
+  border-radius: .5rem;
+  transform: scale(.98);
 }
 
 .gobutton {
@@ -526,12 +581,12 @@ button {
 }
 
 .popup {
-  backdrop-filter: blur(2rem);
+  backdrop-filter: blur(1.7rem) brightness(.5);
   pointer-events: none;
   z-index: 5;
   visibility: hidden;
   box-sizing: border-box;
-  background: #00000080;
+  background: none;
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
   flex-direction: column;
@@ -561,22 +616,6 @@ button {
 
 .popup.object .buttonbox {
   width: 100%;
-}
-
-.popup.object .buttonbox .f-twist {
-  display: none;
-}
-
-.popup.object .buttonbox .f-twist.on {
-  display: block;
-}
-
-.popup.object .buttonbox .f-button {
-  display: none;
-}
-
-.popup.object .buttonbox .f-button.on {
-  display: block;
 }
 
 .popup ul {
@@ -612,6 +651,11 @@ button {
   object-fit: contain;
   width: 100%;
   height: 70%;
+  transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
+}
+
+.popup ul li img.rotated {
+  transform: scaleX(-1);
 }
 
 .popup .scroll {
@@ -635,7 +679,7 @@ button {
 .infor {
   visibility: hidden;
   box-sizing: border-box;
-  z-index: 11;
+  z-index: 100;
   opacity: 0;
   background: #00000080;
   flex-direction: column;
@@ -658,11 +702,12 @@ button {
 
 .infor.on .infor-wrap {
   opacity: 1;
-  transform: scale(1);
+  transform: translateY(0)scale(1);
 }
 
 .infor.on .digital {
   opacity: 1;
+  transform: translateY(0);
 }
 
 .infor-wrap {
@@ -671,11 +716,12 @@ button {
   border-radius: 1rem;
   padding: 1.6rem;
   transition: all .6s cubic-bezier(.56, 0, .07, 1.01);
-  transform: scale(.5);
+  transform: translateY(30px)scale(.8);
 }
 
 .infor-wrap .slider-list .swiper-slide {
   box-sizing: border-box;
+  aspect-ratio: 1;
   background-color: #fff;
   border: 1px solid #fff;
   border-radius: 1rem;
@@ -712,7 +758,7 @@ button {
 }
 
 .infor-wrap .slider .swiper-slide {
-  height: min(50vw, 50rem);
+  height: min(50vw, 30rem);
   padding-bottom: 2.6rem;
 }
 
@@ -734,6 +780,7 @@ button {
   padding: 1.6rem;
   transition: all .6s cubic-bezier(.56, 0, .07, 1.01);
   display: flex;
+  transform: translateY(30px);
 }
 
 .palette {
@@ -855,6 +902,7 @@ button {
 }
 
 .textfield {
+  z-index: 100;
   display: none;
   position: absolute;
   top: 10%;

@@ -117,21 +117,6 @@ function initCardGenerator() {
     }
 }
 
-function waitForImages(element) {
-    const images = element.getElementsByTagName('img');
-    const promises = Array.from(images).map(img => {
-        return new Promise((resolve) => {
-            if (img.complete) {
-                resolve();
-            } else {
-                img.onload = () => resolve();
-                img.onerror = () => resolve();
-            }
-        });
-    });
-    return Promise.all(promises);
-}
-
 // 모든 이미지 로드 대기
 function waitForImages(element) {
     const images = element.getElementsByTagName('img');

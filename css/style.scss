@@ -248,9 +248,10 @@
             }
 
             .card {
-                width: calc(100% - 13.0rem);
+                width: calc(100% - 3.2rem);
+                margin: 0 1.6rem;
                 background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-                margin: 0 auto;
+                box-sizing: border-box;
                 border-radius: map-get($boder-radius , b-14);
                 box-shadow: map-get($shadow, shadow-15);
                 height: calc(100% - 14.0rem);

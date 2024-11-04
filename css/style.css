@@ -196,9 +196,10 @@
   height: calc(100% - 12.6rem);
 }
 .last.white .ending .card {
-  width: calc(100% - 13rem);
+  width: calc(100% - 3.2rem);
+  margin: 0 1.6rem;
   background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
-  margin: 0 auto;
+  box-sizing: border-box;
   border-radius: 1.4rem;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
   height: calc(100% - 14rem);

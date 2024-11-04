@@ -252,6 +252,7 @@
                 border-radius: map-get($boder-radius , b-14);
                 box-shadow: map-get($shadow, shadow-15);
                 height: calc(100% - 14.0rem);
+                aspect-ratio: 3 / 4;
                 position: relative;
                 padding: 1rem;
 

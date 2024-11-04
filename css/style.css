@@ -192,6 +192,7 @@
   border-radius: 1.4rem;
   box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
   height: calc(100% - 14rem);
+  aspect-ratio: 3/4;
   position: relative;
   padding: 1rem;
 }

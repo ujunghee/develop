@@ -7,10 +7,12 @@ function initCardGenerator() {
         const cardVisual = document.querySelector('.card-visual');
         const txtBox = document.querySelector('.txt-box');
 
-        const cardRect = card.getBoundingClientRect();
-        const cardPadding = 20;
-        const maxWidth = cardRect.width - (cardPadding * 2);
-        const maxHeight = cardRect.height - (cardPadding * 2);
+        // 원본 deco-box의 크기와 비율을 저장
+        const originalDecoBox = {
+            width: 100,  // deco-box의 원본 너비 (%)
+            height: 100, // deco-box의 원본 높이 (%)
+            aspectRatio: 1  // deco-box의 가로세로 비율
+        };
 
         // background 복원
         if (savedState.background) {
@@ -27,71 +29,58 @@ function initCardGenerator() {
                 draggableContainer.className = 'draggable-container';
                 draggableContainer.style.position = 'absolute';
                 
-                const left = container.position.left.includes('%') ? 
-                    (parseFloat(container.position.left) / 100) * maxWidth + cardPadding :
-                    Math.min(parseFloat(container.position.left), maxWidth);
+                // 위치를 퍼센트로 변환하여 저장
+                const originalLeft = container.position.left.includes('%') ? 
+                    parseFloat(container.position.left) :
+                    (parseFloat(container.position.left) / originalDecoBox.width) * 100;
                     
-                const top = container.position.top.includes('%') ?
-                    (parseFloat(container.position.top) / 100) * maxHeight + cardPadding :
-                    Math.min(parseFloat(container.position.top), maxHeight);
+                const originalTop = container.position.top.includes('%') ?
+                    parseFloat(container.position.top) :
+                    (parseFloat(container.position.top) / originalDecoBox.height) * 100;
 
-                draggableContainer.style.left = `${left}px`;
-                draggableContainer.style.top = `${top}px`;
+                draggableContainer.style.left = `${originalLeft}%`;
+                draggableContainer.style.top = `${originalTop}%`;
                 draggableContainer.style.border = container.style.border;
 
                 const img = document.createElement('img');
                 img.src = container.image.src;
                 img.alt = container.image.alt;
 
-                const originalWidth = parseInt(container.image.width);
-                const originalHeight = parseInt(container.image.height);
+                // 이미지 크기도 퍼센트로 변환
+                const originalWidth = container.image.width.includes('%') ?
+                    parseFloat(container.image.width) :
+                    (parseFloat(container.image.width) / originalDecoBox.width) * 100;
                 
-                let newWidth = originalWidth;
-                let newHeight = originalHeight;
+                const originalHeight = container.image.height.includes('%') ?
+                    parseFloat(container.image.height) :
+                    (parseFloat(container.image.height) / originalDecoBox.height) * 100;
 
-                if (originalWidth > maxWidth) {
-                    const scale = maxWidth / originalWidth;
-                    newWidth = maxWidth;
-                    newHeight = originalHeight * scale;
-                }
-
-                if (newHeight > maxHeight) {
-                    const scale = maxHeight / newHeight;
-                    newHeight = maxHeight;
-                    newWidth = newWidth * scale;
-                }
-
-                const right = left + newWidth;
-                const bottom = top + newHeight;
-
-                if (right > cardRect.width - cardPadding) {
-                    draggableContainer.style.left = `${cardRect.width - cardPadding - newWidth}px`;
-                }
-
-                if (bottom > cardRect.height - cardPadding) {
-                    draggableContainer.style.top = `${cardRect.height - cardPadding - newHeight}px`;
-                }
-
-                img.style.width = `${newWidth}px`;
-                img.style.height = `${newHeight}px`;
+                img.style.width = `${originalWidth}%`;
+                img.style.height = `${originalHeight}%`;
 
                 draggableContainer.appendChild(img);
                 cardVisual.appendChild(draggableContainer);
                 
                 const resizeObserver = new ResizeObserver(entries => {
                     for (let entry of entries) {
-                        const newCardRect = entry.target.getBoundingClientRect();
-                        const scale = newCardRect.width / cardRect.width;
+                        const cardRect = entry.target.getBoundingClientRect();
+                        const cardAspectRatio = cardRect.width / cardRect.height;
+
+                        // card와 deco-box의 비율 차이에 따른 스케일 조정
+                        const scaleRatio = cardAspectRatio / originalDecoBox.aspectRatio;
                         
-                        const scaledLeft = parseFloat(draggableContainer.style.left) * scale;
-                        const scaledTop = parseFloat(draggableContainer.style.top) * scale;
-                        const scaledWidth = parseFloat(img.style.width) * scale;
-                        const scaledHeight = parseFloat(img.style.height) * scale;
-                        
-                        draggableContainer.style.left = `${scaledLeft}px`;
-                        draggableContainer.style.top = `${scaledTop}px`;
-                        img.style.width = `${scaledWidth}px` / 3;
-                        img.style.height = `${scaledHeight}px` / 3;
+                        // 비율에 맞춰 위치와 크기 조정
+                        if (scaleRatio > 1) {
+                            // card가 더 넓은 경우
+                            const adjustedLeft = originalLeft * scaleRatio;
+                            draggableContainer.style.left = `${adjustedLeft}%`;
+                            img.style.width = `${originalWidth * scaleRatio}%`;
+                        } else {
+                            // card가 더 좁은 경우
+                            const adjustedTop = originalTop * (1/scaleRatio);
+                            draggableContainer.style.top = `${adjustedTop}%`;
+                            img.style.height = `${originalHeight * (1/scaleRatio)}%`;
+                        }
                     }
                 });
                 
@@ -127,7 +116,6 @@ function waitForImages(element) {
     return Promise.all(promises);
 }
 
-// 길게 누르기 이벤트 핸들러
 function handleLongPress(event) {
     let timer;
     const card = event.currentTarget;
@@ -142,13 +130,11 @@ function handleLongPress(event) {
         clearTimeout(timer);
     };
 
-    // 터치 이벤트
     if (event.type === 'touchstart') {
         start();
         card.addEventListener('touchend', end, { once: true });
         card.addEventListener('touchmove', end, { once: true });
     }
-    // 마우스 이벤트
     else if (event.type === 'mousedown') {
         start();
         card.addEventListener('mouseup', end, { once: true });
@@ -156,7 +142,6 @@ function handleLongPress(event) {
     }
 }
 
-// 카드를 이미지로 변환하고 다운로드
 async function convertToImage(card) {
     try {
         const canvas = await html2canvas(card, {
@@ -169,10 +154,8 @@ async function convertToImage(card) {
             removeContainer: true
         });
 
-        // canvas를 이미지로 변환
         const imageDataUrl = canvas.toDataURL('image/png');
 
-        // 다운로드
         const link = document.createElement('a');
         link.href = imageDataUrl;
         link.download = `card-${Date.now()}.png`;

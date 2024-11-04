@@ -90,8 +90,8 @@ async function convertToImage(card) {
             scale: 2,
             useCORS: true,
             allowTaint: true,
-            width: card.offsetWidth,
-            height: card.offsetHeight,
+            // width: card.offsetWidth,
+            // height: card.offsetHeight,
             removeContainer: true
         });
 

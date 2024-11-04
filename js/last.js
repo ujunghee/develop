@@ -26,6 +26,12 @@ function initCardGenerator() {
         }
 
         if (savedState.composition && cardVisual) {
+            // card의 크기 계산
+            const cardRect = card.getBoundingClientRect();
+            // localStorage에서 가져온 decoBoxHeight 사용
+            const decoBoxHeight = savedState.decoBoxHeight || cardRect.height; // 없으면 card 높이 사용
+            const scaleRatio = cardRect.height / decoBoxHeight;
+
             savedState.composition.forEach(container => {
                 const draggableContainer = document.createElement('div');
                 draggableContainer.className = 'draggable-container';

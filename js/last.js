@@ -9,7 +9,8 @@ function initCardGenerator() {
 
         const cardRect = card.getBoundingClientRect();
         const decoBox = document.querySelector('.deco-box');
-        const decoBoxRect = decoBox ? decoBox.getBoundingClientRect() : { height: cardRect.height };
+        const decoBoxRect = decoBox ? decoBox.getBoundingClientRect() : null;
+        const scaleRatio = decoBoxRect ? cardRect.height / decoBoxRect.height : 1;
         const heightRatio = cardRect.height / decoBoxRect.height;
         const cardPadding = 20;
         const maxWidth = cardRect.width - (cardPadding * 2);
@@ -29,14 +30,14 @@ function initCardGenerator() {
                 const draggableContainer = document.createElement('div');
                 draggableContainer.className = 'draggable-container';
                 draggableContainer.style.position = 'absolute';
-
+                // 위치 계산시 비율 적용
                 const left = container.position.left.includes('%') ?
                     (parseFloat(container.position.left) / 100) * maxWidth + cardPadding :
-                    Math.min(parseFloat(container.position.left), maxWidth);
+                    Math.min(parseFloat(container.position.left) * scaleRatio, maxWidth);
 
                 const top = container.position.top.includes('%') ?
                     (parseFloat(container.position.top) / 100) * maxHeight + cardPadding :
-                    Math.min(parseFloat(container.position.top) * heightRatio, maxHeight);
+                    Math.min(parseFloat(container.position.top) * scaleRatio, maxHeight);
 
                 draggableContainer.style.left = `${left}px`;
                 draggableContainer.style.top = `${top}px`;
@@ -46,11 +47,12 @@ function initCardGenerator() {
                 img.src = container.image.src;
                 img.alt = container.image.alt;
 
-                const originalWidth = parseInt(container.image.width);
-                const originalHeight = parseInt(container.image.height);
+                // 이미지 크기도 비율에 맞게 조정
+                const originalWidth = parseInt(container.image.width) * scaleRatio;
+                const originalHeight = parseInt(container.image.height) * scaleRatio;
 
                 let newWidth = originalWidth;
-                let newHeight = originalHeight;
+                let newHeight = originalHeight;;
 
                 if (originalWidth > maxWidth) {
                     const scale = maxWidth / originalWidth;
@@ -93,8 +95,8 @@ function initCardGenerator() {
 
                         draggableContainer.style.left = `${scaledLeft}px`;
                         draggableContainer.style.top = `${scaledTop}px`;
-                        img.style.width = `${scaledWidth}px`;
-                        img.style.height = `${scaledHeight}px`;
+                        img.style.width = `${scaledWidth / 2}px`;
+                        img.style.height = `${scaledHeight / 2}px`;
                     }
                 });
 

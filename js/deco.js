@@ -15,25 +15,47 @@ function navigation() {
         // 완성 버튼 클릭 시
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
-            
-            html2canvas(decoBox, {
-                backgroundColor: null,
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                width: decoBox.offsetWidth,
-                height: decoBox.offsetHeight
-            }).then(canvas => {
-                const imageDataUrl = canvas.toDataURL('image/png');
-                
-                const currentState = {
-                    decoBoxImage: imageDataUrl,
-                    background: decoBox.style.background || ''
-                };
-                
-                localStorage.setItem('cardState', JSON.stringify(currentState));
-                // loadPage('last.html');
+
+            // 모든 드래그 핸들과 테두리를 숨김
+            const dragHandles = document.querySelectorAll('.drag-handle');
+            const draggableContainers = document.querySelectorAll('.draggable-container');
+
+            dragHandles.forEach(handle => {
+                handle.style.display = 'none';
             });
+
+            draggableContainers.forEach(container => {
+                container.style.border = 'none';
+            });
+
+            // 약간의 지연을 주어 DOM이 업데이트될 시간을 줌
+            setTimeout(() => {
+                html2canvas(decoBox, {
+                    backgroundColor: null,
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    width: decoBox.offsetWidth,
+                    height: decoBox.offsetHeight,
+                    onclone: function (clonedDoc) {
+                        // 클론된 문서에서도 모든 draggable-container가 보이도록 설정
+                        const clonedContainers = clonedDoc.querySelectorAll('.draggable-container');
+                        clonedContainers.forEach(container => {
+                            container.style.visibility = 'visible';
+                            container.style.opacity = '1';
+                        });
+                    }
+                }).then(canvas => {
+                    const imageDataUrl = canvas.toDataURL('image/png');
+
+                    const currentState = {
+                        decoBoxImage: imageDataUrl,
+                        background: decoBox.style.background || ''
+                    };
+
+                    localStorage.setItem('cardState', JSON.stringify(currentState));
+                });
+            }, 100);
         }
 
 

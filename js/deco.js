@@ -14,45 +14,52 @@ function navigation() {
 
         // 완성 버튼 클릭 시
         if (event.target.closest('.header')) {
-            const decoBox = document.querySelector('.deco-box');
-
-            if (!decoBox) {
-                console.error('Could not find deco-box element');
-                return;
-            }
-
-            // html2canvas를 사용하여 deco-box를 이미지로 변환
-            html2canvas(decoBox, {
-                backgroundColor: null,
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                width: decoBox.offsetWidth || decoBox.clientWidth,
-                height: decoBox.offsetHeight || decoBox.clientHeight,
-                logging: true,
-                onclone: function (clonedDoc) {
-                    const clonedBox = clonedDoc.querySelector('.deco-box');
-                    if (clonedBox) {
-                        // 명시적 크기 설정
-                        clonedBox.style.width = `${decoBox.offsetWidth}px`;
-                        clonedBox.style.height = `${decoBox.offsetHeight}px`;
-                        // 컨테이너가 보이는 상태인지 확인
-                        clonedBox.style.display = 'block';
-                        clonedBox.style.visibility = 'visible';
-                    }
+            try {
+                const decoBox = document.querySelector('.deco-box');
+        
+                if (!decoBox) {
+                    console.error('Could not find deco-box element');
+                    return;
                 }
-            }).then(canvas => {
-                // canvas를 이미지 데이터 URL로 변환
-                const imageDataUrl = canvas.toDataURL('image/png');
-
-                // 이미지 URL을 localStorage에 저장
-                const currentState = {
-                    decoBoxImage: imageDataUrl,
-                    background: decoBox.style.background || ''
-                };
-
-                localStorage.setItem('cardState', JSON.stringify(currentState));
-            });
+        
+                // html2canvas를 사용하여 deco-box를 이미지로 변환
+                html2canvas(decoBox, {
+                    backgroundColor: null,
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    width: decoBox.offsetWidth || decoBox.clientWidth,
+                    height: decoBox.offsetHeight || decoBox.clientHeight,
+                    logging: true,
+                    onclone: function(clonedDoc) {
+                        const clonedBox = clonedDoc.querySelector('.deco-box');
+                        if (clonedBox) {
+                            clonedBox.style.width = `${decoBox.offsetWidth}px`;
+                            clonedBox.style.height = `${decoBox.offsetHeight}px`;
+                            clonedBox.style.display = 'block';
+                            clonedBox.style.visibility = 'visible';
+                        }
+                    }
+                }).then(canvas => {
+                    // canvas를 이미지 데이터 URL로 변환
+                    const imageDataUrl = canvas.toDataURL('image/png');
+                    
+                    // 이미지 URL을 localStorage에 저장
+                    const currentState = {
+                        decoBoxImage: imageDataUrl,
+                        background: decoBox.style.background || ''
+                    };
+                    
+                    localStorage.setItem('cardState', JSON.stringify(currentState));
+        
+                    // 저장 완료 후 last.html로 이동
+                    window.location.href = 'last.html';
+                }).catch(error => {
+                    console.error('Error capturing image:', error);
+                });
+            } catch (error) {
+                console.error('Error in completion handler:', error);
+            }
         }
 
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출

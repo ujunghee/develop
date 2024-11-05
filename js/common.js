@@ -19,6 +19,7 @@ function loadPage(page, callback) {
                     objectItem()
                     palettebg()
                     initDraggableComposition()
+                    setupHeaderActions() // 새로운 함수 추가
                 }
 
                 if (selecpage.includes(page)) {
@@ -36,6 +37,62 @@ function loadPage(page, callback) {
     xhr.send()
 
 }
+
+// 헤더 액션 설정 함수
+function setupHeaderActions() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    // 기존 이벤트 리스너 제거
+    header.removeEventListener('click', handleHeaderClick);
+    // 새 이벤트 리스너 추가
+    header.addEventListener('click', handleHeaderClick);
+}
+
+// 헤더 클릭 이벤트 핸들러
+function handleHeaderClick(event) {
+    // 뒤로가기나 처음으로 버튼이 아닌 경우 (즉, 완성 버튼인 경우)
+    if (!event.target.closest('.season-prev') && !event.target.closest('.first')) {
+        const decoBox = document.querySelector('.deco-box');
+        if (!decoBox) return;
+
+        captureAndSaveState(decoBox)
+            .then(() => {
+                // 캡처 완료 후 페이지 전환
+                loadPage('last.html');
+            })
+            .catch(error => {
+                console.error('Capture failed:', error);
+                // 에러가 발생해도 페이지는 전환
+                loadPage('last.html');
+            });
+    }
+}
+
+// 상태 캡처 및 저장 함수
+async function captureAndSaveState(element) {
+    try {
+        const canvas = await html2canvas(element, {
+            backgroundColor: null,
+            scale: 2,
+            useCORS: true,
+            allowTaint: true
+        });
+
+        const imageDataUrl = canvas.toDataURL('image/png');
+        const currentState = {
+            decoBoxImage: imageDataUrl,
+            background: element.style.background || ''
+        };
+
+        localStorage.setItem('cardState', JSON.stringify(currentState));
+        return true;
+    } catch (error) {
+        console.error('Capture failed:', error);
+        throw error;
+    }
+}
+
 
 window.loadPage = loadPage
 

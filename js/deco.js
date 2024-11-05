@@ -21,50 +21,54 @@ function navigation() {
             const draggableContainers = document.querySelectorAll('.draggable-container');
             
             // 현재 스타일 상태 저장
-            const originalStyles = Array.from(draggableContainers).map(container => ({
-                element: container,
-                border: container.style.border,
-                handle: container.querySelector('.drag-handle').style.display
-            }));
-            
-            // 캡쳐를 위한 스타일 적용
             dragHandles.forEach(handle => handle.style.display = 'none');
             draggableContainers.forEach(container => container.style.border = 'none');
         
-            html2canvas(decoBox, {
-                backgroundColor: null,
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                width: decoBox.offsetWidth,
-                height: decoBox.offsetHeight,
-                foreignObjectRendering: true,
-                logging: false
-            }).then(canvas => {
-                // 원래 스타일 복원
-                originalStyles.forEach(style => {
-                    style.element.style.border = style.border;
-                    style.element.querySelector('.drag-handle').style.display = style.handle;
+            // 모든 이미지가 로드될 때까지 대기
+            const images = decoBox.getElementsByTagName('img');
+            Promise.all([...images].map(img => {
+                if (img.complete) {
+                    return Promise.resolve();
+                }
+                return new Promise(resolve => {
+                    img.onload = resolve;
+                    img.onerror = resolve;
                 });
+            })).then(() => {
+                html2canvas(decoBox, {
+                    backgroundColor: null,
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    width: decoBox.offsetWidth,
+                    height: decoBox.offsetHeight,
+                    logging: true,  // 디버깅을 위해 logging 활성화
+                    imageTimeout: 0,  // 이미지 로딩 타임아웃 제거
+                    ignoreElements: (element) => {
+                        // drag-handle 클래스를 가진 요소는 무시
+                        return element.classList.contains('drag-handle');
+                    }
+                }).then(canvas => {
+                    // 스타일 복원
+                    dragHandles.forEach(handle => handle.style.display = 'block');
+                    draggableContainers.forEach(container => container.style.border = '1px solid #D89B9B');
         
-                const imageDataUrl = canvas.toDataURL('image/png');
-                const currentState = {
-                    decoBoxImage: imageDataUrl,
-                    background: decoBox.style.background || ''
-                };
-                
-                localStorage.setItem('cardState', JSON.stringify(currentState));
-            }).catch(error => {
-                console.error('Capture failed:', error);
-                
-                // 에러 발생시에도 원래 스타일 복원
-                originalStyles.forEach(style => {
-                    style.element.style.border = style.border;
-                    style.element.querySelector('.drag-handle').style.display = style.handle;
+                    const imageDataUrl = canvas.toDataURL('image/png');
+                    const currentState = {
+                        decoBoxImage: imageDataUrl,
+                        background: decoBox.style.background || ''
+                    };
+                    
+                    localStorage.setItem('cardState', JSON.stringify(currentState));
+                }).catch(error => {
+                    console.error('Capture failed:', error);
+                    
+                    // 에러 시 스타일 복원
+                    dragHandles.forEach(handle => handle.style.display = 'block');
+                    draggableContainers.forEach(container => container.style.border = '1px solid #D89B9B');
                 });
             });
         }
-
 
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출
         let clickedToggle = event.target.closest('.p-b, .painting, .textfielding')

@@ -16,11 +16,13 @@ function loadPage(page, callback) {
 
                 
                 if (decopage.includes(page)) {
-                    navigation()
-                    sildeSwiper()
-                    objectItem()
-                    palettebg()
-                    initDraggableComposition()
+                    setTimeout(() => {
+                        navigation()
+                        sildeSwiper()
+                        objectItem()
+                        palettebg()
+                        initDraggableComposition()
+                    }, 0);
                 }
 
                 if (selecpage.includes(page)) {

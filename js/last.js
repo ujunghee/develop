@@ -1,17 +1,7 @@
 function initCardGenerator() {
-    console.log('initCardGenerator started'); // 디버깅 4
-
-    const state = localStorage.getItem('cardState');
-    
-    console.log('Retrieved state:', state); // 디버깅 5
     try {
         const savedState = JSON.parse(localStorage.getItem('cardState'));
-        if (!savedState || !savedState.decoBoxImage) {
-            console.log('No saved state found');  // 디버깅용
-            return;
-        }
-
-        console.log('Loading saved state');  // 디버깅용
+        if (!savedState || !savedState.decoBoxImage) return;
 
         const card = document.querySelector('.card');
         const cardVisual = document.querySelector('.card-visual');
@@ -34,20 +24,16 @@ function initCardGenerator() {
             card.style.background = savedState.background;
         }
 
-        // 이전 상태 초기화 (성공적으로 로드된 후에)
         localStorage.removeItem('cardState');
 
         // 이미지 로드 완료 후 이벤트 리스너 추가
-        // localStorage는 성공적으로 이미지를 표시한 후에 제거
         img.onload = () => {
-            console.log('Image loaded, now removing state'); // 디버깅 7
-            localStorage.removeItem('cardState');
             card.addEventListener('touchstart', handleLongPress);
             card.addEventListener('mousedown', handleLongPress);
         };
 
-    }  catch (error) {
-        console.error('Error in initCardGenerator:', error);
+    } catch (error) {
+        console.error('Error restoring card state:', error);
     }
 }
 

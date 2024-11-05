@@ -16,11 +16,7 @@ function navigation() {
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
             
-            console.log('Before capture - localStorage:', localStorage.getItem('cardState')); // 디버깅 1
-            
-            const dragHandles = document.querySelectorAll('.drag-handle');
-            dragHandles.forEach(handle => handle.style.display = 'none');
-        
+            // 먼저 html2canvas 실행하고, 완료될 때까지 기다린 다음에 페이지 전환
             html2canvas(decoBox, {
                 backgroundColor: null,
                 scale: 2,
@@ -28,21 +24,21 @@ function navigation() {
                 allowTaint: true
             }).then(canvas => {
                 const imageDataUrl = canvas.toDataURL('image/png');
+                
                 const currentState = {
                     decoBoxImage: imageDataUrl,
                     background: decoBox.style.background || ''
                 };
                 
+                // 이미지 저장이 완료된 후에만 페이지 전환
                 localStorage.setItem('cardState', JSON.stringify(currentState));
-                console.log('After save - localStorage:', localStorage.getItem('cardState')); // 디버깅 2
-                
-                setTimeout(() => {
-                    console.log('Before loadPage - localStorage:', localStorage.getItem('cardState')); // 디버깅 3
-                    loadPage('last.html');
-                }, 50);
+                // 여기서 페이지 전환
+                loadPage('last.html');
+            }).catch(error => {
+                console.error('Capture failed:', error);
             });
         }
-
+        
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출
         let clickedToggle = event.target.closest('.p-b, .painting, .textfielding')
         if (clickedToggle) {

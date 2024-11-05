@@ -32,7 +32,7 @@ function navigation() {
                 };
                 
                 localStorage.setItem('cardState', JSON.stringify(currentState));
-                loadPage('last.html');
+                // loadPage('last.html');
             });
         }
 

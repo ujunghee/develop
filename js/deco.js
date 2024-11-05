@@ -15,47 +15,54 @@ function navigation() {
         // 완성 버튼 클릭 시
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
-
+            
             // 모든 드래그 핸들과 테두리를 숨김
             const dragHandles = document.querySelectorAll('.drag-handle');
             const draggableContainers = document.querySelectorAll('.draggable-container');
-
-            dragHandles.forEach(handle => {
-                handle.style.display = 'none';
-            });
-
-            draggableContainers.forEach(container => {
-                container.style.border = 'none';
-            });
-
-            // 약간의 지연을 주어 DOM이 업데이트될 시간을 줌
-            setTimeout(() => {
-                html2canvas(decoBox, {
-                    backgroundColor: null,
-                    scale: 2,
-                    useCORS: true,
-                    allowTaint: true,
-                    width: decoBox.offsetWidth,
-                    height: decoBox.offsetHeight,
-                    onclone: function (clonedDoc) {
-                        // 클론된 문서에서도 모든 draggable-container가 보이도록 설정
-                        const clonedContainers = clonedDoc.querySelectorAll('.draggable-container');
-                        clonedContainers.forEach(container => {
-                            container.style.visibility = 'visible';
-                            container.style.opacity = '1';
-                        });
-                    }
-                }).then(canvas => {
-                    const imageDataUrl = canvas.toDataURL('image/png');
-
-                    const currentState = {
-                        decoBoxImage: imageDataUrl,
-                        background: decoBox.style.background || ''
-                    };
-
-                    localStorage.setItem('cardState', JSON.stringify(currentState));
+            
+            // 현재 스타일 상태 저장
+            const originalStyles = Array.from(draggableContainers).map(container => ({
+                element: container,
+                border: container.style.border,
+                handle: container.querySelector('.drag-handle').style.display
+            }));
+            
+            // 캡쳐를 위한 스타일 적용
+            dragHandles.forEach(handle => handle.style.display = 'none');
+            draggableContainers.forEach(container => container.style.border = 'none');
+        
+            html2canvas(decoBox, {
+                backgroundColor: null,
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                width: decoBox.offsetWidth,
+                height: decoBox.offsetHeight,
+                foreignObjectRendering: true,
+                logging: false
+            }).then(canvas => {
+                // 원래 스타일 복원
+                originalStyles.forEach(style => {
+                    style.element.style.border = style.border;
+                    style.element.querySelector('.drag-handle').style.display = style.handle;
                 });
-            }, 100);
+        
+                const imageDataUrl = canvas.toDataURL('image/png');
+                const currentState = {
+                    decoBoxImage: imageDataUrl,
+                    background: decoBox.style.background || ''
+                };
+                
+                localStorage.setItem('cardState', JSON.stringify(currentState));
+            }).catch(error => {
+                console.error('Capture failed:', error);
+                
+                // 에러 발생시에도 원래 스타일 복원
+                originalStyles.forEach(style => {
+                    style.element.style.border = style.border;
+                    style.element.querySelector('.drag-handle').style.display = style.handle;
+                });
+            });
         }
 
 

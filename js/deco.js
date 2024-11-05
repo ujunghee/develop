@@ -16,39 +16,30 @@ function navigation() {
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
             
+            console.log('Before capture - localStorage:', localStorage.getItem('cardState')); // 디버깅 1
+            
             const dragHandles = document.querySelectorAll('.drag-handle');
             dragHandles.forEach(handle => handle.style.display = 'none');
         
-            // Promise로 감싸서 순차 실행 보장
-            new Promise((resolve, reject) => {
-                html2canvas(decoBox, {
-                    backgroundColor: null,
-                    scale: 2,
-                    useCORS: true,
-                    allowTaint: true,
-                    logging: true
-                }).then(canvas => {
-                    console.log('Capture completed', canvas);
-                    const imageDataUrl = canvas.toDataURL('image/png');
-                    console.log('Image URL generated');
-                    
-                    const currentState = {
-                        decoBoxImage: imageDataUrl,
-                        background: decoBox.style.background || '',
-                        timestamp: Date.now()
-                    };
-                    
-                    localStorage.setItem('cardState', JSON.stringify(currentState));
-                    console.log('State saved to localStorage');
-                    resolve();
-                }).catch(reject);
-            }).then(() => {
-                // html2canvas와 localStorage 저장이 완료된 후에 페이지 전환
+            html2canvas(decoBox, {
+                backgroundColor: null,
+                scale: 2,
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
+                const imageDataUrl = canvas.toDataURL('image/png');
+                const currentState = {
+                    decoBoxImage: imageDataUrl,
+                    background: decoBox.style.background || ''
+                };
+                
+                localStorage.setItem('cardState', JSON.stringify(currentState));
+                console.log('After save - localStorage:', localStorage.getItem('cardState')); // 디버깅 2
+                
                 setTimeout(() => {
+                    console.log('Before loadPage - localStorage:', localStorage.getItem('cardState')); // 디버깅 3
                     loadPage('last.html');
-                }, 100); // 약간의 지연을 줘서 저장이 완전히 완료되도록 함
-            }).catch(error => {
-                console.error('Error:', error);
+                }, 50);
             });
         }
 

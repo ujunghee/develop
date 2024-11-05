@@ -52,7 +52,8 @@ function setupHeaderActions() {
 // 헤더 클릭 이벤트 핸들러
 function handleHeaderClick(event) {
     // 뒤로가기나 처음으로 버튼이 아닌 경우 (즉, 완성 버튼인 경우)
-    if (!event.target.closest('.season-prev') && !event.target.closest('.first')) {
+    if (!event.target.closest('.season-prev') && !event.target.closest('.first')
+    && !event.target.closest('.select-prev') ) {
         const decoBox = document.querySelector('.deco-box');
         if (!decoBox) return;
 

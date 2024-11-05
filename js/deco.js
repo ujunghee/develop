@@ -16,38 +16,39 @@ function navigation() {
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
             
-            // 기존 데이터 초기화
-            localStorage.removeItem('cardState');
-            
-            // 드래그 핸들만 숨기고 나머지는 현재 상태 그대로 유지
             const dragHandles = document.querySelectorAll('.drag-handle');
             dragHandles.forEach(handle => handle.style.display = 'none');
         
-            html2canvas(decoBox, {
-                backgroundColor: null,
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                logging: true // 디버깅용
-            }).then(canvas => {
-                // 잘 캡처됐는지 확인용 로그
-                console.log('Capture completed', canvas);
-                
-                const imageDataUrl = canvas.toDataURL('image/png');
-                console.log('Image URL generated'); // 디버깅용
-                
-                const currentState = {
-                    decoBoxImage: imageDataUrl,
-                    background: decoBox.style.background || '',
-                    timestamp: Date.now() // 타임스탬프 추가
-                };
-                
-                localStorage.setItem('cardState', JSON.stringify(currentState));
-                console.log('State saved to localStorage'); // 디버깅용
-                
-                loadPage('last.html');
+            // Promise로 감싸서 순차 실행 보장
+            new Promise((resolve, reject) => {
+                html2canvas(decoBox, {
+                    backgroundColor: null,
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    logging: true
+                }).then(canvas => {
+                    console.log('Capture completed', canvas);
+                    const imageDataUrl = canvas.toDataURL('image/png');
+                    console.log('Image URL generated');
+                    
+                    const currentState = {
+                        decoBoxImage: imageDataUrl,
+                        background: decoBox.style.background || '',
+                        timestamp: Date.now()
+                    };
+                    
+                    localStorage.setItem('cardState', JSON.stringify(currentState));
+                    console.log('State saved to localStorage');
+                    resolve();
+                }).catch(reject);
+            }).then(() => {
+                // html2canvas와 localStorage 저장이 완료된 후에 페이지 전환
+                setTimeout(() => {
+                    loadPage('last.html');
+                }, 100); // 약간의 지연을 줘서 저장이 완전히 완료되도록 함
             }).catch(error => {
-                console.error('Capture error:', error);
+                console.error('Error:', error);
             });
         }
 

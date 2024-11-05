@@ -16,26 +16,38 @@ function navigation() {
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
             
-            // 먼저 html2canvas 실행하고, 완료될 때까지 기다린 다음에 페이지 전환
+            // 기존 데이터 초기화
+            localStorage.removeItem('cardState');
+            
+            // 드래그 핸들만 숨기고 나머지는 현재 상태 그대로 유지
+            const dragHandles = document.querySelectorAll('.drag-handle');
+            dragHandles.forEach(handle => handle.style.display = 'none');
+        
             html2canvas(decoBox, {
                 backgroundColor: null,
                 scale: 2,
                 useCORS: true,
-                allowTaint: true
+                allowTaint: true,
+                logging: true // 디버깅용
             }).then(canvas => {
+                // 잘 캡처됐는지 확인용 로그
+                console.log('Capture completed', canvas);
+                
                 const imageDataUrl = canvas.toDataURL('image/png');
+                console.log('Image URL generated'); // 디버깅용
                 
                 const currentState = {
                     decoBoxImage: imageDataUrl,
-                    background: decoBox.style.background || ''
+                    background: decoBox.style.background || '',
+                    timestamp: Date.now() // 타임스탬프 추가
                 };
                 
-                // 이미지 저장이 완료된 후에만 페이지 전환
                 localStorage.setItem('cardState', JSON.stringify(currentState));
-                // 여기서 페이지 전환
+                console.log('State saved to localStorage'); // 디버깅용
+                
                 loadPage('last.html');
             }).catch(error => {
-                console.error('Capture failed:', error);
+                console.error('Capture error:', error);
             });
         }
 

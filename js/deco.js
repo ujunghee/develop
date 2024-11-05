@@ -13,14 +13,9 @@ function navigation() {
     document.addEventListener('click', function (event) {
 
         // 완성 버튼 클릭 시
-        if (event.target.closest('.header')) {
-            const decoBox = document.querySelector('.deco-box.spring') ||
-                document.querySelector('.deco-box.summer') ||
-                document.querySelector('.deco-box.autumn') ||
-                document.querySelector('.deco-box.winter');
-
-
-            // html2canvas를 사용하여 deco-box를 이미지로 변환
+        if (event.target.closest('.header') && !event.target.closest('.season-prev')) {
+            const decoBox = document.querySelector('.deco-box');
+            
             html2canvas(decoBox, {
                 backgroundColor: null,
                 scale: 2,
@@ -29,17 +24,14 @@ function navigation() {
                 width: decoBox.offsetWidth,
                 height: decoBox.offsetHeight
             }).then(canvas => {
-                // canvas를 이미지 데이터 URL로 변환
                 const imageDataUrl = canvas.toDataURL('image/png');
-
-                // 이미지 URL을 localStorage에 저장
+                
                 const currentState = {
                     decoBoxImage: imageDataUrl,
                     background: decoBox.style.background || ''
                 };
-
-                localStorage.setItem('cardState', JSON.stringify(currentState));
                 
+                localStorage.setItem('cardState', JSON.stringify(currentState));
                 loadPage('last.html');
             });
         }

@@ -32,8 +32,7 @@ function navigation() {
                 
                 // 이미지 저장이 완료된 후에만 페이지 전환
                 localStorage.setItem('cardState', JSON.stringify(currentState));
-                // 여기서 페이지 전환
-                loadPage('last.html');
+                
             }).catch(error => {
                 console.error('Capture failed:', error);
             });

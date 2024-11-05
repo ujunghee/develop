@@ -14,7 +14,11 @@ function navigation() {
 
         // 완성 버튼 클릭 시
         if (event.target.closest('.header')) {
-            const decoBox = document.querySelector('.deco-box');
+            const decoBox = document.querySelector('.deco-box.spring') ||
+                document.querySelector('.deco-box.summer') ||
+                document.querySelector('.deco-box.autumn') ||
+                document.querySelector('.deco-box.winter');
+
 
             // html2canvas를 사용하여 deco-box를 이미지로 변환
             html2canvas(decoBox, {
@@ -36,7 +40,6 @@ function navigation() {
 
                 localStorage.setItem('cardState', JSON.stringify(currentState));
                 
-                // SPA 방식으로 페이지 전환
                 loadPage('last.html');
             });
         }

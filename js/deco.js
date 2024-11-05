@@ -15,70 +15,26 @@ function navigation() {
         // 완성 버튼 클릭 시
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
-            // composition 영역도 찾아옴
-            const composition = decoBox.querySelector('.composition');
-            
-            // 먼저 기존 데이터 삭제
-            localStorage.removeItem('cardState');
-            
-            // 드래그 핸들과 테두리 숨기기
+    
+            // 드래그 핸들만 숨기고 나머지는 현재 상태 그대로 유지
             const dragHandles = document.querySelectorAll('.drag-handle');
-            const draggableContainers = document.querySelectorAll('.draggable-container');
-            
             dragHandles.forEach(handle => handle.style.display = 'none');
-            draggableContainers.forEach(container => {
-                container.style.border = 'none';
-                // position: absolute 상태 유지
-                container.style.zIndex = '1'; // z-index 설정으로 이미지가 보이도록
-            });
         
             html2canvas(decoBox, {
                 backgroundColor: null,
                 scale: 2,
                 useCORS: true,
-                allowTaint: true,
-                width: decoBox.offsetWidth,
-                height: decoBox.offsetHeight,
-                scrollX: 0,
-                scrollY: 0,
-                windowWidth: document.documentElement.offsetWidth,
-                windowHeight: document.documentElement.offsetHeight,
-                x: decoBox.offsetLeft,
-                y: decoBox.offsetTop,
-                // absolute positioned 요소들을 포함하도록 설정
-                onclone: function(clonedDoc) {
-                    const clonedBox = clonedDoc.querySelector('.deco-box');
-                    const clonedContainers = clonedBox.querySelectorAll('.draggable-container');
-                    clonedContainers.forEach(container => {
-                        container.style.position = 'absolute'; // position 유지
-                        container.style.visibility = 'visible';
-                        container.style.opacity = '1';
-                    });
-                }
+                allowTaint: true
             }).then(canvas => {
-                // 원래 스타일로 복원
-                dragHandles.forEach(handle => handle.style.display = 'block');
-                draggableContainers.forEach(container => {
-                    container.style.border = '1px solid #D89B9B';
-                    container.style.zIndex = 'auto';
-                });
-        
                 const imageDataUrl = canvas.toDataURL('image/png');
-                localStorage.setItem('cardState', JSON.stringify({
+                
+                const currentState = {
                     decoBoxImage: imageDataUrl,
                     background: decoBox.style.background || ''
-                }));
-        
-                // 페이지 이동
+                };
+                
+                localStorage.setItem('cardState', JSON.stringify(currentState));
                 loadPage('last.html');
-            }).catch(error => {
-                console.error('Capture failed:', error);
-                // 에러 시에도 스타일 복원
-                dragHandles.forEach(handle => handle.style.display = 'block');
-                draggableContainers.forEach(container => {
-                    container.style.border = '1px solid #D89B9B';
-                    container.style.zIndex = 'auto';
-                });
             });
         }
 

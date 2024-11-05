@@ -38,7 +38,8 @@ function navigation() {
                 console.error('Capture failed:', error);
             });
         }
-        
+
+
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출
         let clickedToggle = event.target.closest('.p-b, .painting, .textfielding')
         if (clickedToggle) {

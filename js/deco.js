@@ -15,11 +15,8 @@ function navigation() {
         // 완성 버튼 클릭 시
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
-    
-            // 드래그 핸들만 숨기고 나머지는 현재 상태 그대로 유지
-            const dragHandles = document.querySelectorAll('.drag-handle');
-            dragHandles.forEach(handle => handle.style.display = 'none');
-        
+            
+            // 먼저 html2canvas 실행하고, 완료될 때까지 기다린 다음에 페이지 전환
             html2canvas(decoBox, {
                 backgroundColor: null,
                 scale: 2,
@@ -33,8 +30,12 @@ function navigation() {
                     background: decoBox.style.background || ''
                 };
                 
+                // 이미지 저장이 완료된 후에만 페이지 전환
                 localStorage.setItem('cardState', JSON.stringify(currentState));
+                // 여기서 페이지 전환
                 loadPage('last.html');
+            }).catch(error => {
+                console.error('Capture failed:', error);
             });
         }
 

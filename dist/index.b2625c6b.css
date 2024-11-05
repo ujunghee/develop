@@ -127,28 +127,13 @@
 
 .deco-box {
   box-sizing: border-box;
+  background: url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
   border-radius: 1.4rem;
   flex: 1;
   margin: 0 1.6rem;
   padding: 1rem;
   transition: all .4s cubic-bezier(.56, 0, .07, 1.01);
   position: relative;
-}
-
-.deco-box.spring {
-  background: linear-gradient(#fff0 40%, #ffe3e3ce 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
-}
-
-.deco-box.summer {
-  background: linear-gradient(#fff0 40%, #e3f4ffce 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
-}
-
-.deco-box.autumn {
-  background: linear-gradient(#fff0 40%, #ffeedcce 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
-}
-
-.deco-box.winter {
-  background: linear-gradient(#fff0 40%, #d8e6e8ce 100%), url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
 }
 
 .deco-box .deco-txt {
@@ -226,11 +211,13 @@
 }
 
 .last.white .ending .card {
+  box-sizing: border-box;
+  aspect-ratio: 3 / 4;
   background: url("visaul_bg.228ed9e7.jpg") 50% / cover no-repeat;
   border-radius: 1.4rem;
-  width: calc(100% - 13rem);
+  width: calc(100% - 10rem);
   height: calc(100% - 14rem);
-  margin: 0 auto;
+  margin: 0 1.6rem;
   padding: 1rem;
   position: relative;
   box-shadow: 0 1rem 1.5rem #00000026;

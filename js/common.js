@@ -12,17 +12,13 @@ function loadPage(page, callback) {
 
                 const selecpage = ['select.html']
                 const decopage = ['deco_spring.html', 'deco_summer.html', 'deco_autumn.html', 'deco_winter.html']
-                const lastpage = ['last.html']
-
                 
                 if (decopage.includes(page)) {
-                    setTimeout(() => {
-                        navigation()
-                        sildeSwiper()
-                        objectItem()
-                        palettebg()
-                        initDraggableComposition()
-                    }, 0);
+                    navigation()
+                    sildeSwiper()
+                    objectItem()
+                    palettebg()
+                    initDraggableComposition()
                 }
 
                 if (selecpage.includes(page)) {

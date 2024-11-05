@@ -15,57 +15,69 @@ function navigation() {
         // 완성 버튼 클릭 시
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
+            // composition 영역도 찾아옴
+            const composition = decoBox.querySelector('.composition');
             
-            // 모든 드래그 핸들과 테두리를 숨김
+            // 먼저 기존 데이터 삭제
+            localStorage.removeItem('cardState');
+            
+            // 드래그 핸들과 테두리 숨기기
             const dragHandles = document.querySelectorAll('.drag-handle');
             const draggableContainers = document.querySelectorAll('.draggable-container');
             
-            // 현재 스타일 상태 저장
             dragHandles.forEach(handle => handle.style.display = 'none');
-            draggableContainers.forEach(container => container.style.border = 'none');
+            draggableContainers.forEach(container => {
+                container.style.border = 'none';
+                // position: absolute 상태 유지
+                container.style.zIndex = '1'; // z-index 설정으로 이미지가 보이도록
+            });
         
-            // 모든 이미지가 로드될 때까지 대기
-            const images = decoBox.getElementsByTagName('img');
-            Promise.all([...images].map(img => {
-                if (img.complete) {
-                    return Promise.resolve();
+            html2canvas(decoBox, {
+                backgroundColor: null,
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                width: decoBox.offsetWidth,
+                height: decoBox.offsetHeight,
+                scrollX: 0,
+                scrollY: 0,
+                windowWidth: document.documentElement.offsetWidth,
+                windowHeight: document.documentElement.offsetHeight,
+                x: decoBox.offsetLeft,
+                y: decoBox.offsetTop,
+                // absolute positioned 요소들을 포함하도록 설정
+                onclone: function(clonedDoc) {
+                    const clonedBox = clonedDoc.querySelector('.deco-box');
+                    const clonedContainers = clonedBox.querySelectorAll('.draggable-container');
+                    clonedContainers.forEach(container => {
+                        container.style.position = 'absolute'; // position 유지
+                        container.style.visibility = 'visible';
+                        container.style.opacity = '1';
+                    });
                 }
-                return new Promise(resolve => {
-                    img.onload = resolve;
-                    img.onerror = resolve;
+            }).then(canvas => {
+                // 원래 스타일로 복원
+                dragHandles.forEach(handle => handle.style.display = 'block');
+                draggableContainers.forEach(container => {
+                    container.style.border = '1px solid #D89B9B';
+                    container.style.zIndex = 'auto';
                 });
-            })).then(() => {
-                html2canvas(decoBox, {
-                    backgroundColor: null,
-                    scale: 2,
-                    useCORS: true,
-                    allowTaint: true,
-                    width: decoBox.offsetWidth,
-                    height: decoBox.offsetHeight,
-                    logging: true,  // 디버깅을 위해 logging 활성화
-                    imageTimeout: 0,  // 이미지 로딩 타임아웃 제거
-                    ignoreElements: (element) => {
-                        // drag-handle 클래스를 가진 요소는 무시
-                        return element.classList.contains('drag-handle');
-                    }
-                }).then(canvas => {
-                    // 스타일 복원
-                    dragHandles.forEach(handle => handle.style.display = 'block');
-                    draggableContainers.forEach(container => container.style.border = '1px solid #D89B9B');
         
-                    const imageDataUrl = canvas.toDataURL('image/png');
-                    const currentState = {
-                        decoBoxImage: imageDataUrl,
-                        background: decoBox.style.background || ''
-                    };
-                    
-                    localStorage.setItem('cardState', JSON.stringify(currentState));
-                }).catch(error => {
-                    console.error('Capture failed:', error);
-                    
-                    // 에러 시 스타일 복원
-                    dragHandles.forEach(handle => handle.style.display = 'block');
-                    draggableContainers.forEach(container => container.style.border = '1px solid #D89B9B');
+                const imageDataUrl = canvas.toDataURL('image/png');
+                localStorage.setItem('cardState', JSON.stringify({
+                    decoBoxImage: imageDataUrl,
+                    background: decoBox.style.background || ''
+                }));
+        
+                // 페이지 이동
+                loadPage('last.html');
+            }).catch(error => {
+                console.error('Capture failed:', error);
+                // 에러 시에도 스타일 복원
+                dragHandles.forEach(handle => handle.style.display = 'block');
+                draggableContainers.forEach(container => {
+                    container.style.border = '1px solid #D89B9B';
+                    container.style.zIndex = 'auto';
                 });
             });
         }

@@ -57,15 +57,15 @@ function handleHeaderClick(event) {
         if (!decoBox) return;
 
         captureAndSaveState(decoBox)
-            .then(() => {
-                // 캡처 완료 후 페이지 전환
-                loadPage('last.html');
-            })
-            .catch(error => {
-                console.error('Capture failed:', error);
-                // 에러가 발생해도 페이지는 전환
-                loadPage('last.html');
-            });
+            // .then(() => {
+            //     // 캡처 완료 후 페이지 전환
+            //     // loadPage('last.html');
+            // })
+            // .catch(error => {
+            //     console.error('Capture failed:', error);
+            //     // 에러가 발생해도 페이지는 전환
+            //     // loadPage('last.html');
+            // });
     }
 }
 

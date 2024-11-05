@@ -194,7 +194,6 @@
   height: calc(100% - 14rem);
   aspect-ratio: 3/4;
   position: relative;
-  padding: 1rem;
 }
 .last.white .ending .card p {
   position: absolute;

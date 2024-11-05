@@ -35,6 +35,9 @@ function navigation() {
                 };
 
                 localStorage.setItem('cardState', JSON.stringify(currentState));
+                
+                // SPA 방식으로 페이지 전환
+                loadPage('last.html');
             });
         }
 

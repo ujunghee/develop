@@ -15,25 +15,42 @@ function navigation() {
         // 완성 버튼 클릭 시
         if (event.target.closest('.header')) {
             const decoBox = document.querySelector('.deco-box');
-            
+
+            if (!decoBox) {
+                console.error('Could not find deco-box element');
+                return;
+            }
+
             // html2canvas를 사용하여 deco-box를 이미지로 변환
             html2canvas(decoBox, {
                 backgroundColor: null,
                 scale: 2,
                 useCORS: true,
                 allowTaint: true,
-                width: decoBox.offsetWidth,
-                height: decoBox.offsetHeight
+                width: decoBox.offsetWidth || decoBox.clientWidth,
+                height: decoBox.offsetHeight || decoBox.clientHeight,
+                logging: true,
+                onclone: function (clonedDoc) {
+                    const clonedBox = clonedDoc.querySelector('.deco-box');
+                    if (clonedBox) {
+                        // 명시적 크기 설정
+                        clonedBox.style.width = `${decoBox.offsetWidth}px`;
+                        clonedBox.style.height = `${decoBox.offsetHeight}px`;
+                        // 컨테이너가 보이는 상태인지 확인
+                        clonedBox.style.display = 'block';
+                        clonedBox.style.visibility = 'visible';
+                    }
+                }
             }).then(canvas => {
                 // canvas를 이미지 데이터 URL로 변환
                 const imageDataUrl = canvas.toDataURL('image/png');
-                
+
                 // 이미지 URL을 localStorage에 저장
                 const currentState = {
                     decoBoxImage: imageDataUrl,
                     background: decoBox.style.background || ''
                 };
-                
+
                 localStorage.setItem('cardState', JSON.stringify(currentState));
             });
         }

@@ -56,28 +56,17 @@ function handleHeaderClick(event) {
     && !event.target.closest('.select-prev') ) {
         const decoBox = document.querySelector('.deco-box');
         if (!decoBox) return;
-        
-        const delay = localStorage.getItem('cardState') ? 0 : 500;
 
-        setTimeout(() => {
-            html2canvas(decoBox, {
-                backgroundColor: null,
-                scale: 2,
-                useCORS: true,
-                allowTaint: true
-            }).then(canvas => {
-                const imageDataUrl = canvas.toDataURL('image/png');
-                const currentState = {
-                    decoBoxImage: imageDataUrl,
-                    background: decoBox.style.background || ''
-                };
-                localStorage.setItem('cardState', JSON.stringify(currentState));
+        captureAndSaveState(decoBox)
+            .then(() => {
+                // 캡처 완료 후 페이지 전환
                 loadPage('last.html');
-            }).catch(error => {
+            })
+            .catch(error => {
                 console.error('Capture failed:', error);
+                // 에러가 발생해도 페이지는 전환
                 loadPage('last.html');
             });
-        }, delay);
     }
 }
 

@@ -13,7 +13,7 @@ function navigation() {
     document.addEventListener('click', function (event) {
 
         // 완성 버튼 클릭 시
-        if (event.target.closest('.header') && !event.target.closest('.season-prev')) {
+        if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
             
             html2canvas(decoBox, {

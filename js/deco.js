@@ -13,10 +13,13 @@ function navigation() {
     document.addEventListener('click', function (event) {
 
         // 완성 버튼 클릭 시
-        if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
+        // decoBox 상태 캡처 로직을 함수로 분리하여 재사용 가능하게 구성
+        function captureDecoBox() {
             const decoBox = document.querySelector('.deco-box');
-            
-            // 먼저 html2canvas 실행하고, 완료될 때까지 기다린 다음에 페이지 전환
+
+            // 이전 상태 초기화
+            localStorage.removeItem('cardState');
+
             html2canvas(decoBox, {
                 backgroundColor: null,
                 scale: 2,
@@ -24,19 +27,26 @@ function navigation() {
                 allowTaint: true
             }).then(canvas => {
                 const imageDataUrl = canvas.toDataURL('image/png');
-                
+
                 const currentState = {
                     decoBoxImage: imageDataUrl,
                     background: decoBox.style.background || ''
                 };
-                
-                // 이미지 저장이 완료된 후에만 페이지 전환
+
+                // 이미지 저장이 완료된 후 상태 저장
                 localStorage.setItem('cardState', JSON.stringify(currentState));
-                
+
             }).catch(error => {
-                console.error('Capture failed:', error);
+                console.error('캡처 실패:', error);
             });
         }
+
+        // 완성 버튼 클릭 시 함수 호출
+        document.addEventListener('click', function (event) {
+            if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
+                captureDecoBox();
+            }
+        });
 
 
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출

@@ -16,28 +16,33 @@ function navigation() {
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
             
-            // 먼저 html2canvas 실행하고, 완료될 때까지 기다린 다음에 페이지 전환
-            html2canvas(decoBox, {
-                backgroundColor: null,
-                scale: 2,
-                useCORS: true,
-                allowTaint: true
-            }).then(canvas => {
-                const imageDataUrl = canvas.toDataURL('image/png');
-                
-                const currentState = {
-                    decoBoxImage: imageDataUrl,
-                    background: decoBox.style.background || ''
-                };
-                
-                // 이미지 저장이 완료된 후에만 페이지 전환
-                localStorage.setItem('cardState', JSON.stringify(currentState));
-                
-            }).catch(error => {
-                console.error('Capture failed:', error);
-            });
+            // 첫 번째 캡처 시 약간의 지연
+            const delay = localStorage.getItem('cardState') ? 0 : 500;
+            
+            setTimeout(() => {
+                html2canvas(decoBox, {
+                    backgroundColor: null,
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true
+                }).then(canvas => {
+                    const imageDataUrl = canvas.toDataURL('image/png');
+                    
+                    const currentState = {
+                        decoBoxImage: imageDataUrl,
+                        background: decoBox.style.background || ''
+                    };
+                    
+                    // 이미지 저장이 완료된 후 상태 저장 및 페이지 전환
+                    localStorage.setItem('cardState', JSON.stringify(currentState));
+                    loadPage('last.html');
+                    
+                }).catch(error => {
+                    console.error('Capture failed:', error);
+                    loadPage('last.html');
+                });
+            }, delay);
         }
-
 
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출
         let clickedToggle = event.target.closest('.p-b, .painting, .textfielding')

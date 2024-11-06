@@ -19,7 +19,7 @@ function loadPage(page, callback) {
                     objectItem()
                     palettebg()
                     initDraggableComposition()
-                    setupHeaderActions() // 새로운 함수 추가
+                    setupHeaderActions()
                 }
 
                 if (selecpage.includes(page)) {

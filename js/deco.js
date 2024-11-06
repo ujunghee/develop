@@ -12,36 +12,6 @@ function navigation() {
     // 해당 클릭할 요소 선택 및 공통 이벤트 실행
     document.addEventListener('click', function (event) {
 
-        // 완성 버튼 클릭 시
-        // if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first') && !event.target.closest('.select-prev')) {
-        //     const decoBox = document.querySelector('.deco-box');
-            
-        //     html2canvas(decoBox, {
-        //         backgroundColor: null,
-        //         scale: 2,
-        //         useCORS: true,
-        //         allowTaint: true,
-        //         ignoreElements: (element) => {
-        //             return element.classList.contains('reset');
-        //         }
-        //     }).then(canvas => {
-        //         const imageDataUrl = canvas.toDataURL('image/png');
-                
-        //         const currentState = {
-        //             decoBoxImage: imageDataUrl,
-        //             background: decoBox.style.background || ''
-        //         };
-                
-        //         localStorage.setItem('cardState', JSON.stringify(currentState));
-                
-        //     }).catch(error => {
-        //         console.error('Capture failed:', error);
-        //     });
-                
-        // event.preventDefault();
-        // }
-
-
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출
         let clickedToggle = event.target.closest('.p-b, .painting, .textfielding')
         if (clickedToggle) {

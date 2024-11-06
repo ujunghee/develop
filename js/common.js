@@ -51,23 +51,39 @@ function setupHeaderActions() {
 
 // 헤더 클릭 이벤트 핸들러
 function handleHeaderClick(event) {
-    // 뒤로가기나 처음으로 버튼이 아닌 경우 (즉, 완성 버튼인 경우)
-    if (!event.target.closest('.season-prev') && !event.target.closest('.first')
-    && !event.target.closest('.select-prev') ) {
-        const decoBox = document.querySelector('.deco-box');
-        if (!decoBox) return;
-
-        captureAndSaveState(decoBox)
-            .then(() => {
-                // 캡처 완료 후 페이지 전환
+    if (!event.target.closest('.season-prev') && !event.target.closest('.first') 
+        && !event.target.closest('.select-prev')) {
+            const decoBox = document.querySelector('.deco-box');
+            if (!decoBox) return;
+    
+            // 페이지 전환을 캡처 완료 후로 확실히 지연
+            html2canvas(decoBox, {
+                backgroundColor: null,
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                ignoreElements: (element) => {
+                    return element.classList.contains('reset');
+                }
+            }).then(canvas => {
+                const imageDataUrl = canvas.toDataURL('image/png');
+                const currentState = {
+                    decoBoxImage: imageDataUrl,
+                    background: decoBox.style.background || ''
+                };
+                
+                return new Promise((resolve) => {
+                    localStorage.setItem('cardState', JSON.stringify(currentState));
+                    resolve();
+                });
+            }).then(() => {
+                // localStorage 저장이 완료된 것을 확인한 후 페이지 전환
                 loadPage('last.html');
-            })
-            .catch(error => {
+            }).catch(error => {
                 console.error('Capture failed:', error);
-                // 에러가 발생해도 페이지는 전환
                 loadPage('last.html');
             });
-    }
+        }
 }
 
 // 상태 캡처 및 저장 함수

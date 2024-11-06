@@ -13,7 +13,7 @@ function navigation() {
     document.addEventListener('click', function (event) {
 
         // 완성 버튼 클릭 시
-        if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
+        if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first') && !event.target.closest('.select-prev')) {
             const decoBox = document.querySelector('.deco-box');
             
             // 먼저 html2canvas 실행하고, 완료될 때까지 기다린 다음에 페이지 전환
@@ -32,9 +32,11 @@ function navigation() {
                 
                 // 이미지 저장이 완료된 후에만 페이지 전환
                 localStorage.setItem('cardState', JSON.stringify(currentState));
+                loadPage('last.html');  // 페이지 전환 추가
                 
             }).catch(error => {
                 console.error('Capture failed:', error);
+                loadPage('last.html');  // 페이지 전환 추가
             });
         }
 

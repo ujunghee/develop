@@ -97,33 +97,33 @@ function handleLongPress(event) {
 }
 
 // 카드를 이미지로 변환하고 다운로드
-async function convertToImage(card) {
-    try {
-        const canvas = await html2canvas(card, {
-            backgroundColor: null,
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            width: card.offsetWidth,
-            height: card.offsetHeight,
-            removeContainer: true
-        })
+// async function convertToImage(card) {
+//     try {
+//         const canvas = await html2canvas(card, {
+//             backgroundColor: null,
+//             scale: 2,
+//             useCORS: true,
+//             allowTaint: true,
+//             width: card.offsetWidth,
+//             height: card.offsetHeight,
+//             removeContainer: true
+//         })
 
-        // canvas를 이미지로 변환
-        const imageDataUrl = canvas.toDataURL('image/png')
+//         // canvas를 이미지로 변환
+//         const imageDataUrl = canvas.toDataURL('image/png')
 
-        // 다운로드
-        // const link = document.createElement('a')
-        // link.href = imageDataUrl
-        // link.download = `card-${Date.now()}.png`
-        // document.body.appendChild(link)
-        // link.click()
-        // document.body.removeChild(link)
+//         // 다운로드
+//         // const link = document.createElement('a')
+//         // link.href = imageDataUrl
+//         // link.download = `card-${Date.now()}.png`
+//         // document.body.appendChild(link)
+//         // link.click()
+//         // document.body.removeChild(link)
 
-    } catch (error) {
-        console.error('이미지 변환 중 오류:', error)
-    }
-}
+//     } catch (error) {
+//         console.error('이미지 변환 중 오류:', error)
+//     }
+// }
 
 window.initCardGenerator = initCardGenerator
 

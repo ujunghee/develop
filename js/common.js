@@ -77,7 +77,10 @@ async function captureAndSaveState(element) {
             backgroundColor: null,
             scale: 2,
             useCORS: true,
-            allowTaint: true
+            allowTaint: true,
+            ignoreElements: (element) => {
+                return element.classList.contains('reset');
+            }
         });
 
         const imageDataUrl = canvas.toDataURL('image/png');

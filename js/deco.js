@@ -20,7 +20,10 @@ function navigation() {
                 backgroundColor: null,
                 scale: 2,
                 useCORS: true,
-                allowTaint: true
+                allowTaint: true,
+                ignoreElements: (element) => {
+                    return element.classList.contains('reset');
+                }
             }).then(canvas => {
                 const imageDataUrl = canvas.toDataURL('image/png');
                 
@@ -29,14 +32,12 @@ function navigation() {
                     background: decoBox.style.background || ''
                 };
                 
-                // 이미지 저장이 완료된 후에만 페이지 전환
                 localStorage.setItem('cardState', JSON.stringify(currentState));
                 
             }).catch(error => {
                 console.error('Capture failed:', error);
             });
                 
-        // 캡처가 완료될 때까지 이벤트 기본 동작 방지
         event.preventDefault();
         }
 

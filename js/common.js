@@ -28,7 +28,6 @@ function loadPage(page, callback) {
                 }
                 
                 if (lastpage.includes(page)) {
-                    // initCardGenerator()
                     share()
                 }
             }
@@ -39,24 +38,37 @@ function loadPage(page, callback) {
     xhr.send()
 
 }
+// 공유하기 버튼
+function share() {
+    let shareButton = document.querySelector('.share')
+    if (!shareButton) return
+
+    shareButton.addEventListener('click', function() {
+        window.navigator.share({
+            title: "민화꾸미기", // 공유될 제목
+            text: "민화를 꾸며보세요", // 공유될 설명
+            url: "https://ujunghee.github.io/develop/",
+          })
+    })
+}
 
 // 헤더 액션 설정 함수
 function setupHeaderActions() {
-    const header = document.querySelector('.header .submit');
-    if (!header) return;
+    const header = document.querySelector('.header .submit')
+    if (!header) return
 
     // 기존 이벤트 리스너 제거
-    header.removeEventListener('click', handleHeaderClick);
+    header.removeEventListener('click', handleHeaderClick)
     // 새 이벤트 리스너 추가
-    header.addEventListener('click', handleHeaderClick);
+    header.addEventListener('click', handleHeaderClick)
 }
 
 // 헤더 클릭 이벤트 핸들러
 function handleHeaderClick(event) {
     if (!event.target.closest('.season-prev') && !event.target.closest('.first') 
         && !event.target.closest('.select-prev')) {
-            const decoBox = document.querySelector('.deco-box');
-            if (!decoBox) return;
+            const decoBox = document.querySelector('.deco-box')
+            if (!decoBox) return
             
             html2canvas(decoBox, {
                 backgroundColor: null,
@@ -64,33 +76,33 @@ function handleHeaderClick(event) {
                 useCORS: true,
                 allowTaint: true,
                 ignoreElements: (element) => {
-                    return element.classList.contains('reset');
+                    return element.classList.contains('reset')
                 }
             }).then(canvas => {
-                const imageDataUrl = canvas.toDataURL('image/png');
+                const imageDataUrl = canvas.toDataURL('image/png')
                 const currentState = {
                     decoBoxImage: imageDataUrl,
                     background: decoBox.style.background || ''
-                };
+                }
                 
-                localStorage.setItem('cardState', JSON.stringify(currentState));
+                localStorage.setItem('cardState', JSON.stringify(currentState))
                 
                 // 직접 DOM 조작
-                document.getElementById('content').innerHTML = ''; // 현재 내용 비우기
+                document.getElementById('content').innerHTML = '' // 현재 내용 비우기
                 
                 // XHR 요청으로 last.html 내용 가져오기
-                const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'last.html', true);
+                const xhr = new XMLHttpRequest()
+                xhr.open('GET', 'last.html', true)
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        document.getElementById('content').innerHTML = xhr.responseText;
-                        initCardGenerator(); // 내용 삽입 후 초기화
+                        document.getElementById('content').innerHTML = xhr.responseText
+                        initCardGenerator() // 내용 삽입 후 초기화
                     }
-                };
-                xhr.send();
+                }
+                xhr.send()
             }).catch(error => {
-                console.error('Error:', error);
-            });
+                console.error('Error:', error)
+            })
         }
 }
 
@@ -103,21 +115,21 @@ async function captureAndSaveState(element) {
             useCORS: true,
             allowTaint: true,
             ignoreElements: (element) => {
-                return element.classList.contains('reset');
+                return element.classList.contains('reset')
             }
-        });
+        })
 
-        const imageDataUrl = canvas.toDataURL('image/png');
+        const imageDataUrl = canvas.toDataURL('image/png')
         const currentState = {
             decoBoxImage: imageDataUrl,
             background: element.style.background || ''
-        };
+        }
 
-        localStorage.setItem('cardState', JSON.stringify(currentState));
-        return true;
+        localStorage.setItem('cardState', JSON.stringify(currentState))
+        return true
     } catch (error) {
-        console.error('Capture failed:', error);
-        throw error;
+        console.error('Capture failed:', error)
+        throw error
     }
 }
 
@@ -137,19 +149,19 @@ document.addEventListener('DOMContentLoaded', function () {
             
             // 계절선택
             if(event.target.classList.contains('pink')) {
-                sessionStorage.setItem('selectedSeason', 'deco_spring.html');
+                sessionStorage.setItem('selectedSeason', 'deco_spring.html')
                 loadPage('deco_spring.html')
             }
             if(event.target.classList.contains('blue')) {
-                sessionStorage.setItem('selectedSeason', 'deco_summer.html');
+                sessionStorage.setItem('selectedSeason', 'deco_summer.html')
                 loadPage('deco_summer.html')
             }
             if(event.target.classList.contains('orange')) {
-                sessionStorage.setItem('selectedSeason', 'deco_autumn.html');
+                sessionStorage.setItem('selectedSeason', 'deco_autumn.html')
                 loadPage('deco_autumn.html')
             }
             if(event.target.classList.contains('snowblue')) {
-                sessionStorage.setItem('selectedSeason', 'deco_winter.html');
+                sessionStorage.setItem('selectedSeason', 'deco_winter.html')
                 loadPage('deco_winter.html')
             }
 
@@ -158,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 loadPage('select.html')
             }
             if (event.target.classList.contains('season-prev')) {
-                loadPage(sessionStorage.getItem('selectedSeason'));
+                loadPage(sessionStorage.getItem('selectedSeason'))
             }
 
             // 완성하기

@@ -19,17 +19,17 @@ function navigation() {
         }
 
         // scroll 요소 클릭할 때 closeAllPopups 호출
-        let isClickInsideScroll = event.target.closest('.scroll');
+        let isClickInsideScroll = event.target.closest('.scroll')
 
-        let isClickInsidePopup = event.target.closest('.popup');
-        let isClickInsideColorPalette = event.target.closest('.color-palette');
-        let isClickInsidePaintingElements = event.target.closest('.p-b, .painting, .textfielding');
+        let isClickInsidePopup = event.target.closest('.popup')
+        let isClickInsideColorPalette = event.target.closest('.color-palette')
+        let isClickInsidePaintingElements = event.target.closest('.p-b, .painting, .textfielding')
 
         if (isClickInsideScroll ||
             (!isClickInsidePopup &&
                 !isClickInsideColorPalette &&
                 !isClickInsidePaintingElements)) {
-            closeAllPopups();
+            closeAllPopups()
         }
 
         // 가구 자세히보기

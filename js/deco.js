@@ -13,33 +13,33 @@ function navigation() {
     document.addEventListener('click', function (event) {
 
         // 완성 버튼 클릭 시
-        if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first') && !event.target.closest('.select-prev')) {
-            const decoBox = document.querySelector('.deco-box');
+        // if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first') && !event.target.closest('.select-prev')) {
+        //     const decoBox = document.querySelector('.deco-box');
             
-            html2canvas(decoBox, {
-                backgroundColor: null,
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                ignoreElements: (element) => {
-                    return element.classList.contains('reset');
-                }
-            }).then(canvas => {
-                const imageDataUrl = canvas.toDataURL('image/png');
+        //     html2canvas(decoBox, {
+        //         backgroundColor: null,
+        //         scale: 2,
+        //         useCORS: true,
+        //         allowTaint: true,
+        //         ignoreElements: (element) => {
+        //             return element.classList.contains('reset');
+        //         }
+        //     }).then(canvas => {
+        //         const imageDataUrl = canvas.toDataURL('image/png');
                 
-                const currentState = {
-                    decoBoxImage: imageDataUrl,
-                    background: decoBox.style.background || ''
-                };
+        //         const currentState = {
+        //             decoBoxImage: imageDataUrl,
+        //             background: decoBox.style.background || ''
+        //         };
                 
-                localStorage.setItem('cardState', JSON.stringify(currentState));
+        //         localStorage.setItem('cardState', JSON.stringify(currentState));
                 
-            }).catch(error => {
-                console.error('Capture failed:', error);
-            });
+        //     }).catch(error => {
+        //         console.error('Capture failed:', error);
+        //     });
                 
-        event.preventDefault();
-        }
+        // event.preventDefault();
+        // }
 
 
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출

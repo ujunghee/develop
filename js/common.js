@@ -54,12 +54,8 @@ function handleHeaderClick(event) {
     if (!event.target.closest('.season-prev') && !event.target.closest('.first') 
         && !event.target.closest('.select-prev')) {
             const decoBox = document.querySelector('.deco-box');
-            if (!decoBox) {
-                console.log('decoBox not found');
-                return;
-            }
+            if (!decoBox) return;
             
-            console.log('Starting capture process...');
             html2canvas(decoBox, {
                 backgroundColor: null,
                 scale: 2,
@@ -69,23 +65,29 @@ function handleHeaderClick(event) {
                     return element.classList.contains('reset');
                 }
             }).then(canvas => {
-                console.log('Canvas created');
                 const imageDataUrl = canvas.toDataURL('image/png');
-                console.log('Image URL created');
                 const currentState = {
                     decoBoxImage: imageDataUrl,
                     background: decoBox.style.background || ''
                 };
-                console.log('State prepared:', currentState);
+                
                 localStorage.setItem('cardState', JSON.stringify(currentState));
-                console.log('State saved to localStorage');
-                return Promise.resolve();
-            }).then(() => {
-                console.log('Starting page transition...');
-                loadPage('last.html');
+                
+                // 직접 DOM 조작
+                document.getElementById('content').innerHTML = ''; // 현재 내용 비우기
+                
+                // XHR 요청으로 last.html 내용 가져오기
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'last.html', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById('content').innerHTML = xhr.responseText;
+                        initCardGenerator(); // 내용 삽입 후 초기화
+                    }
+                };
+                xhr.send();
             }).catch(error => {
-                console.error('Error in capture process:', error);
-                loadPage('last.html');
+                console.error('Error:', error);
             });
         }
 }

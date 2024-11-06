@@ -6,36 +6,36 @@ function loadPage(page, callback) {
     const xhr = new XMLHttpRequest()
     xhr.open('GET', page, true)
     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            document.getElementById('content').innerHTML = xhr.responseText;
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                document.getElementById('content').innerHTML = xhr.responseText
 
-            // last.html일 때는 약간의 지연 후 초기화
-            if (page === 'last.html') {
-                requestAnimationFrame(() => {
-                    initCardGenerator();
-                });
+                const selecpage = ['select.html']
+                const decopage = ['deco_spring.html', 'deco_summer.html', 'deco_autumn.html', 'deco_winter.html']
+                
+                if (decopage.includes(page)) {
+                    navigation()
+                    sildeSwiper()
+                    objectItem()
+                    palettebg()
+                    initDraggableComposition()
+                    setupHeaderActions()
+                }
+
+                if (selecpage.includes(page)) {
+                    select()
+                }
+                
+                // if (page === 'last.html') {
+                //     initCardGenerator()
+                // }
             }
 
-            // 다른 페이지들의 초기화
-            const selecpage = ['select.html'];
-            const decopage = ['deco_spring.html', 'deco_summer.html', 'deco_autumn.html', 'deco_winter.html'];
-
-            if (decopage.includes(page)) {
-                navigation();
-                sildeSwiper();
-                objectItem();
-                palettebg();
-                initDraggableComposition();
-            }
-
-            if (selecpage.includes(page)) {
-                select();
-            }
-
-            if (callback) callback();
+            if (callback) callback()
         }
     }
-    xhr.send();
+    xhr.send()
+
 }
 
 // 헤더 액션 설정 함수
@@ -51,45 +51,45 @@ function setupHeaderActions() {
 
 // 헤더 클릭 이벤트 핸들러
 function handleHeaderClick(event) {
-    if (!event.target.closest('.season-prev') && !event.target.closest('.first')
+    if (!event.target.closest('.season-prev') && !event.target.closest('.first') 
         && !event.target.closest('.select-prev')) {
-        const decoBox = document.querySelector('.deco-box');
-        if (!decoBox) return;
-
-        html2canvas(decoBox, {
-            backgroundColor: null,
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            ignoreElements: (element) => {
-                return element.classList.contains('reset');
-            }
-        }).then(canvas => {
-            const imageDataUrl = canvas.toDataURL('image/png');
-            const currentState = {
-                decoBoxImage: imageDataUrl,
-                background: decoBox.style.background || ''
-            };
-
-            localStorage.setItem('cardState', JSON.stringify(currentState));
-
-            // 직접 DOM 조작
-            document.getElementById('content').innerHTML = ''; // 현재 내용 비우기
-
-            // XHR 요청으로 last.html 내용 가져오기
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', 'last.html', true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById('content').innerHTML = xhr.responseText;
-                    initCardGenerator(); // 내용 삽입 후 초기화
+            const decoBox = document.querySelector('.deco-box');
+            if (!decoBox) return;
+            
+            html2canvas(decoBox, {
+                backgroundColor: null,
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                ignoreElements: (element) => {
+                    return element.classList.contains('reset');
                 }
-            };
-            xhr.send();
-        }).catch(error => {
-            console.error('Error:', error);
-        });
-    }
+            }).then(canvas => {
+                const imageDataUrl = canvas.toDataURL('image/png');
+                const currentState = {
+                    decoBoxImage: imageDataUrl,
+                    background: decoBox.style.background || ''
+                };
+                
+                localStorage.setItem('cardState', JSON.stringify(currentState));
+                
+                // 직접 DOM 조작
+                document.getElementById('content').innerHTML = ''; // 현재 내용 비우기
+                
+                // XHR 요청으로 last.html 내용 가져오기
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'last.html', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById('content').innerHTML = xhr.responseText;
+                        initCardGenerator(); // 내용 삽입 후 초기화
+                    }
+                };
+                xhr.send();
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
 }
 
 // 상태 캡처 및 저장 함수
@@ -132,21 +132,21 @@ document.addEventListener('DOMContentLoaded', function () {
             if (event.target.classList.contains('start')) {
                 loadPage('select.html', select)
             }
-
+            
             // 계절선택
-            if (event.target.classList.contains('pink')) {
+            if(event.target.classList.contains('pink')) {
                 sessionStorage.setItem('selectedSeason', 'deco_spring.html');
                 loadPage('deco_spring.html')
             }
-            if (event.target.classList.contains('blue')) {
+            if(event.target.classList.contains('blue')) {
                 sessionStorage.setItem('selectedSeason', 'deco_summer.html');
                 loadPage('deco_summer.html')
             }
-            if (event.target.classList.contains('orange')) {
+            if(event.target.classList.contains('orange')) {
                 sessionStorage.setItem('selectedSeason', 'deco_autumn.html');
                 loadPage('deco_autumn.html')
             }
-            if (event.target.classList.contains('snowblue')) {
+            if(event.target.classList.contains('snowblue')) {
                 sessionStorage.setItem('selectedSeason', 'deco_winter.html');
                 loadPage('deco_winter.html')
             }
@@ -160,33 +160,33 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             // 완성하기
-            if (event.target.classList.contains('submit')) {
+            if(event.target.classList.contains('submit')) {
                 loadPage('last.html')
             }
 
             // 다시하기
-            if (event.target.classList.contains('first')) {
+            if(event.target.classList.contains('first')) {
                 loadPage('first.html')
             }
-
+            
             // 솔브케이 클릭
-            if (event.target.classList.contains('solvek')) {
+            if(event.target.classList.contains('solvek')) {
                 const solvek = document.querySelector('.last')
                 const headerarrow = document.querySelector('.back')
 
-                if (solvek.classList.contains('white')) {
+                if(solvek.classList.contains('white')) {
                     solvek.classList.remove('white')
                     solvek.classList.add('black')
                     headerarrow.classList.add('deco-prev')
                     headerarrow.classList.remove('season-prev')
                 }
             }
-
+            
             // 뒤로가기
-            if (event.target.classList.contains('deco-prev')) {
+            if(event.target.classList.contains('deco-prev')) {
                 loadPage('last.html')
             }
-
+            
         })
     })
 })
@@ -220,6 +220,6 @@ function sildeSwiper() {
         thumbs: {
             swiper: swiper,
         },
-
+       
     })
 }

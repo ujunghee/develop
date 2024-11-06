@@ -26,9 +26,7 @@ function loadPage(page, callback) {
                     select()
                 }
                 
-                if (page === 'last.html') {
-                    initCardGenerator()
-                }
+                if (callback) callback();
             }
 
             if (callback) callback()

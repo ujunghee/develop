@@ -113,12 +113,12 @@ async function convertToImage(card) {
         const imageDataUrl = canvas.toDataURL('image/png')
 
         // 다운로드
-        const link = document.createElement('a')
-        link.href = imageDataUrl
-        link.download = `card-${Date.now()}.png`
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
+        // const link = document.createElement('a')
+        // link.href = imageDataUrl
+        // link.download = `card-${Date.now()}.png`
+        // document.body.appendChild(link)
+        // link.click()
+        // document.body.removeChild(link)
 
     } catch (error) {
         console.error('이미지 변환 중 오류:', error)

@@ -15,71 +15,29 @@ function navigation() {
         // 완성 버튼 클릭 시
         if (event.target.closest('.header') && !event.target.closest('.season-prev') && !event.target.closest('.first')) {
             const decoBox = document.querySelector('.deco-box');
-            if (!decoBox) {
-                console.error('Element .deco-box not found');
-                return;
-            }
-
-            // DOM이 완전히 준비되었는지 확인하고 캡처 시도
-            const attemptCapture = () => {
-                return new Promise((resolve, reject) => {
-                    html2canvas(decoBox, {
-                        backgroundColor: null,
-                        scale: 2,
-                        useCORS: true,
-                        allowTaint: true,
-                        logging: false, // 불필요한 로그 비활성화
-                        onclone: (document) => {
-                            // 클론된 문서에서 요소 존재 확인
-                            const clonedElement = document.querySelector('.deco-box');
-                            if (!clonedElement) {
-                                reject(new Error('Element not found in cloned document'));
-                                return;
-                            }
-                        }
-                    }).then(canvas => {
-                        resolve(canvas);
-                    }).catch(reject);
-                });
-            };
-
-            // 최대 3번까지 재시도
-            let attempts = 0;
-            const maxAttempts = 3;
             
-            const tryCapture = () => {
-                attempts++;
-                attemptCapture()
-                    .then(canvas => {
-                        const imageDataUrl = canvas.toDataURL('image/png');
-                        const currentState = {
-                            decoBoxImage: imageDataUrl,
-                            background: decoBox.style.background || ''
-                        };
-                        localStorage.setItem('cardState', JSON.stringify(currentState));
-                        loadPage('last.html');
-                    })
-                    .catch(error => {
-                        console.warn(`Capture attempt ${attempts} failed:`, error);
-                        if (attempts < maxAttempts) {
-                            // 실패 시 500ms 후 재시도
-                            setTimeout(tryCapture, 500);
-                        } else {
-                            console.error('All capture attempts failed');
-                            // 모든 시도 실패 시 빈 상태로 페이지 전환
-                            const emptyState = {
-                                decoBoxImage: null,
-                                background: decoBox.style.background || ''
-                            };
-                            localStorage.setItem('cardState', JSON.stringify(emptyState));
-                            loadPage('last.html');
-                        }
-                    });
-            };
-
-            // 첫 시도 전에 약간의 지연
-            setTimeout(tryCapture, 100);
+            // 먼저 html2canvas 실행하고, 완료될 때까지 기다린 다음에 페이지 전환
+            html2canvas(decoBox, {
+                backgroundColor: null,
+                scale: 2,
+                useCORS: true,
+                allowTaint: true
+            }).then(canvas => {
+                const imageDataUrl = canvas.toDataURL('image/png');
+                
+                const currentState = {
+                    decoBoxImage: imageDataUrl,
+                    background: decoBox.style.background || ''
+                };
+                
+                // 이미지 저장이 완료된 후에만 페이지 전환
+                localStorage.setItem('cardState', JSON.stringify(currentState));
+                
+            }).catch(error => {
+                console.error('Capture failed:', error);
+            });
         }
+
 
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출
         let clickedToggle = event.target.closest('.p-b, .painting, .textfielding')

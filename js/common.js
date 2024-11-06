@@ -54,9 +54,12 @@ function handleHeaderClick(event) {
     if (!event.target.closest('.season-prev') && !event.target.closest('.first') 
         && !event.target.closest('.select-prev')) {
             const decoBox = document.querySelector('.deco-box');
-            if (!decoBox) return;
-    
-            // 페이지 전환을 캡처 완료 후로 확실히 지연
+            if (!decoBox) {
+                console.log('decoBox not found');
+                return;
+            }
+            
+            console.log('Starting capture process...');
             html2canvas(decoBox, {
                 backgroundColor: null,
                 scale: 2,
@@ -66,21 +69,22 @@ function handleHeaderClick(event) {
                     return element.classList.contains('reset');
                 }
             }).then(canvas => {
+                console.log('Canvas created');
                 const imageDataUrl = canvas.toDataURL('image/png');
+                console.log('Image URL created');
                 const currentState = {
                     decoBoxImage: imageDataUrl,
                     background: decoBox.style.background || ''
                 };
-                
-                return new Promise((resolve) => {
-                    localStorage.setItem('cardState', JSON.stringify(currentState));
-                    resolve();
-                });
+                console.log('State prepared:', currentState);
+                localStorage.setItem('cardState', JSON.stringify(currentState));
+                console.log('State saved to localStorage');
+                return Promise.resolve();
             }).then(() => {
-                // localStorage 저장이 완료된 것을 확인한 후 페이지 전환
+                console.log('Starting page transition...');
                 loadPage('last.html');
             }).catch(error => {
-                console.error('Capture failed:', error);
+                console.error('Error in capture process:', error);
                 loadPage('last.html');
             });
         }

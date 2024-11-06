@@ -1,39 +1,53 @@
 function initCardGenerator() {
     try {
+        console.log('initCardGenerator started');
         const savedState = JSON.parse(localStorage.getItem('cardState'));
-        if (!savedState || !savedState.decoBoxImage) return;
+        console.log('Saved state:', savedState);
+
+        if (!savedState || !savedState.decoBoxImage) {
+            console.log('No saved state or image found');
+            return;
+        }
 
         const card = document.querySelector('.card');
         const cardVisual = document.querySelector('.card-visual');
+        
+        if (!card || !cardVisual) {
+            console.log('Card elements not found');
+            return;
+        }
 
         // 이미지 엘리먼트 생성
         const img = document.createElement('img');
         img.src = savedState.decoBoxImage;
-        img.style.width = '100%';
-        img.style.height = '100%';
-        img.style.objectFit = 'contain';
+        console.log('Image element created with src');
 
-        // 기존 내용을 지우고 이미지 추가
-        if (cardVisual) {
+        // 이미지 로드 이벤트 추가
+        img.onload = () => {
+            console.log('Image loaded successfully');
+            img.style.width = '100%';
+            img.style.height = '100%';
+            img.style.objectFit = 'contain';
             cardVisual.innerHTML = '';
             cardVisual.appendChild(img);
-        }
+            console.log('Image added to cardVisual');
 
-        // 배경 설정
-        if (savedState.background) {
-            card.style.background = savedState.background;
-        }
+            if (savedState.background) {
+                card.style.background = savedState.background;
+                console.log('Background applied');
+            }
 
-        localStorage.removeItem('cardState');
-
-        // 이미지 로드 완료 후 이벤트 리스너 추가
-        img.onload = () => {
+            // 이벤트 리스너 추가
             card.addEventListener('touchstart', handleLongPress);
             card.addEventListener('mousedown', handleLongPress);
         };
 
+        img.onerror = (e) => {
+            console.error('Image failed to load:', e);
+        };
+
     } catch (error) {
-        console.error('Error restoring card state:', error);
+        console.error('Error in initCardGenerator:', error);
     }
 }
 

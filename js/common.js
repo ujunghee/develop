@@ -12,6 +12,7 @@ function loadPage(page, callback) {
 
                 const selecpage = ['select.html']
                 const decopage = ['deco_spring.html', 'deco_summer.html', 'deco_autumn.html', 'deco_winter.html']
+                const lastpage = ['last.html']
                 
                 if (decopage.includes(page)) {
                     navigation()
@@ -26,9 +27,10 @@ function loadPage(page, callback) {
                     select()
                 }
                 
-                // if (page === 'last.html') {
-                //     initCardGenerator()
-                // }
+                if (lastpage.includes(page)) {
+                    // initCardGenerator()
+                    share()
+                }
             }
 
             if (callback) callback()
@@ -40,7 +42,7 @@ function loadPage(page, callback) {
 
 // 헤더 액션 설정 함수
 function setupHeaderActions() {
-    const header = document.querySelector('.header');
+    const header = document.querySelector('.header .submit');
     if (!header) return;
 
     // 기존 이벤트 리스너 제거

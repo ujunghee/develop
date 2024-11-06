@@ -126,3 +126,9 @@ async function convertToImage(card) {
 }
 
 window.initCardGenerator = initCardGenerator;
+
+
+// 공유하기 버튼
+function share() {
+    
+}

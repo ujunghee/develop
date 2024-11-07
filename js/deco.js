@@ -462,14 +462,14 @@ function objectItem() {
         if(!isScrolling) {
             isScrolling = true
             handleDrag(true)
-            logToServer('스크롤 시작' + touchDeltaY)
+            logToServer('스크롤 시작')
         }
     })
     popup.addEventListener('touchend', () => {
         if(isScrolling) {
             isScrolling = false
             handleDrag(false)
-            logToServer('손 뗌, 스크롤 끝' + touchDeltaY)
+            logToServer('손 뗌, 스크롤 끝')
         }
     })
 

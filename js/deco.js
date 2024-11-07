@@ -452,14 +452,14 @@ function objectItem() {
     })
     popup.addEventListener('touchmove', () => {
         if(!isScrolling) {
-            isScrolling = true
-            alert('스크롤 시작')
+            handleDrag = true
+            // alert('스크롤 시작')
         }
     })
     popup.addEventListener('touchend', () => {
         if(isScrolling) {
-            isScrolling = false
-            alert('손 뗌, 스크롤 끝')
+            handleDrag = false
+            // alert('손 뗌, 스크롤 끝')
         }
     })
 

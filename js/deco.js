@@ -427,6 +427,40 @@ function objectItem() {
     document.addEventListener('click', handleNavClick)
 
 
+    // 스크롤시 이미지 클릭 방지
+    function handleDrag(isDragging) {
+        const dragUls = document.querySelectorAll('.popup ul li img');
+
+        if (isDragging) {
+            for (let i = 0; i < dragUls.length; i++) {
+                dragUls[i].classList.add("scroll-none");
+                console.log(dragUls[i])
+             }
+        } else {
+            for (let i = 0; i < dragUls.length; i++) {
+                dragUls[i].classList.remove("scroll-none");
+            }
+        }
+    } 
+    let isScrolling = false;
+
+    document.addEventListener('touchstart', () => {
+        // console.log("터치 시작")
+        alert('터치 시작')
+    })
+    document.addEventListener('touchmove', () => {
+        if(!isScrolling) {
+            isScrolling = true
+            alert('스크롤 시작')
+        }
+    })
+    document.addEventListener('touchend', () => {
+        if(isScrolling) {
+            isScrolling = false
+            alert('손 뗌, 스크롤 끝')
+        }
+    })
+
     // 이미지 이벤트
     function updateImages(category) {
 

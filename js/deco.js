@@ -426,50 +426,54 @@ function objectItem() {
     // 이벤트 리스너 등록
     document.addEventListener('click', handleNavClick)
 
-
-    let isDragging = false; // 드래그 여부를 확인하는 플래그
-    let startX = 0;
-    let startY = 0;
-
-    // 스크롤시 이미지 클릭 방지
-    const popup = document.querySelector('.popup')
-    const dragUls = document.querySelectorAll('.popup ul li img');
-
-    popup.addEventListener('touchstart', (e) => {
-        isDragging = false;
-        const touch = e.touches[0];
-        startX = touch.clientX;
-        startY = touch.clientY;
-
-        dragUls.forEach(drag => {
-            drag.style.pointerEvents = 'none';
-            drag.style.touchAction = "none"
-            drag.style.userSelect = "none"
-        })
-    })
-    popup.addEventListener('touchmove', (e) => {
-        const touch = e.touches[0];
-        const moveX = Math.abs(touch.clientX - startX);
-        const moveY = Math.abs(touch.clientY - startY);
-
-        if (moveX > 10 || moveY > 10) {
-            isDragging = true;
-        }
-        dragUls.forEach(drag => {
-            drag.style.pointerEvents = 'none';
-            drag.style.touchAction = "none"
-            drag.style.userSelect = "none"
-        })
-    })
-    popup.addEventListener('touchend', () => {
-        if (!isDragging) {
+    // 팝업 리스트 스크롤시 클릭 방지
+    function ClickDuringScroll(popupSelector, imageSelector) {
+        let isDragging = false; // 드래그 여부를 확인하는 플래그
+        let startX = 0;
+        let startY = 0;
+    
+        // 스크롤시 이미지 클릭 방지
+        const popup = document.querySelector('.popup')
+        const dragUls = document.querySelectorAll('.popup ul li img');
+    
+        popup.addEventListener('touchstart', (e) => {
+            isDragging = false;
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+    
             dragUls.forEach(drag => {
-                drag.style.pointerEvents = 'auto';
-                drag.style.touchAction = 'auto';
-                drag.style.userSelect = 'auto';
-            });
-        }
-    })
+                drag.style.pointerEvents = 'none';
+                drag.style.touchAction = "none"
+                drag.style.userSelect = "none"
+            })
+        })
+        popup.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            const moveX = Math.abs(touch.clientX - startX);
+            const moveY = Math.abs(touch.clientY - startY);
+    
+            if (moveX > 10 || moveY > 10) {
+                isDragging = true;
+            }
+            dragUls.forEach(drag => {
+                drag.style.pointerEvents = 'none';
+                drag.style.touchAction = "none"
+                drag.style.userSelect = "none"
+            })
+        })
+        popup.addEventListener('touchend', () => {
+            if (!isDragging) {
+                dragUls.forEach(drag => {
+                    drag.style.pointerEvents = 'auto';
+                    drag.style.touchAction = 'auto';
+                    drag.style.userSelect = 'auto';
+                });
+            }
+        })
+    
+    }
+    ClickDuringScroll('.popup', '.popup ul li img')
 
     // 이미지 이벤트
     function updateImages(category) {

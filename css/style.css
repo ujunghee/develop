@@ -188,9 +188,9 @@
   width: calc(100% - 10rem);
   margin: 0 1.6rem;
   background: url("../image/main/visaul_bg.jpg") 50% 50%/cover no-repeat;
+  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   border-radius: 1.4rem;
-  box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, 0.15);
   height: calc(100% - 14rem);
   aspect-ratio: 3/4;
   position: relative;

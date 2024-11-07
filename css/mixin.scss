@@ -338,6 +338,9 @@
                 &.rotated {
                     transform: scaleX(-1);
                 }
+                // &.scroll-none {
+                //     pointer-events:none;
+                // }
             }
         }
     }

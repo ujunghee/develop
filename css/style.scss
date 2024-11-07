@@ -248,9 +248,9 @@
                 width: calc(100% - 10rem);
                 margin: 0 1.6rem;
                 background: url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
+                box-shadow: map-get($shadow, shadow-15);
                 box-sizing: border-box;
                 border-radius: map-get($boder-radius , b-14);
-                box-shadow: map-get($shadow, shadow-15);
                 height: calc(100% - 14.0rem);
                 aspect-ratio: 3 / 4;
                 position: relative;

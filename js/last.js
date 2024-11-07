@@ -38,8 +38,8 @@ function initCardGenerator() {
             }
 
             // 이벤트 리스너 추가
-            card.addEventListener('touchstart', handleLongPress)
-            card.addEventListener('mousedown', handleLongPress)
+            // card.addEventListener('touchstart', handleLongPress)
+            // card.addEventListener('mousedown', handleLongPress)
         }
 
         img.onerror = (e) => {
@@ -68,33 +68,33 @@ function waitForImages(element) {
 }
 
 // 길게 누르기 이벤트 핸들러
-function handleLongPress(event) {
-    let timer
-    const card = event.currentTarget
+// function handleLongPress(event) {
+//     let timer
+//     const card = event.currentTarget
 
-    const start = () => {
-        timer = setTimeout(() => {
-            convertToImage(card)
-        }, 1000)
-    }
+//     const start = () => {
+//         timer = setTimeout(() => {
+//             convertToImage(card)
+//         }, 1000)
+//     }
 
-    const end = () => {
-        clearTimeout(timer)
-    }
+//     const end = () => {
+//         clearTimeout(timer)
+//     }
 
-    // 터치 이벤트
-    if (event.type === 'touchstart') {
-        start()
-        card.addEventListener('touchend', end, { once: true })
-        card.addEventListener('touchmove', end, { once: true })
-    }
-    // 마우스 이벤트
-    else if (event.type === 'mousedown') {
-        start()
-        card.addEventListener('mouseup', end, { once: true })
-        card.addEventListener('mousemove', end, { once: true })
-    }
-}
+//     // 터치 이벤트
+//     if (event.type === 'touchstart') {
+//         start()
+//         card.addEventListener('touchend', end, { once: true })
+//         card.addEventListener('touchmove', end, { once: true })
+//     }
+//     // 마우스 이벤트
+//     else if (event.type === 'mousedown') {
+//         start()
+//         card.addEventListener('mouseup', end, { once: true })
+//         card.addEventListener('mousemove', end, { once: true })
+//     }
+// }
 
 // 카드를 이미지로 변환하고 다운로드
 // async function convertToImage(card) {

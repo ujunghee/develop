@@ -38,20 +38,6 @@ function loadPage(page, callback) {
     xhr.send()
 
 }
-// 공유하기 버튼
-function share() {
-    let shareButton = document.querySelector('.share')
-    if (!shareButton) return
-
-    shareButton.addEventListener('click', function() {
-        window.navigator.share({
-            title: "민화꾸미기", // 공유될 제목
-            text: "민화를 꾸며보세요", // 공유될 설명
-            url: "https://ujunghee.github.io/develop/",
-          })
-    })
-}
-
 // 헤더 액션 설정 함수
 function setupHeaderActions() {
     const header = document.querySelector('.header .submit')
@@ -132,7 +118,6 @@ async function captureAndSaveState(element) {
         throw error
     }
 }
-
 
 window.loadPage = loadPage
 

@@ -427,49 +427,47 @@ function objectItem() {
     document.addEventListener('click', handleNavClick)
 
 
+    let isDragging = false; // 드래그 여부를 확인하는 플래그
+    let startX = 0;
+    let startY = 0;
+
     // 스크롤시 이미지 클릭 방지
-    function logToServer(message) {
-        fetch('your-logging-endpoint', {
-            method: 'POST',
-            body: JSON.stringify({ message })
-        });
-    }
-    function handleDrag(isDragging) {
-        const dragUls = document.querySelectorAll('.popup ul li img');
-
-        if (isDragging) {
-            for (let i = 0; i < dragUls.length; i++) {
-                dragUls[i].style.pointerEvents = "none"
-                dragUls[i].style.touchAction = "none"
-                dragUls[i].style.userSelect = "none"
-             }
-        } else {
-            for (let i = 0; i < dragUls.length; i++) {
-                dragUls[i].style.pointerEvents = "auto"
-                dragUls[i].style.touchAction = "auto"
-                dragUls[i].style.userSelect = "auto"
-            }
-        }
-    } 
-
-    let isScrolling = false;
     const popup = document.querySelector('.popup')
+    const dragUls = document.querySelectorAll('.popup ul li img');
 
-    popup.addEventListener('touchstart', () => {
-        isScrolling = false
+    popup.addEventListener('touchstart', (e) => {
+        isDragging = false;
+        const touch = e.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+
+        dragUls.forEach(drag => {
+            drag.style.pointerEvents = 'none';
+            drag.style.touchAction = "none"
+            drag.style.userSelect = "none"
+        })
     })
-    popup.addEventListener('touchmove', () => {
-        if(!isScrolling) {
-            isScrolling = true
-            handleDrag(true)
-            logToServer('스크롤 시작')
+    popup.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        const moveX = Math.abs(touch.clientX - startX);
+        const moveY = Math.abs(touch.clientY - startY);
+
+        if (moveX > 10 || moveY > 10) {
+            isDragging = true;
         }
+        dragUls.forEach(drag => {
+            drag.style.pointerEvents = 'none';
+            drag.style.touchAction = "none"
+            drag.style.userSelect = "none"
+        })
     })
     popup.addEventListener('touchend', () => {
-        if(isScrolling) {
-            isScrolling = false
-            handleDrag(false)
-            logToServer('손 뗌, 스크롤 끝')
+        if (!isDragging) {
+            dragUls.forEach(drag => {
+                drag.style.pointerEvents = 'auto';
+                drag.style.touchAction = 'auto';
+                drag.style.userSelect = 'auto';
+            });
         }
     })
 

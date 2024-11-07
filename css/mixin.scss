@@ -316,7 +316,7 @@
             height: 100%;
             transition: map-get($ease, ease-in-out-4);
             aspect-ratio: 1 /1;
-
+            
             &:hover {
                 transform: scale(.98)
             }
@@ -334,6 +334,7 @@
                 width: 100%;
                 object-fit: contain;
                 transition: map-get($ease, ease-in-out-4);
+                pointer-events: none;
                 // transform: scaleX(1);
                 &.rotated {
                     transform: scaleX(-1);

@@ -334,7 +334,7 @@
                 width: 100%;
                 object-fit: contain;
                 transition: map-get($ease, ease-in-out-4);
-                pointer-events: none;
+                // pointer-events: none;
                 // transform: scaleX(1);
                 &.rotated {
                     transform: scaleX(-1);

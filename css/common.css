@@ -651,7 +651,6 @@ button {
   -o-object-fit: contain;
      object-fit: contain;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
-  pointer-events: none;
 }
 .popup ul li img.rotated {
   transform: scaleX(-1);

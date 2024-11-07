@@ -440,10 +440,14 @@ function objectItem() {
         if (isDragging) {
             for (let i = 0; i < dragUls.length; i++) {
                 dragUls[i].style.pointerEvents = "none"
+                dragUls[i].style.touchAction = "none"
+                dragUls[i].style.userSelect = "none"
              }
         } else {
             for (let i = 0; i < dragUls.length; i++) {
                 dragUls[i].style.pointerEvents = "auto"
+                dragUls[i].style.touchAction = "auto"
+                dragUls[i].style.userSelect = "auto"
             }
         }
     } 

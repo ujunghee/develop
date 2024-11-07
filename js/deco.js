@@ -23,7 +23,7 @@ function navigation() {
 
         let isClickInsidePopup = event.target.closest('.popup')
         let isClickInsideColorPalette = event.target.closest('.color-palette')
-        let isClickInsidePaintingElements = event.target.closest('.p-b, .painting, .textfielding')
+        let isClickInsidePaintingElements = event.target.closest('.p-b, .painting, .textfielding, .infor')
 
         if (isClickInsideScroll ||
             (!isClickInsidePopup &&
@@ -490,7 +490,7 @@ function objectItem() {
             }, 50);
         });
     }
-    
+
     ClickDuringScroll('.popup', '.popup ul li img')
 
     // 이미지 이벤트

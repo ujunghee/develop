@@ -444,17 +444,19 @@ function objectItem() {
     } 
     let isScrolling = false;
 
-    document.addEventListener('touchstart', () => {
+    const popup = document.querySelector('.popup')
+
+    popup.addEventListener('touchstart', () => {
         // console.log("터치 시작")
         // alert('터치 시작')
     })
-    document.addEventListener('touchmove', () => {
+    popup.addEventListener('touchmove', () => {
         if(!isScrolling) {
             isScrolling = true
             alert('스크롤 시작')
         }
     })
-    document.addEventListener('touchend', () => {
+    popup.addEventListener('touchend', () => {
         if(isScrolling) {
             isScrolling = false
             alert('손 뗌, 스크롤 끝')

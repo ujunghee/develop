@@ -446,7 +446,7 @@ function objectItem() {
 
     document.addEventListener('touchstart', () => {
         // console.log("터치 시작")
-        alert('터치 시작')
+        // alert('터치 시작')
     })
     document.addEventListener('touchmove', () => {
         if(!isScrolling) {

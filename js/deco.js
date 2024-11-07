@@ -440,15 +440,11 @@ function objectItem() {
         if (isDragging) {
             for (let i = 0; i < dragUls.length; i++) {
                 dragUls[i].style.pointerEvents = "none"
-                console.log(dragUls[i])
-                console.log('pointer-events: none 적용됨', dragUls[i]);
              }
-             alert('이미지 드래그 비활성화됨');
         } else {
             for (let i = 0; i < dragUls.length; i++) {
                 dragUls[i].style.pointerEvents = "auto"
             }
-            alert('이미지 드래그 활성화됨');
         }
     } 
 

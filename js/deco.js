@@ -427,70 +427,53 @@ function objectItem() {
     document.addEventListener('click', handleNavClick)
 
     // 팝업 리스트 스크롤시 클릭 방지
-    function ClickDuringScroll(popupSelector, imageSelector) {
+    function ClickDuringScroll() {
         let isDragging = false;
         let startX = 0;
         let startY = 0;
-        let isScrolling = false;
-        let scrollTimeout;
-    
-        const popup = document.querySelector(popupSelector);
-        const images = document.querySelectorAll(imageSelector);
-    
-        // 스크롤 이벤트 처리
-        popup.addEventListener('scroll', () => {
-            isScrolling = true;
-            images.forEach(img => {
-                img.style.pointerEvents = 'none';
-            });
-    
-            // 스크롤이 멈추고 200ms 후에 상호작용 다시 활성화
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                isScrolling = false;
-                if (!isDragging) {
-                    images.forEach(img => {
-                        img.style.pointerEvents = 'auto';
-                    });
-                }
-            }, 200);
-        });
-    
-        // 터치 이벤트 처리
+
+        // 스크롤시 이미지 클릭 방지
+        const popup = document.querySelector('.popup')
+        const dragUls = document.querySelectorAll('.popup ul li img');
+
         popup.addEventListener('touchstart', (e) => {
             isDragging = false;
             const touch = e.touches[0];
             startX = touch.clientX;
             startY = touch.clientY;
-            
-            images.forEach(img => {
-                img.style.pointerEvents = 'none';
-            });
-        });
-    
+
+            dragUls.forEach(drag => {
+
+                drag.style.pointerEvents = 'none';
+                drag.style.touchAction = "none"
+                drag.style.userSelect = "none"
+            })
+        })
         popup.addEventListener('touchmove', (e) => {
             const touch = e.touches[0];
             const moveX = Math.abs(touch.clientX - startX);
             const moveY = Math.abs(touch.clientY - startY);
-    
-            if (moveX > 5 || moveY > 5) {
+
+            if (moveX > 10 || moveY > 10) {
                 isDragging = true;
             }
-        });
-    
+            dragUls.forEach(drag => {
+                drag.style.pointerEvents = 'none';
+                drag.style.touchAction = "none"
+                drag.style.userSelect = "none"
+            })
+        })
         popup.addEventListener('touchend', () => {
-            // 약간의 지연을 주어 우발적인 클릭 방지
-            setTimeout(() => {
-                if (!isDragging && !isScrolling) {
-                    images.forEach(img => {
-                        img.style.pointerEvents = 'auto';
-                    });
-                }
-                isDragging = false;
-            }, 50);
-        });
-    }
+            if (!isDragging) {
+                dragUls.forEach(drag => {
+                    drag.style.pointerEvents = 'auto';
+                    drag.style.touchAction = 'auto';
+                    drag.style.userSelect = 'auto';
+                });
+            }
+        })
 
+    }
     ClickDuringScroll('.popup', '.popup ul li img')
 
     // 이미지 이벤트

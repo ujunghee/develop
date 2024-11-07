@@ -1,7 +1,6 @@
 function share() {
     const shareData = {
         title: "민화꾸미기",
-        text: "사계절에 맞는 민화를 꾸며보세요",
         url: "https://ujunghee.github.io/develop/"
     };
 

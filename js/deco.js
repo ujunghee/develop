@@ -428,6 +428,12 @@ function objectItem() {
 
 
     // 스크롤시 이미지 클릭 방지
+    function logToServer(message) {
+        fetch('your-logging-endpoint', {
+            method: 'POST',
+            body: JSON.stringify({ message })
+        });
+    }
     function handleDrag(isDragging) {
         const dragUls = document.querySelectorAll('.popup ul li img');
 
@@ -435,31 +441,35 @@ function objectItem() {
             for (let i = 0; i < dragUls.length; i++) {
                 dragUls[i].style.pointerEvents = "none"
                 console.log(dragUls[i])
+                console.log('pointer-events: none 적용됨', dragUls[i]);
              }
+             alert('이미지 드래그 비활성화됨');
         } else {
             for (let i = 0; i < dragUls.length; i++) {
                 dragUls[i].style.pointerEvents = "auto"
             }
+            alert('이미지 드래그 활성화됨');
         }
     } 
-    let isScrolling = false;
 
+    let isScrolling = false;
     const popup = document.querySelector('.popup')
 
     popup.addEventListener('touchstart', () => {
-        // console.log("터치 시작")
-        // alert('터치 시작')
+        isScrolling = false
     })
     popup.addEventListener('touchmove', () => {
         if(!isScrolling) {
-            handleDrag = true
-            // alert('스크롤 시작')
+            isScrolling = true
+            handleDrag(true)
+            logToServer('스크롤 시작' + touchDeltaY)
         }
     })
     popup.addEventListener('touchend', () => {
         if(isScrolling) {
-            handleDrag = false
-            // alert('손 뗌, 스크롤 끝')
+            isScrolling = false
+            handleDrag(false)
+            logToServer('손 뗌, 스크롤 끝' + touchDeltaY)
         }
     })
 

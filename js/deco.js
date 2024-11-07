@@ -443,6 +443,12 @@ function objectItem() {
             startY = touch.clientY;
     
             dragUls.forEach(drag => {
+                drag.addEventListener('click', (event) => {
+                    if(isDragging) {
+                        event.preventDefault();
+                        event.stopImmediatePropagation();
+                    }
+                })
                 drag.style.pointerEvents = 'none';
                 drag.style.touchAction = "none"
                 drag.style.userSelect = "none"

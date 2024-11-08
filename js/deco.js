@@ -433,37 +433,14 @@ function objectItem() {
         let startY = 0
         let touchStartTime = 0
         let lastTouchEndTime = 0
-        let lastClickedElement = null
-        let isInitialTouch = true // 초기 터치 상태 체크를 위한 플래그 추가
     
         const popup = document.querySelector('.popup')
         const dragUls = document.querySelectorAll('.popup ul li img')
     
-        // 초기에 모든 이미지의 이벤트를 비활성화
-        function disableInteractions() {
-            dragUls.forEach(drag => {
-                drag.style.pointerEvents = 'none'
-                drag.style.touchAction = 'none'
-                drag.style.userSelect = 'none'
-            })
-        }
-    
-        // 이미지 이벤트 활성화
-        function enableInteractions() {
-            dragUls.forEach(drag => {
-                drag.style.pointerEvents = 'auto'
-                drag.style.touchAction = 'auto'
-                drag.style.userSelect = 'auto'
-            })
-        }
-    
-        // 초기 상태에서 이벤트 비활성화
-        disableInteractions()
-    
-        // 모든 이미지에 대해 기본 클릭 이벤트 방지
+        // 이미지 클릭 이벤트 처리
         dragUls.forEach(drag => {
             drag.addEventListener('click', (e) => {
-                if (isDragging || isInitialTouch) {
+                if (isDragging) {
                     e.preventDefault()
                     e.stopPropagation()
                 }
@@ -476,9 +453,6 @@ function objectItem() {
             startY = touch.clientY
             touchStartTime = Date.now()
             isDragging = false
-            
-            // 터치 시작시 항상 이벤트 비활성화
-            disableInteractions()
         })
     
         popup.addEventListener('touchmove', (e) => {
@@ -487,9 +461,9 @@ function objectItem() {
                 const moveX = Math.abs(touch.clientX - startX)
                 const moveY = Math.abs(touch.clientY - startY)
                 
+                // 10픽셀 이상 움직였을 때 드래그로 판단
                 if (moveX > 10 || moveY > 10) {
                     isDragging = true
-                    isInitialTouch = false // 드래그가 감지되면 초기 터치 상태 해제
                 }
             }
         })
@@ -500,19 +474,18 @@ function objectItem() {
             const timeSinceLastTouch = touchEndTime - lastTouchEndTime
             lastTouchEndTime = touchEndTime
     
-            // 정확한 탭 동작일 경우에만 클릭 허용
+            // 빠른 탭 동작이고 드래그가 아닐 경우 클릭 허용
             if (!isDragging && touchDuration < 200 && timeSinceLastTouch > 300) {
-                enableInteractions()
-                
-                // 짧은 지연 후 다시 비활성화
-                // setTimeout(() => {
-                //     disableInteractions()
-                // }, 100)
-                
-                isInitialTouch = false // 정상적인 터치 종료 후 초기 터치 상태 해제
+                // 클릭 이벤트가 정상적으로 발생할 수 있게 됨
             }
+            
+            // 터치 종료 후 isDragging 초기화
+            setTimeout(() => {
+                isDragging = false
+            }, 50)
         })
     }
+
     ClickDuringScroll()
 
     // 이미지 이벤트

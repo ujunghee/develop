@@ -1,14 +1,9 @@
 function initCardGenerator() {
     try {
-        console.log('initCardGenerator starting...')
-        
         // localStorage에서 상태 읽기 전에 약간의 지연
         setTimeout(() => {
             const savedState = JSON.parse(localStorage.getItem('cardState'))
-            console.log('Loaded state:', savedState)
-
             if (!savedState || !savedState.decoBoxImage) {
-                console.log('No saved state found')
                 return
             }
 
@@ -17,7 +12,6 @@ function initCardGenerator() {
             const cardVisual = document.querySelector('.card-visual')
             
             if (!card || !cardVisual) {
-                console.log('Card elements not found, retrying...')
                 // DOM 요소를 찾지 못했다면 재시도
                 setTimeout(initCardGenerator, 100)
                 return
@@ -28,7 +22,6 @@ function initCardGenerator() {
             
             // 이미지 로드 이벤트를 먼저 설정
             img.onload = () => {
-                console.log('Image loaded successfully')
                 img.style.width = '100%'
                 img.style.height = '100%'
                 img.style.objectFit = 'contain'
@@ -41,7 +34,6 @@ function initCardGenerator() {
                     if (savedState.background) {
                         card.style.background = savedState.background
                     }
-                    console.log('Card rendered successfully')
                 }
             }
 
@@ -50,7 +42,6 @@ function initCardGenerator() {
             }
 
             // src 설정은 이벤트 핸들러 설정 후에
-            console.log('Setting image source...')
             img.src = savedState.decoBoxImage
 
         }, 50) // localStorage 읽기 전 짧은 지연

@@ -28,7 +28,6 @@ function loadPage(page, callback) {
                 }
                 
                 if (lastpage.includes(page)) {
-                    share()
                     last()
                 }
             }

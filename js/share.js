@@ -1,61 +1,28 @@
-function share() {
-    // Share 버튼 요소 가져오기
-    const shareButton = document.querySelector('.share');
-    const resultElement = document.querySelector('.result');
-    
-    // Web Share API 지원 여부 확인
-    if (!navigator.share) {
-        if (resultElement) {
-            resultElement.textContent = "이 브라우저는 공유 기능을 지원하지 않습니다.";
-        }
-        console.log("Web Share API not supported");
-        return;
-    }
-
-    const shareData = {
-        title: "민화꾸미기",
-        url: window.location.href
-    };
-
-    // 클릭 이벤트 리스너 추가
-    shareButton.addEventListener("click", async () => {
-        try {
-            if (resultElement) {
-                resultElement.textContent = "공유하는 중...";
-            }
-
-            await navigator.share(shareData);
-            
-            if (resultElement) {
-                resultElement.textContent = "공유가 완료되었습니다!";
-                
-                setTimeout(() => {
-                    resultElement.textContent = "";
-                }, 3000);
-            }
-        } catch (err) {
-            if (err.name === 'AbortError') {
-                if (resultElement) {
-                    resultElement.textContent = "공유가 취소되었습니다.";
-                }
-            } else {
-                if (resultElement) {
-                    resultElement.textContent = "공유 중 오류가 발생했습니다.";
-                }
-                console.error("공유 오류:", err);
-            }
-            
-            setTimeout(() => {
-                if (resultElement) {
-                    resultElement.textContent = "";
-                }
-            }, 3000);
-        }
-    });
-}
 
 function last() {
-    document.addEventListener('click', function (){
+    
+    const shareButton = document.querySelector('.share');
+
+    shareButton.addEventListener('click', async () => {
+        try {
+            if (navigator.share) {
+                await navigator.share({
+                    title: '나만의 카드 만들기',
+                    text: '나만의 특별한 카드를 만들어보세요!',
+                    url: window.location.href
+                });
+            } else {
+                // 클립보드에 URL 복사
+                await navigator.clipboard.writeText(window.location.href);
+                alert('URL이 클립보드에 복사되었습니다.');
+            }
+        } catch (error) {
+            console.error('Error sharing:', error);
+            alert('공유하기에 실패했습니다.');
+        }
+    });
+    
+    document.addEventListener('click', function (event){
             // 솔브케이 클릭
             if(event.target.classList.contains('solvek')) {
                 const solvek = document.querySelector('.last')

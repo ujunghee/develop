@@ -6,7 +6,6 @@ function last() {
             console.log('Share button clicked');
 
             if (!navigator.share) {
-                console.log('Web Share API not supported');
                 alert('죄송합니다. 이 브라우저에서는 공유하기가 지원되지 않습니다.');
                 return;
             }
@@ -14,13 +13,11 @@ function last() {
             try {
                 await navigator.share({
                     title: '나만의 카드 만들기',
-                    text: '나만의 특별한 카드를 만들어보세요!',
+                    text: '나만의 특별한 카드를 만들어보시와용',
                     url: window.location.href
                 });
-                console.log('Successfully shared');
             } catch (err) {
                 console.log('Share failed:', err);
-                alert('공유하기에 실패했습니다.');
             }
         }
 

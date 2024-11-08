@@ -1,41 +1,59 @@
 function initCardGenerator() {
     try {
-        const savedState = JSON.parse(localStorage.getItem('cardState'))
-
-        if (!savedState || !savedState.decoBoxImage) {
-            return
-        }
-
-        const card = document.querySelector('.card')
-        const cardVisual = document.querySelector('.card-visual')
+        console.log('initCardGenerator starting...')
         
-        if (!card || !cardVisual) {
-            return
-        }
+        // localStorage에서 상태 읽기 전에 약간의 지연
+        setTimeout(() => {
+            const savedState = JSON.parse(localStorage.getItem('cardState'))
+            console.log('Loaded state:', savedState)
 
-        // 이미지 엘리먼트 생성
-        const img = document.createElement('img')
-        img.src = savedState.decoBoxImage
-        // 이미지 로드 이벤트 추가
-        img.onload = () => {
-            img.style.width = '100%'
-            img.style.height = '100%'
-            img.style.objectFit = 'contain'
-            cardVisual.innerHTML = ''
-            cardVisual.appendChild(img)
-
-            if (savedState.background) {
-                card.style.background = savedState.background
+            if (!savedState || !savedState.decoBoxImage) {
+                console.log('No saved state found')
+                return
             }
 
-            // 이벤트 리스너 추가
-            // card.addEventListener('touchstart', handleLongPress)
-            // card.addEventListener('mousedown', handleLongPress)
-        }
+            // DOM 요소 찾기 시도
+            const card = document.querySelector('.card')
+            const cardVisual = document.querySelector('.card-visual')
+            
+            if (!card || !cardVisual) {
+                console.log('Card elements not found, retrying...')
+                // DOM 요소를 찾지 못했다면 재시도
+                setTimeout(initCardGenerator, 100)
+                return
+            }
 
-        img.onerror = (e) => {
-            console.error('Image failed to load:', e)
-        }
+            // 이미지 엘리먼트 생성
+            const img = document.createElement('img')
+            
+            // 이미지 로드 이벤트를 먼저 설정
+            img.onload = () => {
+                console.log('Image loaded successfully')
+                img.style.width = '100%'
+                img.style.height = '100%'
+                img.style.objectFit = 'contain'
+                
+                // cardVisual이 여전히 존재하는지 한번 더 확인
+                if (document.contains(cardVisual)) {
+                    cardVisual.innerHTML = ''
+                    cardVisual.appendChild(img)
+
+                    if (savedState.background) {
+                        card.style.background = savedState.background
+                    }
+                    console.log('Card rendered successfully')
+                }
+            }
+
+            img.onerror = (e) => {
+                console.error('Image failed to load:', e)
+            }
+
+            // src 설정은 이벤트 핸들러 설정 후에
+            console.log('Setting image source...')
+            img.src = savedState.decoBoxImage
+
+        }, 50) // localStorage 읽기 전 짧은 지연
 
     } catch (error) {
         console.error('Error in initCardGenerator:', error)
@@ -118,3 +136,8 @@ function initCardGenerator() {
 
 window.initCardGenerator = initCardGenerator
 
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded triggered')
+    initCardGenerator()
+})

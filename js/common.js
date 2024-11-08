@@ -43,9 +43,7 @@ function setupHeaderActions() {
     const header = document.querySelector('.header .submit')
     if (!header) return
 
-    // 기존 이벤트 리스너 제거
     header.removeEventListener('click', handleHeaderClick)
-    // 새 이벤트 리스너 추가
     header.addEventListener('click', handleHeaderClick)
 }
 

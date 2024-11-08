@@ -428,53 +428,78 @@ function objectItem() {
 
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
-        let isDragging = false;
-        let startX = 0;
-        let startY = 0;
-
-        // 스크롤시 이미지 클릭 방지
-        const popup = document.querySelector('.popup')
+        const popup = document.querySelector('.popup');
         const dragUls = document.querySelectorAll('.popup ul li img');
-
-        popup.addEventListener('touchstart', (e) => {
-            isDragging = false;
-            const touch = e.touches[0];
-            startX = touch.clientX;
-            startY = touch.clientY;
-
-            dragUls.forEach(drag => {
-
-                drag.style.pointerEvents = 'none';
-                drag.style.touchAction = "none"
-                drag.style.userSelect = "none"
-            })
-        })
-        popup.addEventListener('touchmove', (e) => {
-            const touch = e.touches[0];
-            const moveX = Math.abs(touch.clientX - startX);
-            const moveY = Math.abs(touch.clientY - startY);
-
-            if (moveX > 10 || moveY > 10) {
-                isDragging = true;
-            }
+        let isScrolling = false;
+        let scrollTimeout;
+        
+        // 모든 이미지의 터치 이벤트를 기본적으로 비활성화
+        function disableTouch() {
             dragUls.forEach(drag => {
                 drag.style.pointerEvents = 'none';
-                drag.style.touchAction = "none"
-                drag.style.userSelect = "none"
-            })
-        })
-        popup.addEventListener('touchend', () => {
-            if (!isDragging) {
+                drag.style.touchAction = 'none';
+                drag.style.userSelect = 'none';
+            });
+        }
+    
+        // 스크롤이 완전히 멈췄을 때만 터치 이벤트 활성화
+        function enableTouch() {
+            if (!isScrolling) {
                 dragUls.forEach(drag => {
                     drag.style.pointerEvents = 'auto';
                     drag.style.touchAction = 'auto';
                     drag.style.userSelect = 'auto';
                 });
             }
-        })
-
+        }
+    
+        // 초기 상태에서 터치 비활성화
+        disableTouch();
+    
+        // 스크롤 시작 감지
+        popup.addEventListener('scroll', () => {
+            isScrolling = true;
+            disableTouch();
+            
+            clearTimeout(scrollTimeout);
+            
+            scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+                enableTouch();
+            }, 100);
+        }, { passive: true });
+    
+        popup.addEventListener('touchstart', () => {
+            disableTouch();
+        }, { passive: true });
+    
+        popup.addEventListener('touchmove', () => {
+            isScrolling = true;
+            disableTouch();
+            
+            clearTimeout(scrollTimeout);
+        }, { passive: true });
+    
+        popup.addEventListener('touchend', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                isScrolling = false;
+                enableTouch();
+            }, 100);
+        });
+    
+        dragUls.forEach(drag => {
+            drag.addEventListener('click', (e) => {
+                if (!isScrolling) {
+                    // 클릭 이벤트 처리
+                    e.stopPropagation();
+                } else {
+                    e.preventDefault();
+                }
+            });
+        });
     }
-    ClickDuringScroll('.popup', '.popup ul li img')
+    ClickDuringScroll();
 
     // 이미지 이벤트
     function updateImages(category) {

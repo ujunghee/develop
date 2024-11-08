@@ -505,9 +505,9 @@ function objectItem() {
                 enableInteractions()
                 
                 // 짧은 지연 후 다시 비활성화
-                setTimeout(() => {
-                    disableInteractions()
-                }, 100)
+                // setTimeout(() => {
+                //     disableInteractions()
+                // }, 100)
                 
                 isInitialTouch = false // 정상적인 터치 종료 후 초기 터치 상태 해제
             }

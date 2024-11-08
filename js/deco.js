@@ -428,48 +428,39 @@ function objectItem() {
 
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
+        let startY = 0
         let touchStartTime = 0
-        let longTouchTimer = null
-        let isLongTouch = false
         
         const popup = document.querySelector('.popup')
         const dragUls = document.querySelectorAll('.popup ul li img')
     
-        popup.addEventListener('touchstart', (e) => {
-            touchStartTime = Date.now()
-            isLongTouch = false
-            
-            // 롱터치 감지를 위한 타이머 설정
-            longTouchTimer = setTimeout(() => {
-                isLongTouch = true
-            }, 100) // 100ms 이상 터치하면 스크롤 동작으로 간주
+        // 기본적으로 모든 이미지는 터치 불가능한 상태
+        dragUls.forEach(img => {
+            img.style.pointerEvents = 'none'
         })
     
-        popup.addEventListener('touchmove', (e) => {
-            // 터치 후 움직임이 감지되면 클릭 방지를 위해 롱터치로 설정
-            isLongTouch = true
-            if (longTouchTimer) {
-                clearTimeout(longTouchTimer)
-            }
+        popup.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY
+            touchStartTime = Date.now()
         })
     
         popup.addEventListener('touchend', (e) => {
             const touchDuration = Date.now() - touchStartTime
+            const moveY = Math.abs(e.changedTouches[0].clientY - startY)
             
-            if (longTouchTimer) {
-                clearTimeout(longTouchTimer)
-            }
-        })
-    
-        // 이미지 요소들의 클릭 이벤트 처리
-        dragUls.forEach(drag => {
-            drag.addEventListener('click', (e) => {
-                // 롱터치였던 경우 클릭 이벤트 취소
-                if (isLongTouch) {
-                    e.preventDefault()
-                    e.stopPropagation()
+            // 짧은 터치(200ms 미만)이고 거의 움직이지 않았을 때(5px 미만)만 
+            // 터치한 요소의 이벤트를 활성화
+            if (touchDuration < 200 && moveY < 5) {
+                const touched = e.target
+                if (touched.tagName === 'IMG') {
+                    touched.style.pointerEvents = 'auto'
+                    
+                    // 100ms 후에 다시 터치 불가능하게 설정
+                    setTimeout(() => {
+                        touched.style.pointerEvents = 'none'
+                    }, 100)
                 }
-            })
+            }
         })
     }
     

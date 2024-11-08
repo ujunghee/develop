@@ -428,25 +428,31 @@ function objectItem() {
 
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
+        let startY = 0
+        let isScrollMoving = false
+        
         const popup = document.querySelector('.popup')
         const dragUls = document.querySelectorAll('.popup ul li img')
     
-        // 초기에 모든 이미지의 pointer-events를 none으로 설정
-        dragUls.forEach(img => {
-            img.style.pointerEvents = 'none'
+        popup.addEventListener('touchstart', (e) => {
+            startY = e.touches[0].clientY
+            isScrollMoving = false
         })
     
-        // 클릭을 위한 터치 이벤트 처리
-        popup.addEventListener('click', (e) => {
-            if (e.target.tagName === 'IMG') {
-                // 클릭하려는 이미지만 잠깐 pointer-events를 auto로
-                e.target.style.pointerEvents = 'auto'
-                
-                // 즉시 다시 none으로 돌림
-                setTimeout(() => {
-                    e.target.style.pointerEvents = 'none'
-                }, 0)
+        popup.addEventListener('touchmove', (e) => {
+            const moveY = Math.abs(e.touches[0].clientY - startY)
+            if(moveY > 5) {
+                isScrollMoving = true
             }
+        })
+    
+        dragUls.forEach(img => {
+            img.addEventListener('click', (e) => {
+                if(isScrollMoving) {
+                    e.preventDefault()
+                    e.stopPropagation()
+                }
+            }, true)
         })
     }
     

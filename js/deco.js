@@ -428,77 +428,98 @@ function objectItem() {
 
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let touchStartTime = 0;
+        let lastTouchEndTime = 0;
+        let lastClickedElement = null;
+    
         const popup = document.querySelector('.popup');
         const dragUls = document.querySelectorAll('.popup ul li img');
-        let isScrolling = false;
-        let scrollTimeout;
-        
-        // 모든 이미지의 터치 이벤트를 기본적으로 비활성화
-        function disableTouch() {
+    
+        // 모든 이미지에 대해 기본 클릭 이벤트 방지
+        dragUls.forEach(drag => {
+            drag.addEventListener('click', (e) => {
+                if (isDragging) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            });
+        });
+    
+        popup.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            startX = touch.clientX;
+            startY = touch.clientY;
+            touchStartTime = Date.now();
+            isDragging = false;
+    
+            // 터치 시작시 모든 요소의 이벤트를 일시적으로 비활성화
             dragUls.forEach(drag => {
                 drag.style.pointerEvents = 'none';
                 drag.style.touchAction = 'none';
                 drag.style.userSelect = 'none';
             });
-        }
+        });
     
-        // 스크롤이 완전히 멈췄을 때만 터치 이벤트 활성화
-        function enableTouch() {
-            if (!isScrolling) {
+        popup.addEventListener('touchmove', (e) => {
+            if (!isDragging) {
+                const touch = e.touches[0];
+                const moveX = Math.abs(touch.clientX - startX);
+                const moveY = Math.abs(touch.clientY - startY);
+                
+                // 이동 거리가 임계값을 넘으면 드래그로 간주
+                if (moveX > 10 || moveY > 10) {
+                    isDragging = true;
+                }
+            }
+        });
+    
+        popup.addEventListener('touchend', (e) => {
+            const touchEndTime = Date.now();
+            const touchDuration = touchEndTime - touchStartTime;
+    
+            // 마지막 터치 종료 시점과의 간격 체크
+            const timeSinceLastTouch = touchEndTime - lastTouchEndTime;
+            lastTouchEndTime = touchEndTime;
+    
+            // 빠른 연속 터치나 드래그 동작이 없었을 경우에만 클릭 허용
+            if (!isDragging && touchDuration < 200 && timeSinceLastTouch > 300) {
                 dragUls.forEach(drag => {
                     drag.style.pointerEvents = 'auto';
                     drag.style.touchAction = 'auto';
                     drag.style.userSelect = 'auto';
                 });
+    
+                // 약간의 지연을 두고 다시 이벤트 비활성화
+                setTimeout(() => {
+                    dragUls.forEach(drag => {
+                        drag.style.pointerEvents = 'none';
+                        drag.style.touchAction = 'none';
+                        drag.style.userSelect = 'none';
+                    });
+                }, 100);
             }
-        }
+        });
     
-        // 초기 상태에서 터치 비활성화
-        disableTouch();
-    
-        // 스크롤 시작 감지
+        // 스크롤 완료 후 일정 시간이 지나면 이벤트 다시 활성화
+        let scrollTimeout;
         popup.addEventListener('scroll', () => {
-            isScrolling = true;
-            disableTouch();
-            
             clearTimeout(scrollTimeout);
-            
+            isDragging = true;
+    
             scrollTimeout = setTimeout(() => {
-                isScrolling = false;
-                enableTouch();
-            }, 100);
+                isDragging = false;
+                dragUls.forEach(drag => {
+                    drag.style.pointerEvents = 'auto';
+                    drag.style.touchAction = 'auto';
+                    drag.style.userSelect = 'auto';
+                });
+            }, 150);
         }, { passive: true });
-    
-        popup.addEventListener('touchstart', () => {
-            disableTouch();
-        }, { passive: true });
-    
-        popup.addEventListener('touchmove', () => {
-            isScrolling = true;
-            disableTouch();
-            
-            clearTimeout(scrollTimeout);
-        }, { passive: true });
-    
-        popup.addEventListener('touchend', () => {
-            clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(() => {
-                isScrolling = false;
-                enableTouch();
-            }, 100);
-        });
-    
-        dragUls.forEach(drag => {
-            drag.addEventListener('click', (e) => {
-                if (!isScrolling) {
-                    // 클릭 이벤트 처리
-                    e.stopPropagation();
-                } else {
-                    e.preventDefault();
-                }
-            });
-        });
     }
+    
     ClickDuringScroll();
 
     // 이미지 이벤트

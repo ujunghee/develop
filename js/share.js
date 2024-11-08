@@ -23,3 +23,35 @@ function share() {
         }
     });
 }
+
+function last() {
+    document.addEventListener('click', function (){
+            // 솔브케이 클릭
+            if(event.target.classList.contains('solvek')) {
+                const solvek = document.querySelector('.last')
+                const headerarrow = document.querySelector('.back')
+
+                if(solvek.classList.contains('white')) {
+                    solvek.classList.remove('white')
+                    solvek.classList.add('black')
+                    headerarrow.classList.add('deco-prev')
+                    headerarrow.classList.remove('season-prev')
+                }
+            }
+            
+            // 뒤로가기
+            if(event.target.classList.contains('deco-prev')) {
+                // loadPage('last.html')
+                const solvek = document.querySelector('.last')
+                const headerarrow = document.querySelector('.back')
+
+                if(solvek.classList.contains('black')) {
+                    solvek.classList.remove('black')
+                    solvek.classList.add('white')
+                    headerarrow.classList.remove('deco-prev')
+                    headerarrow.classList.add('season-prev')
+                }
+            }
+            
+    })
+}

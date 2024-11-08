@@ -29,6 +29,7 @@ function loadPage(page, callback) {
                 
                 if (lastpage.includes(page)) {
                     share()
+                    last()
                 }
             }
 
@@ -167,25 +168,6 @@ document.addEventListener('DOMContentLoaded', function () {
             if(event.target.classList.contains('first')) {
                 loadPage('first.html')
             }
-            
-            // 솔브케이 클릭
-            if(event.target.classList.contains('solvek')) {
-                const solvek = document.querySelector('.last')
-                const headerarrow = document.querySelector('.back')
-
-                if(solvek.classList.contains('white')) {
-                    solvek.classList.remove('white')
-                    solvek.classList.add('black')
-                    headerarrow.classList.add('deco-prev')
-                    headerarrow.classList.remove('season-prev')
-                }
-            }
-            
-            // 뒤로가기
-            if(event.target.classList.contains('deco-prev')) {
-                loadPage('last.html')
-            }
-            
         })
     })
 })

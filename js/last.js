@@ -29,8 +29,8 @@ function initCardGenerator() {
             }
 
             // 이벤트 리스너 추가
-            card.addEventListener('touchstart', handleLongPress)
-            card.addEventListener('mousedown', handleLongPress)
+            // card.addEventListener('touchstart', handleLongPress)
+            // card.addEventListener('mousedown', handleLongPress)
         }
 
         img.onerror = (e) => {

@@ -429,30 +429,34 @@ function objectItem() {
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
         let startY = 0
-        let isScrollMoving = false
+        let isMoved = false
         
         const popup = document.querySelector('.popup')
         const dragUls = document.querySelectorAll('.popup ul li img')
     
         popup.addEventListener('touchstart', (e) => {
             startY = e.touches[0].clientY
-            isScrollMoving = false
+            isMoved = false
+            
+            // 터치 시작하는 순간 클릭 막기
+            dragUls.forEach(img => {
+                img.style.pointerEvents = 'none'
+            })
         })
     
-        popup.addEventListener('touchmove', (e) => {
-            const moveY = Math.abs(e.touches[0].clientY - startY)
-            if(moveY > 5) {
-                isScrollMoving = true
-            }
-        })
-    
-        dragUls.forEach(img => {
-            img.addEventListener('click', (e) => {
-                if(isScrollMoving) {
-                    e.preventDefault()
-                    e.stopPropagation()
+        popup.addEventListener('touchend', (e) => {
+            // 터치 끝났을 때 움직임이 거의 없었다면 (=클릭 의도) 클릭 허용
+            if (Math.abs(e.changedTouches[0].clientY - startY) < 5) {
+                const target = e.target
+                if (target.tagName === 'IMG') {
+                    target.style.pointerEvents = 'auto'
+                    
+                    // 클릭 이벤트 발생 후 다시 막기
+                    setTimeout(() => {
+                        target.style.pointerEvents = 'none'
+                    }, 100)
                 }
-            }, true)
+            }
         })
     }
     

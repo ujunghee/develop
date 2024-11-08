@@ -428,64 +428,51 @@ function objectItem() {
 
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
-        let isDragging = false
-        let startX = 0
-        let startY = 0
         let touchStartTime = 0
-        let lastTouchEndTime = 0
-    
+        let longTouchTimer = null
+        let isLongTouch = false
+        
         const popup = document.querySelector('.popup')
         const dragUls = document.querySelectorAll('.popup ul li img')
     
-        // 이미지 클릭 이벤트 처리
+        popup.addEventListener('touchstart', (e) => {
+            touchStartTime = Date.now()
+            isLongTouch = false
+            
+            // 롱터치 감지를 위한 타이머 설정
+            longTouchTimer = setTimeout(() => {
+                isLongTouch = true
+            }, 100) // 100ms 이상 터치하면 스크롤 동작으로 간주
+        })
+    
+        popup.addEventListener('touchmove', (e) => {
+            // 터치 후 움직임이 감지되면 클릭 방지를 위해 롱터치로 설정
+            isLongTouch = true
+            if (longTouchTimer) {
+                clearTimeout(longTouchTimer)
+            }
+        })
+    
+        popup.addEventListener('touchend', (e) => {
+            const touchDuration = Date.now() - touchStartTime
+            
+            if (longTouchTimer) {
+                clearTimeout(longTouchTimer)
+            }
+        })
+    
+        // 이미지 요소들의 클릭 이벤트 처리
         dragUls.forEach(drag => {
             drag.addEventListener('click', (e) => {
-                if (isDragging) {
+                // 롱터치였던 경우 클릭 이벤트 취소
+                if (isLongTouch) {
                     e.preventDefault()
                     e.stopPropagation()
                 }
             })
         })
-    
-        popup.addEventListener('touchstart', (e) => {
-            const touch = e.touches[0]
-            startX = touch.clientX
-            startY = touch.clientY
-            touchStartTime = Date.now()
-            isDragging = false
-        })
-    
-        popup.addEventListener('touchmove', (e) => {
-            if (!isDragging) {
-                const touch = e.touches[0]
-                const moveX = Math.abs(touch.clientX - startX)
-                const moveY = Math.abs(touch.clientY - startY)
-                
-                // 10픽셀 이상 움직였을 때 드래그로 판단
-                if (moveX > 10 || moveY > 10) {
-                    isDragging = true
-                }
-            }
-        })
-    
-        popup.addEventListener('touchend', (e) => {
-            const touchEndTime = Date.now()
-            const touchDuration = touchEndTime - touchStartTime
-            const timeSinceLastTouch = touchEndTime - lastTouchEndTime
-            lastTouchEndTime = touchEndTime
-    
-            // 빠른 탭 동작이고 드래그가 아닐 경우 클릭 허용
-            if (!isDragging && touchDuration < 200 && timeSinceLastTouch > 300) {
-                // 클릭 이벤트가 정상적으로 발생할 수 있게 됨
-            }
-            
-            // 터치 종료 후 isDragging 초기화
-            setTimeout(() => {
-                isDragging = false
-            }, 50)
-        })
     }
-
+    
     ClickDuringScroll()
 
     // 이미지 이벤트

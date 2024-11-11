@@ -427,52 +427,6 @@ function objectItem() {
     document.addEventListener('click', handleNavClick)
 
     // 팝업 리스트 스크롤시 클릭 방지
-    function ClickDuringScroll() {
-        const popup = document.querySelector('.popup');
-        const dragUls = document.querySelectorAll('.popup ul li img');
-
-        let isScrolling = false;
-
-        // 스크롤 시작 시 이벤트 감지
-        window.addEventListener("scroll", function () {
-            isScrolling = true;
-            clearTimeout(scrollTimeout);
-
-            // 일정 시간 후 스크롤 상태를 false로 변경
-            var scrollTimeout = setTimeout(function () {
-                isScrolling = false;
-            }, 250); // 250ms는 사용자의 스크롤이 멈췄다고 간주되는 시간
-        });
-
-        // 터치 시작 이벤트
-        document.addEventListener("touchstart", function () {
-            isScrolling = false;
-        });
-
-        // 스크롤 이벤트
-        document.addEventListener("touchmove", function () {
-            isScrolling = true;
-        });
-
-        // 클릭 이벤트 방지 (스크롤 중일 때)
-        document.addEventListener("click", function (event) {
-            if (isScrolling) {
-                event.preventDefault(); // 클릭 이벤트 방지
-                event.stopPropagation(); // 이벤트 전파 중지
-                isScrolling = false; // 클릭 이벤트 방지 후 상태 초기화
-            }
-        });
-
-        // dragUls 클릭 이벤트 방지
-        dragUls.forEach((img) => {
-            img.addEventListener('click', (event) => {
-                event.preventDefault(); // 기본 동작 방지
-                event.stopPropagation(); // 이벤트 전파 중지
-            });
-        });
-    }
-
-    ClickDuringScroll();
 
     // 이미지 이벤트
     function updateImages(category) {

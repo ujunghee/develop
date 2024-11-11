@@ -428,41 +428,50 @@ function objectItem() {
 
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
-        let touchStartTime = 0;
-        let touchTimer = null;
-        let isTouchValid = false;
-        
         const popup = document.querySelector('.popup');
         const dragUls = document.querySelectorAll('.popup ul li img');
-        
-        dragUls.forEach(img => {
-            img.addEventListener('click', (e) => {
-                if (!isTouchValid) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-            }, true);
+
+        let isScrolling = false;
+
+        // 스크롤 시작 시 이벤트 감지
+        window.addEventListener("scroll", function () {
+            isScrolling = true;
+            clearTimeout(scrollTimeout);
+
+            // 일정 시간 후 스크롤 상태를 false로 변경
+            var scrollTimeout = setTimeout(function () {
+                isScrolling = false;
+            }, 250); // 250ms는 사용자의 스크롤이 멈췄다고 간주되는 시간
         });
-        
-        popup.addEventListener('touchstart', () => {
-            touchStartTime = Date.now();
-            touchTimer = setTimeout(() => {
-                isTouchValid = true;
-            }, 1000); // 1초 후에 클릭 가능하도록 설정
+
+        // 터치 시작 이벤트
+        document.addEventListener("touchstart", function () {
+            isScrolling = false;
         });
-        
-        popup.addEventListener('touchmove', () => {
-            // 스크롤 시작하면 타이머 취소하고 클릭 불가능하게
-            clearTimeout(touchTimer);
-            isTouchValid = false;
+
+        // 스크롤 이벤트
+        document.addEventListener("touchmove", function () {
+            isScrolling = true;
         });
-        
-        popup.addEventListener('touchend', () => {
-            clearTimeout(touchTimer);
-            isTouchValid = false;
+
+        // 클릭 이벤트 방지 (스크롤 중일 때)
+        document.addEventListener("click", function (event) {
+            if (isScrolling) {
+                event.preventDefault(); // 클릭 이벤트 방지
+                event.stopPropagation(); // 이벤트 전파 중지
+                isScrolling = false; // 클릭 이벤트 방지 후 상태 초기화
+            }
+        });
+
+        // dragUls 클릭 이벤트 방지
+        dragUls.forEach((img) => {
+            img.addEventListener('click', (event) => {
+                event.preventDefault(); // 기본 동작 방지
+                event.stopPropagation(); // 이벤트 전파 중지
+            });
         });
     }
-    
+
     ClickDuringScroll();
 
     // 이미지 이벤트

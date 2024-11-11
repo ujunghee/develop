@@ -428,49 +428,50 @@ function objectItem() {
 
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
-        let isScrolling = false;
-        let clickTimeout;
+        let isScrolling = false
+        let clickTimeout
         
-        const dragUls = document.querySelectorAll('.popup ul li img');
+        const dragUls = document.querySelectorAll('.popup ul li img')
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
         
         // 이미지 클릭 시도할 때만 잠시 클릭 허용
         dragUls.forEach((img) => {
             img.parentElement.addEventListener('touchstart', function() {
                 if (!isScrolling) {
-                    img.classList.add('allow-click');
+                    img.classList.add('allow-click')
                 }
-            });
-        });
+            })
+        })
         
         // 스크롤 시작하면 즉시 클릭 방지
         document.addEventListener("touchmove", function() {
-            isScrolling = true;
+            isScrolling = true
             if (clickTimeout) {
-                clearTimeout(clickTimeout);
+                clearTimeout(clickTimeout)
             }
             dragUls.forEach((img) => {
-                img.classList.remove('allow-click');
-            });
-        });
+                img.classList.remove('allow-click')
+            })
+        })
         
         // 스크롤 끝나면 상태 초기화
         document.addEventListener("touchend", function() {
             clickTimeout = setTimeout(() => {
-                isScrolling = false;
+                isScrolling = false
                 dragUls.forEach((img) => {
-                    img.classList.remove('allow-click');
-                });
-            }, 50);
-        });
+                    img.classList.remove('allow-click')
+                })
+            }, 50)
+        })
 
         // 마우스 이벤트
-        document.addEventListener("mousedown", function() {
+        if (!isMobile) {
             dragUls.forEach((img) => {
-                img.classList.remove('allow-click');
-            });
-        })
+                img.classList.add('allow-click')
+            })
+        }
     }
-    ClickDuringScroll();
+    ClickDuringScroll()
 
     // 이미지 이벤트
     function updateImages(category) {

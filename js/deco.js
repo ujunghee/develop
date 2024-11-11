@@ -430,18 +430,25 @@ function objectItem() {
     function ClickDuringScroll() {
         let startY = 0;
         let isTouching = false;
-        const scrollThreshold = 10; // 스크롤로 인식할 최소 거리
-        const timeThreshold = 200; // 터치로 인식할 최대 시간 (ms)
-        let touchStartTime = 0;
+        let isScrolling = false;
+        const scrollThreshold = 10;
         
         const popup = document.querySelector('.popup');
         const dragUls = document.querySelectorAll('.popup ul li img');
         
         dragUls.forEach(img => {
+            // click 이벤트를 먼저 체크
+            img.addEventListener('click', (e) => {
+                if (isScrolling) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }, true); // true로 설정하여 캡처링 단계에서 이벤트 처리
+    
             img.addEventListener('touchstart', (e) => {
-                isTouching = true;
                 startY = e.touches[0].clientY;
-                touchStartTime = Date.now();
+                isTouching = true;
+                isScrolling = false;
             });
             
             img.addEventListener('touchmove', (e) => {
@@ -450,22 +457,18 @@ function objectItem() {
                 const currentY = e.touches[0].clientY;
                 const diffY = Math.abs(currentY - startY);
                 
+                // 일정 거리 이상 움직였다면 스크롤로 판단
                 if (diffY > scrollThreshold) {
-                    isTouching = false;
+                    isScrolling = true;
                 }
             });
             
-            img.addEventListener('touchend', (e) => {
-                const touchEndTime = Date.now();
-                const touchDuration = touchEndTime - touchStartTime;
-                
-                // 스크롤 중이거나 터치 시간이 길면 클릭 이벤트 취소
-                if (!isTouching || touchDuration > timeThreshold) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                }
-                
+            img.addEventListener('touchend', () => {
                 isTouching = false;
+                // 약간의 지연 후 스크롤 상태 초기화
+                requestAnimationFrame(() => {
+                    isScrolling = false;
+                });
             });
         });
     }

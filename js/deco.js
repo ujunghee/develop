@@ -428,48 +428,38 @@ function objectItem() {
 
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
-        let startY = 0;
-        let isTouching = false;
-        let isScrolling = false;
-        const scrollThreshold = 10;
+        let touchStartTime = 0;
+        let touchTimer = null;
+        let isTouchValid = false;
         
         const popup = document.querySelector('.popup');
         const dragUls = document.querySelectorAll('.popup ul li img');
         
         dragUls.forEach(img => {
-            // click 이벤트를 먼저 체크
             img.addEventListener('click', (e) => {
-                if (isScrolling) {
+                if (!isTouchValid) {
                     e.preventDefault();
                     e.stopPropagation();
                 }
-            }, true); // true로 설정하여 캡처링 단계에서 이벤트 처리
-    
-            img.addEventListener('touchstart', (e) => {
-                startY = e.touches[0].clientY;
-                isTouching = true;
-                isScrolling = false;
-            });
-            
-            img.addEventListener('touchmove', (e) => {
-                if (!isTouching) return;
-                
-                const currentY = e.touches[0].clientY;
-                const diffY = Math.abs(currentY - startY);
-                
-                // 일정 거리 이상 움직였다면 스크롤로 판단
-                if (diffY > scrollThreshold) {
-                    isScrolling = true;
-                }
-            });
-            
-            img.addEventListener('touchend', () => {
-                isTouching = false;
-                // 약간의 지연 후 스크롤 상태 초기화
-                requestAnimationFrame(() => {
-                    isScrolling = false;
-                });
-            });
+            }, true);
+        });
+        
+        popup.addEventListener('touchstart', () => {
+            touchStartTime = Date.now();
+            touchTimer = setTimeout(() => {
+                isTouchValid = true;
+            }, 1000); // 1초 후에 클릭 가능하도록 설정
+        });
+        
+        popup.addEventListener('touchmove', () => {
+            // 스크롤 시작하면 타이머 취소하고 클릭 불가능하게
+            clearTimeout(touchTimer);
+            isTouchValid = false;
+        });
+        
+        popup.addEventListener('touchend', () => {
+            clearTimeout(touchTimer);
+            isTouchValid = false;
         });
     }
     

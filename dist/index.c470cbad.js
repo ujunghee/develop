@@ -8,48 +8,6 @@ function navigation() {
     let infortMore = document.querySelector(".infor");
     // 해당 클릭할 요소 선택 및 공통 이벤트 실행
     document.addEventListener("click", function(event) {
-        // 완성 버튼 클릭 시
-        if (event.target.closest(".header")) try {
-            const decoBox = document.querySelector(".deco-box");
-            if (!decoBox) {
-                console.error("Could not find deco-box element");
-                return;
-            }
-            // html2canvas를 사용하여 deco-box를 이미지로 변환
-            html2canvas(decoBox, {
-                backgroundColor: null,
-                scale: 2,
-                useCORS: true,
-                allowTaint: true,
-                width: decoBox.offsetWidth || decoBox.clientWidth,
-                height: decoBox.offsetHeight || decoBox.clientHeight,
-                logging: true,
-                onclone: function(clonedDoc) {
-                    const clonedBox = clonedDoc.querySelector(".deco-box");
-                    if (clonedBox) {
-                        clonedBox.style.width = `${decoBox.offsetWidth}px`;
-                        clonedBox.style.height = `${decoBox.offsetHeight}px`;
-                        clonedBox.style.display = "block";
-                        clonedBox.style.visibility = "visible";
-                    }
-                }
-            }).then((canvas)=>{
-                // canvas를 이미지 데이터 URL로 변환
-                const imageDataUrl = canvas.toDataURL("image/png");
-                // 이미지 URL을 localStorage에 저장
-                const currentState = {
-                    decoBoxImage: imageDataUrl,
-                    background: decoBox.style.background || ""
-                };
-                localStorage.setItem("cardState", JSON.stringify(currentState));
-                // 저장 완료 후 last.html로 이동
-                window.location.href = "last.html";
-            }).catch((error)=>{
-                console.error("Error capturing image:", error);
-            });
-        } catch (error) {
-            console.error("Error in completion handler:", error);
-        }
         // 변수에 할당된 요소들이 클릭할 때 handleToggle 호출
         let clickedToggle = event.target.closest(".p-b, .painting, .textfielding");
         if (clickedToggle) handleToggle(clickedToggle);
@@ -57,7 +15,7 @@ function navigation() {
         let isClickInsideScroll = event.target.closest(".scroll");
         let isClickInsidePopup = event.target.closest(".popup");
         let isClickInsideColorPalette = event.target.closest(".color-palette");
-        let isClickInsidePaintingElements = event.target.closest(".p-b, .painting, .textfielding");
+        let isClickInsidePaintingElements = event.target.closest(".p-b, .painting, .textfielding, .infor");
         if (isClickInsideScroll || !isClickInsidePopup && !isClickInsideColorPalette && !isClickInsidePaintingElements) closeAllPopups();
         // 가구 자세히보기
         if (event.target.closest(".f-button")) infortMore.classList.add("on");
@@ -108,83 +66,83 @@ function objectItem() {
     // 가구, 도자기, 책 이미지
     const imgPaths = {
         furniture: [
-            "./image/object/furniture/display-01.png",
-            "./image/object/furniture/display-02.png",
-            "./image/object/furniture/display-03.png",
-            "./image/object/furniture/display-04.png",
-            "./image/object/furniture/display-05.png",
-            "./image/object/furniture/display-06.png",
-            "./image/object/furniture/display-07.png",
-            "./image/object/furniture/display-08.png",
-            "./image/object/furniture/display-09.png"
+            "./image/object/furniture/display-01.webp",
+            "./image/object/furniture/display-02.webp",
+            "./image/object/furniture/display-03.webp",
+            "./image/object/furniture/display-04.webp",
+            "./image/object/furniture/display-05.webp",
+            "./image/object/furniture/display-06.webp",
+            "./image/object/furniture/display-07.webp",
+            "./image/object/furniture/display-08.webp",
+            "./image/object/furniture/display-09.webp"
         ],
         jar: [
-            "./image/object/jar/display-11.png",
-            "./image/object/jar/display-12.png",
-            "./image/object/jar/display-13.png",
-            "./image/object/jar/display-14.png",
-            "./image/object/jar/display-15.png",
-            "./image/object/jar/display-16.png",
-            "./image/object/jar/display-17.png",
-            "./image/object/jar/display-18.png",
-            "./image/object/jar/display-19.png"
+            "./image/object/jar/display-11.webp",
+            "./image/object/jar/display-12.webp",
+            "./image/object/jar/display-13.webp",
+            "./image/object/jar/display-14.webp",
+            "./image/object/jar/display-15.webp",
+            "./image/object/jar/display-16.webp",
+            "./image/object/jar/display-17.webp",
+            "./image/object/jar/display-18.webp",
+            "./image/object/jar/display-19.webp"
         ],
         book: [
-            "./image/object/book/display-20.png",
-            "./image/object/book/display-21.png",
-            "./image/object/book/display-22.png",
-            "./image/object/book/display-23.png",
-            "./image/object/book/display-24.png",
-            "./image/object/book/display-25.png",
-            "./image/object/book/display-26.png",
-            "./image/object/book/display-27.png",
-            "./image/object/book/display-28.png",
-            "./image/object/book/display-29.png"
+            "./image/object/book/display-20.webp",
+            "./image/object/book/display-21.webp",
+            "./image/object/book/display-22.webp",
+            "./image/object/book/display-23.webp",
+            "./image/object/book/display-24.webp",
+            "./image/object/book/display-25.webp",
+            "./image/object/book/display-26.webp",
+            "./image/object/book/display-27.webp",
+            "./image/object/book/display-28.webp",
+            "./image/object/book/display-29.webp"
         ],
         season: {
             spring: [
-                "./image/object/season/spring/display-38.png",
-                "./image/object/season/spring/display-39.png",
-                "./image/object/season/spring/display-40.png",
-                "./image/object/season/spring/display-41.png",
-                "./image/object/season/spring/display-42.png",
-                "./image/object/season/spring/display-43.png",
-                "./image/object/season/spring/display-44.png",
-                "./image/object/season/spring/display-45.png",
-                "./image/object/season/spring/display-46.png"
+                "./image/object/season/spring/display-38.webp",
+                "./image/object/season/spring/display-39.webp",
+                "./image/object/season/spring/display-40.webp",
+                "./image/object/season/spring/display-41.webp",
+                "./image/object/season/spring/display-42.webp",
+                "./image/object/season/spring/display-43.webp",
+                "./image/object/season/spring/display-44.webp",
+                "./image/object/season/spring/display-45.webp",
+                "./image/object/season/spring/display-46.webp"
             ],
             summer: [
-                "./image/object/season/summer/display-47.png",
-                "./image/object/season/summer/display-48.png",
-                "./image/object/season/summer/display-49.png",
-                "./image/object/season/summer/display-50.png",
-                "./image/object/season/summer/display-51.png",
-                "./image/object/season/summer/display-52.png",
-                "./image/object/season/summer/display-53.png",
-                "./image/object/season/summer/display-54.png",
-                "./image/object/season/summer/display-55.png"
+                "./image/object/season/summer/display-47.webp",
+                "./image/object/season/summer/display-48.webp",
+                "./image/object/season/summer/display-49.webp",
+                "./image/object/season/summer/display-50.webp",
+                "./image/object/season/summer/display-51.webp",
+                "./image/object/season/summer/display-52.webp",
+                "./image/object/season/summer/display-53.webp",
+                "./image/object/season/summer/display-54.webp",
+                "./image/object/season/summer/display-55.webp"
             ],
             autumn: [
-                "./image/object/season/autumn/display-65.png",
-                "./image/object/season/autumn/display-66.png",
-                "./image/object/season/autumn/display-67.png",
-                "./image/object/season/autumn/display-68.png",
-                "./image/object/season/autumn/display-69.png",
-                "./image/object/season/autumn/display-70.png",
-                "./image/object/season/autumn/display-71.png",
-                "./image/object/season/autumn/display-72.png",
-                "./image/object/season/autumn/display-73.png"
+                "./image/object/season/autumn/display-65.webp",
+                "./image/object/season/autumn/display-66.webp",
+                "./image/object/season/autumn/display-67.webp",
+                "./image/object/season/autumn/display-68.webp",
+                "./image/object/season/autumn/display-69.webp",
+                "./image/object/season/autumn/display-70.webp",
+                "./image/object/season/autumn/display-71.webp",
+                "./image/object/season/autumn/display-72.webp",
+                "./image/object/season/autumn/display-73.webp"
             ],
             winter: [
-                "./image/object/season/winter/display-56.png",
-                "./image/object/season/winter/display-57.png",
-                "./image/object/season/winter/display-58.png",
-                "./image/object/season/winter/display-59.png",
-                "./image/object/season/winter/display-60.png",
-                "./image/object/season/winter/display-61.png",
-                "./image/object/season/winter/display-62.png",
-                "./image/object/season/winter/display-63.png",
-                "./image/object/season/winter/display-64.png"
+                "./image/object/season/winter/display-56.webp",
+                "./image/object/season/winter/display-57.webp",
+                "./image/object/season/winter/display-58.webp",
+                "./image/object/season/winter/display-59.webp",
+                "./image/object/season/winter/display-60.webp",
+                "./image/object/season/winter/display-61.webp",
+                "./image/object/season/winter/display-62.webp",
+                "./image/object/season/winter/display-63.webp",
+                "./image/object/season/winter/display-64.webp"
             ]
         }
     };
@@ -420,6 +378,42 @@ function objectItem() {
     }
     // 이벤트 리스너 등록
     document.addEventListener("click", handleNavClick);
+    // 팝업 리스트 스크롤시 클릭 방지
+    function ClickDuringScroll() {
+        let isScrolling = false;
+        let clickTimeout;
+        const dragUls = document.querySelectorAll(".popup ul li img");
+        // 이미지 클릭 시도할 때만 잠시 클릭 허용
+        dragUls.forEach((img)=>{
+            img.parentElement.addEventListener("touchstart", function() {
+                if (!isScrolling) img.classList.add("allow-click");
+            });
+        });
+        // 스크롤 시작하면 즉시 클릭 방지
+        document.addEventListener("touchmove", function() {
+            isScrolling = true;
+            if (clickTimeout) clearTimeout(clickTimeout);
+            dragUls.forEach((img)=>{
+                img.classList.remove("allow-click");
+            });
+        });
+        // 스크롤 끝나면 상태 초기화
+        document.addEventListener("touchend", function() {
+            clickTimeout = setTimeout(()=>{
+                isScrolling = false;
+                dragUls.forEach((img)=>{
+                    img.classList.remove("allow-click");
+                });
+            }, 50);
+        });
+        // 마우스 이벤트
+        document.addEventListener("mousedown", function() {
+            dragUls.forEach((img)=>{
+                img.classList.remove("allow-click");
+            });
+        });
+    }
+    ClickDuringScroll();
     // 이미지 이벤트
     function updateImages(category) {
         // 좌우반전 이벤트 s

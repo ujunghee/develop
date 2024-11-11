@@ -238,6 +238,10 @@ button {
 
 .title {
   font-family: "NanumMyeongjo";
+}
+.title span {
+  display: flex;
+  flex-direction: column;
   font-size: 2.4rem;
   color: #544D47;
   line-height: 3.5rem;

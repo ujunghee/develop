@@ -612,14 +612,85 @@ function loadPage(page, callback) {
                     objectItem();
                     palettebg();
                     initDraggableComposition();
+                    setupHeaderActions();
                 }
                 if (selecpage.includes(page)) select();
-                if (page === "last.html") initCardGenerator();
+                if (lastpage.includes(page)) last();
             }
             if (callback) callback();
         }
     };
     xhr.send();
+}
+// 헤더 액션 설정 함수
+function setupHeaderActions() {
+    const header = document.querySelector(".header .submit");
+    if (!header) return;
+    header.removeEventListener("click", handleHeaderClick);
+    header.addEventListener("click", handleHeaderClick);
+}
+// 헤더 클릭 이벤트 핸들러
+function handleHeaderClick(event) {
+    if (!event.target.closest(".season-prev") && !event.target.closest(".first") && !event.target.closest(".select-prev")) {
+        const decoBox = document.querySelector(".deco-box");
+        if (!decoBox) return;
+        html2canvas(decoBox, {
+            backgroundColor: null,
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            ignoreElements: (element)=>{
+                return element.classList.contains("reset");
+            }
+        }).then((canvas)=>{
+            const imageDataUrl = canvas.toDataURL("image/png");
+            const currentState = {
+                decoBoxImage: imageDataUrl,
+                background: decoBox.style.background || ""
+            };
+            localStorage.setItem("cardState", JSON.stringify(currentState));
+            // 직접 DOM 조작
+            document.getElementById("content").innerHTML = "" // 현재 내용 비우기
+            ;
+            // XHR 요청으로 last.html 내용 가져오기
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "last.html", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("content").innerHTML = xhr.responseText;
+                    initCardGenerator() // 내용 삽입 후 초기화
+                    ;
+                }
+            };
+            xhr.send();
+        }).catch((error)=>{
+            console.error("Error:", error);
+        });
+    }
+}
+// 상태 캡처 및 저장 함수
+async function captureAndSaveState(element) {
+    try {
+        const canvas = await html2canvas(element, {
+            backgroundColor: null,
+            scale: 2,
+            useCORS: true,
+            allowTaint: true,
+            ignoreElements: (element)=>{
+                return element.classList.contains("reset");
+            }
+        });
+        const imageDataUrl = canvas.toDataURL("image/png");
+        const currentState = {
+            decoBoxImage: imageDataUrl,
+            background: element.style.background || ""
+        };
+        localStorage.setItem("cardState", JSON.stringify(currentState));
+        return true;
+    } catch (error) {
+        console.error("Capture failed:", error);
+        throw error;
+    }
 }
 window.loadPage = loadPage;
 // load 
@@ -652,19 +723,6 @@ document.addEventListener("DOMContentLoaded", function() {
             if (event.target.classList.contains("submit")) loadPage("last.html");
             // 다시하기
             if (event.target.classList.contains("first")) loadPage("first.html");
-            // 솔브케이 클릭
-            if (event.target.classList.contains("solvek")) {
-                const solvek = document.querySelector(".last");
-                const headerarrow = document.querySelector(".back");
-                if (solvek.classList.contains("white")) {
-                    solvek.classList.remove("white");
-                    solvek.classList.add("black");
-                    headerarrow.classList.add("deco-prev");
-                    headerarrow.classList.remove("season-prev");
-                }
-            }
-            // 뒤로가기
-            if (event.target.classList.contains("deco-prev")) loadPage("last.html");
         });
     });
 });

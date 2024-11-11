@@ -242,7 +242,11 @@ button {
 // text
 .title {
     @include Nanummyeongjo;
-    @include font-title;
+    span {
+        display: flex;
+        flex-direction: column;
+        @include font-title;
+    }
 }
 
 .m-sub {

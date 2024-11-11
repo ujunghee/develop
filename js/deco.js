@@ -427,6 +427,43 @@ function objectItem() {
     document.addEventListener('click', handleNavClick)
 
     // 팝업 리스트 스크롤시 클릭 방지
+    function ClickDuringScroll() {
+        let isScrolling = false;
+        let clickTimeout;
+        
+        const dragUls = document.querySelectorAll('.popup ul li img');
+        
+        // 이미지 클릭 시도할 때만 잠시 클릭 허용
+        dragUls.forEach((img) => {
+            img.parentElement.addEventListener('touchstart', function() {
+                if (!isScrolling) {
+                    img.classList.add('allow-click');
+                }
+            });
+        });
+        
+        // 스크롤 시작하면 즉시 클릭 방지
+        document.addEventListener("touchmove", function() {
+            isScrolling = true;
+            if (clickTimeout) {
+                clearTimeout(clickTimeout);
+            }
+            dragUls.forEach((img) => {
+                img.classList.remove('allow-click');
+            });
+        });
+        
+        // 스크롤 끝나면 상태 초기화
+        document.addEventListener("touchend", function() {
+            clickTimeout = setTimeout(() => {
+                isScrolling = false;
+                dragUls.forEach((img) => {
+                    img.classList.remove('allow-click');
+                });
+            }, 50);
+        });
+    }
+    ClickDuringScroll();
 
     // 이미지 이벤트
     function updateImages(category) {

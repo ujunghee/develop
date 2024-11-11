@@ -428,32 +428,49 @@ function objectItem() {
 
     // 팝업 리스트 스크롤시 클릭 방지
     function ClickDuringScroll() {
-        let isMoved = false
+        let startY = 0;
+        let isTouching = false;
+        const scrollThreshold = 10; // 스크롤로 인식할 최소 거리
+        const timeThreshold = 200; // 터치로 인식할 최대 시간 (ms)
+        let touchStartTime = 0;
         
-        const popup = document.querySelector('.popup')
-        const dragUls = document.querySelectorAll('.popup ul li img')
-    
+        const popup = document.querySelector('.popup');
+        const dragUls = document.querySelectorAll('.popup ul li img');
+        
         dragUls.forEach(img => {
-            img.addEventListener('click', (e) => {
-                if(isMoved) {
-                    e.preventDefault()
-                    e.stopPropagation()
+            img.addEventListener('touchstart', (e) => {
+                isTouching = true;
+                startY = e.touches[0].clientY;
+                touchStartTime = Date.now();
+            });
+            
+            img.addEventListener('touchmove', (e) => {
+                if (!isTouching) return;
+                
+                const currentY = e.touches[0].clientY;
+                const diffY = Math.abs(currentY - startY);
+                
+                if (diffY > scrollThreshold) {
+                    isTouching = false;
                 }
-            }, true)
-        })
-    
-        popup.addEventListener('touchmove', () => {
-            isMoved = true
-        })
-    
-        popup.addEventListener('touchend', () => {
-            setTimeout(() => {
-                isMoved = false
-            }, 0)
-        })
+            });
+            
+            img.addEventListener('touchend', (e) => {
+                const touchEndTime = Date.now();
+                const touchDuration = touchEndTime - touchStartTime;
+                
+                // 스크롤 중이거나 터치 시간이 길면 클릭 이벤트 취소
+                if (!isTouching || touchDuration > timeThreshold) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+                
+                isTouching = false;
+            });
+        });
     }
     
-    ClickDuringScroll()
+    ClickDuringScroll();
 
     // 이미지 이벤트
     function updateImages(category) {

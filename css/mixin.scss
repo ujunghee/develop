@@ -310,6 +310,7 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: .8rem;
         overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
         box-sizing: border-box;
         width: 100%;
         li {

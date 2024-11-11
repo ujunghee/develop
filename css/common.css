@@ -627,6 +627,7 @@ button {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 0.8rem;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   box-sizing: border-box;
   width: 100%;
 }

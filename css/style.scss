@@ -15,7 +15,13 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 2.0rem;
+        gap: 3.0rem;
+        @include respond-to(tablet) {
+            gap: 5.0rem;
+        }
+        @include respond-to(mobile) {
+            gap: 3.0rem;
+        }
 
         .visaul_img {
             // background: url($main-bg-img + "main.webp") 50% 50% / contain no-repeat;

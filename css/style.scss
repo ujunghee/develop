@@ -35,6 +35,8 @@
             .v_i {
                 height: 100%;
                 width: 100%;
+                opacity: 0;
+                transform: translateY(1rem);
 
                 &.scroll {
                     background: url($main-bg-img + "scroll.webp") 50% 50% / contain no-repeat;
@@ -55,7 +57,6 @@
                     position: relative;
                     grid-column: 1;
                     grid-row:3;
-                    
                 }
                 &.tiger {
                     background: url($main-bg-img + "tiger.webp") 50% 70% / contain no-repeat;

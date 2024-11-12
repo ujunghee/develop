@@ -17,10 +17,14 @@ function animation() {
         },
     },'<+.3') 
 
-    // tl.to('', {
-
-    // })
-
+    tl.to('.v_i', {
+        opacity:1,
+        duration: .5,
+        y:0,
+        stagger: {
+            each:0.08,
+        },
+    },'<+.3') 
 
     
 

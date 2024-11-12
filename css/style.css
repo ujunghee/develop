@@ -34,6 +34,8 @@
 .content_one .visual .visaul_img .v_i {
   height: 100%;
   width: 100%;
+  opacity: 0;
+  transform: translateY(1rem);
 }
 .content_one .visual .visaul_img .v_i.scroll {
   background: url("../image/main/scroll.webp") 50% 50%/contain no-repeat;

@@ -243,9 +243,8 @@ button {
 .title {
     @include Nanummyeongjo;
     span {
-        display: flex;
-        flex-direction: column;
         @include font-title;
+        font-weight: map-get(font-weight, f-500);
     }
 }
 

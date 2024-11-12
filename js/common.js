@@ -1,5 +1,6 @@
 // const _ = window._
-// const {gsap} = window
+
+// const { first } = require("lodash")
 
 //ajax
 function loadPage(page, callback) {
@@ -10,10 +11,15 @@ function loadPage(page, callback) {
             if (xhr.status === 200) {
                 document.getElementById('content').innerHTML = xhr.responseText
 
+                const firstpage = ['first.html']
                 const selecpage = ['select.html']
                 const decopage = ['deco_spring.html', 'deco_summer.html', 'deco_autumn.html', 'deco_winter.html']
                 const lastpage = ['last.html']
                 
+                if (firstpage.includes(page)) {
+                    animation();
+                }
+
                 if (decopage.includes(page)) {
                     navigation()
                     sildeSwiper()

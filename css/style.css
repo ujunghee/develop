@@ -4,6 +4,7 @@
   height: 100%;
   text-align: center;
   background: url("../image/main/visaul_bg.webp") 50% 50%/cover no-repeat;
+  opacity: 0;
 }
 .content_one .visual {
   height: calc(100% - 7rem);
@@ -13,10 +14,62 @@
   gap: 2rem;
 }
 .content_one .visual .visaul_img {
-  background: url("../image/main/main.webp") 50% 50%/contain no-repeat;
-  height: 38.6rem;
+  height: 36.6rem;
+  width: 80%;
+  flex: 0.78;
+  transform: translateX(-50%);
+  left: 50%;
+  position: relative;
+}
+.content_one .visual .visaul_img .v_i {
+  height: 100%;
   width: 100%;
-  flex: 0.75;
+}
+.content_one .visual .visaul_img .v_i.scroll {
+  background: url("../image/main/scroll.webp") 50% 50%/contain no-repeat;
+  position: absolute;
+}
+.content_one .visual .visaul_img .v_i.cloud-left {
+  background: url("../image/main/cloud02.webp") 50% 50%/contain no-repeat;
+  position: absolute;
+  width: 16rem;
+}
+.content_one .visual .visaul_img .v_i.cloud-right {
+  background: url("../image/main/cloud01.webp") 50% 50%/contain no-repeat;
+  position: absolute;
+  width: 16rem;
+}
+.content_one .visual .visaul_img .v_i.tiger {
+  background: url("../image/main/tiger.webp") 50% 50%/contain no-repeat;
+  position: absolute;
+  width: clamp(9.5rem, 15vw, 15rem);
+  min-width: 9.5rem;
+  transform: translate(-25%, -15%);
+  height: 40%;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+}
+.content_one .visual .visaul_img .v_i.book {
+  background: url("../image/main/book.gif") 50% 50%/contain no-repeat;
+  position: absolute;
+  width: clamp(15rem, 25vw, 18rem);
+  min-width: 10rem;
+  height: 70%;
+  left: 20%;
+  top: -10%;
+}
+.content_one .visual .title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+.content_one .visual .title span {
+  letter-spacing: 0.5;
+  opacity: 0;
+  transform: translateY(1rem);
 }
 .content_one .visual .txt-box {
   margin-top: 2.6rem;

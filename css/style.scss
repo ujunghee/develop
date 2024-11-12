@@ -42,22 +42,6 @@
                     background: url($main-bg-img + "scroll.webp") 50% 50% / contain no-repeat;
                     position: absolute;
                 }
-                &.cloud-right {
-                    background: url($main-bg-img + "cloud02.webp") 50% 35% / contain no-repeat;
-                    width: 200%;
-                    position: relative;
-                    grid-column: 3;
-                    grid-row: 2;
-                }
-                &.cloud-left {
-                    background: url($main-bg-img + "cloud01.webp") 50% 50% / contain no-repeat;
-                    width: 200%;
-                    position: relative;
-                    z-index: 3;
-                    position: relative;
-                    grid-column: 1;
-                    grid-row:3;
-                }
                 &.tiger {
                     background: url($main-bg-img + "tiger.webp") 50% 70% / contain no-repeat;
                     position: relative;
@@ -78,6 +62,27 @@
                     width: 300%;
                     grid-row: 1;
                     grid-column: 1;
+                }
+            }
+            .cloud {
+                opacity: 0;
+                &.cloud-right {
+                    background: url($main-bg-img + "cloud02.webp") 50% 35% / contain no-repeat;
+                    width: 200%;
+                    position: relative;
+                    grid-column: 3;
+                    grid-row: 2;
+                    transform: translate(-1rem, 1rem);
+                }
+                &.cloud-left {
+                    background: url($main-bg-img + "cloud01.webp") 50% 50% / contain no-repeat;
+                    width: 200%;
+                    position: relative;
+                    z-index: 3;
+                    position: relative;
+                    grid-column: 1;
+                    grid-row:3;
+                    transform: translate(1rem, 1rem);
                 }
             }
         }

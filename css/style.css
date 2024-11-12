@@ -41,22 +41,6 @@
   background: url("../image/main/scroll.webp") 50% 50%/contain no-repeat;
   position: absolute;
 }
-.content_one .visual .visaul_img .v_i.cloud-right {
-  background: url("../image/main/cloud02.webp") 50% 35%/contain no-repeat;
-  width: 200%;
-  position: relative;
-  grid-column: 3;
-  grid-row: 2;
-}
-.content_one .visual .visaul_img .v_i.cloud-left {
-  background: url("../image/main/cloud01.webp") 50% 50%/contain no-repeat;
-  width: 200%;
-  position: relative;
-  z-index: 3;
-  position: relative;
-  grid-column: 1;
-  grid-row: 3;
-}
 .content_one .visual .visaul_img .v_i.tiger {
   background: url("../image/main/tiger.webp") 50% 70%/contain no-repeat;
   position: relative;
@@ -77,6 +61,27 @@
   width: 300%;
   grid-row: 1;
   grid-column: 1;
+}
+.content_one .visual .visaul_img .cloud {
+  opacity: 0;
+}
+.content_one .visual .visaul_img .cloud.cloud-right {
+  background: url("../image/main/cloud02.webp") 50% 35%/contain no-repeat;
+  width: 200%;
+  position: relative;
+  grid-column: 3;
+  grid-row: 2;
+  transform: translate(-1rem, 1rem);
+}
+.content_one .visual .visaul_img .cloud.cloud-left {
+  background: url("../image/main/cloud01.webp") 50% 50%/contain no-repeat;
+  width: 200%;
+  position: relative;
+  z-index: 3;
+  position: relative;
+  grid-column: 1;
+  grid-row: 3;
+  transform: translate(1rem, 1rem);
 }
 .content_one .visual .title {
   display: flex;

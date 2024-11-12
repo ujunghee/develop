@@ -1,5 +1,6 @@
 @import "variable";
 @import "mixin";
+@import "media";
 
 // first html s
 .content_one {
@@ -24,7 +25,13 @@
             transform: translateX(-50%);
             left: 50%;
             position: relative;
-
+            display: grid;
+            grid-template-columns: repeat(4, calc(100% / 4));
+            grid-template-rows: repeat(4, calc(100% / 4));
+            @include respond-to(tablet) {
+                height: 36.6rem;
+                flex: .70;
+            }
             .v_i {
                 height: 100%;
                 width: 100%;
@@ -33,36 +40,43 @@
                     background: url($main-bg-img + "scroll.webp") 50% 50% / contain no-repeat;
                     position: absolute;
                 }
-                &.cloud-left {
-                    background: url($main-bg-img + "cloud02.webp") 50% 50% / contain no-repeat;
-                    position: absolute;
-                    width: 16.0rem;
-                }
                 &.cloud-right {
+                    background: url($main-bg-img + "cloud02.webp") 50% 35% / contain no-repeat;
+                    width: 200%;
+                    position: relative;
+                    grid-column: 3;
+                    grid-row: 2;
+                }
+                &.cloud-left {
                     background: url($main-bg-img + "cloud01.webp") 50% 50% / contain no-repeat;
-                    position: absolute;
-                    width: 16.0rem;
+                    width: 200%;
+                    position: relative;
+                    z-index: 3;
+                    position: relative;
+                    grid-column: 1;
+                    grid-row:3;
+                    
                 }
                 &.tiger {
-                    background: url($main-bg-img + "tiger.webp") 50% 92% / contain no-repeat;
-                    position: absolute;
-                    width: clamp(9.5rem, 15vw, 15.0rem);
-                    min-width: 9.5rem;
-                    transform: translate(-25%, -15%);
-                    // height: 40%;
-                    left: 50%;
-                    // top: 50%;
+                    background: url($main-bg-img + "tiger.webp") 50% 70% / contain no-repeat;
+                    position: relative;
+                    left: -100%;
+                    top: -40%;
+                    height: 160%;
+                    width: 250%;
                     z-index: 1;
+                    grid-column: 3;
+                    grid-row: 3;
                 }
                 &.book {
-                    background: url($main-bg-img + "book.gif") 50% 50% / contain no-repeat;
-                    position: absolute;
-                    width: clamp(15.0rem, 25vw, 18.0rem);
-                    min-width: 10.0rem;
-                    // transform: translate(-25%, 0%);
-                    height: 70%;
-                    left: 20%;
-                    top: -10%;
+                    background: url($main-bg-img + "book.gif") 50% 10% / contain no-repeat;
+                    position: relative;
+                    top: -40%;
+                    left: 10%;
+                    height: 280%;
+                    width: 300%;
+                    grid-row: 1;
+                    grid-column: 1;
                 }
             }
         }

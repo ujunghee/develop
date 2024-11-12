@@ -1,4 +1,5 @@
 @import "SUIT/SUIT.css";
+@import "SUIT/SUIT.css";
 .content_one {
   width: 100%;
   height: 100%;
@@ -20,6 +21,15 @@
   transform: translateX(-50%);
   left: 50%;
   position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(4, 25%);
+}
+@media (min-width: 361px) and (max-width: 768px) {
+  .content_one .visual .visaul_img {
+    height: 36.6rem;
+    flex: 0.7;
+  }
 }
 .content_one .visual .visaul_img .v_i {
   height: 100%;
@@ -29,33 +39,42 @@
   background: url("../image/main/scroll.webp") 50% 50%/contain no-repeat;
   position: absolute;
 }
-.content_one .visual .visaul_img .v_i.cloud-left {
-  background: url("../image/main/cloud02.webp") 50% 50%/contain no-repeat;
-  position: absolute;
-  width: 16rem;
-}
 .content_one .visual .visaul_img .v_i.cloud-right {
+  background: url("../image/main/cloud02.webp") 50% 35%/contain no-repeat;
+  width: 200%;
+  position: relative;
+  grid-column: 3;
+  grid-row: 2;
+}
+.content_one .visual .visaul_img .v_i.cloud-left {
   background: url("../image/main/cloud01.webp") 50% 50%/contain no-repeat;
-  position: absolute;
-  width: 16rem;
+  width: 200%;
+  position: relative;
+  z-index: 3;
+  position: relative;
+  grid-column: 1;
+  grid-row: 3;
 }
 .content_one .visual .visaul_img .v_i.tiger {
-  background: url("../image/main/tiger.webp") 50% 92%/contain no-repeat;
-  position: absolute;
-  width: clamp(9.5rem, 15vw, 15rem);
-  min-width: 9.5rem;
-  transform: translate(-25%, -15%);
-  left: 50%;
+  background: url("../image/main/tiger.webp") 50% 70%/contain no-repeat;
+  position: relative;
+  left: -100%;
+  top: -40%;
+  height: 160%;
+  width: 250%;
   z-index: 1;
+  grid-column: 3;
+  grid-row: 3;
 }
 .content_one .visual .visaul_img .v_i.book {
-  background: url("../image/main/book.gif") 50% 50%/contain no-repeat;
-  position: absolute;
-  width: clamp(15rem, 25vw, 18rem);
-  min-width: 10rem;
-  height: 70%;
-  left: 20%;
-  top: -10%;
+  background: url("../image/main/book.gif") 50% 10%/contain no-repeat;
+  position: relative;
+  top: -40%;
+  left: 10%;
+  height: 280%;
+  width: 300%;
+  grid-row: 1;
+  grid-column: 1;
 }
 .content_one .visual .title {
   display: flex;

@@ -40,14 +40,12 @@
   width: 16rem;
 }
 .content_one .visual .visaul_img .v_i.tiger {
-  background: url("../image/main/tiger.webp") 50% 50%/contain no-repeat;
+  background: url("../image/main/tiger.webp") 50% 92%/contain no-repeat;
   position: absolute;
   width: clamp(9.5rem, 15vw, 15rem);
   min-width: 9.5rem;
   transform: translate(-25%, -15%);
-  height: 40%;
   left: 50%;
-  top: 50%;
   z-index: 1;
 }
 .content_one .visual .visaul_img .v_i.book {

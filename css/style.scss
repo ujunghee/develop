@@ -44,14 +44,14 @@
                     width: 16.0rem;
                 }
                 &.tiger {
-                    background: url($main-bg-img + "tiger.webp") 50% 50% / contain no-repeat;
+                    background: url($main-bg-img + "tiger.webp") 50% 92% / contain no-repeat;
                     position: absolute;
                     width: clamp(9.5rem, 15vw, 15.0rem);
                     min-width: 9.5rem;
                     transform: translate(-25%, -15%);
-                    height: 40%;
+                    // height: 40%;
                     left: 50%;
-                    top: 50%;
+                    // top: 50%;
                     z-index: 1;
                 }
                 &.book {

@@ -20,7 +20,7 @@
             gap: 5.0rem;
         }
         @include respond-to(mobile) {
-            gap: 3.0rem;
+            gap: 2.0rem;
         }
 
         .visaul_img {
@@ -58,6 +58,7 @@
                     z-index: 1;
                     grid-column: 3;
                     grid-row: 3;
+                    max-height: 25.0rem;
                 }
                 &.book {
                     background: url($main-bg-img + "book.gif") 50% 10% / contain no-repeat;
@@ -68,6 +69,7 @@
                     width: 300%;
                     grid-row: 1;
                     grid-column: 1;
+                    max-height: 45.0rem;
                 }
             }
             .cloud {
@@ -109,6 +111,13 @@
 
         .txt-box {
             margin-top: 2.6rem;
+            .f-txtbox {
+                display: flex;
+                gap: .3rem;
+            }
+            @include respond-to(mobile) {
+                margin-top: 0rem;
+            }
         }
     }
 }

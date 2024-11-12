@@ -18,16 +18,16 @@ function animation() {
 
     tl.to('.v_i', {
         opacity:1,
-        duration: .5,
+        duration: .8,
         y:0,
         stagger: {
-            each:0.08,
+            each:0.2,
         },
     },'<+.3') 
     
     tl.to('.cloud-right', {
         opacity:.8,
-        duration: .5,
+        duration: .8,
         x:0,
         y:0,
     },'<+.3') 
@@ -41,23 +41,23 @@ function animation() {
 
     tl.to('.cloud-right', {
         opacity:1,
-        duration: 1.5,
+        duration: 1.8,
         x:0,
         y:-5,
         repeat:-1,
-        yoyo:true,
         ease: "power1.out",
+        yoyo:true,
     },'<') 
 
     tl.to('.cloud-left', {
         opacity:1,
-        duration: 1.5,
+        duration: 1.8,
         x:0,
         y:-5,
         repeat:-1,
-        yoyo:true,
         ease: "power1.out",
-    },'<+.3') 
+        yoyo:true,
+    },'<+.5') 
 
 
 }

@@ -21,7 +21,7 @@
 }
 @media (max-width: 600px) {
   .content_one .visual {
-    gap: 3rem;
+    gap: 2rem;
   }
 }
 .content_one .visual .visaul_img {
@@ -61,6 +61,7 @@
   z-index: 1;
   grid-column: 3;
   grid-row: 3;
+  max-height: 25rem;
 }
 .content_one .visual .visaul_img .v_i.book {
   background: url("../image/main/book.gif") 50% 10%/contain no-repeat;
@@ -71,6 +72,7 @@
   width: 300%;
   grid-row: 1;
   grid-column: 1;
+  max-height: 45rem;
 }
 .content_one .visual .visaul_img .cloud {
   opacity: 0;
@@ -107,6 +109,15 @@
 }
 .content_one .visual .txt-box {
   margin-top: 2.6rem;
+}
+.content_one .visual .txt-box .f-txtbox {
+  display: flex;
+  gap: 0.3rem;
+}
+@media (max-width: 600px) {
+  .content_one .visual .txt-box {
+    margin-top: 0rem;
+  }
 }
 
 .select {

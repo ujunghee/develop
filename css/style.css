@@ -83,7 +83,7 @@
   position: relative;
   grid-column: 3;
   grid-row: 2;
-  transform: translate(-1rem, 1rem);
+  transform: translate(-0.5rem, 0.5rem);
 }
 .content_one .visual .visaul_img .cloud.cloud-left {
   background: url("../image/main/cloud01.webp") 50% 50%/contain no-repeat;
@@ -93,7 +93,7 @@
   position: relative;
   grid-column: 1;
   grid-row: 3;
-  transform: translate(1rem, 1rem);
+  transform: translate(0.5rem, 0.5rem);
 }
 .content_one .visual .title {
   display: flex;
@@ -114,10 +114,19 @@
   display: flex;
   gap: 0.3rem;
 }
+.content_one .visual .txt-box .f-txtbox .m-sub {
+  opacity: 0;
+  transform: translateY(0.2rem);
+}
 @media (max-width: 600px) {
   .content_one .visual .txt-box {
     margin-top: 0rem;
   }
+}
+.content_one .button {
+  opacity: 0;
+  transform: translateY(8rem);
+  transition: all 0.8s cubic-bezier(0.54, 0.03, 0.1, 1.09);
 }
 
 .select {

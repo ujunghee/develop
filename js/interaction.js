@@ -1,4 +1,4 @@
-function animation() {
+function firstAnimation() {
     let tl = gsap.timeline({
         ease: "back.out(1.7)",
     })
@@ -16,6 +16,15 @@ function animation() {
         },
     },'<+.3') 
 
+    tl.to('.m-sub', {
+        opacity:1,
+        duration: .5,
+        y:0,
+        stagger: {
+            each:0.02,
+        },
+    },'<') 
+    
     tl.to('.v_i', {
         opacity:1,
         duration: .8,
@@ -23,24 +32,24 @@ function animation() {
         stagger: {
             each:0.2,
         },
-    },'<+.3') 
-    
+    },'<') 
+
     tl.to('.cloud-right', {
-        opacity:.8,
+        opacity:1,
         duration: .8,
         x:0,
         y:0,
     },'<+.3') 
 
     tl.to('.cloud-left', {
-        opacity:.8,
+        opacity:1,
         duration: .5,
         x:0,
         y:0,
     },'<+.3') 
 
     tl.to('.cloud-right', {
-        opacity:1,
+        // opacity:1,
         duration: 1.8,
         x:0,
         y:-5,
@@ -50,7 +59,7 @@ function animation() {
     },'<') 
 
     tl.to('.cloud-left', {
-        opacity:1,
+        // opacity:1,
         duration: 1.8,
         x:0,
         y:-5,
@@ -59,5 +68,10 @@ function animation() {
         yoyo:true,
     },'<+.5') 
 
+    tl.to('.content_one .button', {
+        opacity:1,
+        // duration: 3,
+        y:0,
+    },'<-.9') 
 
 }

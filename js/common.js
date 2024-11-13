@@ -17,7 +17,7 @@ function loadPage(page, callback) {
                 const lastpage = ['last.html']
                 
                 if (firstpage.includes(page)) {
-                    animation();
+                    firstAnimation();
                 }
 
                 if (decopage.includes(page)) {

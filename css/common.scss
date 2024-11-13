@@ -292,14 +292,14 @@ button {
 }
 
 // bar button
-%barButton {
-    &:hover {
-        transform: scale(.98)
-    }
-}
+// %barButton {
+//     &:hover {
+//         transform: scale(.98)
+//     }
+// }
   
 .button {
-    @extend %barButton;
+    // @extend %barButton;
     @include bar-button;
 
     &.brown {

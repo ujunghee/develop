@@ -80,7 +80,7 @@
                     position: relative;
                     grid-column: 3;
                     grid-row: 2;
-                    transform: translate(-1rem, 1rem);
+                    transform: translate(-.5rem, .5rem);
                 }
                 &.cloud-left {
                     background: url($main-bg-img + "cloud01.webp") 50% 50% / contain no-repeat;
@@ -90,7 +90,7 @@
                     position: relative;
                     grid-column: 1;
                     grid-row:3;
-                    transform: translate(1rem, 1rem);
+                    transform: translate(.5rem, .5rem);
                 }
             }
         }
@@ -114,11 +114,20 @@
             .f-txtbox {
                 display: flex;
                 gap: .3rem;
+                .m-sub {
+                    opacity: 0;
+                    transform: translateY(.2rem);
+                }
             }
             @include respond-to(mobile) {
                 margin-top: 0rem;
             }
         }
+    }
+    .button {
+        opacity: 0;
+        transform: translateY(8rem);
+        transition: all .8s cubic-bezier(0.54, 0.03, 0.1, 1.09);
     }
 }
 

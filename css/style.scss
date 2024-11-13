@@ -27,7 +27,7 @@
             // background: url($main-bg-img + "main.webp") 50% 50% / contain no-repeat;
             height: 36.6rem;
             width: 80%;
-            flex: .78;
+            flex: .75;
             transform: translateX(-50%);
             left: 50%;
             position: relative;
@@ -128,7 +128,7 @@
     .button {
         opacity: 0;
         transform: translateY(8rem);
-        transition: all .7s cubic-bezier(0.54, 0.03, 0.1, 1.09);
+        transition: 1s cubic-bezier(0.68, 0.04, 0.25, 1);
     }
 }
 
@@ -147,17 +147,36 @@
         align-items: center;
         justify-content: center;
         gap: 5vh;
+        .select-txt {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            .txt-box {
+                gap: .3rem;
+                transform: translateY(500%);
+                display: flex;
+                flex-direction: row;
+                .m-sub {
+                    opacity: 0;
+                    transform: translateY(.5rem);
+                }
+            }
+        }
     }
 
     .swiper {
         width: 100%;
-        height: 50.0vh;
+        height: 45.0vh;
         min-height: 38.0rem;
         padding-bottom: 5.0rem;
-
+        opacity: 0;
+        transform: translateY(1rem);
+        // visibility: hidden;
         &-slide {
             width: 30.0rem;
-            height: 50.0vh;
+            height: 45.0vh;
             min-height: 38.0rem;
             padding: 2.5rem;
             display: flex;
@@ -169,7 +188,6 @@
             transform: translateY(30px) !important;
             border-radius: map-get($boder-radius, b-10);
             background: url($main-bg-img + "visaul_bg.webp") 50% 50% / cover no-repeat;
-
             .img-list {
                 width: 100%;
                 flex: .9;
@@ -177,7 +195,7 @@
 
             &.spring {
                 .img-list {
-                    background: url($main-bg-img + "spring_banner.webp") 50% 50% / contain no-repeat;
+                    background: url($main-bg-img + "spring_banner.gif") 50% 50% / 80% no-repeat;
                 }
             }
 
@@ -203,7 +221,7 @@
         &-slide-active {
             transform: translateY(0) !important;
             width: 30.0rem;
-            height: 50.0vh;
+            height: 45.0vh;
             min-height: 38.0rem;
             transition: map-get($ease, ease-in-out-6);
 
@@ -234,10 +252,13 @@
             transition: map-get($ease, ease-in-out-4);
             background: map-get($color, nav-slider-btn);
         }
-
-
     }
 
+    .button {
+        opacity: 0;
+        transform: translateY(8rem);
+        transition: 1s cubic-bezier(0.68, 0.04, 0.25, 1);
+    }
 }
 
 // select html e

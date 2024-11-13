@@ -1,3 +1,4 @@
+
 function firstAnimation() {
     let tl = gsap.timeline({
         ease: "back.out(1.7)",
@@ -37,7 +38,7 @@ function firstAnimation() {
     tl.to('.cloud-right', {
         opacity:1,
         duration: .8,
-        x:0,
+        x:5,
         y:0,
     },'<+1') 
 
@@ -51,7 +52,7 @@ function firstAnimation() {
     tl.to('.cloud-right', {
         duration: 1.8,
         x:0,
-        y:-5,
+        y:-1,
         repeat:-1,
         ease: "power1.out",
         yoyo:true,
@@ -60,7 +61,7 @@ function firstAnimation() {
     tl.to('.cloud-left', {
         duration: 1.8,
         x:0,
-        y:-5,
+        y:-3,
         repeat:-1,
         ease: "power1.out",
         yoyo:true,
@@ -70,12 +71,17 @@ function firstAnimation() {
         opacity:1,
         // duration: 3,
         y:0,
-    },'<-1.3') 
+    },'<-1.5') 
 
 }
 
 
 function seletAnimation() {
+    // document.addEventListener('touchstart', function(event) {
+    //     if (event.target.classList.contains('button')) {
+            
+    //     }
+    // })
     let tl = gsap.timeline({
         ease: "power1.inOut",
     })
@@ -83,5 +89,29 @@ function seletAnimation() {
     tl.to('.select', {
         opacity:1,
     })
+
+    tl.to('.m-sub', {
+        opacity:1,
+        y:0,
+        stagger: {
+            each:0.03,
+        },
+    },'<-.3') 
     
+    tl.to('.txt-box', {
+        y:0,
+        duration:1,
+        ease: "power4.out",
+    },'<+1.5')
+
+    tl.to('.select .swiper', {
+        opacity:1,
+        y:0,
+    },'<+.4')
+
+    tl.to('.select .button', {
+        opacity:1,
+        y:0,
+    },'<-.65') 
+
 }

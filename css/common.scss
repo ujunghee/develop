@@ -244,7 +244,7 @@ button {
     @include Nanummyeongjo;
     span {
         @include font-title;
-        font-weight: map-get(font-weight, f-500);
+        font-weight: map-get($font-weight, f-700);
     }
 }
 
@@ -305,7 +305,6 @@ button {
     &.brown {
         background-color: map-get($color, c-brown);
     }
-
     &.pink {
         background-color: map-get($color, c-pink);
     }
@@ -323,10 +322,11 @@ button {
     }
 }
 
+
 // submit button
 %submitButton {
     @include submit-button;
-    @extend %barButton;
+    // @extend %barButton;
 }
 
 .submit {
@@ -352,7 +352,7 @@ button {
 // reset button
 %resetButton {
     @include reset-button;
-    @extend %barButton;
+    // @extend %barButton;
 }
 
 .reset {
@@ -445,7 +445,7 @@ button {
 //footer button
 .f {
     &-button {
-        @extend %barButton;
+        // @extend %barButton;
         @include NanumSquare;
         @include txt-box;
         @include m-sub;
@@ -459,7 +459,7 @@ button {
         }
     }
     &-twist {
-        @extend %barButton;
+        // @extend %barButton;
         @include NanumSquare;
         @include txt-box;
         @include m-sub;
@@ -482,7 +482,7 @@ button {
 // gobutton 
 .gobutton {
     @include gobutton;
-    @extend %barButton;
+    // @extend %barButton;
 }
 
 // last button
@@ -491,13 +491,13 @@ button {
     gap: .8rem;
     button {
         @include last-btn;;
-        @extend %barButton;
+        // @extend %barButton;
     }
 }
 
 //fisrt button
 .first {
-    @extend %barButton;
+    // @extend %barButton;
     font-size: map-get($font-size, f-16);
     color:map-get($color, txt-main);
     font-weight: map-get($font-weight , f-500);

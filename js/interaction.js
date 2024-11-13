@@ -16,15 +16,6 @@ function firstAnimation() {
         },
     },'<+.3') 
 
-    tl.to('.m-sub', {
-        opacity:1,
-        duration: .5,
-        y:0,
-        stagger: {
-            each:0.02,
-        },
-    },'<') 
-    
     tl.to('.v_i', {
         opacity:1,
         duration: .8,
@@ -32,24 +23,32 @@ function firstAnimation() {
         stagger: {
             each:0.2,
         },
-    },'<') 
+    },'<+.1') 
+    
+    tl.to('.m-sub', {
+        opacity:1,
+        duration: .8,
+        y:0,
+        stagger: {
+            each:0.02,
+        },
+    },'<-.5') 
 
     tl.to('.cloud-right', {
         opacity:1,
         duration: .8,
         x:0,
         y:0,
-    },'<+.3') 
+    },'<+1') 
 
     tl.to('.cloud-left', {
         opacity:1,
         duration: .5,
         x:0,
         y:0,
-    },'<+.3') 
+    },'<+.2') 
 
     tl.to('.cloud-right', {
-        // opacity:1,
         duration: 1.8,
         x:0,
         y:-5,
@@ -59,7 +58,6 @@ function firstAnimation() {
     },'<') 
 
     tl.to('.cloud-left', {
-        // opacity:1,
         duration: 1.8,
         x:0,
         y:-5,
@@ -72,6 +70,18 @@ function firstAnimation() {
         opacity:1,
         // duration: 3,
         y:0,
-    },'<-.9') 
+    },'<-1.3') 
 
+}
+
+
+function seletAnimation() {
+    let tl = gsap.timeline({
+        ease: "power1.inOut",
+    })
+
+    tl.to('.select', {
+        opacity:1,
+    })
+    
 }

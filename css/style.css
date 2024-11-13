@@ -74,10 +74,8 @@
   grid-column: 1;
   max-height: 45rem;
 }
-.content_one .visual .visaul_img .cloud {
-  opacity: 0;
-}
 .content_one .visual .visaul_img .cloud.cloud-right {
+  opacity: 0;
   background: url("../image/main/cloud02.webp") 50% 35%/contain no-repeat;
   width: 200%;
   position: relative;
@@ -86,6 +84,7 @@
   transform: translate(-0.5rem, 0.5rem);
 }
 .content_one .visual .visaul_img .cloud.cloud-left {
+  opacity: 0;
   background: url("../image/main/cloud01.webp") 50% 50%/contain no-repeat;
   width: 200%;
   position: relative;
@@ -126,12 +125,13 @@
 .content_one .button {
   opacity: 0;
   transform: translateY(8rem);
-  transition: all 0.8s cubic-bezier(0.54, 0.03, 0.1, 1.09);
+  transition: all 0.7s cubic-bezier(0.54, 0.03, 0.1, 1.09);
 }
 
 .select {
   background: #EDEDED;
   height: 100%;
+  opacity: 0;
 }
 .select .selectbox {
   height: calc(100% - 7rem);

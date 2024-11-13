@@ -73,8 +73,8 @@
                 }
             }
             .cloud {
-                opacity: 0;
                 &.cloud-right {
+                    opacity: 0;
                     background: url($main-bg-img + "cloud02.webp") 50% 35% / contain no-repeat;
                     width: 200%;
                     position: relative;
@@ -83,6 +83,7 @@
                     transform: translate(-.5rem, .5rem);
                 }
                 &.cloud-left {
+                    opacity: 0;
                     background: url($main-bg-img + "cloud01.webp") 50% 50% / contain no-repeat;
                     width: 200%;
                     position: relative;
@@ -127,7 +128,7 @@
     .button {
         opacity: 0;
         transform: translateY(8rem);
-        transition: all .8s cubic-bezier(0.54, 0.03, 0.1, 1.09);
+        transition: all .7s cubic-bezier(0.54, 0.03, 0.1, 1.09);
     }
 }
 
@@ -138,7 +139,7 @@
 .select {
     @include bg;
     height: 100%;
-
+    opacity: 0;
     .selectbox {
         @include height;
         display: flex;

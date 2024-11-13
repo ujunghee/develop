@@ -30,6 +30,7 @@ function loadPage(page, callback) {
                 }
 
                 if (selecpage.includes(page)) {
+                    seletAnimation()
                     select()
                 }
                 

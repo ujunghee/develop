@@ -301,6 +301,7 @@
     .button {
         opacity: 0;
         transform: translateY(8rem);
+        // transition: 1s cubic-bezier(0.68, 0.04, 0.25, 1);
     }
 }
 
@@ -315,7 +316,7 @@
     flex-direction: column;
     gap: 1.6rem;
     position: relative;
-
+    opacity: 0;
     &-box {
         margin: 0 1.6rem;
         box-sizing: border-box;

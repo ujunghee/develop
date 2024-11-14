@@ -21,6 +21,7 @@ function loadPage(page, callback) {
                 }
 
                 if (decopage.includes(page)) {
+                    decoAnimaiton()
                     navigation()
                     sildeSwiper()
                     objectItem()

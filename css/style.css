@@ -280,6 +280,7 @@
   flex-direction: column;
   gap: 1.6rem;
   position: relative;
+  opacity: 0;
 }
 .deco-box {
   margin: 0 1.6rem;

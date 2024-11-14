@@ -1,5 +1,19 @@
 
 function firstAnimation() {
+    document.addEventListener('touchstart', function(event) {
+        if (event.target.classList.contains('button')) {
+            gsap.to('.button', {
+                scale:.9,
+            })
+        }
+    })
+    document.addEventListener('touchend', function(event) {
+        if (event.target.classList.contains('button')) {
+            gsap.to('.button', {
+                scale:1,
+            })
+        }
+    })
     let tl = gsap.timeline({
         ease: "back.out(1.7)",
     })
@@ -91,6 +105,7 @@ function seletAnimation() {
         stagger: {
             each:0.03,
         },
+        
     },'<-.3') 
     
     tl.to('.txt-box', {
@@ -111,4 +126,17 @@ function seletAnimation() {
         ease: "power4.inOut",
     },'<-.5') 
 
+}
+
+
+function decoAnimaiton() {
+    let tl = gsap.timeline({
+        ease: "power1.inOut",
+    })
+
+    tl.to('.deco', {
+        opacity:1,
+    })
+
+    
 }

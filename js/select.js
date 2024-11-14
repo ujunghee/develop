@@ -59,9 +59,21 @@ function select() {
             },
             slideChange: function (swiper) {
                 let slides = document.querySelectorAll(".swiper-slide")
+
                 slides.forEach((slide) => {
                     if (slide.classList.contains("swiper-slide-active")) {
                         slide.style.transform = "translateY(0)"
+                        // gsap
+                        let tl = gsap.timeline({
+                            ease: "elastic.out(1,0.3)"
+                        })
+                        tl.to('.select .button', {
+                            duration:.5,
+                            y:-3,
+                        })
+                        tl.to('.select .button', {
+                            y:0,
+                        })
                     } else if (slide.classList.contains("swiper-slide")) {
                         slide.style.transform = "translateY(30px)"
                         slide.style.transition = ".6s"

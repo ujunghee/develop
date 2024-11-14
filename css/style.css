@@ -271,7 +271,6 @@
 .select .button {
   opacity: 0;
   transform: translateY(8rem);
-  transition: 1s cubic-bezier(0.68, 0.04, 0.25, 1);
 }
 
 .deco {

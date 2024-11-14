@@ -77,11 +77,6 @@ function firstAnimation() {
 
 
 function seletAnimation() {
-    // document.addEventListener('touchstart', function(event) {
-    //     if (event.target.classList.contains('button')) {
-            
-    //     }
-    // })
     let tl = gsap.timeline({
         ease: "power1.inOut",
     })
@@ -110,8 +105,10 @@ function seletAnimation() {
     },'<+.4')
 
     tl.to('.select .button', {
+        duration:1.4,
         opacity:1,
         y:0,
-    },'<-.7') 
+        ease: "power4.inOut",
+    },'<-.5') 
 
 }

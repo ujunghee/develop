@@ -24,7 +24,7 @@ function firstAnimation() {
         stagger: {
             each:0.2,
         },
-    },'<+.1') 
+    },'<+.3') 
     
     tl.to('.m-sub', {
         opacity:1,
@@ -33,7 +33,7 @@ function firstAnimation() {
         stagger: {
             each:0.02,
         },
-    },'<-.5') 
+    },'<-.6') 
 
     tl.to('.cloud-right', {
         opacity:1,
@@ -71,7 +71,7 @@ function firstAnimation() {
         opacity:1,
         // duration: 3,
         y:0,
-    },'<-1.5') 
+    },'<-1.65') 
 
 }
 
@@ -112,6 +112,6 @@ function seletAnimation() {
     tl.to('.select .button', {
         opacity:1,
         y:0,
-    },'<-.65') 
+    },'<-.7') 
 
 }

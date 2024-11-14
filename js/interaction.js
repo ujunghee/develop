@@ -1,4 +1,3 @@
-
 function firstAnimation() {
     document.addEventListener('touchstart', function(event) {
         if (event.target.classList.contains('button')) {
@@ -130,6 +129,21 @@ function seletAnimation() {
 
 
 function decoAnimaiton() {
+    document.addEventListener('touchstart', function(event) {
+        if (event.target.classList.contains('reset')) {
+            gsap.to('.reset', {
+                scale:.8,
+                ease: "elastic.out(1,0.3)",
+            })
+        }
+    })
+    document.addEventListener('touchend', function(event) {
+        if (event.target.classList.contains('reset')) {
+            gsap.to('.reset', {
+                scale:1,
+            })
+        }
+    })
     let tl = gsap.timeline({
         ease: "power1.inOut",
     })
@@ -138,5 +152,36 @@ function decoAnimaiton() {
         opacity:1,
     })
 
+    tl.to('.back', {
+        scale:1,
+        opacity:1,
+    },'<')
+
+    tl.to('.submit', {
+        scale:1,
+        opacity:1,
+        duration:.5,
+        ease: "back.out(1.7)",
+    },'<')
+    
+    tl.to('.navigation', {
+        y:0,
+    },'<+.1')
+
+    tl.to('.navigation ul li', {
+        ease: "elastic.out(1,0.3)",
+        duration:2,
+        opacity:1,
+        y:0,
+        stagger: {
+            each:0.1,
+        }
+    },'<+.1')
+
+    tl.to('.deco-box', {
+        opacity:1,
+        scale:1,
+    },'<+.1')
+    
     
 }

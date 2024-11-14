@@ -326,6 +326,8 @@ button {
 // submit button
 %submitButton {
     @include submit-button;
+    transform: scale(.5);
+    opacity: 0;
     // @extend %barButton;
 }
 
@@ -362,6 +364,8 @@ button {
 // back button
 .back {
     @include backbutton;
+    transform: scale(.5);
+    opacity: 0;
 }
 
 // nav button
@@ -370,6 +374,8 @@ button {
     width: 100%;
     z-index: 10;
     height: 9rem;
+    transform: translateY(9rem);
+
 
     ul {
         width: 100%;
@@ -381,6 +387,8 @@ button {
         li {
             display: flex;
             flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(1rem);
         }
     }
 

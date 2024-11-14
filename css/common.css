@@ -353,7 +353,6 @@ button {
 .submit {
   font-size: 1.6rem;
   font-weight: 500;
-  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
   color: #fff;
   border-radius: 1rem;
   display: flex;
@@ -361,6 +360,8 @@ button {
   align-items: center;
   width: 9rem;
   height: 4rem;
+  transform: scale(0.5);
+  opacity: 0;
 }
 
 .submit.spring {
@@ -393,7 +394,8 @@ button {
   width: 2rem;
   padding: 1rem;
   box-sizing: initial;
-  transition: all 0.2s cubic-bezier(0.56, 0, 0.07, 1.01);
+  transform: scale(0.5);
+  opacity: 0;
 }
 .back:hover {
   background: rgba(217, 217, 217, 0.4) url("../image/icon/arrow.png") 50% 50%/1.8rem no-repeat;
@@ -406,6 +408,7 @@ button {
   width: 100%;
   z-index: 10;
   height: 9rem;
+  transform: translateY(9rem);
 }
 .navigation ul {
   width: 100%;
@@ -418,6 +421,8 @@ button {
 .navigation ul li {
   display: flex;
   flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(1rem);
 }
 .navigation button.nav {
   height: 5rem;

@@ -112,7 +112,7 @@
 @mixin submit-button {
     font-size: map-get($font-size, f-16);
     font-weight: map-get($font-weight, f-500);
-    transition: map-get($ease, ease-in-out-4);
+    // transition: map-get($ease, ease-in-out-4);
     color: map-get($color, c-white);
     border-radius: map-get($boder-radius, b-10);
     display: flex;
@@ -225,7 +225,7 @@
     width: 2.0rem;
     padding: 1.0rem;
     box-sizing: initial;
-    transition: map-get($ease , ease-in-out-2);
+    // transition: map-get($ease , ease-in-out-2);
     &:hover {
         background: map-get($color, blur-bg) url($icon-img + "arrow.png") 50% 50% / 1.8rem no-repeat;
         transform: scale(.98);

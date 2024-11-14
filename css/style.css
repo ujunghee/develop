@@ -291,6 +291,8 @@
   position: relative;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
   background: url("../image/main/visaul_bg.webp") 50% 50%/cover no-repeat;
+  opacity: 0;
+  transform: scale(0.99);
 }
 .deco-box .deco-txt {
   font-family: "NanumMyeongjo";

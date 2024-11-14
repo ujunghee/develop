@@ -326,6 +326,8 @@
         position: relative;
         transition: map-get($ease, ease-in-out-4);
         background: url($main-bg-img + "visaul_bg.webp") 50% 50% / cover no-repeat;
+        opacity: 0;
+        transform: scale(.99);
         // &.spring {
         //     background: map-get($color, liner-pink), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
         // }

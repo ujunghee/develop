@@ -110,6 +110,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    touch-action: none;
 
     @include respond-to(tablet) {
         height: 100%;

@@ -14,6 +14,13 @@ function initDraggableComposition() {
     let yOffset = 0
     let selectedElement = null
 
+    // 핀치 줌 상태 관리 변수
+    let initialDistance = 0
+    let initialScale = 1
+    let currentScale = 1
+    const MIN_SCALE = 0.5
+    const MAX_SCALE = 3.0
+
     // 드래그 핸들 아이콘 SVG
     const dragHandleIcon = `
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -89,8 +96,53 @@ function initDraggableComposition() {
         document.addEventListener('touchend', dragEnd)
     }
 
+    // 터치 이벤트 핸들러
+    function handleTouchStart(e) {
+        if (e.touches.length === 1) {
+            // 단일 터치 - 드래그 시작
+            dragStart(e.touches[0])
+        } else if (e.touches.length === 2) {
+            // 두 손가락 터치 - 핀치 줌 시작
+            isDragging = false
+            initialDistance = getTouchDistance(e.touches)
+            selectedElement = e.target.closest('.draggable-container')
+            if (selectedElement) {
+                initialScale = currentScale = parseFloat(selectedElement.style.transform.replace('scale(', '')) || 1
+            }
+        }
+        e.preventDefault()
+    }
+
+    function handleTouchMove(e) {
+        if (e.touches.length === 1 && isDragging) {
+            // 단일 터치 - 드래그
+            drag(e.touches[0])
+        } else if (e.touches.length === 2 && selectedElement) {
+            // 두 손가락 터치 - 핀치 줌
+            const currentDistance = getTouchDistance(e.touches)
+            const scale = (currentDistance / initialDistance) * initialScale
+            currentScale = Math.min(Math.max(scale, MIN_SCALE), MAX_SCALE)
+            selectedElement.style.transform = `scale(${currentScale})`
+        }
+        e.preventDefault()
+    }
+
+    function handleTouchEnd() {
+        if (selectedElement) {
+            initialScale = currentScale
+        }
+        dragEnd()
+    }
+
+    // 두 터치 포인트 간의 거리 계산
+    function getTouchDistance(touches) {
+        const dx = touches[1].clientX - touches[0].clientX
+        const dy = touches[1].clientY - touches[0].clientY
+        return Math.sqrt(dx * dx + dy * dy)
+    }
+
     function dragStart(e) {
-        if (e.type === 'mousedown') {
+        if (e.type === 'mousedown' || e.type === 'touchstart') {
             selectedElement = e.target.closest('.draggable-container')
             if (selectedElement) {
                 isDragging = true
@@ -129,28 +181,21 @@ function initDraggableComposition() {
             const dragHandle = selectedElement.querySelector('.drag-handle')
             dragHandle.style.display = 'block'
             
-            let clientX, clientY
-            if (e.type === 'mousemove') {
-                clientX = e.clientX
-                clientY = e.clientY
-            } else if (e.type === 'touchmove') {
-                clientX = e.touches[0].clientX
-                clientY = e.touches[0].clientY
-            }
+            const clientX = e.clientX || e.pageX
+            const clientY = e.clientY || e.pageY
 
             // 새로운 위치 계산
             let newX = clientX - initialX
             let newY = clientY - initialY
 
             // composition 영역 제한
-            const maxX = compRect.width - elemRect.width
-            const maxY = compRect.height - elemRect.height
+            const maxX = compRect.width - elemRect.width / currentScale
+            const maxY = compRect.height - elemRect.height / currentScale
 
             // 위치 제한 적용
             newX = Math.max(0, Math.min(newX, maxX))
             newY = Math.max(0, Math.min(newY, maxY))
 
-            // left/top으로 위치 설정
             selectedElement.style.left = `${newX}px`
             selectedElement.style.top = `${newY}px`
         }

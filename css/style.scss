@@ -501,15 +501,13 @@
 
                 .card-visual {
                     width: calc(100% - 5.6rem);
-                    height: calc(100% - 7.6rem);
-                    // height: calc(100% - 2.0rem);
-                    position: absolute;
-                    transform: translate(-50%, -50%);
-                    left: 50%;
-                    top: 50%;
-                    left: 50%;
+                    height: 100%;
+                    z-index: 1;
+                    padding: 1.0rem;
+                    box-sizing: border-box;
                     img {
                         // padding: 15px;
+                        border-radius: map-get($boder-radius, b-10);
                         box-sizing: border-box;
                     }
 

@@ -1,7 +1,7 @@
 function initDraggableComposition() {
     const composition = document.querySelector('.composition')
     const popupImages = document.querySelectorAll('.popup ul li img')
-    const resetButton = document.querySelector('.reset') 
+    const resetButton = document.querySelector('.reset')
     const textField = document.querySelector('.textfield')
 
     // 드래그 상태 관리 변수
@@ -24,11 +24,10 @@ function initDraggableComposition() {
     // 드래그 핸들 아이콘 SVG
     const dragHandleIcon = `
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-        <path d="M10.1309 0.581139C9.93564 0.385877 9.61905 0.385877 9.42379 0.581139L6.24181 3.76312C6.04655 3.95838 6.04655 4.27496 6.24181 4.47023C6.43707 4.66549 6.75365 4.66549 6.94892 4.47023L9.77734 1.6418L12.6058 4.47023C12.801 4.66549 13.1176 4.66549 13.3129 4.47023C13.5081 4.27496 13.5081 3.95838 13.3129 3.76312L10.1309 0.581139ZM9.42379 19.2882C9.61905 19.4835 9.93563 19.4835 10.1309 19.2882L13.3129 16.1063C13.5081 15.911 13.5081 15.5944 13.3129 15.3992C13.1176 15.2039 12.801 15.2039 12.6058 15.3992L9.77734 18.2276L6.94892 15.3992C6.75365 15.2039 6.43707 15.2039 6.24181 15.3992C6.04655 15.5944 6.04655 15.911 6.24181 16.1063L9.42379 19.2882ZM9.27734 0.934692L9.27734 18.9347L10.2773 18.9347L10.2773 0.934692L9.27734 0.934692Z" fill="#787470"/>
-        <path d="M19.1309 10.2882C19.3262 10.093 19.3262 9.7764 19.1309 9.58114L15.9489 6.39916C15.7537 6.2039 15.4371 6.2039 15.2418 6.39916C15.0465 6.59442 15.0465 6.911 15.2418 7.10627L18.0702 9.93469L15.2418 12.7631C15.0465 12.9584 15.0465 13.275 15.2418 13.4702C15.4371 13.6655 15.7537 13.6655 15.9489 13.4702L19.1309 10.2882ZM0.42379 9.58114C0.228529 9.7764 0.228529 10.093 0.42379 10.2882L3.60577 13.4702C3.80103 13.6655 4.11762 13.6655 4.31288 13.4702C4.50814 13.275 4.50814 12.9584 4.31288 12.7631L1.48445 9.93469L4.31288 7.10626C4.50814 6.911 4.50814 6.59442 4.31288 6.39916C4.11762 6.2039 3.80103 6.2039 3.60577 6.39916L0.42379 9.58114ZM18.7773 9.43469L0.777344 9.43469L0.777344 10.4347L18.7773 10.4347L18.7773 9.43469Z" fill="#787470"/>
+            <path d="M10.1309 0.581139C9.93564 0.385877 9.61905 0.385877 9.42379 0.581139L6.24181 3.76312C6.04655 3.95838 6.04655 4.27496 6.24181 4.47023C6.43707 4.66549 6.75365 4.66549 6.94892 4.47023L9.77734 1.6418L12.6058 4.47023C12.801 4.66549 13.1176 4.66549 13.3129 4.47023C13.5081 4.27496 13.5081 3.95838 13.3129 3.76312L10.1309 0.581139ZM9.42379 19.2882C9.61905 19.4835 9.93563 19.4835 10.1309 19.2882L13.3129 16.1063C13.5081 15.911 13.5081 15.5944 13.3129 15.3992C13.1176 15.2039 12.801 15.2039 12.6058 15.3992L9.77734 18.2276L6.94892 15.3992C6.75365 15.2039 6.43707 15.2039 6.24181 15.3992C6.04655 15.5944 6.04655 15.911 6.24181 16.1063L9.42379 19.2882ZM9.27734 0.934692L9.27734 18.9347L10.2773 18.9347L10.2773 0.934692L9.27734 0.934692Z" fill="#787470"/>
+            <path d="M19.1309 10.2882C19.3262 10.093 19.3262 9.7764 19.1309 9.58114L15.9489 6.39916C15.7537 6.2039 15.4371 6.2039 15.2418 6.39916C15.0465 6.59442 15.0465 6.911 15.2418 7.10627L18.0702 9.93469L15.2418 12.7631C15.0465 12.9584 15.0465 13.275 15.2418 13.4702C15.4371 13.6655 15.7537 13.6655 15.9489 13.4702L19.1309 10.2882ZM0.42379 9.58114C0.228529 9.7764 0.228529 10.093 0.42379 10.2882L3.60577 13.4702C3.80103 13.6655 4.11762 13.6655 4.31288 13.4702C4.50814 13.275 4.50814 12.9584 4.31288 12.7631L1.48445 9.93469L4.31288 7.10626C4.50814 6.911 4.50814 6.59442 4.31288 6.39916C4.11762 6.2039 3.80103 6.2039 3.60577 6.39916L0.42379 9.58114ZM18.7773 9.43469L0.777344 9.43469L0.777344 10.4347L18.7773 10.4347L18.7773 9.43469Z" fill="#787470"/>
         </svg>
     `
-
 
     // Reset 버튼 클릭 이벤트 핸들러
     resetButton.addEventListener('click', function() {
@@ -38,7 +37,6 @@ function initDraggableComposition() {
             container.remove()
         })
     })
-
 
     // 이미지 클릭/터치 이벤트 핸들러
     popupImages.forEach(img => {
@@ -55,6 +53,9 @@ function initDraggableComposition() {
         draggableContainer.className = 'draggable-container'
         draggableContainer.style.position = 'absolute'
         draggableContainer.style.cursor = 'move'
+        draggableContainer.style.transform = 'scale(1)'
+        draggableContainer.style.transformOrigin = 'center'
+        draggableContainer.style.transition = 'transform 0.1s ease-out'
 
         const clonedImg = img.cloneNode(true)
         clonedImg.style.width = `${originalWidth / 3}px`
@@ -78,7 +79,6 @@ function initDraggableComposition() {
         const centerX = (compRect.width - imageWidth) / 2
         const centerY = (compRect.height - imageHeight) / 3
 
-        // 초기 위치를 중앙으로 설정 (left/top 사용)
         draggableContainer.style.left = `${centerX}px`
         draggableContainer.style.top = `${centerY}px`
 
@@ -91,9 +91,9 @@ function initDraggableComposition() {
         document.addEventListener('mousemove', drag)
         document.addEventListener('mouseup', dragEnd)
 
-        element.addEventListener('touchstart', dragStart, { passive: false })
-        document.addEventListener('touchmove', drag, { passive: false })
-        document.addEventListener('touchend', dragEnd)
+        element.addEventListener('touchstart', handleTouchStart, { passive: false })
+        document.addEventListener('touchmove', handleTouchMove, { passive: false })
+        document.addEventListener('touchend', handleTouchEnd)
     }
 
     // 터치 이벤트 핸들러
@@ -146,20 +146,8 @@ function initDraggableComposition() {
             selectedElement = e.target.closest('.draggable-container')
             if (selectedElement) {
                 isDragging = true
-                initialX = e.clientX - parseFloat(selectedElement.style.left || 0)
-                initialY = e.clientY - parseFloat(selectedElement.style.top || 0)
-                composition.appendChild(selectedElement)
-                selectedElement.style.border = '1px solid #D89B9B'
-
-                const dragHandle = selectedElement.querySelector('.drag-handle')
-                dragHandle.style.display = 'block'
-            }
-        } else if (e.type === 'touchstart') {
-            selectedElement = e.target.closest('.draggable-container')
-            if (selectedElement) {
-                isDragging = true
-                initialX = e.touches[0].clientX - parseFloat(selectedElement.style.left || 0)
-                initialY = e.touches[0].clientY - parseFloat(selectedElement.style.top || 0)
+                initialX = (e.clientX || e.pageX) - parseFloat(selectedElement.style.left || 0)
+                initialY = (e.clientY || e.pageY) - parseFloat(selectedElement.style.top || 0)
                 composition.appendChild(selectedElement)
                 selectedElement.style.border = '1px solid #D89B9B'
 
@@ -214,9 +202,10 @@ function initDraggableComposition() {
             })
         }
     }
+
     // 모바일에서 드래그 중 스크롤 방지
     composition.addEventListener('touchmove', function (e) {
-        if (isDragging) {
+        if (isDragging || e.touches.length === 2) {
             e.preventDefault()
         }
     }, { passive: false })

@@ -31,9 +31,9 @@ function initCardGenerator() {
                     cardVisual.innerHTML = ''
                     cardVisual.appendChild(img)
 
-                    if (savedState.background) {
-                        card.style.background = savedState.background
-                    }
+                    // if (savedState.background) {
+                    //     card.style.background = savedState.background
+                    // }
                 }
             }
 

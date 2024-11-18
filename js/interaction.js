@@ -185,7 +185,3 @@ function decoAnimaiton() {
     
     
 }
-
-function lastAinmation() {
-
-}

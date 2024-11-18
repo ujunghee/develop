@@ -328,22 +328,6 @@
         background: url($main-bg-img + "visaul_bg.webp") 50% 50% / cover no-repeat;
         opacity: 0;
         transform: scale(.99);
-        // &.spring {
-        //     background: map-get($color, liner-pink), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-        // }
-
-        // &.summer {
-        //     background: map-get($color, liner-blue), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-        // }
-
-        // &.autumn {
-        //     background: map-get($color, liner-orange), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-        // }
-
-        // &.winter {
-        //     background: map-get($color, liner-snowblue), url($main-bg-img + "visaul_bg.jpg") 50% 50% / cover no-repeat;
-        // }
-
         .deco-txt {
             @include Nanummyeongjo;
             @include txt-deco;
@@ -399,7 +383,7 @@
 // last html s
 .last {
     height: 100%;
-
+    opacity: 0;
     // end page s
     &.white {
         @include bg;
@@ -419,20 +403,52 @@
                 align-items: center;
                 justify-content: center;
                 height: calc(100% - 12.6rem);
+                .f-16 {
+                    transform: translateY(1rem);
+                    opacity: 0;
+                }
             }
 
             .card {
-                width: calc(100% - 10rem);
+                width: calc(100% - 4rem);
                 margin: 0 1.6rem;
-                background: url($main-bg-img + "visaul_bg.webp") 50% 50% / cover no-repeat;
-                box-shadow: map-get($shadow, shadow-15);
+                // box-shadow: map-get($shadow, shadow-15);
                 box-sizing: border-box;
                 border-radius: map-get($boder-radius , b-14);
                 height: calc(100% - 14.0rem);
                 aspect-ratio: 3 / 4;
                 position: relative;
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr calc(100% - 4.0rem) 1fr;
+                justify-items: center;
+                max-height: 48.6rem;
                 // padding: 1rem;
+                .cover {
+                    &-top {
+                        background: url($main-bg-img + "basic01.webp") 50% 50% / cover no-repeat;
+                        width: 100%;
+                        height: 2.0rem;
+                        grid-row: 1;
+                        z-index: 1;
 
+                    }
+                    &-bottom {
+                        background: url($main-bg-img + "basic01.webp") 50% 50% / cover no-repeat;
+                        width: 100%;
+                        height: 2.0rem;
+                        grid-row: 3;
+                        z-index: 1;
+
+                    }
+                }
+                .bg {
+                    background: url($main-bg-img + "basic02.webp") 50% 50% / cover no-repeat;
+                    width:calc(100% - 5.6rem);
+                    height: 100%;
+                    position: absolute;
+                    grid-row: 1;
+                }
                 p {
                     position: absolute;
                     left: 50%;
@@ -443,8 +459,15 @@
                 }
 
                 .card-visual {
-                    width: 100%;
-                    height: 100%;
+                    width: calc(100% - 4.6rem);
+                    height: calc(100% - 7.6rem);
+                    // height: calc(100% - 2.0rem);
+                    position: absolute;
+                    transform: translate(-50%, -50%);
+                    left: 50%;
+                    top:50%;
+                    left: 50%;
+
                 }
             }
 

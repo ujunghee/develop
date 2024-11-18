@@ -372,32 +372,45 @@
   box-sizing: border-box;
   border-radius: 1.4rem;
   height: calc(100% - 14rem);
-  aspect-ratio: 3/4;
+  aspect-ratio: 1/4;
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr calc(100% - 4rem) 1fr;
+  grid-template-rows: 1fr calc(100% - 6.8rem) 1fr;
   justify-items: center;
-  max-height: 48.6rem;
+  max-height: 70.6rem;
+}
+@media (min-width: 601px) and (max-width: 768px) {
+  .last.white .ending .card {
+    width: calc(100% - 24rem);
+  }
+}
+@media (max-width: 600px) {
+  .last.white .ending .card {
+    width: calc(100% - 7rem);
+    max-height: 48.6rem;
+    max-width: 37rem;
+  }
 }
 .last.white .ending .card .cover-top {
-  background: url("../image/main/basic01.webp") 50% 50%/cover no-repeat;
+  background: url("../image/main/basic01.webp") 50% 50%/contain no-repeat;
   width: 100%;
-  height: 2rem;
+  height: 3.4rem;
   grid-row: 1;
   z-index: 1;
 }
 .last.white .ending .card .cover-bottom {
-  background: url("../image/main/basic01.webp") 50% 50%/cover no-repeat;
+  background: url("../image/main/basic01.webp") 50% 50%/contain no-repeat;
   width: 100%;
-  height: 2rem;
+  height: 3.4rem;
   grid-row: 3;
   z-index: 1;
 }
 .last.white .ending .card .bg {
   background: url("../image/main/basic02.webp") 50% 50%/cover no-repeat;
   width: calc(100% - 5.6rem);
-  height: 100%;
+  height: calc(100% - 2.8rem);
+  top: 1rem;
   position: absolute;
   grid-row: 1;
 }
@@ -410,13 +423,17 @@
   pointer-events: none;
 }
 .last.white .ending .card .card-visual {
-  width: calc(100% - 4.6rem);
+  width: calc(100% - 5.6rem);
   height: calc(100% - 7.6rem);
   position: absolute;
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
   left: 50%;
+}
+.last.white .ending .card .card-visual img {
+  padding: 15px;
+  box-sizing: border-box;
 }
 .last.white .ending .last-btn .share {
   flex: 0.5rem;

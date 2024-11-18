@@ -36,6 +36,7 @@ function loadPage(page, callback) {
                 }
                 
                 if (lastpage.includes(page)) {
+                    lastAinmation()
                     last()
                 }
             }

@@ -162,7 +162,7 @@ window.loadPage = loadPage
 
 // load 
 document.addEventListener('DOMContentLoaded', function () {
-    loadPage('deco_spring.html', function () {
+    loadPage('first.html', function () {
 
         document.addEventListener('click', function (event) {
 

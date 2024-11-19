@@ -110,12 +110,12 @@ body {
   justify-content: center;
   touch-action: none;
 }
-@media (min-width: 601px) and (max-width: 768px) {
+@media (min-width: 501px) and (max-width: 600px) {
   body {
     height: 100%;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   body {
     height: 100%;
   }
@@ -124,19 +124,19 @@ body {
 #content {
   width: 48rem;
   overflow: hidden;
-  height: 80dvh;
+  height: 70dvh;
   position: relative;
-  min-height: 80rem;
+  min-height: 70rem;
   transition: all 0.6s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
-@media (min-width: 601px) and (max-width: 768px) {
+@media (min-width: 501px) and (max-width: 600px) {
   #content {
     height: 100dvh;
     width: 100%;
     min-height: 55rem;
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   #content {
     height: 100dvh;
     width: 100%;

@@ -238,10 +238,10 @@
 
 // height s
 @mixin common {
-    height: calc(80dvh);
+    height: calc(70dvh);
     // max-height:98.0rem;
     position: relative;
-    min-height: 80.0rem;
+    min-height: 70rem;
 }
 
 @mixin height {

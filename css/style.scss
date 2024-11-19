@@ -189,8 +189,10 @@
         padding-bottom: 5.0rem;
         opacity: 0;
         transform: translateY(1rem);
-
         // visibility: hidden;
+        @include respond-to(tablet) {
+            height: 60rem;
+        }
         &-slide {
             width: 30.0rem;
             height: 45.0vh;
@@ -205,6 +207,10 @@
             transform: translateY(30px) !important;
             border-radius: map-get($boder-radius, b-10);
             background: url($main-bg-img + "visaul_bg.webp") 50% 50% / cover no-repeat;
+
+            @include respond-to(tablet) {
+                height: 60rem;
+            }
 
             .img-list {
                 width: 100%;
@@ -290,6 +296,9 @@
             height: 45.0vh;
             min-height: 38.0rem;
             transition: map-get($ease, ease-in-out-6);
+            @include respond-to(tablet) {
+                height: 60rem;
+            }
 
             // margin-top: 0rem;
             &.spring {

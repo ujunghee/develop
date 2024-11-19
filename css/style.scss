@@ -427,7 +427,7 @@
         }
 
         .ending {
-            height: 100%;
+            height: calc(100% - 12.6rem);
             display: block;
 
             .last-content {
@@ -436,7 +436,7 @@
                 gap: 1.4rem;
                 align-items: center;
                 justify-content: center;
-                height: calc(100% - 12.6rem);
+                height: 100%;
 
                 .f-16 {
                     transform: translateY(1rem);

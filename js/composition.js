@@ -160,8 +160,8 @@ function initDraggableComposition() {
             
             if (prevDiff > 0) {
                 const scale = currentDiff - prevDiff;
-                const zoomSpeed = 0.01;
-                const newScale = Math.max(0.5, Math.min(3, currentScale + (scale * zoomSpeed)));
+                const zoomSpeed = 0.005;
+                const newScale = Math.max(0.5, Math.min(2, currentScale + (scale * zoomSpeed)));
                 
                 if (selectedElement) {
                     selectedElement.style.transform = `scale(${newScale})`;

@@ -357,7 +357,6 @@
 
 .last {
   height: 100%;
-  opacity: 0;
 }
 .last.white {
   background: #EDEDED;

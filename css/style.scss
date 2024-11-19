@@ -220,6 +220,9 @@
             &.spring {
                 .img-list {
                     background: url($main-bg-img + "spring_banner.gif") 50% 50% / 70% no-repeat;
+                    @include respond-to(tablet) {
+                        background: url($main-bg-img + "spring_banner.gif") 50% 50% / 60% no-repeat;
+                    }
                 }
 
                 &::before {
@@ -232,12 +235,18 @@
                     background: url($main-bg-img + "spring_back.webp") 50% 50% / 48% no-repeat;
                     opacity: .6;
                     z-index: -1;
+                    @include respond-to(tablet) {
+                        background: url($main-bg-img + "spring_back.webp") 50% 50% / 40% no-repeat;
+                    }
                 }
             }
 
             &.summer {
                 .img-list {
                     background: url($main-bg-img + "summer_banner.gif") 50% 50% / 70% no-repeat;
+                    @include respond-to(tablet) {
+                        background: url($main-bg-img + "summer_banner.gif") 50% 50% / 60% no-repeat;
+                    }
                 }
 
                 &::before {
@@ -250,12 +259,18 @@
                     background: url($main-bg-img + "summer_back.webp") 50% 50% / 48% no-repeat;
                     opacity: .6;
                     z-index: -1;
+                    @include respond-to(tablet) {
+                        background: url($main-bg-img + "summer_back.webp") 50% 50% / 40% no-repeat;
+                    }
                 }
             }
 
             &.autumn {
                 .img-list {
                     background: url($main-bg-img + "fall_banner.gif") 50% 50% / 70% no-repeat;
+                    @include respond-to(tablet) {
+                        background: url($main-bg-img + "fall_banner.gif") 50% 50% / 60% no-repeat;
+                    }
                 }
 
                 &::before {
@@ -268,12 +283,18 @@
                     background: url($main-bg-img + "fall_back.webp") 50% 50% / 48% no-repeat;
                     opacity: .6;
                     z-index: -1;
+                    @include respond-to(tablet) {
+                        background: url($main-bg-img + "fall_back.webp") 50% 50% / 40% no-repeat;
+                    }
                 }
             }
 
             &.winter {
                 .img-list {
                     background: url($main-bg-img + "winter_banner.gif") 50% 50% / 70% no-repeat;
+                    @include respond-to(tablet) {
+                        background: url($main-bg-img + "winter_banner.gif") 50% 50% / 60% no-repeat;
+                    }
                 }
 
                 &::before {
@@ -286,6 +307,9 @@
                     background: url($main-bg-img + "winter_back.webp") 50% 50% / 48% no-repeat;
                     opacity: .4;
                     z-index: -1;
+                    @include respond-to(tablet) {
+                        background: url($main-bg-img + "winter_back.webp") 50% 50% / 40% no-repeat;
+                    }
                 }
             }
         }

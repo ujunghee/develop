@@ -126,7 +126,7 @@ body {
   overflow: hidden;
   height: 70dvh;
   position: relative;
-  min-height: 70rem;
+  min-height: 76rem;
   transition: all 0.6s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
 @media (min-width: 501px) and (max-width: 600px) {

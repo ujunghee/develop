@@ -200,7 +200,7 @@
 }
 @media (min-width: 601px) and (max-width: 767px) {
   .select .swiper-slide.spring .img-list {
-    background: url("../image/main/spring_banner.gif") 50% 50%/40% no-repeat;
+    background: url("../image/main/spring_banner.gif") 50% 50%/50% no-repeat;
   }
 }
 .select .swiper-slide.spring::before {
@@ -216,7 +216,7 @@
 }
 @media (min-width: 601px) and (max-width: 767px) {
   .select .swiper-slide.spring::before {
-    background: url("../image/main/spring_back.webp") 50% 50%/30% no-repeat;
+    background: url("../image/main/spring_back.webp") 50% 50%/35% no-repeat;
   }
 }
 .select .swiper-slide.summer .img-list {
@@ -224,7 +224,7 @@
 }
 @media (min-width: 601px) and (max-width: 767px) {
   .select .swiper-slide.summer .img-list {
-    background: url("../image/main/summer_banner.gif") 50% 50%/40% no-repeat;
+    background: url("../image/main/summer_banner.gif") 50% 50%/50% no-repeat;
   }
 }
 .select .swiper-slide.summer::before {
@@ -240,7 +240,7 @@
 }
 @media (min-width: 601px) and (max-width: 767px) {
   .select .swiper-slide.summer::before {
-    background: url("../image/main/summer_back.webp") 50% 50%/30% no-repeat;
+    background: url("../image/main/summer_back.webp") 50% 50%/35% no-repeat;
   }
 }
 .select .swiper-slide.autumn .img-list {
@@ -248,7 +248,7 @@
 }
 @media (min-width: 601px) and (max-width: 767px) {
   .select .swiper-slide.autumn .img-list {
-    background: url("../image/main/fall_banner.gif") 50% 50%/40% no-repeat;
+    background: url("../image/main/fall_banner.gif") 50% 50%/50% no-repeat;
   }
 }
 .select .swiper-slide.autumn::before {
@@ -264,7 +264,7 @@
 }
 @media (min-width: 601px) and (max-width: 767px) {
   .select .swiper-slide.autumn::before {
-    background: url("../image/main/fall_back.webp") 50% 50%/30% no-repeat;
+    background: url("../image/main/fall_back.webp") 50% 50%/35% no-repeat;
   }
 }
 .select .swiper-slide.winter .img-list {
@@ -272,7 +272,7 @@
 }
 @media (min-width: 601px) and (max-width: 767px) {
   .select .swiper-slide.winter .img-list {
-    background: url("../image/main/winter_banner.gif") 50% 50%/40% no-repeat;
+    background: url("../image/main/winter_banner.gif") 50% 50%/50% no-repeat;
   }
 }
 .select .swiper-slide.winter::before {
@@ -288,7 +288,7 @@
 }
 @media (min-width: 601px) and (max-width: 767px) {
   .select .swiper-slide.winter::before {
-    background: url("../image/main/winter_back.webp") 50% 50%/30% no-repeat;
+    background: url("../image/main/winter_back.webp") 50% 50%/35% no-repeat;
   }
 }
 .select .swiper-slide-active {

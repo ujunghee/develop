@@ -3,11 +3,11 @@
 
 @mixin respond-to($breakpoint) {
     @if $breakpoint == mobile {
-      @media (max-width: 500px) {
+      @media (max-width: 600px) {
         @content;
       }
     } @else if $breakpoint == tablet {
-      @media (min-width: 501px) and (max-width: 600px) {
+      @media (min-width: 601px) and (max-width: 767px) {
         @content;
       }
     } @else if $breakpoint == desktop {

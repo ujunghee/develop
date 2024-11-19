@@ -129,7 +129,7 @@ body {
     @include respond-to(tablet) {
         height: 100dvh;
         width: 100%;
-        min-height: 55.0rem;
+        min-height: 60.0rem;
     }
 
     @include respond-to(mobile) {

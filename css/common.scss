@@ -548,9 +548,12 @@ button {
     textarea {
         @include Nanummyeongjo;
         @include m-sub;
+        font-size: 1.2rem;
+        width: 15rem;
         border: initial;
         background: initial;
         text-align: center;
+        touch-action: manipulation;
         color:map-get($color, nav-slider-btn);
         resize: none;
         line-height: 1.8;

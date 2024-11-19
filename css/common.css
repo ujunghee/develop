@@ -893,9 +893,12 @@ button {
   color: #544D47;
   font-weight: 500;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+  font-size: 1.2rem;
+  width: 15rem;
   border: initial;
   background: initial;
   text-align: center;
+  touch-action: manipulation;
   color: #5D4743;
   resize: none;
   line-height: 1.8;

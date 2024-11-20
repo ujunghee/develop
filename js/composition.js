@@ -150,7 +150,7 @@ function initDraggableComposition() {
     function getMaxDevice() {
         const width = window.innerWidth;
         if(width <= 600) { // 모바일
-            return 1.0;
+            return 1.3;
         } else if (width <= 1024) { // 태블릿
             return 1.5;
         }

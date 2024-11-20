@@ -145,6 +145,16 @@ function initDraggableComposition() {
             }
         }
     }
+    
+    // 디바이스 기기마다 배수 설정
+    function getMaxDevice() {
+        const width = window.innerWidth;
+        if(width <= 600) { // 모바일
+            return 1.0;
+        } else if (width <= 1024) { // 태블릿
+            return 1.5;
+        }
+    }
     // 드레그 중
     function handleTouchMove(e) {
         const touches = e.touches;
@@ -161,7 +171,9 @@ function initDraggableComposition() {
             if (prevDiff > 0) {
                 const scale = currentDiff - prevDiff;
                 const zoomSpeed = 0.005;
-                const newScale = Math.max(0.5, Math.min(1.5, currentScale + (scale * zoomSpeed)));
+                const diveceScale = getMaxDevice();
+
+                const newScale = Math.max(0.5, Math.min(diveceScale, currentScale + (scale * zoomSpeed)));
                 
                 if (selectedElement) {
                     selectedElement.style.transform = `scale(${newScale})`;

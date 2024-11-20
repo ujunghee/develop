@@ -60,7 +60,12 @@ function handleHeaderClick(event) {
     if (!event.target.closest('.season-prev') && !event.target.closest('.first')
         && !event.target.closest('.select-prev')) {
         const decoBox = document.querySelector('.deco-box')
+        const composition = document.querySelector('.composition')
         if (!decoBox) return
+
+        composition.classList.add('visible')
+        
+        lastAinmation()
 
         html2canvas(decoBox, {
             backgroundColor: null,
@@ -72,10 +77,12 @@ function handleHeaderClick(event) {
             }
         }).then(canvas => {
             const imageDataUrl = canvas.toDataURL('image/png')
+
             const currentState = {
                 decoBoxImage: imageDataUrl,
-                background: decoBox.style.background || ''
+                background: decoBox.style.background || '',
             }
+
 
             localStorage.setItem('cardState', JSON.stringify(currentState))
 
@@ -89,7 +96,10 @@ function handleHeaderClick(event) {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     document.getElementById('content').innerHTML = xhr.responseText
                     initCardGenerator() // 내용 삽입 후 초기화
-                    lastAinmation()
+                    
+                    setTimeout(() => {
+                        lastAinmation()
+                    }, 100) 
                 }
             }
             xhr.send()
@@ -132,30 +142,41 @@ function lastAinmation() {
     let tl = gsap.timeline({
         ease: "power1.inOut",
     })
-    tl.to('.last', {
-        opacity: 1,
-    })
-
-    tl.to('.back', {
-        scale:1,
-        opacity:1,
-    },'<')
     
-    tl.to('.first', {
-        scale:1,
-        opacity:1,
-        duration:.5,
-        ease: "back.out(1.7)",
-    },'<')
+    // 요소 존재 여부 확인
+    if (document.querySelector('.last')) {
+        tl.to('.last', {
+            opacity: 1,
+        })
+    }
 
-    tl.to('.f-16', {
-        opacity:1,
-        y:0,
-        stagger: {
-            each:0.05,
-        },
-        
-    },'<') 
+    if (document.querySelector('.back')) {
+        tl.to('.back', {
+            scale: 1,
+            opacity: 1,
+        }, '<')
+    }
+
+    if (document.querySelector('.first')) {
+        tl.to('.first', {
+            scale: 1,
+            opacity: 1,
+            duration: .5,
+            ease: "back.out(1.7)",
+        }, '<')
+    }
+
+    if (document.querySelector('.f-16')) {
+        tl.to('.f-16', {
+            opacity: 1,
+            y: 0,
+            stagger: {
+                each: 0.05,
+            },
+        }, '<')
+    }
+
+    return tl
 }
 
 window.loadPage = loadPage

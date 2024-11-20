@@ -405,6 +405,23 @@
         box-sizing: border-box;
         top: 0;
         height: 100%;
+        transition: .3s;
+        &::before {
+            content: "";
+            display: block;
+            width: 3.0rem;
+            height: 3.0rem;
+            position: absolute;
+            right: 1.2rem;
+            bottom: 1.2rem;
+            visibility: hidden;
+            background: url(../image/icon/stamp.png) 50% 50% / contain no-repeat ;
+        }
+        &.visible {
+            &::before {
+                visibility: visible;
+            }
+        }
     }
 
     .draggable-container {
@@ -440,7 +457,7 @@
 // last html s
 .last {
     height: 100%;
-    // opacity: 0;
+    opacity: 0;
 
     // end page s
     &.white {

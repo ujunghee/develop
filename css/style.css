@@ -468,6 +468,8 @@
   height: 3.4rem;
   grid-row: 1;
   z-index: 1;
+  transform: translateY(600%);
+  opacity: 0;
 }
 .last.white .ending .card .cover-bottom {
   background: url("../image/main/basic01.webp") 50% 50%/contain no-repeat;
@@ -475,6 +477,8 @@
   height: 3.4rem;
   grid-row: 3;
   z-index: 1;
+  transform: translateY(-600%);
+  opacity: 0;
 }
 .last.white .ending .card .bg {
   background: url("../image/main/basic02.webp") 50% 50%/cover no-repeat;
@@ -483,6 +487,7 @@
   top: 1rem;
   position: absolute;
   grid-row: 1;
+  opacity: 0;
 }
 .last.white .ending .card p {
   position: absolute;
@@ -498,16 +503,21 @@
   z-index: 1;
   padding: 1rem;
   box-sizing: border-box;
+  opacity: 0;
 }
 .last.white .ending .card .card-visual img {
   border-radius: 1rem;
   box-sizing: border-box;
 }
 .last.white .ending .last-btn .share {
+  transform: translateY(4rem);
+  opacity: 0;
   flex: 0.5rem;
   background: #9E8E81;
 }
 .last.white .ending .last-btn .solvek {
+  transform: translateY(4rem);
+  opacity: 0;
   flex: 0.5rem;
   background: #544D47;
 }

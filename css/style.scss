@@ -518,7 +518,8 @@
                         height: 3.4rem;
                         grid-row: 1;
                         z-index: 1;
-
+                        transform: translateY(600%);
+                        opacity: 0;
                     }
 
                     &-bottom {
@@ -527,7 +528,8 @@
                         height: 3.4rem;
                         grid-row: 3;
                         z-index: 1;
-
+                        transform: translateY(-600%);
+                        opacity: 0;
                     }
                 }
 
@@ -538,6 +540,7 @@
                     top: 1rem;
                     position: absolute;
                     grid-row: 1;
+                    opacity: 0;
                 }
 
                 p {
@@ -555,6 +558,7 @@
                     z-index: 1;
                     padding: 1.0rem;
                     box-sizing: border-box;
+                    opacity: 0;
                     img {
                         // padding: 15px;
                         border-radius: map-get($boder-radius, b-10);
@@ -566,11 +570,15 @@
 
             .last-btn {
                 .share {
+                    transform: translateY(4rem);
+                    opacity: 0;
                     flex: .5rem;
                     background: map-get($color, c-brown);
                 }
 
                 .solvek {
+                    transform: translateY(4rem);
+                    opacity: 0;
                     flex: .5rem;
                     background: map-get($color, txt-main);
                 }

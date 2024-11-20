@@ -1,5 +1,7 @@
 // const _ = window._
 
+const { each } = require("lodash")
+
 // const { first } = require("lodash")
 
 //ajax
@@ -63,9 +65,9 @@ function handleHeaderClick(event) {
         const composition = document.querySelector('.composition')
         if (!decoBox) return
 
-        composition.classList.add('visible')
-        
         lastAinmation()
+
+        composition.classList.add('visible')
 
         html2canvas(decoBox, {
             backgroundColor: null,
@@ -76,6 +78,7 @@ function handleHeaderClick(event) {
                 return element.classList.contains('reset')
             }
         }).then(canvas => {
+            composition.classList.add('visible')
             const imageDataUrl = canvas.toDataURL('image/png')
 
             const currentState = {
@@ -111,6 +114,7 @@ function handleHeaderClick(event) {
 
 // 상태 캡처 및 저장 함수
 async function captureAndSaveState(element) {
+
     try {
         const canvas = await html2canvas(element, {
             backgroundColor: null,
@@ -174,6 +178,42 @@ function lastAinmation() {
                 each: 0.05,
             },
         }, '<')
+    }
+
+    if (document.querySelector('.cover-top')) {
+        tl.to('.cover-top', {
+            opacity: 1,
+            y: 0,
+        })
+    }
+
+    if (document.querySelector('.cover-bottom')) {
+        tl.to('.cover-bottom', {
+            opacity: 1,
+            y: 0,
+        }, '<')
+    }
+
+    if (document.querySelector('.bg')) {
+        tl.to('.bg', {
+            opacity: 1,
+        }, '<+.3')
+    }
+
+    if (document.querySelector('.card-visual')) {
+        tl.to('.card-visual', {
+            opacity: 1,
+        }, '<+.1')
+    }
+
+    if (document.querySelector('.btn')) {
+        tl.to('.btn', {
+            y:0,
+            opacity: 1,
+            stagger: {
+                each: 0.1,
+            }
+        }, '<+.1')
     }
 
     return tl

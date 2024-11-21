@@ -1,5 +1,7 @@
 // const _ = window._
 
+// const { opacity } = require("html2canvas/dist/types/css/property-descriptors/opacity")
+
 // const { first } = require("lodash")
 
 //ajax
@@ -16,8 +18,19 @@ function loadPage(page, callback) {
                 const decopage = ['deco_spring.html', 'deco_summer.html', 'deco_autumn.html', 'deco_winter.html']
                 const lastpage = ['last.html']
 
+                const isFirstVisit = firstpage.includes(page) && !sessionStorage.getItem('visited')
+
                 if (firstpage.includes(page)) {
-                    firstAnimation();
+                    const loading = document.querySelector('.loading')
+                    if(isFirstVisit) {
+                        sessionStorage.setItem('visited', 'true');
+                        loadAnimation(() => {
+                            firstAnimation()
+                        })
+                    } else {
+                        loading.style.display = 'none'
+                        firstAnimation()
+                    }
                 }
 
                 if (decopage.includes(page)) {
@@ -46,6 +59,50 @@ function loadPage(page, callback) {
     xhr.send()
 
 }
+
+// 로딩 
+function loadAnimation(callback) {
+    const loading = document.querySelector('.loading')
+    const $counter = document.querySelector('.count')
+
+    if (!loading || !$counter) return
+
+    let tl = gsap.timeline({
+        onComplete: () => {
+            setTimeout(() => {
+                const counter = ($counter, max) => {
+                    let now = 0
+                    const duration = 1500 // 2초
+                    const interval = 10 // 50ms마다 업데이트
+                    const steps = duration / interval
+                    const increment = max / steps
+
+                    const handle = setInterval(() => {
+                        now += increment
+                        $counter.innerHTML = Math.min(Math.round(now), max)
+                        if (now >= max) {
+                            clearInterval(handle)
+                            if (callback) callback()
+                        }
+                    }, interval)
+                }
+
+                if (document.readyState === 'complete') {
+                    counter($counter, 100)
+                } else {
+                    window.addEventListener('load', () => counter($counter, 100))
+                }
+            })
+        }
+    })
+    setTimeout(() => {
+        loading.style.transform = 'translateY(-10px)'
+        loading.style.opacity = '0'
+        loading.style.visibility = 'hidden'
+    }, 1500)
+
+    return tl
+}
 // 헤더 액션 설정 함수
 function setupHeaderActions() {
     const header = document.querySelector('.header .submit')
@@ -62,7 +119,7 @@ function handleHeaderClick(event) {
         const decoBox = document.querySelector('.deco-box')
         if (!decoBox) return
 
-        lastAinmation()
+        // lastAinmation()
 
         html2canvas(decoBox, {
             backgroundColor: null,
@@ -92,10 +149,10 @@ function handleHeaderClick(event) {
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     document.getElementById('content').innerHTML = xhr.responseText
                     initCardGenerator() // 내용 삽입 후 초기화
-                    
+
                     setTimeout(() => {
                         lastAinmation()
-                    }, 100) 
+                    }, 100)
                 }
             }
             xhr.send()
@@ -139,7 +196,7 @@ function lastAinmation() {
     let tl = gsap.timeline({
         ease: "power1.inOut",
     })
-    
+
     // 요소 존재 여부 확인
     if (document.querySelector('.last')) {
         tl.to('.last', {
@@ -176,13 +233,17 @@ function lastAinmation() {
     if (document.querySelector('.cover-top')) {
         tl.to('.cover-top', {
             opacity: 1,
+            ease: "expo.out",
+            duration: 2,
             y: 0,
-        })
+        }, '<+1')
     }
 
     if (document.querySelector('.cover-bottom')) {
         tl.to('.cover-bottom', {
             opacity: 1,
+            ease: "expo.out",
+            duration: 2,
             y: 0,
         }, '<')
     }
@@ -190,25 +251,25 @@ function lastAinmation() {
     if (document.querySelector('.bg')) {
         tl.to('.bg', {
             opacity: 1,
-        }, '<+.3')
+        }, '<+1')
     }
 
     if (document.querySelector('.card-visual')) {
         tl.to('.card-visual', {
             opacity: 1,
-        }, '<+.1')
+        }, '<')
     }
 
     if (document.querySelector('.btn')) {
         tl.to('.btn', {
-            y:0,
-            duration:1.5,
-            ease: "back.out(1.7)",
+            y: 0,
+            duration: 1.5,
+            ease: "power4.out",
             opacity: 1,
             stagger: {
                 each: 0.08,
             }
-        }, '<+.1')
+        }, '<+.1.5')
     }
 
     return tl

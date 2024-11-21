@@ -499,7 +499,7 @@ button {
     @include last-button;
     gap: .8rem;
     button {
-        @include last-btn;;
+        @include last-btn;
         // @extend %barButton;
     }
 }

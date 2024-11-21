@@ -1,7 +1,5 @@
 // const _ = window._
 
-// const { each } = require("lodash")
-
 // const { first } = require("lodash")
 
 //ajax
@@ -62,12 +60,9 @@ function handleHeaderClick(event) {
     if (!event.target.closest('.season-prev') && !event.target.closest('.first')
         && !event.target.closest('.select-prev')) {
         const decoBox = document.querySelector('.deco-box')
-        const composition = document.querySelector('.composition')
         if (!decoBox) return
 
         lastAinmation()
-
-        composition.classList.add('visible')
 
         html2canvas(decoBox, {
             backgroundColor: null,
@@ -78,9 +73,7 @@ function handleHeaderClick(event) {
                 return element.classList.contains('reset')
             }
         }).then(canvas => {
-            composition.classList.add('visible')
             const imageDataUrl = canvas.toDataURL('image/png')
-
             const currentState = {
                 decoBoxImage: imageDataUrl,
                 background: decoBox.style.background || '',
@@ -209,9 +202,11 @@ function lastAinmation() {
     if (document.querySelector('.btn')) {
         tl.to('.btn', {
             y:0,
+            duration:1.5,
+            ease: "back.out(1.7)",
             opacity: 1,
             stagger: {
-                each: 0.1,
+                each: 0.08,
             }
         }, '<+.1')
     }

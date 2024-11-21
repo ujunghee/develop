@@ -204,7 +204,7 @@
     font-size: map-get($font-size, f-16);
     border-radius: map-get($boder-radius, b-10);
     height: 5.0rem;
-    transition: map-get($ease, ease-in-out-4);
+    // transition: map-get($ease, ease-in-out-4);
 }
 
 @mixin navbutton {

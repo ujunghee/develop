@@ -6,15 +6,17 @@
 
 @keyframes gradientBG {
     0% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
+
     50% {
-      background-position: 100% 50%;
+        background-position: 100% 50%;
     }
+
     100% {
-      background-position: 0% 50%;
+        background-position: 0% 50%;
     }
-  }
+}
 
 .loading {
     position: absolute;
@@ -22,9 +24,10 @@
     height: 100%;
     background: #EDEDED;
     z-index: 10;
-    transition: map-get($ease , ease-in-out-4 );
+    transition: map-get($ease , ease-in-out-4);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
+
     .loading-box {
         height: 100%;
         align-items: center;
@@ -36,6 +39,7 @@
             @include Nanummyeongjo;
             color: map-get($color, txt-sub);
             transition: map-get($ease, ease-in-out-6);
+
             &:nth-child(2) {
                 font-size: map-get($font-size, f-16);
             }
@@ -437,65 +441,77 @@
         opacity: 0;
         transform: scale(.99);
 
-        .deco-txt {
-            @include Nanummyeongjo;
-            @include txt-deco;
-            color: map-get($color, txt-sub);
+        .description {
             transform: translate(-50%, -50%);
+            border-radius: map-get($boder-radius, b-10);
+            opacity: 0;
             top: 50%;
             left: 50%;
             position: absolute;
             width: 100%;
-            // 잠시 오프
-            visibility: hidden;
-        }
-    }
-
-    .composition {
-        position: relative;
-        width: 100%;
-        box-sizing: border-box;
-        top: 0;
-        height: 100%;
-        transition: .3s;
-
-        &::before {
-            content: "";
-            display: block;
-            width: 3.0rem;
-            height: 3.0rem;
-            position: absolute;
-            right: 1.2rem;
-            bottom: 1.2rem;
-            background: url(../image/icon/stamp.png) 50% 50% / contain no-repeat;
-        }
-    }
-
-    .draggable-container {
-        position: absolute;
-        // padding:1.0rem;
-        cursor: move;
-        padding: 1.0rem;
-        user-select: none;
-
-        img {
-            &.rotated {
-                transform: scaleX(-1);
-                pointer-events: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: #0000006a;
+            z-index: 20;
+            .deco-txt {
+                @include Nanummyeongjo;
+                @include txt-deco;
+                color: map-get($color, c-white);
+                font-weight: map-get($font-weight , f-600);
+                opacity: 0;
+                transform: translateY(3rem);
             }
         }
     }
+}
 
-    .drag-handle {
+.composition {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0;
+    height: 100%;
+    transition: .3s;
+
+    &::before {
+        content: "";
+        display: block;
+        width: 3.0rem;
+        height: 3.0rem;
         position: absolute;
-        top: -12px;
-        right: -12px;
-        cursor: move;
-        z-index: 1;
-        background: #DCD0C6;
-        padding: .5rem;
-        border-radius: map-get($boder-radius, b-100);
+        right: 1.2rem;
+        bottom: 1.2rem;
+        background: url(../image/icon/stamp.png) 50% 50% / contain no-repeat;
     }
+}
+
+.draggable-container {
+    position: absolute;
+    // padding:1.0rem;
+    cursor: move;
+    padding: 1.0rem;
+    user-select: none;
+
+    img {
+        &.rotated {
+            transform: scaleX(-1);
+            pointer-events: none;
+        }
+    }
+}
+
+.drag-handle {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    cursor: move;
+    z-index: 1;
+    background: #DCD0C6;
+    padding: .5rem;
+    border-radius: map-get($boder-radius, b-100);
 }
 
 // deco html e

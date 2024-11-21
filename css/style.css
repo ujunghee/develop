@@ -386,23 +386,35 @@
   opacity: 0;
   transform: scale(0.99);
 }
-.deco-box .deco-txt {
-  font-family: "NanumMyeongjo";
-  font-size: 1.4rem;
-  color: #544D47;
-  font-weight: 300;
-  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
-  line-height: 1.8;
-  text-align: center;
-  color: #9E8E81;
+.deco-box .description {
   transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  opacity: 0;
   top: 50%;
   left: 50%;
   position: absolute;
   width: 100%;
-  visibility: hidden;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.4156862745);
+  z-index: 20;
 }
-.deco .composition {
+.deco-box .description .deco-txt {
+  font-family: "NanumMyeongjo";
+  font-size: 1.4rem;
+  color: #544D47;
+  font-weight: 300;
+  line-height: 1.8;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(3rem);
+}
+
+.composition {
   position: relative;
   width: 100%;
   box-sizing: border-box;
@@ -410,7 +422,7 @@
   height: 100%;
   transition: 0.3s;
 }
-.deco .composition::before {
+.composition::before {
   content: "";
   display: block;
   width: 3rem;
@@ -420,7 +432,8 @@
   bottom: 1.2rem;
   background: url(../image/icon/stamp.png) 50% 50%/contain no-repeat;
 }
-.deco .draggable-container {
+
+.draggable-container {
   position: absolute;
   cursor: move;
   padding: 1rem;
@@ -428,11 +441,12 @@
      -moz-user-select: none;
           user-select: none;
 }
-.deco .draggable-container img.rotated {
+.draggable-container img.rotated {
   transform: scaleX(-1);
   pointer-events: none;
 }
-.deco .drag-handle {
+
+.drag-handle {
   position: absolute;
   top: -12px;
   right: -12px;

@@ -1,3 +1,4 @@
+
 function firstAnimation() {
     document.addEventListener('touchstart', function(event) {
         if (event.target.classList.contains('button')) {
@@ -182,6 +183,38 @@ function decoAnimaiton() {
         opacity:1,
         scale:1,
     },'<+.1')
+
+    tl.to('.description', {
+        opacity:1,
+    },'<+.5')
+
+    tl.to('.deco-txt', {
+        opacity:1,
+        y:0,
+        duration:1,
+        ease: "power4.out",
+        stagger: {
+            each:0.05,
+        }
+    },'<+.3')
+
+    tl.to('.deco-txt', {
+        y:-30,
+        opacity:0,
+        duration:1,
+        ease: "power4.out",
+        stagger: {
+            each:0.05,
+        }
+    },'<+2')
+
+    tl.to('.description', {
+        opacity:0,
+    },'<+.5')
+
+    tl.to('.description', {
+        visibility:'hidden',
+    },'<+1')
 }
 
 // 이미지 인터랙션
@@ -229,7 +262,7 @@ function lastAinmation() {
             ease: "expo.out",
             duration: 2,
             y: 0,
-        }, '<+1')
+        }, '<+.5')
     }
 
     if (document.querySelector('.cover-bottom')) {
@@ -262,7 +295,7 @@ function lastAinmation() {
             stagger: {
                 each: 0.08,
             }
-        }, '<+.1.5')
+        }, '<+.1.2')
     }
 
     return tl

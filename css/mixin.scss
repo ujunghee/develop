@@ -60,7 +60,7 @@
     font-size: map-get($font-size, f-14);
     color: map-get($color, txt-main);
     font-weight: map-get($font-weight, f-300);
-    transition: map-get($ease, ease-in-out-4);
+    // transition: map-get($ease, ease-in-out-4);
     line-height: 1.8;
     text-align: center;
 }

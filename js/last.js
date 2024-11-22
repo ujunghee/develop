@@ -10,7 +10,7 @@ function initCardGenerator() {
             // DOM 요소 찾기 시도
             const card = document.querySelector('.card')
             const cardVisual = document.querySelector('.card-visual')
-            
+
             if (!card || !cardVisual) {
                 // DOM 요소를 찾지 못했다면 재시도
                 setTimeout(initCardGenerator, 100)
@@ -19,43 +19,31 @@ function initCardGenerator() {
 
             // 이미지 엘리먼트 생성
             const img = document.createElement('img')
-            
-            // 이미지 저장 관련 속성 추가
-            img.setAttribute('crossorigin', 'anonymous')
-            img.setAttribute('loading', 'eager')
-            img.setAttribute('decoding', 'sync')
-            // 컨텍스트 메뉴 허용
-            img.style.webkitTouchCallout = 'default'
-            img.style.webkitUserSelect = 'auto'
-            img.style.userSelect = 'auto'
-            // 다운로드 속성 추가
-            img.setAttribute('download', 'card.png')
-            
+
+            // 안드로이드 네이버웍스 체크
+            const isAndroidNaverWorks = /android/i.test(navigator.userAgent) &&
+                /NAVER(.*?)/i.test(navigator.userAgent);
+
+            if (isAndroidNaverWorks) {
+                // 안드로이드 네이버웍스용 속성 추가
+                img.setAttribute('data-downloadable', 'true');
+                img.style.webkitTouchCallout = 'default';
+                img.style['-webkit-user-select'] = 'none';
+                img.style['-webkit-touch-callout'] = 'default';
+                img.style['-webkit-tap-highlight-color'] = 'rgba(0,0,0,0)';
+                img.setAttribute('contextmenu', 'true');
+            }
+
             // 이미지 로드 이벤트를 먼저 설정
             img.onload = () => {
                 img.style.width = '100%'
                 img.style.height = '100%'
                 // img.style.objectFit = 'cover'
-                
+
                 // cardVisual이 여전히 존재하는지 한번 더 확인
                 if (document.contains(cardVisual)) {
                     cardVisual.innerHTML = ''
-                    // 이미지를 링크로 감싸기
-                    const link = document.createElement('a')
-                    link.href = savedState.decoBoxImage
-                    link.download = 'card.png'
-                    link.appendChild(img)
-                    cardVisual.appendChild(link)
-                    
-                    img.addEventListener('contextmenu', (e) => {
-                        e.preventDefault()
-                        const a = document.createElement('a')
-                        a.href = savedState.decoBoxImage
-                        a.download = 'card.png'
-                        document.body.appendChild(a)
-                        a.click()
-                        document.body.removeChild(a)
-                    })
+                    cardVisual.appendChild(img)
                 }
             }
 

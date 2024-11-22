@@ -117,10 +117,9 @@ function handleHeaderClick(event) {
 
         html2canvas(decoBox, {
             backgroundColor: null,
-            scale: 4,
+            scale: 2,
             useCORS: true,
             allowTaint: true,
-            pixelRatio: window.devicePixelRatio, 
             ignoreElements: (element) => {
                 return element.classList.contains('reset')
             }
@@ -163,10 +162,9 @@ async function captureAndSaveState(element) {
     try {
         const canvas = await html2canvas(element, {
             backgroundColor: null,
-            scale: 4,
+            scale: 2,
             useCORS: true,
             allowTaint: true,
-            pixelRatio: window.devicePixelRatio, 
             ignoreElements: (element) => {
                 return element.classList.contains('reset')
             }

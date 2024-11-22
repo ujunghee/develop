@@ -476,12 +476,7 @@
     top: 0;
     height: 100%;
     transition: .3s;
-    padding-bottom: 133.33%; /* 4:3 비율 */
-    overflow: hidden;
-
-    &::before {
-        content: "";
-        display: block;
+    .stamp {
         width: 3.0rem;
         height: 3.0rem;
         position: absolute;

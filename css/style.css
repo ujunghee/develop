@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import "SUIT/SUIT.css";
 @import "SUIT/SUIT.css";
 @keyframes gradientBG {
@@ -423,12 +422,8 @@
   top: 0;
   height: 100%;
   transition: 0.3s;
-  padding-bottom: 133.33%; /* 4:3 비율 */
-  overflow: hidden;
 }
-.composition::before {
-  content: "";
-  display: block;
+.composition .stamp {
   width: 3rem;
   height: 3rem;
   position: absolute;

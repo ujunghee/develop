@@ -20,17 +20,37 @@ function initCardGenerator() {
             // 이미지 엘리먼트 생성
             const img = document.createElement('img')
             
+            // 이미지 저장 관련 속성 추가
+            img.setAttribute('crossorigin', 'anonymous')
+            img.setAttribute('loading', 'eager')
+            img.setAttribute('decoding', 'sync')
+            // 컨텍스트 메뉴 허용
+            img.style.webkitTouchCallout = 'default'
+            img.style.webkitUserSelect = 'auto'
+            img.style.userSelect = 'auto'
+            // 다운로드 속성 추가
+            img.setAttribute('download', 'card.png')
+            
             // 이미지 로드 이벤트를 먼저 설정
-            img.onload = () => {
-                img.style.width = '100%'
-                img.style.height = '100%'
-                // img.style.objectFit = 'cover'
+            if (document.contains(cardVisual)) {
+                cardVisual.innerHTML = ''
+                // 이미지를 링크로 감싸기
+                const link = document.createElement('a')
+                link.href = savedState.decoBoxImage
+                link.download = 'card.png'
+                link.appendChild(img)
+                cardVisual.appendChild(link)
                 
-                // cardVisual이 여전히 존재하는지 한번 더 확인
-                if (document.contains(cardVisual)) {
-                    cardVisual.innerHTML = ''
-                    cardVisual.appendChild(img)
-                }
+                // 이미지 저장 이벤트 리스너 추가
+                img.addEventListener('contextmenu', (e) => {
+                    e.preventDefault()
+                    const a = document.createElement('a')
+                    a.href = savedState.decoBoxImage
+                    a.download = 'card.png'
+                    document.body.appendChild(a)
+                    a.click()
+                    document.body.removeChild(a)
+                })
             }
 
             img.onerror = (e) => {

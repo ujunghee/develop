@@ -173,6 +173,7 @@ function decoAnimaiton() {
         ease: "elastic.out(1,0.3)",
         duration:2,
         opacity:1,
+	    pointerEvents: "none",
         y:0,
         stagger: {
             each:0.1,
@@ -215,6 +216,10 @@ function decoAnimaiton() {
     tl.to('.description', {
         visibility:'hidden',
     },'<+1')
+
+    tl.to('.navigation ul li', {
+	    pointerEvents: "auto",
+    },'<')
 }
 
 // 이미지 인터랙션

@@ -204,21 +204,21 @@ textarea:focus:not(:focus-visible) {
 
 ::-webkit-scrollbar-track {
   background-color: rgba(241, 241, 241, 0);
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.4117647059);
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.862745098);
+  border-radius: 8px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #555;
+  background-color: rgba(255, 255, 255, 0.5764705882);
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
 }
 
 button {
@@ -682,8 +682,8 @@ button {
 }
 .popup .scroll .scroll-bar::before {
   content: "";
-  border-bottom: 3px solid rgba(255, 255, 255, 0.6509803922);
-  border-right: 3px solid rgba(255, 255, 255, 0.6509803922);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.6509803922);
+  border-right: 2px solid rgba(255, 255, 255, 0.6509803922);
   width: 12px;
   height: 12px;
   position: absolute;
@@ -914,11 +914,6 @@ button {
   line-height: 3rem;
   height: 3rem;
   min-height: 3rem;
-}
-.textfield .text:empty::before {
-  content: "텍스트를 입력하세요...";
-  color: #999;
-  pointer-events: none;
 }
 
 .header {

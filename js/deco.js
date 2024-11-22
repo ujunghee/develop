@@ -66,6 +66,7 @@ function navigation() {
         }
         if (toggle.classList.contains('textfielding')) {
             textField.classList.add('on')
+            textTouch()
             popup.classList.remove('on')
         }
         activeToggle = toggle
@@ -430,21 +431,21 @@ function objectItem() {
     function ClickDuringScroll() {
         let isScrolling = false
         let clickTimeout
-        
+
         const dragUls = document.querySelectorAll('.popup ul li img')
         const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-        
+
         // 이미지 클릭 시도할 때만 잠시 클릭 허용
         dragUls.forEach((img) => {
-            img.parentElement.addEventListener('touchstart', function() {
+            img.parentElement.addEventListener('touchstart', function () {
                 if (!isScrolling) {
                     img.classList.add('allow-click')
                 }
             })
         })
-        
+
         // 스크롤 시작하면 즉시 클릭 방지
-        document.addEventListener("touchmove", function() {
+        document.addEventListener("touchmove", function () {
             isScrolling = true
             if (clickTimeout) {
                 clearTimeout(clickTimeout)
@@ -453,9 +454,9 @@ function objectItem() {
                 img.classList.remove('allow-click')
             })
         })
-        
+
         // 스크롤 끝나면 상태 초기화
-        document.addEventListener("touchend", function() {
+        document.addEventListener("touchend", function () {
             clickTimeout = setTimeout(() => {
                 isScrolling = false
                 dragUls.forEach((img) => {
@@ -651,4 +652,25 @@ function palettebg() {
             }
         })
     })
+}
+
+// 텍스트 선택시 지우기
+function textTouch() {
+    const text = document.querySelector('.text')
+    console.log(text)
+    if (text) {
+        
+        text.textContent = '문구를 작성해보세요'
+
+        const clearPlaceholder = () => {
+            if (text.textContent === '문구를 작성해보세요') {
+                text.textContent = ''
+                text.removeEventListener('click', clearPlaceholder);
+                text.removeEventListener('touchstart', clearPlaceholder);
+            }
+        }
+        
+        text.addEventListener('click', clearPlaceholder);
+        text.addEventListener('touchstart', clearPlaceholder);
+    }
 }

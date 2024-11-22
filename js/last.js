@@ -24,7 +24,7 @@ function initCardGenerator() {
             img.onload = () => {
                 img.style.width = '100%'
                 img.style.height = '100%'
-                img.style.objectFit = 'contain'
+                // img.style.objectFit = 'cover'
                 
                 // cardVisual이 여전히 존재하는지 한번 더 확인
                 if (document.contains(cardVisual)) {

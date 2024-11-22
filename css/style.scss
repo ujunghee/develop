@@ -475,6 +475,8 @@
     top: 0;
     height: 100%;
     transition: .3s;
+    padding-bottom: 133.33%; /* 4:3 비율 */
+    overflow: hidden;
 
     &::before {
         content: "";
@@ -618,11 +620,12 @@
                 .card-visual {
                     width: calc(100% - 5.6rem);
                     height: 100%;
+                    // display: grid;
                     z-index: 1;
                     padding: 1.0rem;
                     box-sizing: border-box;
                     opacity: 0;
-
+                    // aspect-ratio: 1 / 1; 
                     img {
                         // padding: 15px;
                         border-radius: map-get($boder-radius, b-10);

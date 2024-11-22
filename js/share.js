@@ -3,21 +3,36 @@ function last() {
     document.addEventListener('click', async function (event) {
         // 공유 버튼 클릭
         if (event.target.classList.contains('share')) {
-            console.log('Share button clicked');
+            const shareData = {
+                title: '나만의 카드 만들기',
+                text: '나만의 특별한 카드를 만들어보시와용',
+                url: window.location.href
+            };
 
-            if (!navigator.share) {
-                alert('죄송합니다. 이 브라우저에서는 공유하기가 지원되지 않습니다.');
-                return;
-            }
+            // 모바일 기기 체크
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-            try {
-                await navigator.share({
-                    title: '나만의 카드 만들기',
-                    text: '나만의 특별한 카드를 만들어보시와용',
-                    url: window.location.href
-                });
-            } catch (err) {
-                console.log('Share failed:', err);
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('Share failed:', err);
+                }
+            } else if (isMobile) {
+                // 모바일인 경우 기본 공유 인텐트 사용
+                const shareText = `${shareData.text}\n${shareData.url}`;
+                window.location.href = `sms:?body=${encodeURIComponent(shareText)}`;
+                // 또는 다음 중 하나를 시도할 수 있습니다
+                // window.location.href = `whatsapp://send?text=${encodeURIComponent(shareText)}`;
+                // window.location.href = `mailto:?subject=${encodeURIComponent(shareData.title)}&body=${encodeURIComponent(shareText)}`;
+            } else {
+                // 데스크톱에서는 클립보드에 복사
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    alert('링크가 복사되었습니다!');
+                } catch (err) {
+                    alert('죄송합니다. 이 브라우저에서는 공유하기가 지원되지 않습니다.');
+                }
             }
         }
 

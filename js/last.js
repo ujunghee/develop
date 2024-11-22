@@ -27,10 +27,6 @@ function initCardGenerator() {
             if (isAndroidNaverWorks) {
                 // 안드로이드 네이버웍스용 속성 추가
                 img.setAttribute('data-downloadable', 'true');
-                img.style.webkitTouchCallout = 'default';
-                img.style['-webkit-user-select'] = 'none';
-                img.style['-webkit-touch-callout'] = 'default';
-                img.style['-webkit-tap-highlight-color'] = 'rgba(0,0,0,0)';
                 img.setAttribute('contextmenu', 'true');
             }
 

@@ -20,15 +20,12 @@ function initCardGenerator() {
             // 이미지 엘리먼트 생성
             const img = document.createElement('img')
 
-            // 안드로이드 네이버웍스 체크
-            const isAndroidNaverWorks = /android/i.test(navigator.userAgent) &&
-                /NAVER(.*?)/i.test(navigator.userAgent);
 
-            if (isAndroidNaverWorks) {
-                // 안드로이드 네이버웍스용 속성 추가
-                img.setAttribute('data-downloadable', 'true');
-                img.setAttribute('contextmenu', 'true');
-            }
+            // Base64를 Blob URL로 변환
+            const base64Data = savedState.decoBoxImage.split(',')[1];
+            const blob = new Blob([atob(base64Data)], { type: 'image/png' });
+            const blobUrl = URL.createObjectURL(blob);
+
 
             // 이미지 로드 이벤트를 먼저 설정
             img.onload = () => {
@@ -47,8 +44,11 @@ function initCardGenerator() {
                 console.error('Image failed to load:', e)
             }
 
+
+            img.src = blobUrl;
+
             // src 설정은 이벤트 핸들러 설정 후에
-            img.src = savedState.decoBoxImage
+            // img.src = savedState.decoBoxImage
 
         }, 50) // localStorage 읽기 전 짧은 지연
 

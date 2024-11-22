@@ -504,7 +504,6 @@
 @media (max-width: 600px) {
   .last.white .ending .card {
     width: calc(100% - 7rem);
-    max-height: 48.6rem;
     max-width: 37rem;
   }
 }

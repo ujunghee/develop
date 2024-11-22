@@ -545,10 +545,10 @@ button {
     &.on {
         display: block;
     }
-    textarea {
+    .text {
         @include Nanummyeongjo;
         @include m-sub;
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         width: 15rem;
         border: initial;
         background: initial;
@@ -557,7 +557,13 @@ button {
         color:map-get($color, nav-slider-btn);
         resize: none;
         line-height: 3rem;
-        height: 3rem
+        height: 3rem;
+        min-height: 3rem;
+        &:empty::before {
+            content: '텍스트를 입력하세요...';
+            color: #999;
+            pointer-events: none;
+        }
     }
 }
 // 문구 작성 e

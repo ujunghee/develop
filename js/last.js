@@ -52,5 +52,6 @@ window.initCardGenerator = initCardGenerator
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOMContentLoaded triggered')
     initCardGenerator()
 })

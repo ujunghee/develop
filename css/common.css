@@ -298,7 +298,6 @@ button {
   font-size: 1.4rem;
   color: #544D47;
   font-weight: 300;
-  transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
   line-height: 1.8;
   text-align: center;
   font-family: "NanumMyeongjo";
@@ -898,13 +897,13 @@ button {
 .textfield.on {
   display: block;
 }
-.textfield textarea {
+.textfield .text {
   font-family: "NanumMyeongjo";
   font-size: 1.4rem;
   color: #544D47;
   font-weight: 500;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   width: 15rem;
   border: initial;
   background: initial;
@@ -914,6 +913,12 @@ button {
   resize: none;
   line-height: 3rem;
   height: 3rem;
+  min-height: 3rem;
+}
+.textfield .text:empty::before {
+  content: "텍스트를 입력하세요...";
+  color: #999;
+  pointer-events: none;
 }
 
 .header {

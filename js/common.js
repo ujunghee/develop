@@ -117,7 +117,7 @@ function handleHeaderClick(event) {
 
         html2canvas(decoBox, {
             backgroundColor: null,
-            scale: 2,
+            scale: 4,
             useCORS: true,
             allowTaint: true,
             ignoreElements: (element) => {
@@ -162,7 +162,7 @@ async function captureAndSaveState(element) {
     try {
         const canvas = await html2canvas(element, {
             backgroundColor: null,
-            scale: 2,
+            scale: 4,
             useCORS: true,
             allowTaint: true,
             ignoreElements: (element) => {

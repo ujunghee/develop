@@ -1,9 +1,3 @@
-// const _ = window._
-
-// const { opacity } = require("html2canvas/dist/types/css/property-descriptors/opacity")
-
-// const { first } = require("lodash")
-
 //ajax
 function loadPage(page, callback) {
     const xhr = new XMLHttpRequest()
@@ -123,9 +117,10 @@ function handleHeaderClick(event) {
 
         html2canvas(decoBox, {
             backgroundColor: null,
-            scale: 2,
+            scale: 4,
             useCORS: true,
             allowTaint: true,
+            pixelRatio: window.devicePixelRatio, 
             ignoreElements: (element) => {
                 return element.classList.contains('reset')
             }
@@ -168,9 +163,10 @@ async function captureAndSaveState(element) {
     try {
         const canvas = await html2canvas(element, {
             backgroundColor: null,
-            scale: 2,
+            scale: 4,
             useCORS: true,
             allowTaint: true,
+            pixelRatio: window.devicePixelRatio, 
             ignoreElements: (element) => {
                 return element.classList.contains('reset')
             }

@@ -32,25 +32,31 @@ function initCardGenerator() {
             img.setAttribute('download', 'card.png')
             
             // 이미지 로드 이벤트를 먼저 설정
-            if (document.contains(cardVisual)) {
-                cardVisual.innerHTML = ''
-                // 이미지를 링크로 감싸기
-                const link = document.createElement('a')
-                link.href = savedState.decoBoxImage
-                link.download = 'card.png'
-                link.appendChild(img)
-                cardVisual.appendChild(link)
+            img.onload = () => {
+                img.style.width = '100%'
+                img.style.height = '100%'
+                // img.style.objectFit = 'cover'
                 
-                // 이미지 저장 이벤트 리스너 추가
-                img.addEventListener('contextmenu', (e) => {
-                    e.preventDefault()
-                    const a = document.createElement('a')
-                    a.href = savedState.decoBoxImage
-                    a.download = 'card.png'
-                    document.body.appendChild(a)
-                    a.click()
-                    document.body.removeChild(a)
-                })
+                // cardVisual이 여전히 존재하는지 한번 더 확인
+                if (document.contains(cardVisual)) {
+                    cardVisual.innerHTML = ''
+                    // 이미지를 링크로 감싸기
+                    const link = document.createElement('a')
+                    link.href = savedState.decoBoxImage
+                    link.download = 'card.png'
+                    link.appendChild(img)
+                    cardVisual.appendChild(link)
+                    
+                    img.addEventListener('contextmenu', (e) => {
+                        e.preventDefault()
+                        const a = document.createElement('a')
+                        a.href = savedState.decoBoxImage
+                        a.download = 'card.png'
+                        document.body.appendChild(a)
+                        a.click()
+                        document.body.removeChild(a)
+                    })
+                }
             }
 
             img.onerror = (e) => {

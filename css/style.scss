@@ -633,6 +633,8 @@
                         // padding: 15px;
                         border-radius: map-get($boder-radius, b-10);
                         box-sizing: border-box;
+                        pointer-events:auto;
+                        touch-action: auto;
                     }
 
                 }

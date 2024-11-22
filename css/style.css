@@ -563,6 +563,8 @@
 .last.white .ending .card .card-visual img {
   border-radius: 1rem;
   box-sizing: border-box;
+  pointer-events: auto;
+  touch-action: auto;
 }
 .last.white .ending .last-btn .share {
   transform: translateY(5rem);

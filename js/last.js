@@ -20,13 +20,6 @@ function initCardGenerator() {
             // 이미지 엘리먼트 생성
             const img = document.createElement('img')
 
-
-            // Base64를 Blob URL로 변환
-            const base64Data = savedState.decoBoxImage.split(',')[1];
-            const blob = new Blob([atob(base64Data)], { type: 'image/png' });
-            const blobUrl = URL.createObjectURL(blob);
-
-
             // 이미지 로드 이벤트를 먼저 설정
             img.onload = () => {
                 img.style.width = '100%'
@@ -44,11 +37,8 @@ function initCardGenerator() {
                 console.error('Image failed to load:', e)
             }
 
-
-            img.src = blobUrl;
-
             // src 설정은 이벤트 핸들러 설정 후에
-            // img.src = savedState.decoBoxImage
+            img.src = savedState.decoBoxImage
 
         }, 50) // localStorage 읽기 전 짧은 지연
 

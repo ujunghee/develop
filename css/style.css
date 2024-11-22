@@ -386,6 +386,7 @@
   background: url("../image/main/visaul_bg.webp") 50% 50%/cover no-repeat;
   opacity: 0;
   transform: scale(0.99);
+  mix-blend-mode: multiply;
 }
 .deco-box .description {
   transform: translate(-50%, -50%);

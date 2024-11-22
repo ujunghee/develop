@@ -574,15 +574,15 @@ function palettebg() {
                         case 'spring':
                             switch (className) {
                                 case 'b-1':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(255 236 244 / 68%) 60%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(255 236 244 / 68%) 60%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-2':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(255 230 225 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(255 230 225 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-3':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(250 255 199 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(250 255 199 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-4':
@@ -593,15 +593,15 @@ function palettebg() {
                         case 'summer':
                             switch (className) {
                                 case 'b-1':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(224 242 255 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(224 242 255 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-2':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(219 231 255 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(219 231 255 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-3':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(230 242 255 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(230 242 255 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-4':
@@ -612,34 +612,34 @@ function palettebg() {
                         case 'autumn':
                             switch (className) {
                                 case 'b-1':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(246 243 225 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(246 243 225 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-2':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(255 241 204 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(255 241 204 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-3':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(251 255 227 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(251 255 227 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-4':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.00) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgba(255, 255, 255, 0.00) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
                             }
                             break
                         case 'winter':
                             switch (className) {
                                 case 'b-1':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(216 230 232 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(216 230 232 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-2':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(238 249 255 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(238 249 255 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-3':
-                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgb(220 226 246 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
+                                    decoBg.style.background = 'linear-gradient(180deg, rgba(255, 255, 255, 0.00) 40%, rgb(220 226 246 / 68%) 100%), url("./image/main/visaul_bg.webp") 50% / cover no-repeat'
                                     break
 
                                 case 'b-4':

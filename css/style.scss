@@ -439,7 +439,8 @@
         transition: map-get($ease, ease-in-out-4);
         background: url($main-bg-img + "visaul_bg.webp") 50% 50% / cover no-repeat;
         opacity: 0;
-        transform: scale(.99);
+        transform: scale(.99);  
+        mix-blend-mode: multiply;
 
         .description {
             transform: translate(-50%, -50%);

@@ -553,7 +553,7 @@
                 // box-shadow: map-get($shadow, shadow-15);
                 box-sizing: border-box;
                 border-radius: map-get($boder-radius , b-14);
-                height: calc(100% - 10rem);
+                height: calc(100% - 12rem);
                 aspect-ratio: 1 / 4;
                 position: relative;
                 display: grid;

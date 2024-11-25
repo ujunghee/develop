@@ -47,11 +47,32 @@ function initCardGenerator() {
     }
 }
 
+function openInBrowser() {
+    // 웹뷰 감지
+    const isWebView = () => {
+        const userAgent = navigator.userAgent.toLowerCase();
+        return /(webview|wv|naver|line|kakaotalk|naver\(inapp|worksmobile)/i.test(userAgent);
+    }
+
+    // 웹뷰일 경우 외부 브라우저로 리다이렉션
+    if (isWebView()) {
+        const browserUrl = "intent://" + window.location.href.replace(/^https?:\/\//, '') + "#Intent;scheme=https;package=com.android.chrome;end";
+        window.location.href = browserUrl;
+        
+        // 폴백(fallback) - 크롬이 설치되어 있지 않은 경우
+        setTimeout(() => {
+            window.location.href = "market://details?id=com.android.chrome";
+        }, 2000);
+    }
+}
+
+
 
 window.initCardGenerator = initCardGenerator
 
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOMContentLoaded triggered')
+    openInBrowser()
     initCardGenerator()
 })

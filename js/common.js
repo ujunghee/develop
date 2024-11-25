@@ -108,51 +108,60 @@ function setupHeaderActions() {
 
 // 헤더 클릭 이벤트 핸들러
 function handleHeaderClick(event) {
-    if (!event.target.closest('.season-prev') && !event.target.closest('.first')
-        && !event.target.closest('.select-prev')) {
-        const decoBox = document.querySelector('.deco-box')
-        if (!decoBox) return
+    const composition = document.querySelector('.composition')
+    if(composition.contains(event.target.closest('.draggable-container'))) {
+        next()
+    } else {
+        alert('요소를 선택해주세요.')
+    }
 
-        // lastAinmation()
-
-        html2canvas(decoBox, {
-            backgroundColor: null,
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            ignoreElements: (element) => {
-                return element.classList.contains('reset')
-            }
-        }).then(canvas => {
-            const imageDataUrl = canvas.toDataURL('image/png')
-            const currentState = {
-                decoBoxImage: imageDataUrl,
-                background: decoBox.style.background || '',
-            }
-
-
-            localStorage.setItem('cardState', JSON.stringify(currentState))
-
-            // 직접 DOM 조작
-            document.getElementById('content').innerHTML = '' // 현재 내용 비우기
-
-            // XHR 요청으로 last.html 내용 가져오기
-            const xhr = new XMLHttpRequest()
-            xhr.open('GET', 'last.html', true)
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    document.getElementById('content').innerHTML = xhr.responseText
-                    initCardGenerator() // 내용 삽입 후 초기화
-
-                    setTimeout(() => {
-                        lastAinmation()
-                    }, 100)
+    function next() {
+        if (!event.target.closest('.season-prev') && !event.target.closest('.first')
+            && !event.target.closest('.select-prev')) {
+            const decoBox = document.querySelector('.deco-box')
+            if (!decoBox) return
+    
+            // lastAinmation()
+    
+            html2canvas(decoBox, {
+                backgroundColor: null,
+                scale: 2,
+                useCORS: true,
+                allowTaint: true,
+                ignoreElements: (element) => {
+                    return element.classList.contains('reset')
                 }
-            }
-            xhr.send()
-        }).catch(error => {
-            console.error('Error:', error)
-        })
+            }).then(canvas => {
+                const imageDataUrl = canvas.toDataURL('image/png')
+                const currentState = {
+                    decoBoxImage: imageDataUrl,
+                    background: decoBox.style.background || '',
+                }
+    
+    
+                localStorage.setItem('cardState', JSON.stringify(currentState))
+    
+                // 직접 DOM 조작
+                document.getElementById('content').innerHTML = '' // 현재 내용 비우기
+    
+                // XHR 요청으로 last.html 내용 가져오기
+                const xhr = new XMLHttpRequest()
+                xhr.open('GET', 'last.html', true)
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById('content').innerHTML = xhr.responseText
+                        initCardGenerator() // 내용 삽입 후 초기화
+    
+                        setTimeout(() => {
+                            lastAinmation()
+                        }, 100)
+                    }
+                }
+                xhr.send()
+            }).catch(error => {
+                console.error('Error:', error)
+            })
+        }
     }
 }
 
@@ -227,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // 완성하기
             if (event.target.classList.contains('submit')) {
-                loadPage('last.html')
+                // loadPage('last.html')
             }
 
             // 다시하기

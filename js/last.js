@@ -19,40 +19,49 @@ function initCardGenerator() {
 
             // 이미지 엘리먼트 생성
             const img = document.createElement('img') 
-            
+
             try {
-                // Base64 데이터가 올바른 형식인지 확인
-                if (!savedState.decoBoxImage.startsWith('data:image')) {
+                  if (!savedState.decoBoxImage.startsWith('data:image')) {
                     throw new Error('Invalid image data');
                 }
 
-                // Base64를 Blob URL로 변환
+                // Base64 데이터를 바이너리로 변환
                 const base64Data = savedState.decoBoxImage.split(',')[1];
-                const blob = new Blob([atob(base64Data)], { type: 'image/png' });
-                const blobUrl = URL.createObjectURL(blob);
+                const byteCharacters = atob(base64Data);
+                const byteNumbers = new Array(byteCharacters.length);
                 
+                for (let i = 0; i < byteCharacters.length; i++) {
+                    byteNumbers[i] = byteCharacters.charCodeAt(i);
+                }
+                
+                const byteArray = new Uint8Array(byteNumbers);
+                const blob = new Blob([byteArray], { type: 'image/png' });
+                const blobUrl = URL.createObjectURL(blob);
+
                 img.onload = () => {
-                    img.style.width = '100%'
-                    img.style.height = '100%'
+                    img.style.width = '100%';
+                    img.style.height = '100%';
 
                     if (document.contains(cardVisual)) {
-                        cardVisual.innerHTML = ''
-                        cardVisual.appendChild(img)
+                        cardVisual.innerHTML = '';
+                        cardVisual.appendChild(img);
                     }
+                    URL.revokeObjectURL(blobUrl);
                 }
 
                 img.onerror = (e) => {
-                    console.error('Image failed to load:', e)
-                    // 에러 발생시 원본 Base64 데이터로 fallback
-                    img.src = savedState.decoBoxImage
+                    console.error('Image failed to load:', e);
+                    console.log('Falling back to original data URL');
+                    // fallback을 적용하기 전에 이전 이벤트 핸들러 제거
+                    img.onerror = null;
+                    img.src = savedState.decoBoxImage;
                 }
 
                 img.src = blobUrl;
 
             } catch (error) {
-                console.error('Error processing image:', error)
-                // 에러 발생시 원본 Base64 데이터 사용
-                img.src = savedState.decoBoxImage
+                console.error('Error processing image:', error);
+                img.src = savedState.decoBoxImage;
             }
 
         }, 50) // localStorage 읽기 전 짧은 지연

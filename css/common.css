@@ -893,8 +893,6 @@ button {
   transform: translate(-50%, 0);
   display: none;
   z-index: 100;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
 }
 .textfield.on {
   display: block;
@@ -905,11 +903,9 @@ button {
   color: #544D47;
   font-weight: 500;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
-  -webkit-user-select: text; /* Safari */
+  -webkit-user-select: text;
   -moz-user-select: text;
        user-select: text;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
   font-size: 1.6rem;
   width: 15rem;
   border: initial;

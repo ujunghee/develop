@@ -542,18 +542,14 @@ button {
     transform: translate(-50%, 0);
     display: none;
     z-index: 100;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
     &.on {
         display: block;
     }
     .text {
         @include Nanummyeongjo;
         @include m-sub;
-        -webkit-user-select: text; /* Safari */
+        -webkit-user-select: text;
         user-select: text;
-        -webkit-tap-highlight-color: transparent;
-        touch-action: manipulation;
         font-size: 1.6rem;
         width: 15rem;
         border: initial;

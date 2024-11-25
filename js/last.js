@@ -20,6 +20,20 @@ function initCardGenerator() {
             // 이미지 엘리먼트 생성
             const img = document.createElement('img')
 
+            function dataURLtoBlob(dataURL) {
+                const parts = dataURL.split(';base64,');
+                const contentType = parts[0].split(':')[1];
+                const raw = window.atob(parts[1]);
+                const rawLength = raw.length;
+                const uInt8Array = new Uint8Array(rawLength);
+                
+                for(let i = 0; i < rawLength; ++i) {
+                    uInt8Array[i] = raw.charCodeAt(i);
+                }
+                
+                return new Blob([uInt8Array], { type: contentType });
+            }
+
             // 이미지 로드 이벤트를 먼저 설정
             img.onload = () => {
                 img.style.width = '100%'
@@ -35,6 +49,29 @@ function initCardGenerator() {
 
             img.onerror = (e) => {
                 console.error('Image failed to load:', e)
+            }
+
+            try {
+                const blob = dataURLtoBlob(savedState.decoBoxImage);
+                const blobUrl = URL.createObjectURL(blob);
+                img.src = blobUrl;
+
+                // 메모리 누수 방지를 위해 이미지 로드 후 URL 해제
+                img.onload = () => {
+                    img.style.width = '100%'
+                    img.style.height = '100%'
+                    
+                    if (document.contains(cardVisual)) {
+                        cardVisual.innerHTML = ''
+                        cardVisual.appendChild(img)
+                    }
+                    
+                    URL.revokeObjectURL(blobUrl);
+                }
+            } catch (error) {
+                console.error('Error converting to Blob URL:', error);
+                // 실패시 원본 Data URL 사용
+                img.src = savedState.decoBoxImage;
             }
 
             // src 설정은 이벤트 핸들러 설정 후에

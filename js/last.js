@@ -1,18 +1,15 @@
 function initCardGenerator() {
     try {
-        // localStorage에서 상태 읽기 전에 약간의 지연
         setTimeout(() => {
             const savedState = JSON.parse(localStorage.getItem('cardState'))
             if (!savedState || !savedState.decoBoxImage) {
                 return
             }
 
-            // DOM 요소 찾기 시도
             const card = document.querySelector('.card')
             const cardVisual = document.querySelector('.card-visual')
 
             if (!card || !cardVisual) {
-                // DOM 요소를 찾지 못했다면 재시도
                 setTimeout(initCardGenerator, 100)
                 return
             }
@@ -52,7 +49,6 @@ function initCardGenerator() {
                 img.onerror = (e) => {
                     console.error('Image failed to load:', e);
                     console.log('Falling back to original data URL');
-                    // fallback을 적용하기 전에 이전 이벤트 핸들러 제거
                     img.onerror = null;
                     img.src = savedState.decoBoxImage;
                 }
@@ -64,7 +60,7 @@ function initCardGenerator() {
                 img.src = savedState.decoBoxImage;
             }
 
-        }, 50) // localStorage 읽기 전 짧은 지연
+        }, 50)
 
     } catch (error) {
         console.error('Error in initCardGenerator:', error)

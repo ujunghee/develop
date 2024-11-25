@@ -18,6 +18,8 @@ function initCardGenerator() {
             }
 
             // 이미지 엘리먼트 생성
+            const img = document.createElement('img') 
+            
             try {
                 // Base64 데이터가 올바른 형식인지 확인
                 if (!savedState.decoBoxImage.startsWith('data:image')) {

@@ -439,21 +439,28 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  border: 1px solid rgba(216, 155, 155, 0.38);
+}
+.draggable-container.active {
+  border: 1px solid rgb(216, 155, 155);
+}
+.draggable-container.active .drag-close {
+  display: block;
+}
+.draggable-container .drag-close {
+  display: none;
 }
 .draggable-container img.rotated {
   transform: scaleX(-1);
   pointer-events: none;
 }
 
-.drag-handle {
+.drag-close {
   position: absolute;
   top: -12px;
   right: -12px;
   cursor: move;
   z-index: 1;
   background: #DCD0C6;
-  padding: 0.5rem;
   border-radius: 10rem;
 }
 

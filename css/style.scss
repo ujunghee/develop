@@ -493,7 +493,15 @@
     cursor: move;
     padding: 1.0rem;
     user-select: none;
-    border: 1px solid rgb(216 155 155 / 38%);
+    &.active {
+        border: 1px solid rgb(216 155 155);
+        .drag-close {
+            display: block;
+        }
+    }
+    .drag-close {
+        display: none;
+    }
     img {
         &.rotated {
             transform: scaleX(-1);
@@ -502,14 +510,14 @@
     }
 }
 
-.drag-handle {
+.drag-close {
     position: absolute;
     top: -12px;
     right: -12px;
     cursor: move;
     z-index: 1;
     background: #DCD0C6;
-    padding: .5rem;
+    // padding: .5rem;
     border-radius: map-get($boder-radius, b-100);
 }
 

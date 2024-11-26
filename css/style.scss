@@ -493,7 +493,7 @@
     cursor: move;
     padding: 1.0rem;
     user-select: none;
-
+    border: 1px solid rgb(216 155 155 / 38%);
     img {
         &.rotated {
             transform: scaleX(-1);

@@ -439,6 +439,7 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  border: 1px solid rgba(216, 155, 155, 0.38);
 }
 .draggable-container img.rotated {
   transform: scaleX(-1);

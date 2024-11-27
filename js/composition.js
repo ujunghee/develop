@@ -6,12 +6,12 @@ function initDraggableComposition() {
 
     // 드래그 상태 관리 변수
     let isDragging = false
-    let currentX
-    let currentY
+    // let currentX
+    // let currentY
     let initialX
     let initialY
-    let xOffset = 0
-    let yOffset = 0
+    // let xOffset = 0
+    // let yOffset = 0
     let selectedElement = null
 
     // 상태 관리 변수 추가
@@ -37,7 +37,6 @@ function initDraggableComposition() {
             container.remove()
         })
     })
-
 
     // 이미지 클릭/터치 이벤트 핸들러
     popupImages.forEach(img => {
@@ -65,6 +64,18 @@ function initDraggableComposition() {
         dragHandle.className = 'drag-close'
         dragHandle.innerHTML = dragHandleIcon
         // dragHandle.style.display = 'none'
+        
+        // dragHandle 삭제
+        dragHandle.addEventListener('mousedown', (e) => {
+            e.stopPropagation()
+            e.preventDefault()
+            draggableContainer.remove()
+        })
+        dragHandle.addEventListener('touchstart', (e) => {
+            e.stopPropagation()
+            e.preventDefault()
+            draggableContainer.remove()
+        }, { passive: false });
 
         draggableContainer.appendChild(clonedImg)
         draggableContainer.appendChild(dragHandle)
@@ -118,11 +129,31 @@ function initDraggableComposition() {
         dragStart(e);
     }
 
+    // 드레그 div 외에 클릭시 active 삭제
+    composition.addEventListener('mousedown', (e) => {
+        if (e.target.classList.contains('composition')) {
+            const activeDivs = document.querySelectorAll('.draggable-container')
+            activeDivs.forEach(item => {
+                item.classList.remove('active')
+            })
+        }
+
+    })
+    composition.addEventListener('touchstart', (e) => {
+        if (e.target.classList.contains('composition')) {
+            const activeDivs = document.querySelectorAll('.draggable-container')
+            activeDivs.forEach(item => {
+                item.classList.remove('active')
+            })
+        }
+    })
+
+    // 드레그 시작
     function dragStart(e) {
         if (e.type === 'mousedown') {
             selectedElement = e.target.closest('.draggable-container')
-
             const activeDivs = document.querySelectorAll('.draggable-container')
+
             activeDivs.forEach(item => {
                 item.classList.remove('active')
             })
@@ -133,8 +164,9 @@ function initDraggableComposition() {
                 initialY = e.clientY - parseFloat(selectedElement.style.top || 0)
                 composition.appendChild(selectedElement)
                 selectedElement.classList.add('active')
+
             }
-        
+
         } else if (e.type === 'touchstart') {
             selectedElement = e.target.closest('.draggable-container')
 
@@ -152,6 +184,7 @@ function initDraggableComposition() {
             }
         }
     }
+
 
     // 디바이스 기기마다 배수 설정
     function getMaxDevice() {

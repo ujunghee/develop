@@ -51,7 +51,7 @@
   justify-content: center;
   gap: 3rem;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .content_one .visual {
     gap: 5rem;
   }
@@ -72,7 +72,7 @@
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(4, 25%);
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .content_one .visual .visaul_img {
     height: 36.6rem;
     flex: 0.7;
@@ -203,7 +203,7 @@
   opacity: 0;
   transform: translateY(1rem);
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper {
     height: 60rem;
   }
@@ -223,7 +223,7 @@
   border-radius: 1rem;
   background: url("../image/main/visaul_bg.webp") 50% 50%/cover no-repeat;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide {
     height: 60rem;
   }
@@ -235,7 +235,7 @@
 .select .swiper-slide.spring .img-list {
   background: url("../image/main/spring_banner.gif") 50% 50%/70% no-repeat;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide.spring .img-list {
     background: url("../image/main/spring_banner.gif") 50% 50%/50% no-repeat;
   }
@@ -251,7 +251,7 @@
   opacity: 0.6;
   z-index: -1;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide.spring::before {
     background: url("../image/main/spring_back.webp") 50% 50%/35% no-repeat;
   }
@@ -259,7 +259,7 @@
 .select .swiper-slide.summer .img-list {
   background: url("../image/main/summer_banner.gif") 50% 50%/70% no-repeat;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide.summer .img-list {
     background: url("../image/main/summer_banner.gif") 50% 50%/50% no-repeat;
   }
@@ -275,7 +275,7 @@
   opacity: 0.6;
   z-index: -1;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide.summer::before {
     background: url("../image/main/summer_back.webp") 50% 50%/35% no-repeat;
   }
@@ -283,7 +283,7 @@
 .select .swiper-slide.autumn .img-list {
   background: url("../image/main/fall_banner.gif") 50% 50%/70% no-repeat;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide.autumn .img-list {
     background: url("../image/main/fall_banner.gif") 50% 50%/50% no-repeat;
   }
@@ -299,7 +299,7 @@
   opacity: 0.6;
   z-index: -1;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide.autumn::before {
     background: url("../image/main/fall_back.webp") 50% 50%/35% no-repeat;
   }
@@ -307,7 +307,7 @@
 .select .swiper-slide.winter .img-list {
   background: url("../image/main/winter_banner.gif") 50% 50%/70% no-repeat;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide.winter .img-list {
     background: url("../image/main/winter_banner.gif") 50% 50%/50% no-repeat;
   }
@@ -323,7 +323,7 @@
   opacity: 0.4;
   z-index: -1;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide.winter::before {
     background: url("../image/main/winter_back.webp") 50% 50%/35% no-repeat;
   }
@@ -335,7 +335,7 @@
   min-height: 38rem;
   transition: all 0.6s cubic-bezier(0.56, 0, 0.07, 1.01);
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .select .swiper-slide-active {
     height: 60rem;
   }
@@ -504,7 +504,7 @@
   justify-items: center;
   max-height: 70.6rem;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .last.white .ending .card {
     width: calc(100% - 20rem);
   }
@@ -524,7 +524,7 @@
   transform: translateY(600%);
   opacity: 0;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .last.white .ending .card .cover-top {
     height: 4.4rem;
   }
@@ -538,7 +538,7 @@
   transform: translateY(-600%);
   opacity: 0;
 }
-@media (min-width: 601px) and (max-width: 767px) {
+@media (min-width: 601px) and (max-width: 884px) {
   .last.white .ending .card .cover-bottom {
     height: 4.4rem;
   }

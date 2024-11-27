@@ -40,6 +40,7 @@ function last() {
         if (event.target.classList.contains('solvek')) {
             const solvek = document.querySelector('.last');
             const headerarrow = document.querySelector('.back');
+            animationSolvek()
 
             if (solvek.classList.contains('white')) {
                 solvek.classList.remove('white');
@@ -61,5 +62,14 @@ function last() {
                 headerarrow.classList.add('season-prev');
             }
         }
+
+        function animationSolvek() {
+            let tl = gsap.timeline({
+                ease: "power1.inOut",
+            })
+
+            
+        }
+
     })
 }

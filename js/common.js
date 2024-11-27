@@ -109,13 +109,10 @@ function setupHeaderActions() {
 // 헤더 클릭 이벤트 핸들러
 function handleHeaderClick(event) {
     
-    const composition = document.querySelector('.composition');
-    const draggableContainers = composition.querySelectorAll('.draggable-container');
-
-    if(draggableContainers.length === 0) {
-        alert('요소를 선택해주세요.');
-        return;
-    }
+    const activeDivs = document.querySelectorAll('.draggable-container')
+    activeDivs.forEach(item => {
+        item.classList.remove('active')
+    })
 
     if (!event.target.closest('.season-prev') && !event.target.closest('.first')
         && !event.target.closest('.select-prev')) {

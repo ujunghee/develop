@@ -449,6 +449,10 @@
 .draggable-container .drag-close {
   display: none;
 }
+.draggable-container img {
+  touch-action: none;
+  pointer-events: none;
+}
 .draggable-container img.rotated {
   transform: scaleX(-1);
   pointer-events: none;

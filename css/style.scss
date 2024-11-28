@@ -503,6 +503,8 @@
         display: none;
     }
     img {
+        touch-action: none;
+        pointer-events: none;
         &.rotated {
             transform: scaleX(-1);
             pointer-events: none;

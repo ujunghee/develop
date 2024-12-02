@@ -597,9 +597,12 @@
                 }
 
                 @include respond-to(mobile) {
-                    width: calc(100% - 7rem);
+                    // width: calc(100% - 7rem);
                     // max-height: 57.6rem;
-                    max-width: 37.0rem;
+                    // max-width: 37.0rem;
+                    width: 100%;
+                    max-height: 66rem;
+                    max-width: 40rem;
                 }
 
                 .cover {

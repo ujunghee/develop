@@ -124,7 +124,7 @@ function seletAnimation() {
         opacity:1,
         y:0,
         ease: "power4.inOut",
-    },'<-.5') 
+    },'<-1.35') 
 
 }
 

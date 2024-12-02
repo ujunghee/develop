@@ -240,6 +240,10 @@
             height: 60rem;
         }
 
+        @include respond-to(mobile) {
+            height: 50.0vh;
+        }
+
         &-slide {
             width: 30.0rem;
             height: 40.0vh;
@@ -257,6 +261,10 @@
 
             @include respond-to(tablet) {
                 height: 60rem;
+            }
+
+            @include respond-to(mobile) {
+                height: 50.0vh;
             }
 
             .img-list {
@@ -380,6 +388,10 @@
                 height: 60rem;
             }
 
+            @include respond-to(mobile) {
+                height: 50.0vh;
+            }
+
             // margin-top: 0rem;
             &.spring {
                 box-shadow: 0 6px 20px rgba(226, 207, 207, 0.6);
@@ -412,7 +424,7 @@
     .button {
         opacity: 0;
         transform: translateY(8rem);
-        // transition: 1s cubic-bezier(0.68, 0.04, 0.25, 1);
+        transition: .6s cubic-bezier(0.68, 0.04, 0.25, 1);
     }
 }
 
@@ -439,7 +451,7 @@
         transition: map-get($ease, ease-in-out-4);
         background: url($main-bg-img + "visaul_bg.webp") 50% 50% / cover no-repeat;
         opacity: 0;
-        transform: scale(.99);  
+        transform: scale(.99);
         mix-blend-mode: multiply;
 
         .description {
@@ -457,6 +469,7 @@
             flex-direction: column;
             background: #0000006a;
             z-index: 20;
+
             .deco-txt {
                 @include Nanummyeongjo;
                 @include txt-deco;
@@ -476,6 +489,7 @@
     top: 0;
     height: 100%;
     transition: .3s;
+
     .stamp {
         width: 3.0rem;
         height: 3.0rem;
@@ -493,18 +507,23 @@
     cursor: move;
     padding: 1.0rem;
     user-select: none;
+
     &.active {
         border: 1px solid rgb(216 155 155);
+
         .drag-close {
             display: block;
         }
     }
+
     .drag-close {
         display: none;
     }
+
     img {
         touch-action: none;
         pointer-events: none;
+
         &.rotated {
             transform: scaleX(-1);
             pointer-events: none;
@@ -592,6 +611,7 @@
                         z-index: 1;
                         transform: translateY(600%);
                         opacity: 0;
+
                         @include respond-to(tablet) {
                             height: 4.4rem;
                         }
@@ -605,6 +625,7 @@
                         z-index: 1;
                         transform: translateY(-600%);
                         opacity: 0;
+
                         @include respond-to(tablet) {
                             height: 4.4rem;
                         }
@@ -638,12 +659,13 @@
                     padding: 1.0rem;
                     box-sizing: border-box;
                     opacity: 0;
+
                     // aspect-ratio: 1 / 1; 
                     img {
                         // padding: 15px;
                         border-radius: map-get($boder-radius, b-10);
                         box-sizing: border-box;
-                        pointer-events:auto;
+                        pointer-events: auto;
                         touch-action: auto;
                     }
 

@@ -63,17 +63,6 @@ function select() {
                 slides.forEach((slide) => {
                     if (slide.classList.contains("swiper-slide-active")) {
                         slide.style.transform = "translateY(0)"
-                        // gsap
-                        let tl = gsap.timeline({
-                            ease: "back.out(1.7)",
-                        })
-                        tl.to('.select .button', {
-                            duration:.5,
-                            y:-5,
-                        })
-                        tl.to('.select .button', {
-                            y:0,
-                        },'<+.1')
                     } else if (slide.classList.contains("swiper-slide")) {
                         slide.style.transform = "translateY(30px)"
                         slide.style.transition = ".6s"

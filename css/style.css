@@ -529,7 +529,7 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr calc(100% - 6.8rem) 1fr;
   justify-items: center;
-  height: 62rem;
+  height: 55rem;
 }
 @media (min-width: 601px) and (max-width: 884px) {
   .last.white .ending .card {
@@ -543,7 +543,7 @@
 @media (max-width: 600px) {
   .last.white .ending .card {
     width: calc(100% - 2rem);
-    aspect-ratio: 1/1.5;
+    aspect-ratio: 1/1.4;
     max-height: 62rem;
     max-width: 40rem;
     height: auto;

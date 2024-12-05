@@ -594,7 +594,7 @@
                 grid-template-columns: 1fr;
                 grid-template-rows: 1fr calc(100% - 6.8rem) 1fr;
                 justify-items: center;
-                height: 62rem;
+                height: 55rem;
 
                 @include respond-to(tablet) {
                     width: calc(100% - 20rem);
@@ -606,7 +606,7 @@
 
                 @include respond-to(mobile) {
                     width: calc(100% - 2rem);
-                    aspect-ratio: 1 / 1.5;
+                    aspect-ratio: 1 / 1.4;
                     max-height: 62rem;
                     max-width: 40rem;
                     height: auto;

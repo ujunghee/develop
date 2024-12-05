@@ -242,9 +242,11 @@ document.addEventListener('DOMContentLoaded', function () {
                     return false;
                 }
 
-                if(body) {
-                    body.classList.add('scroll')
-                }
+                // if(window.location.pathname.includes('last.html')) {
+                //     if(body) {
+                //         body.classList.add('scroll')
+                //     }
+                // }
                 
             }
 

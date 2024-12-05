@@ -235,11 +235,17 @@ document.addEventListener('DOMContentLoaded', function () {
             if (event.target.classList.contains('submit')) {
                 const composition = document.querySelector('.composition');
                 const draggableContainers = composition.querySelectorAll('.draggable-container');
+                const body = document.querySelector('body');
                 if(draggableContainers.length > 0) {
                     loadPage('last.html')
                 } else {
                     return false;
                 }
+
+                if(body) {
+                    body.classList.add('scroll')
+                }
+                
             }
 
             // 다시하기

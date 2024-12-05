@@ -119,6 +119,22 @@ body {
     @include respond-to(mobile) {
         height: 100%;
     }
+    &.scroll {
+        overflow: auto;
+        #content {
+            overflow: auto;
+            height: 88rem;
+            @include respond-to(tablet) {
+                height: 100vh;
+                min-height: 103rem;
+            }
+
+            @include respond-to(mobile) {
+                height: 100vh;
+                min-height: 85.4rem;
+            }
+        }
+    }
 }
 #content {
     width: 48.0rem;

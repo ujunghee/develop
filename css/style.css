@@ -543,7 +543,7 @@
 @media (max-width: 600px) {
   .last.white .ending .card {
     width: calc(100% - 2rem);
-    aspect-ratio: 1/1.4;
+    aspect-ratio: 1/1.2;
     max-height: 60rem;
     max-width: 40rem;
     height: auto;

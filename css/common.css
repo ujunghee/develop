@@ -120,6 +120,20 @@ body {
     height: 100%;
   }
 }
+body.scroll {
+  overflow: auto;
+}
+@media (min-width: 601px) and (max-width: 884px) {
+  body.scroll #content {
+    overflow: auto;
+  }
+}
+@media (max-width: 600px) {
+  body.scroll #content {
+    overflow: auto;
+    min-height: 76rem;
+  }
+}
 
 #content {
   width: 48rem;

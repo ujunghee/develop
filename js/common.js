@@ -43,13 +43,14 @@ function loadPage(page, callback) {
                 }
 
                 const body = document.querySelector('body');
-                
+
                 if (lastpage.includes(page)) {
                     last()
                     if(body) {
                         body.classList.add('scroll')
                     } 
-                } else {
+                } 
+                else {
                     body.classList.remove('scroll')
                 }
             }
@@ -115,7 +116,16 @@ function setupHeaderActions() {
 
 // 헤더 클릭 이벤트 핸들러
 function handleHeaderClick(event) {
-    
+
+    // 잠시 블락처리
+    const composition = document.querySelector('.composition');
+    const draggableContainers = composition.querySelectorAll('.draggable-container');
+
+    if(draggableContainers.length === 0) {
+        alert('요소를 선택해주세요.');
+        return;
+    }
+
     const activeDivs = document.querySelectorAll('.draggable-container')
     activeDivs.forEach(item => {
         item.classList.remove('active')
@@ -247,7 +257,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     return false;
                 }
-                
             }
 
             // 다시하기

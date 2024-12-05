@@ -184,7 +184,7 @@
 @mixin last-button {
     font-size: map-get($font-size, f-16);
     font-weight: map-get($font-weight, f-500);
-    position: fixed;
+    position: absolute;
     bottom: 0rem;
     width: 100%;
     border: none;
@@ -197,6 +197,13 @@
     transition: map-get($ease, ease-in-out-4);
     background: linear-gradient(0deg, #ededed 20%, #ffffff00 200%);
     z-index: 3;
+    @include respond-to(tablet) {
+        position: fixed;
+    }
+
+    @include respond-to(mobile) {
+        position: fixed;
+    }
 }
 
 @mixin last-btn {
@@ -206,6 +213,11 @@
     border-radius: map-get($boder-radius, b-10);
     height: 5.0rem;
     // transition: map-get($ease, ease-in-out-4);
+    @include respond-to(tablet) {
+    }
+
+    @include respond-to(mobile) {
+    }
 }
 
 @mixin navbutton {

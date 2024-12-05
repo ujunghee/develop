@@ -140,7 +140,7 @@ body {
     width: 48.0rem;
     overflow: hidden;
     @include common;
-    transition: map-get($ease , ease-in-out-6);
+    // transition: map-get($ease , ease-in-out-6);
 
     // opacity:0;
     @include respond-to(tablet) {

@@ -606,7 +606,7 @@
 
                 @include respond-to(mobile) {
                     width: calc(100% - 2rem);
-                    aspect-ratio: 1 / 1.2;
+                    aspect-ratio: 1 / 1.28;
                     max-height: 60rem;
                     max-width: 40rem;
                     height: auto;

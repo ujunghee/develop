@@ -570,18 +570,18 @@ button {
 .last-btn {
   font-size: 1.6rem;
   font-weight: 500;
-  position: absolute;
-  bottom: 2rem;
-  width: calc(100% - 3.2rem);
+  position: fixed;
+  bottom: 0rem;
+  width: 100%;
   border: none;
-  height: 5rem;
-  left: 1.6rem;
-  border-radius: 1rem;
+  height: 7rem;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
   transition: all 0.4s cubic-bezier(0.56, 0, 0.07, 1.01);
+  background: linear-gradient(0deg, #ededed 20%, rgba(255, 255, 255, 0) 200%);
+  z-index: 3;
   gap: 0.8rem;
 }
 .last-btn button {
@@ -589,6 +589,13 @@ button {
   font-size: 1.6rem;
   border-radius: 1rem;
   height: 5rem;
+}
+.last-btn .bg {
+  display: flex;
+  gap: 16px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  position: absolute;
 }
 
 .first {

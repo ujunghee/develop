@@ -577,7 +577,7 @@
                 height: 100%;
 
                 .f-16 {
-                    transform: translateY(1rem);
+                    transform: translateY(3rem);
                     opacity: 0;
                 }
             }
@@ -695,6 +695,10 @@
                     opacity: 0;
                     flex: .5rem;
                     background: map-get($color, txt-main);
+                }
+                .bg {
+                    width: 100%;
+                    height: 100%;
                 }
             }
         }

@@ -514,7 +514,7 @@
   height: 100%;
 }
 .last.white .ending .last-content .f-16 {
-  transform: translateY(1rem);
+  transform: translateY(3rem);
   opacity: 0;
 }
 .last.white .ending .card {
@@ -619,6 +619,10 @@
   opacity: 0;
   flex: 0.5rem;
   background: #544D47;
+}
+.last.white .ending .last-btn .bg {
+  width: 100%;
+  height: 100%;
 }
 .last.black {
   background: #141414;

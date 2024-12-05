@@ -184,18 +184,19 @@
 @mixin last-button {
     font-size: map-get($font-size, f-16);
     font-weight: map-get($font-weight, f-500);
-    position: absolute;
-    bottom: 2.0rem;
-    width: calc(100% - 3.2rem);
+    position: fixed;
+    bottom: 0rem;
+    width: 100%;
     border: none;
-    height: 5.0rem;
-    left: 1.6rem;
-    border-radius: map-get($boder-radius, b-10);
+    height: 7.0rem;
+    // border-radius: map-get($boder-radius, b-10);
     display: flex;
     justify-content: center;
     align-items: center;
     color: map-get($color, c-white);
     transition: map-get($ease, ease-in-out-4);
+    background: linear-gradient(0deg, #ededed 20%, #ffffff00 200%);
+    z-index: 3;
 }
 
 @mixin last-btn {

@@ -256,9 +256,9 @@ function lastAinmation() {
             opacity: 1,
             y: 0,
             stagger: {
-                each: 0.05,
+                each: 0.1,
             },
-        }, '<')
+        }, '<+1')
     }
 
     if (document.querySelector('.cover-top')) {

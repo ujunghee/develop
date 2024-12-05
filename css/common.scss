@@ -119,25 +119,29 @@ body {
     @include respond-to(mobile) {
         height: 100%;
     }
+
     &.scroll {
         overflow: auto;
+
         #content {
             @include respond-to(tablet) {
-            overflow: auto;
+                overflow: auto;
             }
 
             @include respond-to(mobile) {
-            overflow: auto;
-            min-height: 76rem;
+                overflow: auto;
+                min-height: 76rem;
             }
         }
     }
 }
+
 #content {
     width: 48.0rem;
     overflow: hidden;
     @include common;
     transition: map-get($ease , ease-in-out-6);
+
     // opacity:0;
     @include respond-to(tablet) {
         height: 100dvh;
@@ -256,6 +260,7 @@ button {
 // text
 .title {
     @include Nanummyeongjo;
+
     span {
         @include font-title;
         font-weight: map-get($font-weight, f-700);
@@ -300,6 +305,7 @@ button {
     @include f-s-13;
     @include Nanummyeongjo;
 }
+
 .f-16 {
     @include f-16;
     @include Nanummyeongjo;
@@ -311,7 +317,7 @@ button {
 //         transform: scale(.98)
 //     }
 // }
-  
+
 .button {
     // @extend %barButton;
     @include bar-button;
@@ -319,6 +325,7 @@ button {
     &.brown {
         background-color: map-get($color, c-brown);
     }
+
     &.pink {
         background-color: map-get($color, c-pink);
     }
@@ -398,6 +405,7 @@ button {
         align-items: center;
         justify-content: center;
         gap: min(5vw - 1rem, 3rem);
+
         li {
             display: flex;
             flex-wrap: wrap;
@@ -408,6 +416,7 @@ button {
 
     button.nav {
         @include navbutton;
+
         &:hover {
             transform: scale(.92)
         }
@@ -426,13 +435,14 @@ button {
             stroke: map-get($color, footer-icon);
             transition: map-get($ease, ease-in-out-4);
         }
+
         &.on {
             background: map-get($color, footer-hover);
-    
+
             .fill {
                 fill: map-get($color, c-white);
             }
-    
+
             .stroke {
                 stroke: map-get($color, c-white);
             }
@@ -442,19 +452,19 @@ button {
                     stroke: map-get($color, c-pink);
                 }
             }
-            
+
             &.su {
                 .stroke {
                     stroke: map-get($color, c-blue);
                 }
             }
-            
+
             &.au {
                 .stroke {
                     stroke: map-get($color, c-orange);
                 }
             }
-            
+
             &.wi {
                 .stroke {
                     stroke: map-get($color, c-snowblue);
@@ -475,11 +485,13 @@ button {
         color: #fff;
         padding: 1.0rem 0;
         width: 100%;
+
         &:hover {
             background-color: map-get($color, black-bg10);
-            border-radius:map-get($boder-radius, b-10);
+            border-radius: map-get($boder-radius, b-10);
         }
     }
+
     &-twist {
         // @extend %barButton;
         @include NanumSquare;
@@ -489,9 +501,10 @@ button {
         color: #fff;
         padding: 1.0rem 0;
         width: 100%;
+
         &:hover {
             background-color: map-get($color, black-bg10);
-            border-radius:map-get($boder-radius, b-10);
+            border-radius: map-get($boder-radius, b-10);
         }
     }
 }
@@ -511,9 +524,18 @@ button {
 .last-btn {
     @include last-button;
     gap: .8rem;
+
     button {
         @include last-btn;
         // @extend %barButton;
+    }
+
+    .bg {
+        display: flex;
+        gap: 16px;
+        padding: 0 16px;
+        box-sizing: border-box;
+        position: absolute;
     }
 }
 
@@ -521,12 +543,13 @@ button {
 .first {
     // @extend %barButton;
     font-size: map-get($font-size, f-16);
-    color:map-get($color, txt-main);
+    color: map-get($color, txt-main);
     font-weight: map-get($font-weight , f-500);
     background: initial;
     display: none;
     opacity: 0;
     transform: scale(.5);
+
     &.on {
         display: block
     }
@@ -555,9 +578,11 @@ button {
     transform: translate(-50%, 0);
     display: none;
     z-index: 100;
+
     &.on {
         display: block;
     }
+
     .text {
         @include Nanummyeongjo;
         @include m-sub;
@@ -569,13 +594,14 @@ button {
         background: initial;
         text-align: center;
         touch-action: manipulation;
-        color:map-get($color, nav-slider-btn);
+        color: map-get($color, nav-slider-btn);
         resize: none;
         line-height: 3rem;
         height: 3rem;
         min-height: 3rem;
     }
 }
+
 // 문구 작성 e
 
 //header
@@ -584,5 +610,3 @@ button {
 }
 
 // rotate
-
-
